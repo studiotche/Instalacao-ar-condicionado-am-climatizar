@@ -1462,6 +1462,13 @@ summary:focus-visible {
   transition: color .28s ease, padding-left .3s cubic-bezier(.22, .61, .36, 1);
 }
 
+.back-to-top-arrow {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 1.1em;
+  line-height: 1;
+}
+
 .footer-links a:hover {
   color: var(--ink);
   padding-left: 4px;
