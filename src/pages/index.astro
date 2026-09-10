@@ -731,12 +731,12 @@ const jsonLd = {
       const eyebrowDelay = 0.06;
       const titleDelay = 0.18;
       const titleLines = scheduleHeroWords(titleWords, titleDelay);
-      const taglineDelay = titleDelay + titleLines * 0.1 + 0.38;
+      const taglineDelay = titleDelay + titleLines * 0.1 + 0.32;
       const taglineLines = scheduleHeroWords(taglineWords, taglineDelay);
-      const leadDelay = taglineDelay + taglineLines * 0.1 + 0.38;
+      const leadDelay = taglineDelay + taglineLines * 0.1 + 0.32;
       const leadLines = scheduleHeroWords(leadWords, leadDelay);
-      const actionsDelay = leadDelay + leadLines * 0.1 + 0.38;
-      const locationDelay = actionsDelay + 0.45;
+      const actionsDelay = leadDelay + leadLines * 0.1 + 0.32;
+      const locationDelay = actionsDelay + 0.38;
 
       heroEyebrow?.style.setProperty("--hero-delay", `${eyebrowDelay}s`);
       heroActions?.querySelectorAll<HTMLElement>(":scope > *").forEach((item, index) => {

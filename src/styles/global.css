@@ -324,6 +324,21 @@ summary:focus-visible {
   inset: 0;
 }
 
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 26, 18, .76) 0%,
+    rgba(4, 26, 18, .58) 27%,
+    rgba(4, 26, 18, .28) 53%,
+    rgba(4, 26, 18, 0) 76%
+  );
+}
+
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -347,7 +362,7 @@ summary:focus-visible {
 .hero-copy.hero-reveal-ready .hero-actions>* {
   opacity: 0;
   transform: translateY(18px);
-  animation: hero-line-rise .58s cubic-bezier(.22, .61, .36, 1) both;
+  animation: hero-line-rise .48s cubic-bezier(.22, .61, .36, 1) both;
   animation-delay: var(--hero-delay, 0s);
 }
 
@@ -355,14 +370,14 @@ summary:focus-visible {
   display: inline-block;
   opacity: 0;
   transform: translateY(16px);
-  animation: hero-line-rise .54s cubic-bezier(.22, .61, .36, 1) both;
+  animation: hero-line-rise .44s cubic-bezier(.22, .61, .36, 1) both;
   animation-delay: var(--hero-delay, 0s);
 }
 
 .floating-card.hero-reveal-ready {
   opacity: 0;
   transform: translateY(18px);
-  animation: hero-line-rise .58s cubic-bezier(.22, .61, .36, 1) both;
+  animation: hero-line-rise .48s cubic-bezier(.22, .61, .36, 1) both;
   animation-delay: var(--hero-delay, 0s);
 }
 
@@ -1727,6 +1742,10 @@ body.menu-open {
     min-height: 0;
     padding: 0;
     background: var(--sage-dark);
+  }
+
+  .hero-visual::after {
+    display: none;
   }
 
   .hero-visual {
