@@ -1054,6 +1054,32 @@ summary:focus-visible {
   margin-bottom: 54px;
 }
 
+.consultorio-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.consultorio-gallery figure {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 16 / 10;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--paper);
+}
+
+.consultorio-gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .locations-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1877,6 +1903,16 @@ body.menu-open {
     align-items: start;
     gap: 24px;
     margin-bottom: 36px;
+  }
+
+  .consultorio-gallery {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .consultorio-gallery figure {
+    aspect-ratio: 4 / 3;
   }
 
   .locations-grid {

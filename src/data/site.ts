@@ -60,6 +60,8 @@ export const site = {
     heroMobile: "/images/nutricionista-pedro-zvir-bg-mobile.webp",
     about: "/images/sobre-nutricionista-pedro-zvir.webp",
     processBg: "/images/nutricionista.webp",
+    consultorio: "/images/consultorio-nutricinista-pedro-zvir.webp",
+    consultorioNovoHamburgo: "/images/consultorio-nutricinista-pedro-zvir-nh.webp",
   },
 } as const;
 
