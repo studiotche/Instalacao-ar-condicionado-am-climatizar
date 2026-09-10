@@ -25,10 +25,10 @@ export const site = {
     title: "Lavanderia Ivoti | Cuidado profissional para suas peças",
     description: "Lavanderia Ivoti: lavagem, higienização, impermeabilização e cuidado para roupas, estofados e peças especiais em Concórdia, Ivoti/RS.",
     url: "https://studiotche.github.io/lavanderia-ivoti/",
-    ogImage: "/images/lavanderia-ivoti-streetview.jpg",
+    ogImage: "/images/lavanderia-ivoti-hero.jpg",
   },
   assets: {
-    storefront: "/images/lavanderia-ivoti-streetview.jpg",
+    storefront: "/images/lavanderia-ivoti-hero.jpg",
     instagram: "/images/lavanderia-ivoti-instagram.jpg",
     instagramFeed: "/images/lavanderia-ivoti-instagram-feed.png",
   },
