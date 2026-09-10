@@ -330,13 +330,11 @@ summary:focus-visible {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    rgba(4, 26, 18, .76) 0%,
-    rgba(4, 26, 18, .58) 27%,
-    rgba(4, 26, 18, .28) 53%,
-    rgba(4, 26, 18, 0) 76%
-  );
+  background: linear-gradient(90deg,
+      rgba(4, 26, 18, .76) 0%,
+      rgba(4, 26, 18, .58) 27%,
+      rgba(4, 26, 18, .28) 53%,
+      rgba(4, 26, 18, 0) 76%);
 }
 
 .hero-bg {
@@ -1079,6 +1077,7 @@ summary:focus-visible {
 }
 
 @media (hover: hover) and (pointer: fine) {
+
   .about-frame:hover img,
   .consultorio-gallery figure:hover img {
     transform: scale(1.035);
@@ -1488,7 +1487,7 @@ summary:focus-visible {
   line-height: 1;
 }
 
-.footer-links > a {
+.footer-links>a {
   color: var(--sage-dark);
   transition: color .28s ease, padding-left .3s cubic-bezier(.22, .61, .36, 1);
 }
@@ -1500,7 +1499,7 @@ summary:focus-visible {
   line-height: 1;
 }
 
-.footer-links > a:hover {
+.footer-links>a:hover {
   color: var(--ink);
   padding-left: 4px;
 }
@@ -1787,13 +1786,14 @@ body.menu-open {
   .hero-visual {
     position: relative;
     inset: auto;
-    width: min(100% - 34px, 620px);
+    width: 100%;
     margin-inline: auto;
   }
 
   .hero-bg {
     position: relative;
     inset: auto;
+    overflow: hidden;
   }
 
   .hero-bg img {
@@ -1802,6 +1802,8 @@ body.menu-open {
     height: auto;
     object-fit: contain;
     object-position: top center;
+    transform: scale(1.08);
+    transform-origin: center top;
   }
 
   .hero-copy {
