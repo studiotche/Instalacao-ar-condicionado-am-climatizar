@@ -12,18 +12,17 @@
 }
 
 @font-face {
-  font-family: "Newsreader";
+  font-family: "Space Grotesk";
   font-style: normal;
   font-weight: 400;
-  font-display: optional;
-  src: url("/fonts/newsreader.eot?#iefix") format("embedded-opentype"),
-    url("/fonts/newsreader.woff2") format("woff2"),
-    url("/fonts/newsreader.woff") format("woff"),
-    url("/fonts/newsreader.ttf") format("truetype"),
-    url("/fonts/newsreader.otf") format("opentype"),
-    url("/fonts/newsreader.svg#Newsreader16pt-Regular") format("svg");
+  font-display: swap;
+  src: url("/fonts/space-grotesk.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/space-grotesk.woff2") format("woff2"),
+    url("/fonts/space-grotesk.woff") format("woff"),
+    url("/fonts/space-grotesk.ttf") format("truetype"),
+    url("/fonts/space-grotesk.otf") format("opentype"),
+    url("/fonts/space-grotesk.svg#Space Grotesk Regular") format("svg");
 }
-
 :root {
   --ink: #171510;
   --muted: #58544d;
@@ -38,7 +37,7 @@
   --gold: #d8c08a;
   --line: rgba(23, 21, 16, 0.15);
   --white: #ffffff;
-  --serif: "Newsreader", Georgia, serif;
+  --serif: "Space Grotesk", var(--sans);
   --sans: "DM Sans", Arial, sans-serif;
   --display: var(--sans);
   --shadow: 0 24px 70px rgba(23, 21, 16, 0.13);
@@ -126,7 +125,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(248, 243, 233, 0.94);
+  background: #ffffff;
   border-bottom: 1px solid rgba(23, 21, 16, .08);
   backdrop-filter: blur(12px);
 }
@@ -186,7 +185,7 @@ a {
   gap: 6px;
   border: 1px solid var(--line);
   border-radius: 3px;
-  background: var(--paper);
+  background: #fff;
   cursor: pointer;
   padding: 0;
   transition: background .28s ease, border-color .28s ease, transform .3s cubic-bezier(.22, .61, .36, 1);
@@ -1337,14 +1336,14 @@ summary:focus-visible {
 }
 
 .site-footer {
-  background: var(--sage-dark);
-  color: var(--white);
+  background: #ffffff;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
   padding: 58px 0 28px;
 }
 
 .site-footer .logo img {
   width: 190px;
-  filter: brightness(0) invert(1);
 }
 
 .footer-main {
@@ -1358,7 +1357,7 @@ summary:focus-visible {
 .footer-main p {
   max-width: 420px;
   margin: 0;
-  color: rgba(255, 255, 255, .65);
+  color: var(--muted);
 }
 
 .footer-brand {
@@ -1382,12 +1381,12 @@ summary:focus-visible {
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, .65);
+  color: var(--sage-dark);
   transition: color .28s ease, padding-left .3s cubic-bezier(.22, .61, .36, 1);
 }
 
 .footer-links a:hover {
-  color: var(--white);
+  color: var(--ink);
   padding-left: 4px;
 }
 
@@ -1396,8 +1395,8 @@ summary:focus-visible {
   justify-content: space-between;
   gap: 30px;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, .12);
-  color: rgba(255, 255, 255, .62);
+  border-top: 1px solid rgba(23, 21, 16, .12);
+  color: var(--muted);
   font-size: .75rem;
 }
 
@@ -1464,7 +1463,7 @@ body.menu-open {
   width: min(86vw, 380px);
   display: flex;
   flex-direction: column;
-  background: var(--paper);
+  background: #fff;
   box-shadow: -24px 0 60px rgba(23, 21, 16, .25);
   padding: 24px 30px 34px;
   transform: translateX(100%);

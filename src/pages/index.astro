@@ -20,53 +20,53 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Person",
-      "@id": `${site.seo.url}/#person`,
+      "@id": `${site.seo.url.replace(/\/$/, "")}/#person`,
       name: `${site.fullRole} ${site.name}`,
       jobTitle: site.fullRole,
       url: site.seo.url,
       image: `${site.seo.url.replace(/\/$/, "")}${site.seo.ogImage}`,
       telephone: `+${site.phoneLink}`,
-      sameAs: [site.googleProfile, site.instagram],
+      sameAs: [site.googleProfile, site.instagram, site.doctoralia, site.linkedin],
       areaServed: ["Novo Hamburgo"],
       workLocation: locations.slice(0, 1).map((location) => ({
         "@type": "Place",
         name: `Consultório em ${location.city}`,
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Av. Pedro Adams Filho, 6000, apto. 701",
+          streetAddress: "R. Bento Gonçalves, 2310, Sala 42",
           addressLocality: location.city,
           addressRegion: site.state,
-          postalCode: "93510-050",
+          postalCode: "93510-018",
           addressCountry: "BR",
         },
       })),
     },
     {
       "@type": "Dietitian",
-      "@id": `${site.seo.url}/#dietitian`,
+      "@id": `${site.seo.url.replace(/\/$/, "")}/#dietitian`,
       name: `${site.fullRole} ${site.name}`,
       image: `${site.seo.url.replace(/\/$/, "")}${site.seo.ogImage}`,
       telephone: `+${site.phoneLink}`,
       priceRange: "$$",
       medicalSpecialty: "Nutrition",
-      sameAs: [site.instagram, site.googleProfile],
+      sameAs: [site.instagram, site.googleProfile, site.doctoralia, site.linkedin],
       areaServed: ["Novo Hamburgo", "Vale do Sinos"],
       location: locations.slice(0, 1).map((location) => ({
         "@type": "Place",
         name: `Consultório em ${location.city}`,
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Av. Pedro Adams Filho, 6000, apto. 701",
+          streetAddress: "R. Bento Gonçalves, 2310, Sala 42",
           addressLocality: location.city,
           addressRegion: site.state,
-          postalCode: "93510-050",
+          postalCode: "93510-018",
           addressCountry: "BR",
         },
       })),
     },
     {
       "@type": "FAQPage",
-      "@id": `${site.seo.url}/#faq`,
+      "@id": `${site.seo.url.replace(/\/$/, "")}/#faq`,
       mainEntity: faqs.map(([question, answer]) => ({
         "@type": "Question",
         name: question,
@@ -75,7 +75,7 @@ const jsonLd = {
     },
     ...testimonials.map((testimonial) => ({
       "@type": "Review",
-      itemReviewed: { "@id": `${site.seo.url}/#dietitian` },
+      itemReviewed: { "@id": `${site.seo.url.replace(/\/$/, "")}/#dietitian` },
       author: { "@type": "Person", name: testimonial.name },
       ...(testimonial.dateTime ? { datePublished: testimonial.dateTime } : {}),
       reviewBody: testimonial.text,
@@ -149,8 +149,8 @@ const jsonLd = {
         aria-label="Fechar menu"><span aria-hidden="true">✕</span></button
       >
       <div class="menu-panel-head">
-        <span class="menu-brand">Camila Daer</span><small class="kicker"
-          >Nutricionista</small
+        <span class="menu-brand">Pedro Zvir</span><small class="kicker"
+          >Nutricionista Esportivo</small
         >
       </div>
       <nav class="mobile-nav" aria-label="Navegação móvel">
@@ -179,7 +179,7 @@ const jsonLd = {
           />
           <img
             src={asset(site.assets.hero)}
-            alt="Nutricionista Camila Daer sorrindo, atendimento particular em Novo Hamburgo"
+            alt="Nutricionista Pedro Zvir sorrindo, atendimento particular em Novo Hamburgo"
             width="1920"
             height="946"
             fetchpriority="high"
@@ -210,7 +210,7 @@ const jsonLd = {
         </div>
         <div class="location-note">
           <span class="location-dot" aria-hidden="true"></span><span
-            >Presencial em Novo Hamburgo · Particular</span
+            >Presencial em Novo Hamburgo · Online</span
           >
         </div>
       </div>
@@ -421,14 +421,14 @@ const jsonLd = {
           <div class="image-frame about-frame">
             <img
               src={asset(site.assets.about)}
-              alt="Nutricionista Camila Daer em ambiente profissional com luz natural"
+              alt="Nutricionista Pedro Zvir em ambiente profissional com luz natural"
               width="704"
               height="874"
               loading="lazy"
             />
           </div>
           <div class="signature-card" aria-hidden="true">
-            <span>CD</span><small>estratégia que cabe na sua vida</small>
+            <span>PZ</span><small>estratégia que cabe na sua vida</small>
           </div>
         </div>
         <div class="about-copy">
@@ -489,7 +489,7 @@ const jsonLd = {
           <div class="map-frame locations-map">
             <iframe
               src={site.mapsEmbedUrl}
-              title="Mapa do consultório da nutricionista Camila Daer em Novo Hamburgo"
+              title="Mapa do consultório da nutricionista Pedro Zvir em Novo Hamburgo"
               loading="lazy"
               allowfullscreen
               referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -563,7 +563,7 @@ const jsonLd = {
             href={whatsappUrl}
             target="_blank"
             rel="noreferrer"
-            >Falar com Camila <span aria-hidden="true">↗</span></a
+            >Falar com Pedro <span aria-hidden="true">↗</span></a
           >
         </div>
       </div>
@@ -588,8 +588,8 @@ const jsonLd = {
         <a href={site.telLink}>Ligar: {site.phoneDisplay}</a><a
           href={site.instagram}
           target="_blank"
-          rel="noreferrer">Instagram @nutricamiladaer</a
-        ><a href="#inicio">Voltar ao início ↑</a>
+          rel="noreferrer">Instagram @nutri.pedrozvir</a
+        ><a href={site.doctoralia} target="_blank" rel="noreferrer">Doctoralia</a><a href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href="#inicio">Voltar ao início ↑</a>
       </div>
     </div>
     <div class="container footer-bottom">
@@ -610,7 +610,7 @@ const jsonLd = {
     href={whatsappUrl}
     target="_blank"
     rel="noreferrer"
-    aria-label="Olá, Camila! Gostaria de agendar uma consulta."
+    aria-label="Olá, Pedro! Gostaria de agendar uma consulta."
   >
     <img src={asset("/images/whatsapp.webp")} alt="" width="34" height="34" />
   </a>

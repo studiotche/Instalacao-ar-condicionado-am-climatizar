@@ -1,62 +1,64 @@
 export const site = {
-  name: "Camila Daer",
-  role: "Nutricionista",
-  fullRole: "Nutricionista e Gastróloga",
+  name: "Pedro Zvir",
+  role: "Nutricionista Esportivo",
+  fullRole: "Nutricionista Esportivo",
   city: "Novo Hamburgo",
   state: "RS",
   region: "Novo Hamburgo/RS",
-  crn: "CFN 20977D RS",
-  credentials: "Nutricionista e Gastróloga · CFN 20977D RS",
-  phoneDisplay: "(51) 98130-9357",
-  phoneLink: "5551981309357",
-  telLink: "tel:+5551981309357",
+  crn: "CRN-2 22366",
+  credentials: "Nutricionista Esportivo \u00b7 CRN-2 22366",
+  phoneDisplay: "(51) 98014-1790",
+  phoneLink: "5551980141790",
+  telLink: "tel:+5551980141790",
   email: "",
-  instagram: "https://www.instagram.com/nutricamiladaer/",
+  instagram: "https://www.instagram.com/nutri.pedrozvir/",
   doctoralia:
-    "https://www.doctoralia.com.br/camila-daer-2/nutricionista/novo-hamburgo",
+    "https://www.doctoralia.com.br/pedro-zvir/nutricionista/novo-hamburgo#address-id=1845870&is-online-only=false&filters%5Bdiseases%5D%5B%5D=5368",
+  linkedin: "https://br.linkedin.com/in/pedro-zvir-4072221ba",
   hours: [
-    { days: "Atendimento particular", time: "Consultar disponibilidade pelo WhatsApp" },
+    { days: "Segunda a sexta", time: "09:00\u201319:00" },
+    { days: "S\u00e1bado e domingo", time: "Fechado" },
   ],
   googleProfile:
-    "https://www.google.com/maps/place/Nutricionista+Camila+Daer/@-29.6797581,-51.1306469,17z/data=!4m6!3m5!1s0x95194373e39be22d:0x7472dd2ea6e1cddf!8m2!3d-29.6797581!4d-51.1306469!16s%2Fg%2F11y13xyxgl?entry=ttu",
+    "https://www.google.com/maps/place/Nutricionista+Esportivo+Pedro+Zvir/@-29.6861031,-51.1277926,17z",
   googleRating: {
     score: "5,0",
-    reviews: 10,
+    reviews: 5,
   },
   mapsEmbedUrl:
-    "https://maps.google.com/maps?q=-29.6797581,-51.1306469&z=17&hl=pt-BR&output=embed",
+    "https://maps.google.com/maps?q=-29.6861031,-51.1277926&z=17&hl=pt-BR&output=embed",
   mapsUrl:
-    "https://www.google.com/maps/place/Nutricionista+Camila+Daer/@-29.6797581,-51.1306469,17z",
+    "https://www.google.com/maps/place/Nutricionista+Esportivo+Pedro+Zvir/@-29.6861031,-51.1277926,17z",
   seo: {
-    title: "Nutricionista em Novo Hamburgo | Camila Daer · Mulheres, Menopausa e Emagrecimento",
+    title: "Pedro Zvir | Nutricionista Esportivo em Novo Hamburgo",
     description:
-      "Camila Daer, nutricionista e gastróloga em Novo Hamburgo/RS. Nutrição personalizada para mulheres, menopausa, emagrecimento e bem-estar, sem restrições extremas. Agende pelo WhatsApp.",
-    url: "https://studiotche.github.io/nutricionista-camiladaer/",
-    ogImage: "/images/camila_daer_nutricionista.webp",
+      "Pedro Zvir, nutricionista esportivo em Novo Hamburgo/RS. Atendimento presencial e online com estrat\u00e9gias individualizadas para performance, composi\u00e7\u00e3o corporal, emagrecimento e ganho de massa muscular.",
+    url: "https://studiotche.github.io/nutricionista-pedro-zvir/",
+    ogImage: "/images/nutricionista-pedro-zvir-bg.webp",
   },
   hero: {
-    eyebrow: "Nutrição para mulheres",
-    title: "Nutricionista e gastróloga em Novo Hamburgo, Camila Daer",
-    titleHighlight: "Camila Daer",
-    tagline: "Comer bem pode ser leve, gostoso e possível.",
+    eyebrow: "Nutri\u00e7\u00e3o esportiva individualizada",
+    title: "Nutricionista esportivo em Novo Hamburgo, Pedro Zvir",
+    titleHighlight: "Pedro Zvir",
+    tagline: "Estrat\u00e9gias que fazem sentido para a sua realidade.",
     description:
-      "Cuidado individual para sua saúde, sua rotina e sua relação com a comida.",
+      "Acompanhamento baseado em evid\u00eancias para melhorar sua alimenta\u00e7\u00e3o, composi\u00e7\u00e3o corporal e desempenho esportivo \u2014 sem dietas imposs\u00edveis de manter.",
   },
   about: {
-    eyebrow: "Olá, eu sou a Camila!",
-    title: "Nutrição e gastronomia para uma relação leve com a comida",
-    titleHighlight: "relação leve com a comida",
+    eyebrow: "Ol\u00e1, eu sou o Pedro!",
+    title: "Nutri\u00e7\u00e3o pr\u00e1tica, individualizada e baseada em evid\u00eancias",
+    titleHighlight: "pr\u00e1tica, individualizada e baseada em evid\u00eancias",
     paragraphs: [
-      "Acredito que uma alimentação saudável precisa ser possível, prazerosa e adaptada à realidade de cada pessoa.",
-      "Meu atendimento é individualizado: juntas, construímos estratégias práticas e sustentáveis para emagrecimento, menopausa, bem-estar e saúde intestinal, respeitando sua rotina, suas preferências e seus objetivos.",
-      "Nada de fórmulas prontas ou extremismos: unindo nutrição e gastronomia, o plano cabe na vida real e no prazer de comer bem.",
+      "Sou Pedro Zvir, nutricionista com atua\u00e7\u00e3o em Nutri\u00e7\u00e3o Esportiva. Meu objetivo \u00e9 ajudar voc\u00ea a melhorar sua alimenta\u00e7\u00e3o de forma pr\u00e1tica, individualizada e baseada em evid\u00eancias, sem dietas imposs\u00edveis de manter.",
+      "Durante o acompanhamento, avaliamos sua rotina, objetivos, composi\u00e7\u00e3o corporal e exames laboratoriais para construir estrat\u00e9gias que fa\u00e7am sentido para a sua realidade.",
+      "Seja para melhorar o desempenho esportivo, emagrecer, ganhar massa muscular ou simplesmente cuidar melhor da alimenta\u00e7\u00e3o, o foco \u00e9 encontrar uma estrat\u00e9gia que voc\u00ea consiga manter no longo prazo.",
     ],
   },
   assets: {
-    logo: "/imagens/logo-camiladaer.svg",
-    hero: "/images/camila_daer_nutricionista.webp",
-    heroMobile: "/images/camila_daer.webp",
-    about: "/images/camila_daer_nutricionista_sobre.webp",
+    logo: "/images/logo-nutricionista-pedro-zvir.webp",
+    hero: "/images/nutricionista-pedro-zvir-bg.webp",
+    heroMobile: "/images/nutricionista-pedro-zvir-bg-mobile.webp",
+    about: "/images/sobre-nutricionista-pedro-zvir.webp",
     processBg: "/images/nutricionista.webp",
   },
 } as const;
@@ -64,44 +66,43 @@ export const site = {
 export const specialties = [
   {
     number: "01",
-    title: "Emagrecimento",
-    text: "Estratégias práticas e sustentáveis para emagrecer sem restrições extremas, respeitando sua rotina e seu paladar.",
+    title: "Nutri\u00e7\u00e3o esportiva",
+    text: "Estrat\u00e9gias para apoiar seus treinos, sua recupera\u00e7\u00e3o e seu desempenho, sempre de acordo com sua rotina.",
     detail:
-      "Avaliação completa, metas realistas e ajustes ao longo do acompanhamento, com comida de verdade e sem culpa.",
+      "Planejamento individualizado para quem busca mais energia, consist\u00eancia e performance no esporte.",
   },
   {
     number: "02",
-    title: "Menopausa e saúde da mulher",
-    text: "Cuidado nutricional para mulheres em diferentes fases, com atenção a sintomas, energia e qualidade de vida na menopausa.",
+    title: "Nutri\u00e7\u00e3o est\u00e9tica",
+    text: "Acompanhamento para melhorar a composi\u00e7\u00e3o corporal com metas realistas e uma alimenta\u00e7\u00e3o poss\u00edvel de sustentar.",
     detail:
-      "Plano individualizado que considera histórico, exames e rotina, unindo nutrição e gastronomia para mais bem-estar.",
+      "O plano considera seus objetivos, prefer\u00eancias alimentares, composi\u00e7\u00e3o corporal e exames laboratoriais.",
   },
   {
     number: "03",
-    title: "Bem-estar e saúde intestinal",
-    text: "Organização da rotina alimentar para mais disposição, leveza e equilíbrio, incluindo atenção à saúde intestinal.",
+    title: "Emagrecimento",
+    text: "Orienta\u00e7\u00e3o individualizada para reduzir gordura sem dietas imposs\u00edveis de manter ou estrat\u00e9gias extremas.",
     detail:
-      "Orientações práticas e possíveis, com trocas e adaptações que você consegue manter no dia a dia.",
+      "Mudan\u00e7as pr\u00e1ticas e graduais para construir uma rela\u00e7\u00e3o mais equilibrada com a alimenta\u00e7\u00e3o no longo prazo.",
   },
 ] as const;
 
 export const pillars = [
   [
-    "Conhecer",
-    "Escuta atenta da sua história, rotina, preferências e objetivos para entender o que faz sentido para você.",
+    "Avaliar",
+    "Entender sua rotina, seus objetivos, prefer\u00eancias alimentares, composi\u00e7\u00e3o corporal, exerc\u00edcios e exames.",
   ],
   [
     "Planejar",
-    "Plano individualizado e prático, sem dietas extremamente restritivas, com estratégias que cabem na vida real.",
+    "Construir estrat\u00e9gias nutricionais individualizadas, pr\u00e1ticas e adequadas \u00e0s necessidades de cada pessoa.",
   ],
   [
     "Acompanhar",
-    "Ajustes contínuos e apoio próximo para evoluir com constância, sem culpa e com mais prazer ao comer.",
+    "Orientar, acompanhar e ajustar o plano ao longo do processo para favorecer consist\u00eancia e autonomia.",
   ],
 ] as const;
 
-// Depoimentos reais coletados do Google (perfil: 5,0 estrelas · 10 avaliações).
-// Extração em 09/09/2026. Datas aproximadas a partir de "X meses atrás" — dia 09 usado como referência.
+// Depoimentos reais coletados do Google (perfil: 5,0 estrelas \u00b7 4 depoimentos exibidos; perfil com 5 avalia\u00e7\u00f5es).
 export const testimonials: {
   name: string;
   city: string;
@@ -110,85 +111,61 @@ export const testimonials: {
   profile?: string;
 }[] = [
   {
-    name: "Deivis Marcos",
+    name: "Jo\u00e3o Pedro Pola",
     city: "Novo Hamburgo/RS",
-    dateTime: "2026-06-09",
-    text: "Ótimo atendimento, superou todas minhas espectativas super recomendo❤️",
+    text: "Profissional extremamente competente, atencioso e atualizado. Recomendo de olhos fechados",
   },
   {
-    name: "Thiago Daer",
+    name: "Gabriel Falcao",
     city: "Novo Hamburgo/RS",
-    dateTime: "2026-05-09",
-    text: "Posso dizer com total convicção que exerce a profissão com amor, responsabilidade e muito conhecimento. Cada atendimento é feito com atenção aos detalhes, buscando sempre entender o que realmente o paciente precisa, não apenas na alimentação, mas no estilo de vida como um todo.",
+    text: "Baita profissional! Atendimento \u00f3timo e resultados impressionantes!",
   },
   {
-    name: "Silvia Sternberg",
+    name: "Eduarda Ferreira",
     city: "Novo Hamburgo/RS",
-    dateTime: "2025-11-09",
-    text: "O atendimento da Camila foi excepcional! De uma atenção maravilhosa, teve empatia, foi atenciosa e com tudo isso associado ao profissionalismo dela com certeza vai refletir no resultado final que procuro!",
+    text: "Gente fin\u00edssima! \u00d3timo profissional.",
   },
   {
-    name: "Cíntia Rodrigues",
+    name: "Arthur Scher Hentschel",
     city: "Novo Hamburgo/RS",
-    dateTime: "2025-11-09",
-    text: "A nutri Camila, está fazendo eu enxergar de uma forma diferente “a dieta”, ou melhor, a reeducação alimentar! Sempre tive dificuldades e ela está me mostrando que não adianta fazer uma reeducação alimentar restritiva ou com extremismos e sim um momento de apreciar a comida de verdade, com trocas, com adaptações! Estou muito satisfeita, vai ter resultado muito bom!",
-  },
-  {
-    name: "Marcelo Andrade",
-    city: "Novo Hamburgo/RS",
-    dateTime: "2025-11-09",
-    text: "Excelente profissional, atenciosa e dedicada, demonstra profundo conhecimento e cuidado em cada orientação nutricional.",
-  },
-  {
-    name: "Natanael Lima",
-    city: "",
-    profile: "https://www.google.com/maps/contrib/107972649020507302522/reviews?hl=pt-BR",
-    text: "Excepcional !!",
+    text: "\u00d3timo profissional, muito competente e entende a real necessidade do paciente, o lugar \u00e9 muito limpo e organizado, grato pelo atendimento e apoio",
   },
 ];
 
 export const locations = [
   {
     city: "Novo Hamburgo",
-    address: "Av. Pedro Adams Filho, 6000 · apto. 701",
-    district: "Complexo Daer · Centro · Novo Hamburgo/RS · CEP 93510-050",
-    type: "Presencial · Particular",
+    address: "R. Bento Gon\u00e7alves, 2310 - Sl 42",
+    district: "Centro \u00b7 Novo Hamburgo/RS \u00b7 CEP 93510-018 \u00b7 Plus Code 8V7C+HV",
+    type: "Presencial \u00b7 Particular",
   },
 ] as const;
 
 export const faqs = [
   [
     "Onde acontecem as consultas presenciais?",
-    "Os atendimentos acontecem no Complexo Daer, Av. Pedro Adams Filho, 6000, apto. 701, Centro, Novo Hamburgo/RS, CEP 93510-050.",
+    "Os atendimentos acontecem na R. Bento Gon\u00e7alves, 2310 - Sala 42, Centro, Novo Hamburgo/RS, CEP 93510-018.",
   ],
   [
-    "Como faço para agendar?",
-    `Clique em qualquer botão de agendamento para conversar diretamente pelo WhatsApp ${site.phoneDisplay}. O atendimento é particular.`,
+    "Como fa\u00e7o para agendar?",
+    "Clique em qualquer bot\u00e3o de agendamento para conversar diretamente pelo WhatsApp " + site.phoneDisplay + ".",
   ],
   [
-    "Atende convênio?",
-    "Não. O atendimento é particular. Pagamento em PIX e dinheiro.",
+    "Voc\u00ea atende online?",
+    "Sim. Pedro realiza atendimentos presenciais em Novo Hamburgo e tamb\u00e9m de forma online.",
   ],
   [
-    "Quais as formas de pagamento?",
-    "PIX e dinheiro.",
+    "Quem pode se consultar?",
+    "O acompanhamento atende adultos e crian\u00e7as a partir de 9 anos de idade.",
   ],
   [
-    "O acompanhamento é personalizado?",
-    "Sim. Cada plano é construído a partir da sua história, rotina, preferências e objetivos, sem dietas extremamente restritivas.",
+    "Quais objetivos podem ser trabalhados?",
+    "O acompanhamento pode ajudar em objetivos como melhora do desempenho esportivo, emagrecimento, ganho de massa muscular, composi\u00e7\u00e3o corporal e uma rela\u00e7\u00e3o mais equilibrada com a alimenta\u00e7\u00e3o.",
   ],
   [
-    "Como funciona a primeira consulta?",
-    "É uma conversa completa sobre saúde, rotina, preferências e objetivos. A partir dela, construímos estratégias práticas e sustentáveis, em etapas.",
-  ],
-  [
-    "Preciso levar exames na primeira consulta?",
-    "Não é obrigatório. Se você tiver exames recentes, traga-os, eles ajudam na avaliação. Se não tiver, o atendimento acontece normalmente.",
-  ],
-  [
-    "Vocês atendem online?",
-    "No momento o atendimento é presencial em Novo Hamburgo. Chame no WhatsApp para consultar a disponibilidade.",
+    "O acompanhamento \u00e9 personalizado?",
+    "Sim. Cada estrat\u00e9gia considera sua rotina, objetivos, prefer\u00eancias alimentares, composi\u00e7\u00e3o corporal, pr\u00e1tica de exerc\u00edcios e exames laboratoriais.",
   ],
 ] as const;
 
-export const whatsappUrl = `https://wa.me/${site.phoneLink}?text=${encodeURIComponent("Olá, Camila! Gostaria de agendar uma consulta.")}`;
+export const whatsappUrl = "https://wa.me/" + site.phoneLink + "?text=" + encodeURIComponent("Ol\u00e1, Pedro! Gostaria de agendar uma consulta.");
