@@ -1430,33 +1430,31 @@ summary:focus-visible {
 }
 
 .social-links a {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   display: grid;
   place-items: center;
   padding: 0;
   border: 1px solid var(--line);
   border-radius: 50%;
   color: var(--sage-dark);
-  transition: color .28s ease, background .28s ease, border-color .28s ease, transform .28s ease;
 }
 
-.social-links a:hover {
-  padding-left: 0;
-  color: var(--white);
-  background: var(--sage-dark);
-  border-color: var(--sage-dark);
-  transform: translateY(-2px);
-}
 
 .social-links svg {
-  width: 19px;
-  height: 19px;
+  width: 22px;
+  height: 22px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.social-letter {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .footer-links a {
