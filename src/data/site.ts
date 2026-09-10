@@ -1,168 +1,56 @@
 export const site = {
-  name: "Pedro Zvir",
-  role: "Nutricionista Esportivo",
-  fullRole: "Nutricionista Esportivo",
-  city: "Novo Hamburgo",
+  name: "Lavanderia Ivoti",
+  category: "Lavanderia",
+  city: "Ivoti",
   state: "RS",
-  region: "Novo Hamburgo/RS",
-  crn: "CRN-2 22366",
-  credentials: "Nutricionista Esportivo \u00b7 CRN-2 22366",
-  phoneDisplay: "(51) 98014-1790",
-  phoneLink: "5551980141790",
-  telLink: "tel:+5551980141790",
-  email: "",
-  instagram: "https://www.instagram.com/nutri.pedrozvir/",
-  doctoralia:
-    "https://www.doctoralia.com.br/pedro-zvir/nutricionista/novo-hamburgo#address-id=1845870&is-online-only=false&filters%5Bdiseases%5D%5B%5D=5368",
-  linkedin: "https://br.linkedin.com/in/pedro-zvir-4072221ba",
+  address: "Av. Pres. Lucena, 2084 - Concórdia, Ivoti - RS",
+  postalCode: "93900-000",
+  plusCode: "9RVP+QW Concórdia, Ivoti - RS",
+  phoneDisplay: "(51) 99919-9846",
+  phoneLink: "https://wa.me/5551999199846?text=Ol%C3%A1%2C%20Lavanderia%20Ivoti!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.",
+  googlePhoneDisplay: "(51) 3563-6908",
+  googlePhoneLink: "tel:+555135636908",
+  instagram: "https://www.instagram.com/lavanderia_ivoti/",
+  googleProfile: "https://www.google.com/maps/place/Lavanderia+Ivoti/@-29.6055194,-51.1627442,945m/data=!3m2!1e3!4b1!4m6!3m5!1s0x95194540c4744a09:0x3cee5cae859095c0!8m2!3d-29.6055194!4d-51.1627442!16s%2Fg%2F1ptw__92w",
+  mapsEmbedUrl: "https://maps.google.com/maps?q=-29.6055194,-51.1627442&z=17&hl=pt-BR&output=embed",
+  mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=-29.6055194,-51.1627442",
+  rating: "4,6",
+  socialStats: { followers: "2.333", posts: "40" },
   hours: [
-    { days: "Segunda a sexta", time: "09:00\u201319:00" },
-    { days: "S\u00e1bado e domingo", time: "Fechado" },
+    { days: "Segunda a sexta", time: "08:30–18:30" },
+    { days: "Sábado", time: "08:30–12:00" },
+    { days: "Domingo", time: "Fechado" },
   ],
-  googleProfile:
-    "https://www.google.com/maps/place/Nutricionista+Esportivo+Pedro+Zvir/@-29.6861031,-51.1277926,17z",
-  googleRating: {
-    score: "5,0",
-    reviews: 5,
-  },
-  mapsEmbedUrl:
-    "https://maps.google.com/maps?q=-29.6861031,-51.1277926&z=17&hl=pt-BR&output=embed",
-  mapsUrl:
-    "https://www.google.com/maps/place/Nutricionista+Esportivo+Pedro+Zvir/@-29.6861031,-51.1277926,17z",
   seo: {
-    title: "Pedro Zvir | Nutricionista Esportivo em Novo Hamburgo",
-    description:
-      "Pedro Zvir, nutricionista esportivo em Novo Hamburgo/RS. Atendimento presencial e online com estrat\u00e9gias individualizadas para performance, composi\u00e7\u00e3o corporal, emagrecimento e ganho de massa muscular.",
-    url: "https://studiotche.github.io/nutricionista-pedro-zvir/",
-    ogImage: "/images/nutricionista-pedro-zvir-bg.webp",
-  },
-  hero: {
-    eyebrow: "Nutri\u00e7\u00e3o esportiva individualizada",
-    title: "Nutricionista esportivo em Novo Hamburgo, Pedro Zvir",
-    titleHighlight: "Pedro Zvir",
-    tagline: "Estrat\u00e9gias que fazem sentido para a sua realidade.",
-    description:
-      "Acompanhamento baseado em evid\u00eancias para melhorar sua alimenta\u00e7\u00e3o, composi\u00e7\u00e3o corporal e desempenho esportivo \u2014 sem dietas imposs\u00edveis de manter.",
-  },
-  about: {
-    eyebrow: "Ol\u00e1, eu sou o Pedro!",
-    title: "Nutri\u00e7\u00e3o pr\u00e1tica, individualizada e baseada em evid\u00eancias",
-    titleHighlight: "pr\u00e1tica, individualizada e baseada em evid\u00eancias",
-    paragraphs: [
-      "Sou Pedro Zvir, nutricionista com atua\u00e7\u00e3o em Nutri\u00e7\u00e3o Esportiva. Meu objetivo \u00e9 ajudar voc\u00ea a melhorar sua alimenta\u00e7\u00e3o de forma pr\u00e1tica, individualizada e baseada em evid\u00eancias, sem dietas imposs\u00edveis de manter.",
-      "Durante o acompanhamento, avaliamos sua rotina, objetivos, composi\u00e7\u00e3o corporal e exames laboratoriais para construir estrat\u00e9gias que fa\u00e7am sentido para a sua realidade.",
-      "Seja para melhorar o desempenho esportivo, emagrecer, ganhar massa muscular ou simplesmente cuidar melhor da alimenta\u00e7\u00e3o, o foco \u00e9 encontrar uma estrat\u00e9gia que voc\u00ea consiga manter no longo prazo.",
-    ],
+    title: "Lavanderia Ivoti | Cuidado profissional para suas peças",
+    description: "Lavanderia Ivoti: lavagem, higienização, impermeabilização e cuidado para roupas, estofados e peças especiais em Concórdia, Ivoti/RS.",
+    url: "https://studiotche.github.io/lavanderia-ivoti/",
+    ogImage: "/images/lavanderia-ivoti-streetview.jpg",
   },
   assets: {
-    logo: "/images/logo-nutricionista-pedro-zvir.webp",
-    hero: "/images/nutricionista-pedro-zvir-bg.webp",
-    heroMobile: "/images/nutricionista-pedro-zvir-bg-mobile.webp",
-    about: "/images/sobre-nutricionista-pedro-zvir.webp",
-    processBg: "/images/nutricionista.webp",
-    consultorio: "/images/consultorio-nutricinista-pedro-zvir.webp",
-    consultorioNovoHamburgo: "/images/consultorio-nutricinista-pedro-zvir-nh.webp",
+    storefront: "/images/lavanderia-ivoti-streetview.jpg",
+    instagram: "/images/lavanderia-ivoti-instagram.jpg",
+    instagramFeed: "/images/lavanderia-ivoti-instagram-feed.png",
   },
 } as const;
 
-export const specialties = [
-  {
-    number: "01",
-    title: "Nutri\u00e7\u00e3o esportiva",
-    text: "Estrat\u00e9gias para apoiar seus treinos, sua recupera\u00e7\u00e3o e seu desempenho, sempre de acordo com sua rotina.",
-    detail:
-      "Planejamento individualizado para quem busca mais energia, consist\u00eancia e performance no esporte.",
-  },
-  {
-    number: "02",
-    title: "Nutri\u00e7\u00e3o est\u00e9tica",
-    text: "Acompanhamento para melhorar a composi\u00e7\u00e3o corporal com metas realistas e uma alimenta\u00e7\u00e3o poss\u00edvel de sustentar.",
-    detail:
-      "O plano considera seus objetivos, prefer\u00eancias alimentares, composi\u00e7\u00e3o corporal e exames laboratoriais.",
-  },
-  {
-    number: "03",
-    title: "Emagrecimento",
-    text: "Orienta\u00e7\u00e3o individualizada para reduzir gordura sem dietas imposs\u00edveis de manter ou estrat\u00e9gias extremas.",
-    detail:
-      "Mudan\u00e7as pr\u00e1ticas e graduais para construir uma rela\u00e7\u00e3o mais equilibrada com a alimenta\u00e7\u00e3o no longo prazo.",
-  },
+export const services = [
+  { id: "lavagem-roupas", imagePosition: "18% center", title: "Lavagem de roupas", text: "Roupas limpas, dobradas e cheirosas para deixar sua rotina mais prática.", query: "Lavagem de roupas" },
+  { id: "tapetes-carpetes", imagePosition: "42% center", title: "Tapetes e carpetes", text: "Limpeza cuidadosa para renovar as peças e preservar suas cores e texturas.", query: "Tapetes e carpetes" },
+  { id: "higienizacao-estofados", imagePosition: "66% center", title: "Higienização de estofados", text: "Cuidado profundo para sofás, poltronas e outros estofados da sua casa.", query: "Higienização de estofados" },
+  { id: "lavagem-seco-tinturaria", imagePosition: "86% center", title: "Lavagem a seco e tinturaria", text: "Para roupas e tecidos especiais, com orientação sobre o melhor cuidado.", query: "Lavagem a seco e tinturaria" },
 ] as const;
 
-export const pillars = [
-  [
-    "Avaliar",
-    "Entender sua rotina, seus objetivos, prefer\u00eancias alimentares, composi\u00e7\u00e3o corporal, exerc\u00edcios e exames.",
-  ],
-  [
-    "Planejar",
-    "Construir estrat\u00e9gias nutricionais individualizadas, pr\u00e1ticas e adequadas \u00e0s necessidades de cada pessoa.",
-  ],
-  [
-    "Acompanhar",
-    "Orientar, acompanhar e ajustar o plano ao longo do processo para favorecer consist\u00eancia e autonomia.",
-  ],
-] as const;
-
-// Depoimentos reais coletados do Google (perfil: 5,0 estrelas \u00b7 3 depoimentos exibidos; perfil com 5 avalia\u00e7\u00f5es).
-export const testimonials: {
-  name: string;
-  city: string;
-  dateTime?: string;
-  text: string;
-  profile?: string;
-}[] = [
-  {
-    name: "Jo\u00e3o Pedro Pola",
-    city: "Novo Hamburgo/RS",
-    text: "Profissional extremamente competente, atencioso e atualizado. Recomendo de olhos fechados",
-  },
-  {
-    name: "Gabriel Falcao",
-    city: "Novo Hamburgo/RS",
-    text: "Baita profissional! Atendimento \u00f3timo e resultados impressionantes!",
-  },
-  {
-    name: "Arthur Scher Hentschel",
-    city: "Novo Hamburgo/RS",
-    text: "\u00d3timo profissional, muito competente e entende a real necessidade do paciente, o lugar \u00e9 muito limpo e organizado, grato pelo atendimento e apoio",
-  },
-];
-
-export const locations = [
-  {
-    city: "Novo Hamburgo",
-    address: "R. Bento Gon\u00e7alves, 2310 - Sl 42",
-    district: "Centro \u00b7 Novo Hamburgo/RS \u00b7 CEP 93510-018 \u00b7 Plus Code 8V7C+HV",
-    type: "Presencial \u00b7 Particular",
-  },
+export const processSteps = [
+  ["Você traz ou chama", "Envie uma mensagem ou leve suas peças até a lavanderia."],
+  ["Avaliamos cada peça", "A equipe orienta o cuidado adequado para cada material."],
+  ["Lavamos e cuidamos", "Higienização, lavagem e acabamento conforme o serviço combinado."],
+  ["Você recebe pronto", "Combine o prazo e retire tudo pronto para usar."],
 ] as const;
 
 export const faqs = [
-  [
-    "Onde acontecem as consultas presenciais?",
-    "Os atendimentos acontecem na R. Bento Gon\u00e7alves, 2310 - Sala 42, Centro, Novo Hamburgo/RS, CEP 93510-018.",
-  ],
-  [
-    "Como fa\u00e7o para agendar?",
-    "Clique em qualquer bot\u00e3o de agendamento para conversar diretamente pelo WhatsApp " + site.phoneDisplay + ".",
-  ],
-  [
-    "Voc\u00ea atende online?",
-    "Sim. Pedro realiza atendimentos presenciais em Novo Hamburgo e tamb\u00e9m de forma online.",
-  ],
-  [
-    "Quem pode se consultar?",
-    "O acompanhamento atende adultos e crian\u00e7as a partir de 9 anos de idade.",
-  ],
-  [
-    "Quais objetivos podem ser trabalhados?",
-    "O acompanhamento pode ajudar em objetivos como melhora do desempenho esportivo, emagrecimento, ganho de massa muscular, composi\u00e7\u00e3o corporal e uma rela\u00e7\u00e3o mais equilibrada com a alimenta\u00e7\u00e3o.",
-  ],
-  [
-    "O acompanhamento \u00e9 personalizado?",
-    "Sim. Cada estrat\u00e9gia considera sua rotina, objetivos, prefer\u00eancias alimentares, composi\u00e7\u00e3o corporal, pr\u00e1tica de exerc\u00edcios e exames laboratoriais.",
-  ],
+  ["Quais serviços a lavanderia oferece?", "As publicações do Instagram destacam higienização, impermeabilização, lavagem a seco, tinturaria e limpeza de roupas, estofados, tapetes, carpetes e colchões. A equipe confirma o cuidado indicado para cada peça."],
+  ["Onde fica a Lavanderia Ivoti?", "Na Av. Pres. Lucena, 2084, bairro Concórdia, em Ivoti/RS, CEP 93900-000. O Plus Code é 9RVP+QW Concórdia, Ivoti - RS."],
+  ["Qual é o contato?", "O WhatsApp divulgado nas publicações é (51) 99919-9846. O telefone listado no Google Maps é (51) 3563-6908."],
+  ["Qual é o horário de atendimento?", "A referência pública encontrada indica segunda a sexta das 08:30 às 18:30, sábado das 08:30 às 12:00 e domingo fechado. Confirme antes de sair, pois o perfil do Google sinaliza que o cadastro precisa ser revisado."],
 ] as const;
-
-export const whatsappUrl = "https://wa.me/" + site.phoneLink + "?text=" + encodeURIComponent("Ol\u00e1, Pedro! Gostaria de agendar uma consulta.");

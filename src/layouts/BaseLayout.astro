@@ -1,60 +1,28 @@
----
+﻿---
 import "../styles/global.css";
 import { site } from "../data/site";
-
-interface Props {
-  title?: string;
-  description?: string;
-}
-
+interface Props { title?: string; description?: string; }
 const { title = site.seo.title, description = site.seo.description } = Astro.props;
-const path = Astro.url.pathname.replace(import.meta.env.BASE_URL, "").replace(/^\//, "");
-const canonical = new URL(path, site.seo.url);
-const preview = import.meta.env.PUBLIC_SITE_PREVIEW === "true";
-const base = import.meta.env.BASE_URL.endsWith("/")
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const asset = (path: string) => `${base}${path.replace(/^\//, "")}`;
+const preview = import.meta.env.PUBLIC_SITE_PREVIEW === "true";
+const canonical = new URL(Astro.url.pathname.replace(import.meta.env.BASE_URL, "").replace(/^\//, ""), site.seo.url);
 const ogImage = new URL(site.seo.ogImage.replace(/^\//, ""), site.seo.url);
 ---
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/webp" href={asset("/images/favicon-nutricionista-pedro-zvir.webp")} />
-    <link rel="apple-touch-icon" type="image/webp" href={asset("/images/favicon-nutricionista-pedro-zvir.webp")} />
-    <link
-      rel="preload"
-      href={asset("/fonts/dm-sans.woff2")}
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href={asset("/fonts/space-grotesk.woff2")}
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="robots" content={preview ? "noindex,nofollow" : "index,follow"} />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImage} />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} /><title>{title}</title>
+    <meta name="description" content={description} /><link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/jpeg" href={asset("/images/lavanderia-ivoti-instagram.jpg")} />
+    <link rel="apple-touch-icon" type="image/jpeg" href={asset("/images/lavanderia-ivoti-instagram.jpg")} />
+    <link rel="preload" href={asset("/fonts/dm-sans.woff2")} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={asset("/fonts/space-grotesk.woff2")} as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#12352c" /><meta name="robots" content={preview ? "noindex,nofollow" : "index,follow"} />
+    <meta property="og:type" content="website" /><meta property="og:locale" content="pt_BR" /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={ogImage} /><meta name="twitter:card" content="summary_large_image" />
     <slot name="head" />
   </head>
-  <body>
-    <slot />
-    <script src="../scripts/smooth-scroll.ts"></script>
-  </body>
+  <body><slot /><script src="../scripts/smooth-scroll.ts"></script></body>
 </html>
+
