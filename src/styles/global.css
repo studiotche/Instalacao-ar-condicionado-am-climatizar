@@ -1457,7 +1457,7 @@ summary:focus-visible {
   line-height: 1;
 }
 
-.footer-links a {
+.footer-links > a {
   color: var(--sage-dark);
   transition: color .28s ease, padding-left .3s cubic-bezier(.22, .61, .36, 1);
 }
@@ -1469,7 +1469,7 @@ summary:focus-visible {
   line-height: 1;
 }
 
-.footer-links a:hover {
+.footer-links > a:hover {
   color: var(--ink);
   padding-left: 4px;
 }
