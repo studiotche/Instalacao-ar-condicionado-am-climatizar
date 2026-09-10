@@ -1366,7 +1366,10 @@ summary:focus-visible {
 }
 
 .site-footer .logo img {
-  max-width: 190px;
+  max-width: min(205px, 100%);
+  max-height: 64px;
+  object-fit: contain;
+  height: auto;
 }
 
 .footer-main {
