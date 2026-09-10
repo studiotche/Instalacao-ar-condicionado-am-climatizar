@@ -330,11 +330,7 @@ summary:focus-visible {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(90deg,
-      rgba(4, 26, 18, .76) 0%,
-      rgba(4, 26, 18, .58) 27%,
-      rgba(4, 26, 18, .28) 53%,
-      rgba(4, 26, 18, 0) 76%);
+  background: linear-gradient(90deg, #044925, #04492594 27%, #04492547 53%, #04492500 76%);
 }
 
 .hero-bg {
