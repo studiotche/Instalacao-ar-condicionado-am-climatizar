@@ -1802,6 +1802,15 @@ body.menu-open {
     transform-origin: center top;
   }
 
+  .hero-copy.hero-reveal-ready > .eyebrow,
+  .hero-copy.hero-reveal-ready > .location-note,
+  .hero-copy.hero-reveal-ready .hero-actions > *,
+  .hero-copy.hero-reveal-ready .hero-reveal-word,
+  .floating-card.hero-reveal-ready {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
   .hero-copy {
     width: min(100% - 34px, 620px);
     padding: 40px 0 88px;
