@@ -630,23 +630,20 @@ summary:focus-visible {
 
 .about-frame {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 704 / 1139;
   box-shadow: var(--shadow);
 }
 
 .about-frame img {
-  transform: scale(1.08);
-  transition: transform 1.8s cubic-bezier(.22, .61, .36, 1);
-  will-change: transform;
+  object-fit: contain;
+  transform: none;
+  transition: none;
+  will-change: auto;
 }
 
-.about-frame.in-view img {
-  transform: scale(1);
-}
-
+.about-frame.in-view img,
 .about-frame.in-view:hover img {
-  transform: scale(1.045);
-  transition-duration: .8s;
+  transform: none;
 }
 
 
@@ -1403,6 +1400,43 @@ summary:focus-visible {
   gap: 10px;
 }
 
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 2px 0;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--sage-dark);
+  transition: color .28s ease, background .28s ease, border-color .28s ease, transform .28s ease;
+}
+
+.social-links a:hover {
+  padding-left: 0;
+  color: var(--white);
+  background: var(--sage-dark);
+  border-color: var(--sage-dark);
+  transform: translateY(-2px);
+}
+
+.social-links svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .footer-links a {
   color: var(--sage-dark);
   transition: color .28s ease, padding-left .3s cubic-bezier(.22, .61, .36, 1);
@@ -1864,6 +1898,10 @@ body.menu-open {
   .footer-main > .footer-links {
     grid-column: auto;
     text-align: left;
+  }
+
+  .social-links {
+    justify-content: flex-start;
   }
 
   .footer-bottom {

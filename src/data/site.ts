@@ -102,7 +102,7 @@ export const pillars = [
   ],
 ] as const;
 
-// Depoimentos reais coletados do Google (perfil: 5,0 estrelas \u00b7 4 depoimentos exibidos; perfil com 5 avalia\u00e7\u00f5es).
+// Depoimentos reais coletados do Google (perfil: 5,0 estrelas \u00b7 3 depoimentos exibidos; perfil com 5 avalia\u00e7\u00f5es).
 export const testimonials: {
   name: string;
   city: string;
@@ -119,11 +119,6 @@ export const testimonials: {
     name: "Gabriel Falcao",
     city: "Novo Hamburgo/RS",
     text: "Baita profissional! Atendimento \u00f3timo e resultados impressionantes!",
-  },
-  {
-    name: "Eduarda Ferreira",
-    city: "Novo Hamburgo/RS",
-    text: "Gente fin\u00edssima! \u00d3timo profissional.",
   },
   {
     name: "Arthur Scher Hentschel",
