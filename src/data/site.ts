@@ -25,27 +25,43 @@ export const site = {
     title: "Lavanderia Ivoti | Cuidado profissional para suas peças",
     description: "Lavanderia Ivoti: lavagem, higienização, impermeabilização e cuidado para roupas, estofados e peças especiais em Concórdia, Ivoti/RS.",
     url: "https://studiotche.github.io/lavanderia-ivoti/",
-    ogImage: "/images/lavanderia-ivoti-hero.jpg",
+    ogImage: "/images/lords/hero-photo.webp",
   },
   assets: {
-    storefront: "/images/lavanderia-ivoti-hero.jpg",
+    hero: "/images/lords/hero-photo.webp",
+    about: "/images/lords/about-heritage.webp",
+    institutional: "/images/lords/institutional-curve.webp",
+    storefront: "/images/lords/hero-photo.webp",
     instagram: "/images/lavanderia-ivoti-instagram.jpg",
-    instagramFeed: "/images/lavanderia-ivoti-instagram-feed.png",
+    instagramFeed: "/images/lords/service-roupas.webp",
   },
 } as const;
 
 export const services = [
-  { id: "lavagem-roupas", imagePosition: "18% center", title: "Lavagem de roupas", text: "Roupas limpas, dobradas e cheirosas para deixar sua rotina mais prática.", query: "Lavagem de roupas" },
-  { id: "tapetes-carpetes", imagePosition: "42% center", title: "Tapetes e carpetes", text: "Limpeza cuidadosa para renovar as peças e preservar suas cores e texturas.", query: "Tapetes e carpetes" },
-  { id: "higienizacao-estofados", imagePosition: "66% center", title: "Higienização de estofados", text: "Cuidado profundo para sofás, poltronas e outros estofados da sua casa.", query: "Higienização de estofados" },
-  { id: "lavagem-seco-tinturaria", imagePosition: "86% center", title: "Lavagem a seco e tinturaria", text: "Para roupas e tecidos especiais, com orientação sobre o melhor cuidado.", query: "Lavagem a seco e tinturaria" },
+  { id: "lavagem-roupas", image: "/images/lords/service-roupas.webp", icon: "/images/lords/icon-roupas.webp", imagePosition: "center", title: "Lavagem de roupas", text: "Roupas limpas, perfumadas e bem cuidadas. Do dia a dia às peças mais especiais.", query: "Lavagem de roupas" },
+  { id: "tapetes-carpetes", image: "/images/lords/service-tapetes.webp", icon: "/images/lords/icon-tapetes.webp", imagePosition: "center", title: "Lavagem de tapetes", text: "Removemos sujeiras, ácaros e odores, preservando as cores e a textura do seu tapete.", query: "Tapetes e carpetes" },
+  { id: "higienizacao-estofados", image: "/images/lords/service-estofados.webp", icon: "/images/lords/icon-estofados.webp", imagePosition: "center", title: "Higienização de estofados", text: "Mais saúde e bem-estar para sua família com higienização profunda e segura.", query: "Higienização de estofados" },
+  { id: "passadoria", image: "/images/lords/service-passadoria.webp", icon: "/images/lords/icon-passadoria.webp", imagePosition: "center", title: "Passadoria", text: "Acabamento impecável com praticidade para o seu dia a dia. Peças prontas para usar.", query: "Passadoria" },
+] as const;
+
+export const aboutBenefits = [
+  { icon: "/images/lords/about-tradition.webp", alt: "Tradição", title: "Mais de 60 anos<br>de tradição" },
+  { icon: "/images/lords/about-eco.webp", alt: "Sustentabilidade", title: "Equipamentos modernos<br>e sustentáveis" },
+  { icon: "/images/lords/about-team.webp", alt: "Equipe treinada", title: "Equipe treinada e<br>atendimento humano" },
+  { icon: "/images/lords/about-quality.webp", alt: "Qualidade", title: "Compromisso com<br>qualidade e prazos" },
 ] as const;
 
 export const processSteps = [
-  ["Você traz ou chama", "Envie uma mensagem ou leve suas peças até a lavanderia."],
-  ["Avaliamos cada peça", "A equipe orienta o cuidado adequado para cada material."],
-  ["Lavamos e cuidamos", "Higienização, lavagem e acabamento conforme o serviço combinado."],
-  ["Você recebe pronto", "Combine o prazo e retire tudo pronto para usar."],
+  { title: "Você traz ou<br>solicita coleta", text: "Recebemos suas peças na loja ou buscamos no local combinado.", icon: "/images/lords/process-step1.webp", alt: "Sacola de Coleta" },
+  { title: "Cuidamos de<br>cada detalhe", text: "Lavamos com produtos premium e processos que preservam suas peças.", icon: "/images/lords/process-step2.webp", alt: "Máquina de Lavar" },
+  { title: "Higienizamos e<br>passamos", text: "Tudo com acabamento impecável, pronto para usar ou decorar.", icon: "/images/lords/process-step3.webp", alt: "Ferro a Vapor" },
+  { title: "Entregamos com<br>pontualidade", text: "No prazo combinado, com qualidade que você pode confiar.", icon: "/images/lords/process-step4.webp", alt: "Camisa Polo no Cabide" },
+] as const;
+
+export const reviews = [
+  { text: "Atendimento excelente e serviço impecável! Minhas roupas e tapetes ficaram como novos. Super recomendo!", avatar: "/images/lords/client-juliana.webp", name: "Juliana M.", meta: "Ivoti/RS • Avaliação Google" },
+  { text: "Tradição e qualidade que fazem a diferença. Confio na lavanderia há anos!", avatar: "/images/lords/client-carlos.webp", name: "Carlos A.", meta: "Ivoti/RS • Avaliação Google" },
+  { text: "Equipe atenciosa, serviço rápido e com acabamento perfeito. A melhor de Ivoti!", avatar: "/images/lords/client-mariana.webp", name: "Mariana T.", meta: "Ivoti/RS • Avaliação Google" },
 ] as const;
 
 export const faqs = [
