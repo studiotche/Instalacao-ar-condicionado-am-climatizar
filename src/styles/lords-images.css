@@ -54,7 +54,7 @@
 .institutional-crown svg{width:100%;height:100%;fill:currentColor}
 
 /* RODAPÉ — igual Lord's: social em círculos + contato com ícones */
-.site-footer{background:linear-gradient(110deg,#1b5699,#123f73);border-bottom:3px solid var(--gold)}
+.site-footer{background:linear-gradient(110deg,#1b5699,#123f73);border-bottom:0}
 .footer-col h3{color:#fff}
 .footer-col h3::after{content:"";display:block;width:22px;height:1px;margin-top:6px;background:var(--gold)}
 .social-links{display:flex;gap:9px}
@@ -63,6 +63,9 @@
 .footer-contact p{display:flex;align-items:flex-start;gap:8px}
 .footer-contact p span{flex:0 0 auto;display:inline-flex;margin-top:1px}
 .footer-icon-phone{color:var(--gold)}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;margin-bottom:12px;padding:6px 14px;background:rgba(27,86,153,.08);color:#1b5699;border:1.5px solid rgba(27,86,153,.22);border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.2px}
+.hero-badge-icon{font-size:14px}
+.inst-sma-pill{display:inline-block;margin-top:6px;padding:3px 10px;background:rgba(142,204,228,.15);border:1px solid rgba(142,204,228,.3);border-radius:12px;color:#8ecce4;font-size:10px;font-weight:600;letter-spacing:.4px}
 
 /* HERO — igual Lord's: cover center desktop, contain mobile */
 .hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center}
@@ -83,7 +86,7 @@
 .about-benefits span.benefit-icon{display:none}
 
 /* INSTITUCIONAL — cópia fiel Lord's (desktop full-bleed + mobile empilhado) */
-.institutional-section{position:relative;background:#1b5699;overflow:hidden;border-top:1px solid rgba(208,166,32,.2);border-bottom:1px solid rgba(208,166,32,.2);color:#fff;padding:0;min-height:576px;display:flex;align-items:center}
+.institutional-section{position:relative;background:#1b5699;overflow:hidden;border-top:0;border-bottom:0;color:#fff;padding:0;min-height:576px;display:flex;align-items:center}
 .institutional-container{position:relative;z-index:2;width:min(var(--container),calc(100% - 64px));margin-inline:auto;padding:0}
 .institutional-content{position:relative;z-index:3;max-width:min(600px,54vw);padding:64px 0 56px}
 .institutional-eyebrow-wrap{display:inline-flex;flex-direction:column;align-items:flex-start;margin-bottom:16px}
@@ -99,8 +102,8 @@
 .inst-line{display:block;white-space:nowrap}
 .inst-diff-divider{width:1px;height:48px;background:rgba(255,255,255,.45);margin:0 2px;align-self:center;flex-shrink:0}
 .institutional-action-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:34px}
-.btn-institutional-cta{display:inline-flex;align-items:center;gap:12px;height:48px;padding:0 24px;background:#fff;color:#1b5699;font-size:13px;font-weight:700;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.22);border:1.5px solid #e5c06e;white-space:nowrap}
-.btn-institutional-cta:hover{background:#fdfefe;transform:translateY(-2px)}
+.btn-institutional-cta{display:inline-flex;align-items:center;gap:12px;height:48px;padding:0 24px;background:#fff;color:#1b5699;font-size:13px;font-weight:700;border-radius:8px;box-shadow:none;border:1.5px solid transparent;white-space:nowrap}
+.btn-institutional-cta:hover{background:#f0f6fc;transform:translateY(-3px)}
 .institutional-support{display:flex;align-items:center;gap:10px}
 .inst-support-icon{width:32px;height:32px;color:#e5c06e;display:grid;place-items:center;font-size:24px}
 .institutional-support p{color:#cce0f0;font-size:11.5px;line-height:1.38;max-width:230px}
@@ -188,7 +191,7 @@
   .institutional-action-row{flex-direction:column;align-items:stretch;gap:16px;margin-bottom:28px}
   .btn-institutional-cta{justify-content:center;width:100%}
   .institutional-bottom-bar{max-width:100%}
-  .institutional-visual{position:relative;right:auto;top:auto;bottom:auto;width:100%;max-width:100%;height:auto;margin-top:28px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.4);border:1px solid rgba(208,166,32,.35)}
+  .institutional-visual{position:relative;right:auto;top:auto;bottom:auto;width:100%;max-width:100%;height:auto;margin-top:28px;border-radius:12px;box-shadow:none;border:1px solid rgba(255,255,255,.15)}
   .institutional-visual img{height:auto;object-fit:contain;border-radius:10px}
   .hide-mobile{display:none}
   .process-grid{grid-template-columns:1fr;gap:10px}
@@ -202,3 +205,118 @@
   .service-icon{width:62px;height:62px;bottom:-28px}
   .service-icon img{width:62px;height:62px}
 }
+
+/* ==========================================================================
+   PADRONIZAÇÃO: REMOÇÃO DE SHADOWS (SESSÕES E BOTÕES)
+   ========================================================================== */
+.site-header,
+.hero-section,
+.services-section,
+.service-card,
+.about-section,
+.about-composite,
+.institutional-section,
+.process-section,
+.reviews-section,
+.review-card,
+.testimonial-card,
+.google-rating,
+.contact-info-section,
+.faq-section,
+.location-section,
+.location-overlay-inner,
+.site-footer,
+.mobile-action-bar,
+.btn,
+.btn-header-whatsapp,
+.btn-hero-primary,
+.btn-hero-secondary,
+.btn-institutional-cta,
+.btn-contact-primary,
+.btn-contact-secondary,
+.btn-mobile-whatsapp,
+.location-route {
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   PADRONIZAÇÃO: REMOÇÃO DE BORDAS AMARELAS DOS BOTÕES
+   ========================================================================== */
+.btn-header-whatsapp {
+  border: 1.5px solid transparent !important;
+}
+.btn-hero-secondary {
+  border: 1.5px solid var(--navy) !important;
+  color: var(--navy) !important;
+  background: #fff !important;
+}
+.btn-institutional-cta {
+  border: 1.5px solid transparent !important;
+  color: #1b5699 !important;
+  background: #fff !important;
+}
+.btn-contact-secondary {
+  border: 1.5px solid var(--navy) !important;
+  color: var(--navy) !important;
+  background: #fff !important;
+}
+
+/* ==========================================================================
+   PADRONIZAÇÃO: SETA ↗ E ANIMAÇÃO DE HOVER (SOBE 3PX, SETA À DIREITA)
+   ========================================================================== */
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  font-family: inherit;
+  font-size: 1.1em;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.btn,
+.location-route,
+.service-content a {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease;
+  will-change: transform;
+}
+
+.btn:hover,
+.location-route:hover {
+  transform: translateY(-3px) !important;
+}
+
+.btn:hover .btn-arrow,
+.location-route:hover .btn-arrow,
+.service-content a:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn:active,
+.location-route:active {
+  transform: translateY(-1px) !important;
+}
+
+.btn-header-whatsapp:hover,
+.btn-hero-primary:hover,
+.btn-contact-primary:hover,
+.location-route:hover,
+.btn-mobile-whatsapp:hover {
+  background: var(--navy-dark) !important;
+}
+
+.btn-hero-secondary:hover,
+.btn-contact-secondary:hover {
+  background: #f0f6fc !important;
+}
+
+.btn-institutional-cta:hover {
+  background: #f4f8fc !important;
+}
+

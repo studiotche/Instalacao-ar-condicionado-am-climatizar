@@ -8,6 +8,8 @@ export const site = {
   plusCode: "9RVP+QW Concórdia, Ivoti - RS",
   phoneDisplay: "(51) 99919-9846",
   phoneLink: "https://wa.me/5551999199846?text=Ol%C3%A1%2C%20Lavanderia%20Ivoti!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.",
+  phoneDisplayAlt: "(51) 99301-9846",
+  phoneLinkAlt: "https://wa.me/5551993019846?text=Ol%C3%A1%2C%20Lavanderia%20Ivoti!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.",
   googlePhoneDisplay: "(51) 3563-6908",
   googlePhoneLink: "tel:+555135636908",
   instagram: "https://www.instagram.com/lavanderia_ivoti/",
@@ -16,14 +18,16 @@ export const site = {
   mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=-29.6055194,-51.1627442",
   rating: "4,6",
   socialStats: { followers: "2.333", posts: "40" },
+  environmentalLicense: "Licença de Operação SMA Ivoti (Secretaria de Meio Ambiente)",
+  freeDelivery: "Coleta e Entrega Grátis em Ivoti",
   hours: [
     { days: "Segunda a sexta", time: "08:30–18:30" },
     { days: "Sábado", time: "08:30–12:00" },
     { days: "Domingo", time: "Fechado" },
   ],
   seo: {
-    title: "Lavanderia Ivoti | Cuidado profissional para suas peças",
-    description: "Lavanderia Ivoti: lavagem, higienização, impermeabilização e cuidado para roupas, estofados e peças especiais em Concórdia, Ivoti/RS.",
+    title: "Lavanderia Ivoti | Coleta e Entrega Grátis · Cuidado Profissional",
+    description: "Lavanderia Ivoti: lavagem a seco, impermeabilização de estofados, tapetes, cortinas, tênis, linha pet, couro e rouparia hospitalar. Coleta e entrega grátis em Ivoti/RS.",
     url: "https://studiotche.github.io/lavanderia-ivoti/",
     ogImage: "/images/lords/lavanderia-ivoti.webp",
   },
@@ -33,30 +37,34 @@ export const site = {
     institutional: "/images/lords/lavanderia-ivoti-hero.webp",
     logo: "/images/lords/logo-lavanderia-ivoti.webp",
     storefront: "/images/lords/lavanderia-ivoti.webp",
-    instagram: "/images/lavanderia-ivoti-instagram.jpg",
+    instagram: "/images/lavanderia-ivoti-instagram.webp",
     instagramFeed: "/images/lords/service-roupas.webp",
   },
 } as const;
 
 export const services = [
-  { id: "lavagem-roupas", image: "/images/lords/service-roupas.webp", icon: "/images/lords/icon-roupas.webp", imagePosition: "center", title: "Lavagem de roupas", text: "Roupas limpas, perfumadas e bem cuidadas. Do dia a dia às peças mais especiais.", query: "Lavagem de roupas" },
-  { id: "tapetes-carpetes", image: "/images/lords/service-tapetes.webp", icon: "/images/lords/icon-tapetes.webp", imagePosition: "center", title: "Lavagem de tapetes", text: "Removemos sujeiras, ácaros e odores, preservando as cores e a textura do seu tapete.", query: "Tapetes e carpetes" },
-  { id: "higienizacao-estofados", image: "/images/lords/service-estofados.webp", icon: "/images/lords/icon-estofados.webp", imagePosition: "center", title: "Higienização de estofados", text: "Mais saúde e bem-estar para sua família com higienização profunda e segura.", query: "Higienização de estofados" },
-  { id: "passadoria", image: "/images/lords/service-passadoria.webp", icon: "/images/lords/icon-passadoria.webp", imagePosition: "center", title: "Passadoria", text: "Acabamento impecável com praticidade para o seu dia a dia. Peças prontas para usar.", query: "Passadoria" },
+  { id: "lavagem-roupas", image: "/images/lords/service-roupas.webp", icon: "/images/lords/icon-roupas.webp", imagePosition: "center", title: "Lavagem de roupas & a seco", text: "Roupas do dia a dia, ternos, vestidos de festa e peças delicadas com lavagem a seco profissional.", query: "Lavagem de roupas e a seco" },
+  { id: "higienizacao-estofados", image: "/images/lords/service-estofados.webp", icon: "/images/lords/icon-estofados.webp", imagePosition: "center", title: "Sofás & impermeabilização", text: "Higienização profunda de estofados e impermeabilização que repele líquidos e evita manchas.", query: "Higienização e impermeabilização de sofás" },
+  { id: "tapetes-cortinas", image: "/images/lords/service-tapetes.webp", icon: "/images/lords/icon-tapetes.webp", imagePosition: "center", title: "Tapetes, persianas & cortinas", text: "Remoção completa de sujeiras, ácaros e odores preservando texturas, cores e tramas delicadas.", query: "Tapetes, persianas e cortinas" },
+  { id: "tenis-calcados", image: "/images/lords/service-calcados.webp", icon: "/images/lords/icon-calcados.webp", imagePosition: "center", title: "Tênis & calçados em geral", text: "Higienização detalhada interna e externa, desodorização e revitalização para calçados de qualquer modelo.", query: "Limpeza de tênis e calçados" },
+  { id: "linha-pet", image: "/images/lords/service-pet.webp", icon: "/images/lords/icon-pet.webp", imagePosition: "center", title: "Linha Pet especializada", text: "Caminhas, tapetes, roupinhas e mantas desinfetadas com produtos antialérgicos e seguros para pets.", query: "Higienização da Linha Pet" },
+  { id: "couro-motoqueiro", image: "/images/lords/service-couro.webp", icon: "/images/lords/icon-couro.webp", imagePosition: "center", title: "Jaquetas de motoqueiro & couro", text: "Limpeza técnica e hidratação profunda para couro e jaquetas de motociclista com proteção UV.", query: "Limpeza de jaqueta de motoqueiro e couro" },
+  { id: "passadoria", image: "/images/lords/service-passadoria.webp", icon: "/images/lords/icon-passadoria.webp", imagePosition: "center", title: "Passadoria profissional", text: "Acabamento impecável a vapor, dobradas ou no cabide. Praticidade total para a sua rotina.", query: "Passadoria profissional" },
+  { id: "cortinas-persianas", image: "/images/lords/service-cortinas.webp", icon: "/images/lords/icon-cortinas.webp", imagePosition: "center", title: "Cortinas finas & persianas", text: "Lavagem especializada de cortinas com pregas, blackout, tecidos leves e persianas verticais e horizontais.", query: "Lavagem de cortinas e persianas" },
 ] as const;
 
 export const aboutBenefits = [
   { icon: "/images/lords/about-tradition.webp", alt: "Tradição", title: "Mais de 60 anos<br>de tradição" },
-  { icon: "/images/lords/about-eco.webp", alt: "Sustentabilidade", title: "Equipamentos modernos<br>e sustentáveis" },
-  { icon: "/images/lords/about-team.webp", alt: "Equipe treinada", title: "Equipe treinada e<br>atendimento humano" },
+  { icon: "/images/lords/about-eco.webp", alt: "Licença Ambiental", title: "Licenciado pela<br>SMA Ivoti" },
+  { icon: "/images/lords/about-team.webp", alt: "Coleta e Entrega", title: "Coleta e entrega<br>grátis em Ivoti" },
   { icon: "/images/lords/about-quality.webp", alt: "Qualidade", title: "Compromisso com<br>qualidade e prazos" },
 ] as const;
 
 export const processSteps = [
-  { title: "Você traz ou<br>solicita coleta", text: "Recebemos suas peças na loja ou buscamos no local combinado.", icon: "/images/lords/process-step1.webp", alt: "Sacola de Coleta" },
-  { title: "Cuidamos de<br>cada detalhe", text: "Lavamos com produtos premium e processos que preservam suas peças.", icon: "/images/lords/process-step2.webp", alt: "Máquina de Lavar" },
-  { title: "Higienizamos e<br>passamos", text: "Tudo com acabamento impecável, pronto para usar ou decorar.", icon: "/images/lords/process-step3.webp", alt: "Ferro a Vapor" },
-  { title: "Entregamos com<br>pontualidade", text: "No prazo combinado, com qualidade que você pode confiar.", icon: "/images/lords/process-step4.webp", alt: "Camisa Polo no Cabide" },
+  { title: "Coleta grátis no<br>seu endereço", text: "Buscamos suas peças na sua casa ou empresa sem custo de deslocamento, ou você entrega na loja.", icon: "/images/lords/process-step1.webp", alt: "Sacola de Coleta" },
+  { title: "Processos ecológicos<br>e seguros", text: "Equipamentos modernos e produtos certificados pela SMA Ivoti que preservam as fibras e o meio ambiente.", icon: "/images/lords/process-step2.webp", alt: "Máquina de Lavar" },
+  { title: "Higienização,<br>impermeabilização e ferro", text: "Cuidado artesanal, proteção contra líquidos e acabamento impecável para cada tipo de peça.", icon: "/images/lords/process-step3.webp", alt: "Ferro a Vapor" },
+  { title: "Entrega grátis com<br>pontualidade", text: "No prazo combinado, tudo embalado, cheiroso e pronto para uso direto no seu armário ou casa.", icon: "/images/lords/process-step4.webp", alt: "Camisa Polo no Cabide" },
 ] as const;
 
 export const reviews = [
@@ -69,8 +77,10 @@ export const reviews = [
 ] as const;
 
 export const faqs = [
-  ["Quais serviços a lavanderia oferece?", "As publicações do Instagram destacam higienização, impermeabilização, lavagem a seco, tinturaria e limpeza de roupas, estofados, tapetes, carpetes e colchões. A equipe confirma o cuidado indicado para cada peça."],
-  ["Onde fica a Lavanderia Ivoti?", "Na Av. Pres. Lucena, 2084, bairro Concórdia, em Ivoti/RS, CEP 93900-000. O Plus Code é 9RVP+QW Concórdia, Ivoti - RS."],
-  ["Qual é o contato?", "O WhatsApp divulgado nas publicações é (51) 99919-9846. O telefone listado no Google Maps é (51) 3563-6908."],
-  ["Qual é o horário de atendimento?", "A referência pública encontrada indica segunda a sexta das 08:30 às 18:30, sábado das 08:30 às 12:00 e domingo fechado. Confirme antes de sair, pois o perfil do Google sinaliza que o cadastro precisa ser revisado."],
+  ["A coleta e entrega tem custo adicional?", "Não! A Lavanderia Ivoti oferece serviço de coleta e entrega grátis em Ivoti. Basta nos chamar no WhatsApp que agendamos a retirada e entrega no seu endereço sem qualquer cobrança extra."],
+  ["Quais serviços a lavanderia oferece?", "Realizamos lavagem de roupas (dia a dia e lavagem a seco), higienização e impermeabilização de sofás e estofados, limpeza de tapetes, cortinas e persianas, higienização de tênis e calçados, linha pet (caminhas e roupinhas), jaquetas de couro e motoqueiro, passadoria profissional e rouparia institucional."],
+  ["Como funciona a impermeabilização de estofados?", "Após a higienização profunda do sofá ou poltrona, aplicamos uma resina impermeabilizante atóxica que cria uma película invisível repelente de líquidos (água, sucos, café). Em caso de derramamento, o líquido não penetra nas fibras e é facilmente removido com um pano seco."],
+  ["A Lavanderia Ivoti possui licenciamento ambiental?", "Sim! A empresa é devidamente licenciada pela Secretaria de Meio Ambiente (SMA Ivoti), cumprindo rigorosamente as normas ambientais municipais com Licença de Operação ativa, produtos biodegradáveis e tratamento adequado."],
+  ["Vocês lavam caminhas pet e tênis?", "Sim! Temos processos específicos para calçados esportivos e casuais (com desodorização e secagem controlada) e para a linha pet (utilizando produtos antibacterianos hipoalergênicos e seguros para os animais)."],
+  ["Onde fica a lavanderia e quais os números de contato?", "Estamos localizados na Av. Pres. Lucena, 2084, bairro Concórdia, Ivoti/RS. Atendemos pelos WhatsApps (51) 99919-9846 e (51) 99301-9846, e pelo telefone fixo (51) 3563-6908."],
 ] as const;
