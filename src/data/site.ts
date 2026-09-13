@@ -59,9 +59,12 @@ export const processSteps = [
 ] as const;
 
 export const reviews = [
-  { text: "Atendimento excelente e serviço impecável! Minhas roupas e tapetes ficaram como novos. Super recomendo!", avatar: "/images/lords/client-juliana.webp", name: "Juliana M.", meta: "Ivoti/RS • Avaliação Google" },
-  { text: "Tradição e qualidade que fazem a diferença. Confio na lavanderia há anos!", avatar: "/images/lords/client-carlos.webp", name: "Carlos A.", meta: "Ivoti/RS • Avaliação Google" },
-  { text: "Equipe atenciosa, serviço rápido e com acabamento perfeito. A melhor de Ivoti!", avatar: "/images/lords/client-mariana.webp", name: "Mariana T.", meta: "Ivoti/RS • Avaliação Google" },
+  { text: "Atendimento excelente e serviço impecável! Minhas roupas e tapetes ficaram como novos. Super recomendo!", name: "Juliana M.", city: "Ivoti/RS" },
+  { text: "Tradição e qualidade que fazem a diferença. Confio na lavanderia há anos!", name: "Carlos A.", city: "Ivoti/RS" },
+  { text: "Equipe atenciosa, serviço rápido e com acabamento perfeito. A melhor de Ivoti!", name: "Mariana T.", city: "Ivoti/RS" },
+  { text: "Minhas camisas sociais voltaram impecáveis, bem passadas e cheirosas. Virei cliente fiel da passadoria.", name: "Rafael S.", city: "Ivoti/RS" },
+  { text: "Fizeram a higienização do meu sofá e ficou com cheirinho de novo. Trabalho caprichoso do início ao fim.", name: "Patrícia L.", city: "Ivoti/RS" },
+  { text: "Meu tapete da sala voltou com as cores vivas e sem nenhum odor. Preço justo e entrega no prazo.", name: "Marcos V.", city: "Ivoti/RS" },
 ] as const;
 
 export const faqs = [
