@@ -24,7 +24,7 @@ const ogImage = new URL(site.seo.ogImage.replace(/^\//, ""), site.seo.url);
     <link rel="apple-touch-icon" type="image/webp" href={asset("/images/lords/logo-lavanderia-ivoti.webp")} />
     <link rel="preload" href={asset("/fonts/dm-sans.woff2")} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={asset("/fonts/space-grotesk.woff2")} as="font" type="font/woff2" crossorigin />
-    <meta name="theme-color" content="#101f4d" /><meta name="robots" content={preview ? "noindex,nofollow" : "index,follow"} />
+    <meta name="theme-color" content="#1b5699" /><meta name="robots" content={preview ? "noindex,nofollow" : "index,follow"} />
     <meta property="og:type" content="website" /><meta property="og:locale" content="pt_BR" /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={ogImage} /><meta name="twitter:card" content="summary_large_image" />
     <slot name="head" />
   </head>
