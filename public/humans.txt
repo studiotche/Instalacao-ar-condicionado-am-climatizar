@@ -1,0 +1,11 @@
+/* TEAM */
+Empresa: Lavanderia Ivoti
+Local: Ivoti, Rio Grande do Sul, Brasil
+Website: https://studiotche.github.io/lavanderia-ivoti/
+Contato: (51) 99919-9846
+
+/* SITE */
+Doctype: HTML5
+Framework: Astro
+Styles: CSS Moderno Vanilla
+Licenciamento Ambiental: SMA Ivoti

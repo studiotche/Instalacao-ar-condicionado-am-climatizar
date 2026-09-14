@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://studiotche.github.io/nutricionista-pedro-zvir/sitemap-index.xml
+Sitemap: https://studiotche.github.io/lavanderia-ivoti/sitemap-index.xml

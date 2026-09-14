@@ -1,10 +1,5 @@
 ---
 import "../styles/global.css";
-import "../styles/original-scale-overrides.css";
-import "../styles/reference-icons.css";
-import "../styles/final-adjustments.css";
-import "../styles/final-typography.css";
-import "../styles/site-layout.css";
 import { site } from "../data/site";
 interface Props { title?: string; description?: string; }
 const { title = site.seo.title, description = site.seo.description } = Astro.props;
@@ -21,6 +16,7 @@ const ogImage = new URL(site.seo.ogImage.replace(/^\//, ""), site.seo.url);
     <meta name="generator" content={Astro.generator} /><title>{title}</title>
     <meta name="description" content={description} /><link rel="canonical" href={canonical} />
     <link rel="icon" type="image/webp" href={asset("/images/logo-lavanderia-ivoti.webp")} />
+    <link rel="icon" href={asset("/favicon.ico")} sizes="any" />
     <link rel="apple-touch-icon" type="image/webp" href={asset("/images/logo-lavanderia-ivoti.webp")} />
     <link rel="preload" href={asset("/fonts/dm-sans.woff2")} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={asset("/fonts/space-grotesk.woff2")} as="font" type="font/woff2" crossorigin />
