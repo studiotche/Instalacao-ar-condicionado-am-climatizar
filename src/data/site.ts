@@ -14,7 +14,7 @@ export const site = {
   googlePhoneLink: "tel:+555135636908",
   instagram: "https://www.instagram.com/lavanderia_ivoti/",
   googleProfile: "https://www.google.com/maps/place/Lavanderia+Ivoti/@-29.6055194,-51.1627442,945m/data=!3m2!1e3!4b1!4m6!3m5!1s0x95194540c4744a09:0x3cee5cae859095c0!8m2!3d-29.6055194!4d-51.1627442!16s%2Fg%2F1ptw__92w",
-  mapsEmbedUrl: "https://maps.google.com/maps?q=-29.6055194,-51.1627442&z=17&hl=pt-BR&output=embed",
+  mapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3472.083758364233!2d-51.16531912446702!3d-29.60551937514781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95194540c4744a09%3A0x3cee5cae859095c0!2sLavanderia%20Ivoti!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr",
   mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=-29.6055194,-51.1627442",
   rating: "4,6",
   socialStats: { followers: "2.333", posts: "40" },
