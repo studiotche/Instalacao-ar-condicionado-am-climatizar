@@ -29,42 +29,42 @@ export const site = {
     title: "Lavanderia Ivoti | Coleta e Entrega Grátis · Cuidado Profissional",
     description: "Lavanderia Ivoti: lavagem a seco, impermeabilização de estofados, tapetes, cortinas, tênis, linha pet, couro e rouparia hospitalar. Coleta e entrega grátis em Ivoti/RS.",
     url: "https://studiotche.github.io/lavanderia-ivoti/",
-    ogImage: "/images/lords/lavanderia-ivoti.webp",
+    ogImage: "/images/ivoti/lavanderia-ivoti.webp",
   },
   assets: {
-    hero: "/images/lords/lavanderia-ivoti.webp",
-    about: "/images/lords/about-heritage.webp?v=2",
-    institutional: "/images/lords/lavanderia-ivoti-hero.webp",
-    logo: "/images/lords/logo-lavanderia-ivoti.webp",
-    storefront: "/images/lords/lavanderia-ivoti.webp",
+    hero: "/images/ivoti/lavanderia-ivoti.webp",
+    about: "/images/ivoti/about-heritage.webp?v=2",
+    institutional: "/images/ivoti/lavanderia-ivoti-hero.webp",
+    logo: "/images/ivoti/logo-lavanderia-ivoti.webp",
+    storefront: "/images/ivoti/lavanderia-ivoti.webp",
     instagram: "/images/lavanderia-ivoti-instagram.webp",
-    instagramFeed: "/images/lords/service-roupas.webp",
+    instagramFeed: "/images/ivoti/service-roupas.webp",
   },
 } as const;
 
 export const services = [
-  { id: "lavagem-roupas", image: "/images/lords/service-roupas.webp", icon: "/images/lords/icon-roupas.webp", imagePosition: "center", title: "Lavagem de roupas & a seco", text: "Roupas do dia a dia, ternos, vestidos de festa e peças delicadas com lavagem a seco profissional.", query: "Lavagem de roupas e a seco" },
-  { id: "higienizacao-estofados", image: "/images/lords/service-estofados.webp", icon: "/images/lords/icon-estofados.webp", imagePosition: "center", title: "Sofás & impermeabilização", text: "Higienização profunda de estofados e impermeabilização que repele líquidos e evita manchas.", query: "Higienização e impermeabilização de sofás" },
-  { id: "tapetes-cortinas", image: "/images/lords/service-tapetes.webp", icon: "/images/lords/icon-tapetes.webp", imagePosition: "center", title: "Tapetes, persianas & cortinas", text: "Remoção completa de sujeiras, ácaros e odores preservando texturas, cores e tramas delicadas.", query: "Tapetes, persianas e cortinas" },
-  { id: "tenis-calcados", image: "/images/lords/service-calcados.webp", icon: "/images/lords/icon-calcados.webp?v=2", imagePosition: "center", title: "Tênis & calçados em geral", text: "Higienização detalhada interna e externa, desodorização e revitalização para calçados de qualquer modelo.", query: "Limpeza de tênis e calçados" },
-  { id: "linha-pet", image: "/images/lords/service-pet.webp", icon: "/images/lords/icon-pet.webp?v=2", imagePosition: "center", title: "Linha Pet especializada", text: "Caminhas, tapetes, roupinhas e mantas desinfetadas com produtos antialérgicos e seguros para pets.", query: "Higienização da Linha Pet" },
-  { id: "couro-motoqueiro", image: "/images/lords/service-couro.webp", icon: "/images/lords/icon-couro.webp?v=2", imagePosition: "center", title: "Jaquetas de motoqueiro & couro", text: "Limpeza técnica e hidratação profunda para couro e jaquetas de motociclista com proteção UV.", query: "Limpeza de jaqueta de motoqueiro e couro" },
-  { id: "passadoria", image: "/images/lords/service-passadoria.webp", icon: "/images/lords/icon-passadoria.webp", imagePosition: "center", title: "Passadoria profissional", text: "Acabamento impecável a vapor, dobradas ou no cabide. Praticidade total para a sua rotina.", query: "Passadoria profissional" },
-  { id: "cortinas-persianas", image: "/images/lords/service-cortinas.webp", icon: "/images/lords/icon-cortinas.webp?v=2", imagePosition: "center", title: "Cortinas finas & persianas", text: "Lavagem especializada de cortinas com pregas, blackout, tecidos leves e persianas verticais e horizontais.", query: "Lavagem de cortinas e persianas" },
+  { id: "lavagem-roupas", image: "/images/ivoti/service-roupas.webp", icon: "/images/ivoti/icon-roupas.webp", imagePosition: "center", title: "Lavagem de roupas & a seco", text: "Roupas do dia a dia, ternos, vestidos de festa e peças delicadas com lavagem a seco profissional.", query: "Lavagem de roupas e a seco" },
+  { id: "higienizacao-estofados", image: "/images/ivoti/service-estofados.webp", icon: "/images/ivoti/icon-estofados.webp", imagePosition: "center", title: "Sofás & impermeabilização", text: "Higienização profunda de estofados e impermeabilização que repele líquidos e evita manchas.", query: "Higienização e impermeabilização de sofás" },
+  { id: "tapetes-cortinas", image: "/images/ivoti/service-tapetes.webp", icon: "/images/ivoti/icon-tapetes.webp", imagePosition: "center", title: "Tapetes, persianas & cortinas", text: "Remoção completa de sujeiras, ácaros e odores preservando texturas, cores e tramas delicadas.", query: "Tapetes, persianas e cortinas" },
+  { id: "tenis-calcados", image: "/images/ivoti/service-calcados.webp", icon: "/images/ivoti/icon-calcados.webp?v=2", imagePosition: "center", title: "Tênis & calçados em geral", text: "Higienização detalhada interna e externa, desodorização e revitalização para calçados de qualquer modelo.", query: "Limpeza de tênis e calçados" },
+  { id: "linha-pet", image: "/images/ivoti/service-pet.webp", icon: "/images/ivoti/icon-pet.webp?v=2", imagePosition: "center", title: "Linha Pet especializada", text: "Caminhas, tapetes, roupinhas e mantas desinfetadas com produtos antialérgicos e seguros para pets.", query: "Higienização da Linha Pet" },
+  { id: "couro-motoqueiro", image: "/images/ivoti/service-couro.webp", icon: "/images/ivoti/icon-couro.webp?v=2", imagePosition: "center", title: "Jaquetas de motoqueiro & couro", text: "Limpeza técnica e hidratação profunda para couro e jaquetas de motociclista com proteção UV.", query: "Limpeza de jaqueta de motoqueiro e couro" },
+  { id: "passadoria", image: "/images/ivoti/service-passadoria.webp", icon: "/images/ivoti/icon-passadoria.webp", imagePosition: "center", title: "Passadoria profissional", text: "Acabamento impecável a vapor, dobradas ou no cabide. Praticidade total para a sua rotina.", query: "Passadoria profissional" },
+  { id: "cortinas-persianas", image: "/images/ivoti/service-cortinas.webp", icon: "/images/ivoti/icon-cortinas.webp?v=2", imagePosition: "center", title: "Cortinas finas & persianas", text: "Lavagem especializada de cortinas com pregas, blackout, tecidos leves e persianas verticais e horizontais.", query: "Lavagem de cortinas e persianas" },
 ] as const;
 
 export const aboutBenefits = [
-  { icon: "/images/lords/about-tradition.webp", alt: "Tradição", title: "Tradição e<br>cuidado local" },
-  { icon: "/images/lords/about-eco.webp", alt: "Licença Ambiental", title: "Licenciado pela<br>SMA Ivoti" },
-  { icon: "/images/lords/about-team.webp", alt: "Coleta e Entrega", title: "Coleta e entrega<br>grátis em Ivoti" },
-  { icon: "/images/lords/about-quality.webp", alt: "Qualidade", title: "Compromisso com<br>qualidade e prazos" },
+  { icon: "/images/ivoti/about-tradition.webp", alt: "Tradição", title: "Tradição e<br>cuidado local" },
+  { icon: "/images/ivoti/about-eco.webp", alt: "Licença Ambiental", title: "Licenciado pela<br>SMA Ivoti" },
+  { icon: "/images/ivoti/about-team.webp", alt: "Coleta e Entrega", title: "Coleta e entrega<br>grátis em Ivoti" },
+  { icon: "/images/ivoti/about-quality.webp", alt: "Qualidade", title: "Compromisso com<br>qualidade e prazos" },
 ] as const;
 
 export const processSteps = [
-  { title: "Coleta grátis no<br>seu endereço", text: "Buscamos suas peças na sua casa ou empresa sem custo de deslocamento, ou você entrega na loja.", icon: "/images/lords/process-step1.webp", alt: "Sacola de Coleta" },
-  { title: "Processos ecológicos<br>e seguros", text: "Equipamentos modernos e produtos certificados pela SMA Ivoti que preservam as fibras e o meio ambiente.", icon: "/images/lords/process-step2.webp", alt: "Máquina de Lavar" },
-  { title: "Higienização,<br>impermeabilização e ferro", text: "Cuidado artesanal, proteção contra líquidos e acabamento impecável para cada tipo de peça.", icon: "/images/lords/process-step3.webp", alt: "Ferro a Vapor" },
-  { title: "Entrega grátis com<br>pontualidade", text: "No prazo combinado, tudo embalado, cheiroso e pronto para uso direto no seu armário ou casa.", icon: "/images/lords/process-step4.webp", alt: "Camisa Polo no Cabide" },
+  { title: "Coleta grátis no<br>seu endereço", text: "Buscamos suas peças na sua casa ou empresa sem custo de deslocamento, ou você entrega na loja.", icon: "/images/ivoti/process-step1.webp", alt: "Sacola de Coleta" },
+  { title: "Processos ecológicos<br>e seguros", text: "Equipamentos modernos e produtos certificados pela SMA Ivoti que preservam as fibras e o meio ambiente.", icon: "/images/ivoti/process-step2.webp", alt: "Máquina de Lavar" },
+  { title: "Higienização,<br>impermeabilização e ferro", text: "Cuidado artesanal, proteção contra líquidos e acabamento impecável para cada tipo de peça.", icon: "/images/ivoti/process-step3.webp", alt: "Ferro a Vapor" },
+  { title: "Entrega grátis com<br>pontualidade", text: "No prazo combinado, tudo embalado, cheiroso e pronto para uso direto no seu armário ou casa.", icon: "/images/ivoti/process-step4.webp", alt: "Camisa Polo no Cabide" },
 ] as const;
 
 export const reviews = [
