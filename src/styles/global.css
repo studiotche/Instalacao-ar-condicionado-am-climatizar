@@ -181,11 +181,11 @@ button {
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .btn:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
 }
 
 .btn-arrow {
@@ -263,12 +263,19 @@ button {
 .btn-hero-primary:hover {
   background: var(--navy-dark) !important;
   border-color: var(--navy-dark) !important;
+  transform: translateY(-3px) !important;
   box-shadow: 0 8px 22px rgba(27, 86, 153, 0.32);
 }
 
 .btn-hero-secondary:hover {
   background: #f0f6fc !important;
+  transform: translateY(-3px) !important;
   box-shadow: 0 6px 18px rgba(9, 24, 62, 0.12);
+}
+
+.btn-hero-primary:active,
+.btn-hero-secondary:active {
+  transform: translateY(-1px) !important;
 }
 
 .btn-institutional-cta {
@@ -778,10 +785,18 @@ body.menu-open {
 }
 
 .hero-content.hero-reveal-ready .hero-actions > * {
-  opacity: 0;
-  transform: translateY(16px);
-  animation: hero-button-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  opacity: 1;
+  transform: translateY(0);
+  animation: hero-button-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
   animation-delay: var(--hero-delay, 0s);
+}
+
+.hero-content.hero-reveal-ready .hero-actions > *:hover {
+  transform: translateY(-3px) !important;
+}
+
+.hero-content.hero-reveal-ready .hero-actions > *:active {
+  transform: translateY(-1px) !important;
 }
 
 .hero-content .hero-reveal-word.highlight {
