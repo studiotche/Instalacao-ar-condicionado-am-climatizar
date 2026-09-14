@@ -666,7 +666,8 @@ button {
   position: absolute;
   z-index: 3;
   left: max(calc((100% - 1180px) / 2), 24px);
-  top: 76px;
+  top: calc(50% - 39px);
+  transform: translateY(-50%);
   width: 620px;
 }
 
@@ -763,7 +764,6 @@ button {
   color: var(--cyan-dark);
 }
 
-.hero-visual.hero-reveal-ready,
 .trust-bar.hero-reveal-ready {
   opacity: 0;
   transform: translateY(14px);
@@ -1963,6 +1963,7 @@ button {
     position: relative;
     left: auto;
     top: auto;
+    transform: none;
     width: min(100% - 34px, 760px);
     margin-inline: auto;
     padding: 78px 0 64px;

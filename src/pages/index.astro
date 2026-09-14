@@ -94,7 +94,6 @@ const jsonLd = {
       const heroTitle = heroContainer.querySelector('h1');
       const heroDescription = heroContainer.querySelector('.hero-description');
       const heroActions = heroContainer.querySelector('.hero-actions');
-      const heroVisual = document.querySelector('.hero-visual');
       const trustBar = document.querySelector('.trust-bar');
 
       const splitHeroWords = (element) => {
@@ -157,7 +156,6 @@ const jsonLd = {
       const descWords = splitHeroWords(heroDescription);
 
       heroContainer.classList.add('hero-reveal-ready');
-      heroVisual?.classList.add('hero-reveal-ready');
       trustBar?.classList.add('hero-reveal-ready');
 
       const badgeDelay = 0;
@@ -168,14 +166,12 @@ const jsonLd = {
       const descLines = scheduleHeroWords(descWords, descDelay);
 
       const actionsDelay = descDelay + descLines * 0.06 + 0.12;
-      const visualDelay = actionsDelay + 0.15;
       const trustDelay = actionsDelay + 0.15;
 
       heroBadge?.style.setProperty('--hero-delay', `${badgeDelay}s`);
       heroActions?.querySelectorAll(':scope > *').forEach((item, index) => {
         item.style.setProperty('--hero-delay', `${actionsDelay + index * 0.06}s`);
       });
-      heroVisual?.style.setProperty('--hero-delay', `${visualDelay}s`);
       trustBar?.style.setProperty('--hero-delay', `${trustDelay}s`);
     };
 
