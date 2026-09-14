@@ -38,10 +38,10 @@
 .contact-info-grid h2,.faq-grid h2{font-size:clamp(1.7rem,2.6vw,2.4rem);line-height:1.1}
 .institutional-title{font-size:clamp(2.1rem,3.3vw,3rem)}
 
-/* SOBRE — badge fiel ao Lord's + benefícios em coluna única */
-.heritage-badge{position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;background:linear-gradient(155deg,#1b5699,#123f73);border-top:3px solid var(--gold)}
-.heritage-badge small{font-size:10px;letter-spacing:1px}
-.heritage-badge strong{margin-top:3px;color:#d8b64a;font-size:34px;font-weight:400;line-height:1}
+/* SOBRE — foto limpa 100% da lavanderia (sem badge de 1962) */
+.about-composite{display:block!important;height:320px!important;border-radius:12px!important;overflow:hidden!important;background:none!important}
+.about-composite>img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;display:block!important;border-radius:12px!important}
+.heritage-badge{display:none!important}
 .about-benefits{display:flex;flex-direction:column;gap:10px}
 .about-benefits>div{display:flex;align-items:center;gap:14px}
 .about-benefits .benefit-icon{flex:0 0 46px;width:46px;height:46px;object-fit:contain;border:0;border-radius:50%}

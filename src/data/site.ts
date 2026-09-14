@@ -33,7 +33,7 @@ export const site = {
   },
   assets: {
     hero: "/images/lords/lavanderia-ivoti.webp",
-    about: "/images/lords/about-heritage.webp",
+    about: "/images/lords/about-heritage.webp?v=2",
     institutional: "/images/lords/lavanderia-ivoti-hero.webp",
     logo: "/images/lords/logo-lavanderia-ivoti.webp",
     storefront: "/images/lords/lavanderia-ivoti.webp",
@@ -54,7 +54,7 @@ export const services = [
 ] as const;
 
 export const aboutBenefits = [
-  { icon: "/images/lords/about-tradition.webp", alt: "Tradição", title: "Mais de 60 anos<br>de tradição" },
+  { icon: "/images/lords/about-tradition.webp", alt: "Tradição", title: "Tradição e<br>cuidado local" },
   { icon: "/images/lords/about-eco.webp", alt: "Licença Ambiental", title: "Licenciado pela<br>SMA Ivoti" },
   { icon: "/images/lords/about-team.webp", alt: "Coleta e Entrega", title: "Coleta e entrega<br>grátis em Ivoti" },
   { icon: "/images/lords/about-quality.webp", alt: "Qualidade", title: "Compromisso com<br>qualidade e prazos" },
