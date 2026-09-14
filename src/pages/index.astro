@@ -81,7 +81,10 @@ const jsonLd = {
     const toggle = document.querySelector('#mobileMenuToggle');
     const closeItems = document.querySelectorAll('[data-close-menu], .mobile-nav a');
     const setDrawer = (open) => { if (!drawer || !toggle) return; drawer.classList.toggle('open', open); drawer.setAttribute('aria-hidden', String(!open)); toggle.setAttribute('aria-expanded', String(open)); document.body.classList.toggle('menu-open', open); };
-    toggle?.addEventListener('click', () => setDrawer(!drawer?.classList.contains('open')));
+    toggle?.addEventListener('click', (e) => {
+      e.preventDefault();
+      setDrawer(!drawer?.classList.contains('open'));
+    });
     closeItems.forEach((item) => item.addEventListener('click', () => setDrawer(false)));
     document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setDrawer(false); });
 
