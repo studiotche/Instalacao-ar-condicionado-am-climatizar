@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "5555992368448";
+const WHATSAPP_NUMBER = "5551997736690";
 
 const initHeaderScroll = (): void => {
   const header = document.getElementById("main-header");
@@ -58,29 +58,38 @@ const initMobileDrawer = (): void => {
 
 const initFaqAccordion = (): void => {
   const faqItems = document.querySelectorAll(".faq-item");
-  if (!faqItems.length) return;
 
   faqItems.forEach((item) => {
     const trigger = item.querySelector(".faq-trigger");
-    if (!trigger) return;
+    const content = item.querySelector(".faq-content") as HTMLElement | null;
+    const icon = item.querySelector(".faq-icon");
+
+    if (!trigger || !content) return;
 
     trigger.addEventListener("click", () => {
-      const isOpen = item.classList.contains("is-open");
+      const isExpanded = trigger.getAttribute("aria-expanded") === "true";
 
-      faqItems.forEach((otherItem) => {
-        if (otherItem !== item) {
-          otherItem.classList.remove("is-open");
-          const otherTrigger = otherItem.querySelector(".faq-trigger");
+      // Close all other accordions for clean UX
+      faqItems.forEach((other) => {
+        if (other !== item) {
+          const otherTrigger = other.querySelector(".faq-trigger");
+          const otherContent = other.querySelector(".faq-content") as HTMLElement | null;
+          const otherIcon = other.querySelector(".faq-icon");
+
           otherTrigger?.setAttribute("aria-expanded", "false");
+          if (otherContent) otherContent.style.maxHeight = "0px";
+          otherIcon?.classList.remove("rotate-180");
         }
       });
 
-      if (isOpen) {
-        item.classList.remove("is-open");
+      if (isExpanded) {
         trigger.setAttribute("aria-expanded", "false");
+        content.style.maxHeight = "0px";
+        icon?.classList.remove("rotate-180");
       } else {
-        item.classList.add("is-open");
         trigger.setAttribute("aria-expanded", "true");
+        content.style.maxHeight = `${content.scrollHeight}px`;
+        icon?.classList.add("rotate-180");
       }
     });
   });
@@ -88,29 +97,18 @@ const initFaqAccordion = (): void => {
 
 const initQuoteModal = (): void => {
   const modal = document.getElementById("quote-modal");
-  const backdrop = document.getElementById("quote-modal-backdrop");
+  const backdrop = document.getElementById("quote-backdrop");
   const openButtons = document.querySelectorAll("[data-open-quote]");
-  const closeButton = document.getElementById("close-quote-modal");
+  const closeButton = document.getElementById("quote-close");
   const form = document.getElementById("quote-form") as HTMLFormElement | null;
 
   if (!modal || !backdrop) return;
 
-  const openModal = (serviceName = ""): void => {
+  const openModal = (): void => {
     modal.classList.remove("opacity-0", "pointer-events-none", "scale-95");
     modal.classList.add("opacity-100", "scale-100");
     backdrop.classList.remove("opacity-0", "pointer-events-none");
     document.body.classList.add("overflow-hidden");
-
-    if (serviceName && form) {
-      const inputs = form.querySelectorAll<HTMLInputElement>('input[name="service"]');
-      inputs.forEach((input) => {
-        const matches = input.value.toLowerCase().includes(serviceName.toLowerCase()) ||
-          serviceName.toLowerCase().includes(input.value.toLowerCase());
-        if (matches) {
-          input.checked = true;
-        }
-      });
-    }
   };
 
   const closeModal = (): void => {
@@ -121,11 +119,7 @@ const initQuoteModal = (): void => {
   };
 
   openButtons.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      event.preventDefault();
-      const service = btn.getAttribute("data-service") || "";
-      openModal(service);
-    });
+    btn.addEventListener("click", openModal);
   });
 
   closeButton?.addEventListener("click", closeModal);
@@ -142,11 +136,11 @@ const initQuoteModal = (): void => {
     const formData = new FormData(form);
     const service = (formData.get("service") as string) || "Instalação";
     const property = (formData.get("property") as string) || "Residencial";
-    const city = (formData.get("city") as string) || "Ijuí — Rio Grande do Sul";
+    const city = (formData.get("city") as string) || "Ivoti — Rio Grande do Sul";
     const details = (formData.get("details") as string) || "";
 
     const message = [
-      "Olá, Ijuí Clima! Gostaria de solicitar um orçamento:",
+      "Olá, AM Climatizar! Gostaria de solicitar um orçamento:",
       "",
       `*Serviço:* ${service}`,
       `*Tipo de Imóvel:* ${property}`,

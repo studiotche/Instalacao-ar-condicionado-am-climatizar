@@ -20,71 +20,83 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "HVACBusiness",
-      "@id": "https://ijuiclima.com.br/#business",
-      "name": "Ijuí Clima",
-      "url": "https://ijuiclima.com.br/",
-      "logo": "https://ijuiclima.com.br/images/logo-ijui-clima.png",
-      "image": "https://ijuiclima.com.br/images/logo-ijui-clima.png",
-      "description": "Especialistas em instalação, higienização e manutenção preventiva de ar-condicionado e climatização residencial e empresarial em Ijuí - RS.",
+      "@id": "https://studiotche.github.io/Instalacao-ar-condicionado-am-climatizar/#business",
+      "name": "AM Climatizar",
+      "legalName": "AM Climatizar — Climatização e Elétrica Residencial",
+      "url": siteData.seo.canonicalUrl,
+      "logo": asset(siteData.seo.ogImage),
+      "image": asset(siteData.hero.image.url),
+      "description": "Mais de 4 anos de experiência em instalação, manutenção, higienização de ar-condicionado, carga de gás, capacitor e elétrica residencial em Ivoti e região.",
+      "telephone": "+5551997736690",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "R. Albino Brendler, 554",
-        "addressLocality": "Ijuí",
+        "streetAddress": "R. Santa Rita, 282",
+        "addressLocality": "Ivoti",
         "addressRegion": "RS",
+        "postalCode": "93900-000",
         "addressCountry": "BR"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -29.6057596,
+        "longitude": -51.1560729
+      },
       "areaServed": [
-        {
-          "@type": "City",
-          "name": "Ijuí"
-        },
-        {
-          "@type": "AdministrativeArea",
-          "name": "Região Noroeste do Rio Grande do Sul"
-        }
+        { "@type": "City", "name": "Ivoti" },
+        { "@type": "City", "name": "Dois Irmãos" },
+        { "@type": "City", "name": "Estância Velha" },
+        { "@type": "City", "name": "Novo Hamburgo" },
+        { "@type": "AdministrativeArea", "name": "Vale dos Sinos e Encosta da Serra - RS" }
       ],
       "priceRange": "$$",
-      "telephone": "+5555992368448",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           "opens": "08:00",
-          "closes": "18:00"
+          "closes": "20:00"
         },
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": "Saturday",
           "opens": "08:00",
-          "closes": "12:00"
+          "closes": "18:00"
         }
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Serviços de Climatização em Ijuí",
+        "name": "Serviços de Climatização e Elétrica AM Climatizar",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Instalação de Ar-Condicionado em Ijuí",
-              "description": "Instalação com tubulação 100% cobre, vácuo com vacuômetro digital e acabamento profissional."
+              "name": "Instalação de Ar-Condicionado em Ivoti",
+              "description": "Instalação Split e Inverter com tubulação em cobre, vácuo com vacuômetro e acabamento alinhado."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Manutenção Preventiva de Ar-Condicionado em Ijuí",
-              "description": "Revisão periódica de pressões e componentes para economia de energia e longevidade do compressor."
+              "name": "Higienização Preventiva e Limpeza Química",
+              "description": "Higienização com máquina pressurizada e bactericida especial contra ácaros, fungos e odores."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Higienização e Limpeza de Ar-Condicionado em Ijuí",
-              "description": "Sanitização química profunda contra ácaros, fungos e odores para ambientes residenciais e comerciais."
+              "name": "Carga de Gás e Troca de Capacitor",
+              "description": "Medição de pressão com manifold digital, reposição de fluido refrigerante e teste de capacitor."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Elétrica Residencial Especializada",
+              "description": "Instalação de circuitos dedicados, disjuntores e tomadas para ar-condicionado com total segurança."
             }
           }
         ]
@@ -92,7 +104,7 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      "@id": "https://ijuiclima.com.br/#faq",
+      "@id": "https://studiotche.github.io/Instalacao-ar-condicionado-am-climatizar/#faq",
       "mainEntity": siteData.faq.map((item) => ({
         "@type": "Question",
         "name": item.question,
@@ -115,14 +127,14 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={siteData.seo.keywords} />
-    <meta name="author" content="Ijuí Clima" />
+    <meta name="author" content="AM Climatizar" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href={siteData.seo.canonicalUrl} />
     <meta name="geo.region" content="BR-RS" />
-    <meta name="geo.placename" content="Ijuí" />
+    <meta name="geo.placename" content="Ivoti" />
 
     <!-- OpenGraph / Social Meta -->
-    <meta property="og:site_name" content="Ijuí Clima" />
+    <meta property="og:site_name" content="AM Climatizar" />
     <meta property="og:type" content="business.business" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
