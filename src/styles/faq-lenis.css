@@ -1,0 +1,123 @@
+
+/* ==========================================================================
+   Lenis Smooth Scroll & FAQ Accordion (From Pedro Zvir Reference Pattern)
+   ========================================================================== */
+
+/* Lenis Recommended CSS */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* FAQ Accordion (details/summary with smooth animation) */
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary {
+  list-style: none;
+}
+
+.faq-details {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.25s ease;
+}
+
+.faq-details:hover {
+  background-color: rgba(12, 59, 120, 0.015);
+}
+
+.faq-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  padding: 22px 8px;
+  user-select: none;
+}
+
+.faq-icon-box {
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), background-color 0.25s ease;
+}
+
+.faq-details[open] .faq-arrow {
+  transform: rotate(180deg);
+}
+
+.faq-details.is-closing .faq-arrow {
+  transform: rotate(0deg);
+}
+
+.faq-answer {
+  overflow: hidden;
+  opacity: 1;
+  transition: height 0.42s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.32s ease;
+}
+
+/* ==========================================================================
+   Header & Hero Polish (Ported from Pedro Zvir Reference Design System)
+   ========================================================================== */
+
+.header-desktop-nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .header-desktop-nav {
+    display: flex !important;
+    align-items: center !important;
+    gap: 28px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .header-desktop-nav {
+    gap: 34px !important;
+  }
+}
+
+.header-nav-link {
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  color: #334155 !important;
+  transition: color 0.2s ease !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  position: relative !important;
+}
+
+.header-nav-link:hover {
+  color: #0C3B78 !important;
+}
+
+.hero-heading-display {
+  font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif) !important;
+  font-size: clamp(32px, 4.2vw, 56px) !important;
+  font-weight: 800 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.035em !important;
+  color: #0F141C !important;
+}
+
+.hero-copy-container {
+  max-width: 560px !important;
+  width: 100% !important;
+}
+

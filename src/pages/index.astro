@@ -14,39 +14,29 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
   <!-- Application Mount Target -->
   <div id="app" class="flex flex-col min-h-screen">
     
-    <!-- Top Notice / Status Bar -->
-    <aside class="bg-[#0C111A] text-slate-300 text-xs py-1.5 sm:py-2 px-4 border-b border-white/5" aria-label="Informações de atendimento">
-      <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
-        <div class="flex items-center gap-2">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#0090D0] animate-pulse shrink-0"></span>
-          <span class="tracking-wide sm:hidden font-medium text-slate-200">{siteData.company.city} e região</span>
-          <span class="tracking-wide hidden sm:inline">Atendimento especializado em <strong>{siteData.company.locationString}</strong> e região</span>
-        </div>
-        <div class="flex items-center gap-4 sm:gap-6 text-slate-400">
-          <span class="hidden md:inline">{siteData.company.hours.weekdays}</span>
-          <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20falar%20com%20o%20atendimento%20da%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors">
-            <svg class="w-3.5 h-3.5 text-[#25D366] shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-            <span>Plantão WhatsApp</span>
-          </a>
-        </div>
-      </div>
-    </aside>
-
     <!-- Main Header -->
-    <header id="main-header" class="sticky top-0 z-40 w-full transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] py-3.5 sm:py-5 lg:py-7 border-b border-transparent">
+    <header id="main-header" class="sticky top-0 z-40 w-full transition-all duration-300 ease-out py-2.5 sm:py-3 bg-white/95 backdrop-blur-md shadow-2xs border-b border-slate-200/70">
       <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8 flex items-center justify-between">
         
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-3 group focus:outline-none rounded-md py-1" aria-label={`${siteData.company.name} - Início`}>
-          <div class="h-11 sm:h-14 lg:h-[4.25rem] flex items-center">
-            <img src={asset(siteData.seo.ogImage)} alt={siteData.company.name} class="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]" width="175" height="56" />
+        <a href="#" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none rounded-md" aria-label={`${siteData.company.name} - Início`}>
+          <div class="h-9 sm:h-10 lg:h-10 aspect-square rounded-lg overflow-hidden shadow-2xs border border-slate-200 bg-[#0C111A] flex items-center justify-center p-0.5 transition-transform duration-300 group-hover:scale-105">
+            <img src={asset(siteData.seo.ogImage)} alt={siteData.company.name} class="w-full h-full object-cover rounded" width="40" height="40" />
+          </div>
+          <div class="flex flex-col">
+            <span class="font-heading font-extrabold text-base sm:text-lg tracking-tight text-[#0C111A] leading-none group-hover:text-[#0C3B78] transition-colors">
+              AM <span class="text-[#0090D0]">CLIMATIZAR</span>
+            </span>
+            <span class="text-[9px] sm:text-[9.5px] font-semibold tracking-wider text-slate-500 uppercase mt-0.5">
+              Ar-Condicionado & Elétrica
+            </span>
           </div>
         </a>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center gap-8 xl:gap-10" aria-label="Navegação Principal">
+        <nav class="header-desktop-nav" aria-label="Navegação Principal">
           {siteData.navigation.map((item) => (
-            <a href={item.href} class="nav-link">
+            <a href={item.href} class="header-nav-link">
               {item.label}
             </a>
           ))}
@@ -54,9 +44,9 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
 
         <!-- CTA & Mobile Menu Toggle -->
         <div class="flex items-center gap-3 sm:gap-4">
-          <button type="button" data-open-quote class="btn-primary !h-12 !px-6 !text-sm !hidden sm:!inline-flex">
+          <button type="button" data-open-quote class="btn-primary !h-10 !px-5 !text-xs sm:!text-sm !hidden sm:!inline-flex shadow-xs">
             <span>Solicitar orçamento</span>
-            <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <svg class="btn-icon-arrow w-3.5 h-3.5 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </button>
 
           <button id="mobile-menu-toggle" type="button" class="lg:hidden p-2 text-slate-700 hover:text-slate-950 focus:outline-none rounded-md" aria-label="Abrir menu de navegação" aria-expanded="false">
@@ -102,50 +92,51 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
     <main id="conteudo-principal">
       
       <!-- Hero Section -->
-      <section class="relative bg-white pt-6 pb-12 sm:pb-16 lg:py-0 overflow-hidden" aria-labelledby="hero-title">
+      <section class="relative bg-white pt-10 sm:pt-14 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 overflow-hidden" aria-labelledby="hero-title">
         <!-- Imagem de Fundo Integrada (Desktop) -->
-        <div class="hidden lg:block absolute inset-y-0 right-0 w-[58%] xl:w-[56%] pointer-events-none z-0 overflow-hidden">
+        <div class="hidden lg:block absolute inset-y-0 right-0 w-[52%] xl:w-[50%] pointer-events-none z-0 overflow-hidden">
           <img 
             src={asset(siteData.hero.image.url)} 
             alt={siteData.hero.image.alt} 
-            class="w-full h-full object-cover object-[center_right] filter contrast-[1.01]"
+            class="w-full h-full object-cover object-[center_35%] filter contrast-[1.01]"
             loading="eager"
             fetchpriority="high"
             width={siteData.hero.image.width}
             height={siteData.hero.image.height}
           />
-          <div class="absolute inset-0" style="background: linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.95) 12%, rgba(255,255,255,0.55) 28%, rgba(255,255,255,0) 52%);"></div>
+          <div class="absolute inset-y-0 left-0 w-44 xl:w-56" style="background: linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.96) 28%, rgba(255,255,255,0.45) 65%, rgba(255,255,255,0) 100%);"></div>
         </div>
 
         <div class="max-w-[1280px] mx-auto px-5 max-[375px]:px-4 sm:px-8 relative z-10">
-          <div class="grid grid-cols-1 lg:grid-cols-[50%_50%] xl:grid-cols-[48%_52%] items-center lg:min-h-[540px] lg:max-h-[600px]">
+          <div class="grid grid-cols-1 lg:grid-cols-[54%_46%] xl:grid-cols-[52%_48%] items-center">
             
-            <div class="flex flex-col items-start justify-center py-4 sm:py-8 lg:py-14 z-10 w-full max-w-none lg:max-w-[560px]">
+            <div class="hero-copy-container flex flex-col items-start justify-center py-2 sm:py-4 lg:py-6 z-10">
               <span class="hero-animate-up text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.08em] text-[#0C3B78] block mb-3 sm:mb-4">
                 {siteData.hero.eyebrow}
               </span>
 
-              <h1 id="hero-title" class="hero-animate-up font-display text-[38px] min-[390px]:text-[44px] sm:text-[52px] lg:text-[58px] xl:text-[64px] font-extrabold text-[#0F141C] tracking-[-0.035em] leading-[1.0] mb-4 sm:mb-6" style="animation-delay: 80ms;">
-                {siteData.hero.headlinePart1}<br />{siteData.hero.headlinePart2}<br /><span class="text-[#0090D0]">{siteData.hero.headlineHighlight}</span>
+              <h1 id="hero-title" class="hero-animate-up hero-heading-display mb-4 sm:mb-5" style="animation-delay: 80ms;">
+                {siteData.hero.headlinePart1}<br class="hidden min-[390px]:inline" /> {siteData.hero.headlinePart2}<br />
+                <span class="text-[#0090D0]">{siteData.hero.headlineHighlight}</span>
               </h1>
 
-              <p class="hero-animate-up font-body text-[15px] sm:text-[16px] text-slate-600 leading-[1.6] w-full max-w-none lg:max-w-[490px] mb-6 sm:mb-8" style="animation-delay: 160ms;">
+              <p class="hero-animate-up font-body text-[15px] sm:text-[16px] text-slate-600 leading-[1.65] max-w-[500px] mb-6 sm:mb-8" style="animation-delay: 160ms;">
                 {siteData.hero.description}
               </p>
 
-              <div class="hero-animate-up flex flex-col min-[390px]:flex-row items-stretch min-[390px]:items-center gap-3.5 sm:gap-6 w-full sm:w-auto mb-6 sm:mb-7" style="animation-delay: 240ms;">
-                <button type="button" data-open-quote class="btn-primary !h-[52px] !px-7 sm:!px-8 !rounded-md !text-[15px] font-semibold shadow-sm hover:shadow-md hover:-translate-y-[1px] transition-all duration-200 justify-center">
+              <div class="hero-animate-up flex flex-col min-[390px]:flex-row items-stretch min-[390px]:items-center gap-3.5 sm:gap-5 w-full sm:w-auto mb-6 sm:mb-8" style="animation-delay: 240ms;">
+                <button type="button" data-open-quote class="btn-primary !h-[50px] !px-7 sm:!px-8 !rounded-lg !text-[15px] font-semibold shadow-sm hover:shadow-md hover:-translate-y-[1px] transition-all duration-200 justify-center">
                   <span>{siteData.hero.primaryCta}</span>
                   <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </button>
                 
-                <a href="#servicos" class="link-editorial group inline-flex items-center justify-center gap-2 py-2.5 px-2 text-[#0C3B78] hover:text-[#0090D0] font-semibold text-[15px] transition-colors duration-200">
+                <a href="#servicos" class="link-editorial group inline-flex items-center justify-center gap-2 py-2.5 px-3 text-[#0C3B78] hover:text-[#0090D0] font-semibold text-[15px] transition-colors duration-200">
                   <span>{siteData.hero.secondaryCta}</span>
                   <svg class="w-4 h-4 text-[#0090D0] transform transition-transform duration-200 group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
               </div>
 
-              <div class="hero-animate-up inline-flex items-start sm:items-center gap-2.5 px-3.5 py-2.5 rounded-md bg-white border border-slate-200/90 text-xs sm:text-[13px] text-slate-700 font-medium shadow-2xs w-full sm:w-auto" style="animation-delay: 320ms;">
+              <div class="hero-animate-up inline-flex items-start sm:items-center gap-2.5 px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200/90 text-xs sm:text-[13px] text-slate-700 font-medium shadow-2xs w-full sm:w-auto" style="animation-delay: 320ms;">
                 <svg class="w-3.5 h-3.5 text-[#0C3B78] shrink-0 mt-0.5 sm:mt-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
@@ -158,11 +149,11 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
             </div>
 
             <!-- Imagem no Mobile/Tablet -->
-            <div class="block lg:hidden relative w-full aspect-[4/3] rounded-xl overflow-hidden mt-5 sm:mt-6 shadow-sm border border-slate-100">
+            <div class="block lg:hidden relative w-full aspect-[4/3] rounded-xl overflow-hidden mt-6 sm:mt-8 shadow-sm border border-slate-100">
               <img 
                 src={asset(siteData.hero.image.url)} 
                 alt={siteData.hero.image.alt} 
-                class="w-full h-full object-cover object-[center_15%]"
+                class="w-full h-full object-cover object-[center_20%]"
                 loading="eager"
                 fetchpriority="high"
                 width={siteData.hero.image.width}
@@ -738,40 +729,36 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
             </h2>
           </div>
 
-          <div class="reveal-fade border-t border-slate-200/80" style="transition-delay: 140ms;">
+          <div class="faq-list reveal-fade border-t border-slate-200/80" style="transition-delay: 140ms;">
             {siteData.faq.map((item, idx) => (
-              <article class="faq-item group border-b border-slate-200/80" data-faq-index={idx}>
-                <button 
-                  type="button" 
-                  class="faq-trigger w-full flex items-center justify-between gap-4 py-4 sm:py-4.5 min-h-[52px] text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0C3B78] rounded-md transition-colors duration-200" 
-                  aria-expanded="false" 
+              <details class="faq-details group border-b border-slate-200/80" open={idx === 0}>
+                <summary 
+                  class="faq-summary w-full flex items-center justify-between gap-4 py-4.5 sm:py-5 min-h-[52px] text-left cursor-pointer list-none select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0C3B78] rounded-md transition-colors duration-200" 
                   id={`faq-trigger-${idx}`} 
                   aria-controls={`faq-content-${idx}`}
                 >
-                  <span class="font-display text-[15px] min-[390px]:text-[16px] sm:text-[17px] font-bold text-slate-800 group-hover:text-[#0C3B78] group-[.is-open]:text-[#0C3B78] transition-colors leading-snug">
+                  <span class="font-display text-[15px] min-[390px]:text-[16px] sm:text-[17px] font-bold text-slate-800 group-hover:text-[#0C3B78] transition-colors leading-snug">
                     {item.question}
                   </span>
                   
-                  <span class="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 group-hover:bg-blue-50 group-[.is-open]:bg-[#0C3B78] group-[.is-open]:text-white text-slate-500 transition-all duration-300 shrink-0">
-                    <svg class="faq-icon w-4 h-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                  <span class="faq-icon-box flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 group-hover:bg-blue-50 text-slate-500 transition-all duration-300 shrink-0">
+                    <svg class="faq-arrow w-4 h-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </span>
-                </button>
+                </summary>
                 
                 <div 
                   id={`faq-content-${idx}`} 
-                  class="faq-content grid grid-rows-[0fr] opacity-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" 
+                  class="faq-answer overflow-hidden" 
                   role="region" 
                   aria-labelledby={`faq-trigger-${idx}`}
                 >
-                  <div class="overflow-hidden">
-                    <p class="text-[15px] text-slate-600 leading-relaxed pb-5 sm:pb-6 pr-2 sm:pr-12">
-                      {item.answer}
-                    </p>
-                  </div>
+                  <p class="text-[15px] text-slate-600 leading-relaxed pb-5 sm:pb-6 pr-2 sm:pr-12">
+                    {item.answer}
+                  </p>
                 </div>
-              </article>
+              </details>
             ))}
           </div>
 

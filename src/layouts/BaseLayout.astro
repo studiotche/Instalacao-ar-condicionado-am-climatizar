@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../styles/faq-lenis.css";
 import { siteData } from "../data/site";
 
 interface Props {
@@ -167,5 +168,6 @@ const jsonLd = {
   <body class="bg-[#FBFBFB] text-[#0F141C] antialiased selection:bg-[#0C3B78] selection:text-white flex flex-col min-h-screen">
     <slot />
     <script src="../scripts/site-interactions.ts"></script>
+    <script src="../scripts/smooth-scroll.ts"></script>
   </body>
 </html>

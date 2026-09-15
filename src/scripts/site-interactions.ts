@@ -57,39 +57,87 @@ const initMobileDrawer = (): void => {
 };
 
 const initFaqAccordion = (): void => {
-  const faqItems = document.querySelectorAll(".faq-item");
+  const faqItems = document.querySelectorAll<HTMLDetailsElement>(".faq-list details");
+  if (!faqItems.length) return;
 
-  faqItems.forEach((item) => {
-    const trigger = item.querySelector(".faq-trigger");
-    const content = item.querySelector(".faq-content") as HTMLElement | null;
-    const icon = item.querySelector(".faq-icon");
+  const faqTimeouts = new WeakMap<HTMLDetailsElement, number>();
+  const FAQ_DURATION = 400;
 
-    if (!trigger || !content) return;
+  const clearFaqTimeout = (details: HTMLDetailsElement) => {
+    const timeout = faqTimeouts.get(details);
+    if (timeout !== undefined) window.clearTimeout(timeout);
+  };
 
-    trigger.addEventListener("click", () => {
-      const isExpanded = trigger.getAttribute("aria-expanded") === "true";
-
-      // Close all other accordions for clean UX
-      faqItems.forEach((other) => {
-        if (other !== item) {
-          const otherTrigger = other.querySelector(".faq-trigger");
-          const otherContent = other.querySelector(".faq-content") as HTMLElement | null;
-          const otherIcon = other.querySelector(".faq-icon");
-
-          otherTrigger?.setAttribute("aria-expanded", "false");
-          if (otherContent) otherContent.style.maxHeight = "0px";
-          otherIcon?.classList.remove("rotate-180");
+  const finishOpenFaq = (details: HTMLDetailsElement, answer: HTMLElement) => {
+    clearFaqTimeout(details);
+    faqTimeouts.set(
+      details,
+      window.setTimeout(() => {
+        if (details.open && !details.classList.contains("is-closing")) {
+          answer.style.height = "auto";
         }
-      });
+      }, FAQ_DURATION)
+    );
+  };
 
-      if (isExpanded) {
-        trigger.setAttribute("aria-expanded", "false");
-        content.style.maxHeight = "0px";
-        icon?.classList.remove("rotate-180");
+  const animatedCloseFaq = (details: HTMLDetailsElement) => {
+    const answer = details.querySelector<HTMLElement>(".faq-answer");
+    if (!details.open || !answer || details.classList.contains("is-closing")) return;
+    details.classList.add("is-closing");
+    answer.style.height = `${answer.offsetHeight}px`;
+    answer.style.opacity = "1";
+    void answer.offsetHeight; // force reflow
+    answer.style.height = "0px";
+    answer.style.opacity = "0";
+    clearFaqTimeout(details);
+    faqTimeouts.set(
+      details,
+      window.setTimeout(() => {
+        details.removeAttribute("open");
+        details.classList.remove("is-closing");
+        answer.style.height = "";
+        answer.style.opacity = "";
+      }, FAQ_DURATION)
+    );
+  };
+
+  const animatedOpenFaq = (details: HTMLDetailsElement) => {
+    const answer = details.querySelector<HTMLElement>(".faq-answer");
+    if (!answer || details.open) return;
+    details.classList.remove("is-closing");
+    details.setAttribute("open", "");
+    answer.style.height = "0px";
+    answer.style.opacity = "0";
+    void answer.offsetHeight; // force reflow
+    answer.style.height = `${answer.scrollHeight}px`;
+    answer.style.opacity = "1";
+    finishOpenFaq(details, answer);
+  };
+
+  faqItems.forEach((details) => {
+    const summary = details.querySelector("summary");
+    if (!summary) return;
+
+    summary.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (details.classList.contains("is-closing")) {
+        clearFaqTimeout(details);
+        details.classList.remove("is-closing");
+        const answer = details.querySelector<HTMLElement>(".faq-answer");
+        if (answer) {
+          answer.style.height = `${answer.scrollHeight}px`;
+          answer.style.opacity = "1";
+          finishOpenFaq(details, answer);
+        }
+        return;
+      }
+      if (details.open) {
+        animatedCloseFaq(details);
       } else {
-        trigger.setAttribute("aria-expanded", "true");
-        content.style.maxHeight = `${content.scrollHeight}px`;
-        icon?.classList.add("rotate-180");
+        faqItems.forEach((other) => {
+          if (other !== details && other.open) animatedCloseFaq(other);
+        });
+        animatedOpenFaq(details);
       }
     });
   });

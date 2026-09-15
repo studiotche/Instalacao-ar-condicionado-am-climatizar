@@ -1,23 +1,17 @@
 /**
- * Scroll suave (Lenis) — adaptação do plugin WordPress "Scroll Suave"
- * para o site Astro.
+ * Scroll suave (Lenis) — baseado na implementação de referência (Pedro Zvir)
+ * para o site Astro da AM Climatizar.
  *
- * Paridade exata com o plugin (assets/js/bootstrap.js):
- * - mesma lib: @studio-freight/lenis@0.2.28
- * - mesmas opções de init
- * - só ativa no desktop (viewport >= 1025px)
- * - âncoras (#...) roladas via lenis.scrollTo + pushState do hash
- * - scroll do hash ao carregar a página (30ms)
- *
- * Únicas diferenças intencionais:
- * - offset -88 nas âncoras (compensa o header fixo de 88px)
- * - foco movido junto no skip-link "#conteudo" (acessibilidade)
- * - chunk separado: o mobile nem baixa a lib
+ * - Mesma lib: @studio-freight/lenis
+ * - Duração 1.2s com curva suave de amortecimento
+ * - Ativa no desktop (viewport >= 1025px)
+ * - Âncoras (#...) roladas via lenis.scrollTo + compensação do header fixo (-76px)
+ * - Scroll do hash ao carregar a página
  */
 import type Lenis from "@studio-freight/lenis";
 
 const MIN_WIDTH = 1025;
-const HEADER_OFFSET = -88; // compensa o header fixo (scroll-padding-top)
+const HEADER_OFFSET = -76; // compensa o header fixo compacto
 const LENIS_DURATION = 1.2;
 
 function getViewportWidth(): number {
@@ -76,7 +70,7 @@ function wireAnchors(lenis: Lenis): void {
       }
 
       // acessibilidade: leva o foco junto no skip-link
-      if (hash === "#conteudo" && !target.hasAttribute("tabindex")) {
+      if (hash === "#conteudo-principal" && !target.hasAttribute("tabindex")) {
         target.setAttribute("tabindex", "-1");
         target.focus({ preventScroll: true });
       }
@@ -104,7 +98,6 @@ async function initSmoothScroll(): Promise<void> {
   let lenis: Lenis;
   try {
     const { default: LenisCtor } = await import("@studio-freight/lenis");
-    // opções idênticas às do plugin
     lenis = new LenisCtor({
       duration: LENIS_DURATION,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
