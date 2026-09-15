@@ -100,7 +100,7 @@ export const siteData = {
     title: "AM Climatizar | Ar-Condicionado e Elétrica Residencial em Ivoti/RS",
     description: "AM Climatizar: Mais de 4 anos de experiência em instalação, higienização, manutenção, carga de gás, troca de capacitor e elétrica residencial em Ivoti e região.",
     canonicalUrl: "https://studiotche.github.io/Instalacao-ar-condicionado-am-climatizar/",
-    ogImage: "/images/am-climatizar/logo-am-climatizar.png",
+    ogImage: "/assets/images/logo-am-climatizar.png",
     keywords: "ar-condicionado Ivoti, instalação de ar-condicionado em Ivoti, manutenção de ar-condicionado Ivoti, higienização de ar-condicionado, elétrica residencial Ivoti, carga de gás ar-condicionado, capacitor ar-condicionado, AM Climatizar",
   },
   navigation: [
@@ -121,7 +121,7 @@ export const siteData = {
     primaryCta: "Solicitar orçamento no WhatsApp",
     secondaryCta: "Conhecer nossos serviços",
     image: {
-      url: "/images/am-climatizar/hero-am.webp",
+      url: "/assets/images/hero-am.webp",
       alt: "Instalação de ar-condicionado split executada com excelência pela AM Climatizar em Ivoti",
       width: 1024,
       height: 768,
@@ -143,7 +143,7 @@ export const siteData = {
         title: "Instalação de ar-condicionado",
         description: "Execução no padrão oficial dos fabricantes, com tubulação 100% em cobre, processo de vácuo profundo e alinhamento milimétrico.",
         tag: "Hi-Wall • Inverter • Multi-Split",
-        image: "/images/am-climatizar/servico-instalacao.webp",
+        image: "/assets/images/servico-instalacao.webp",
         alt: "Técnico uniformizado da AM Climatizar realizando instalação de ar-condicionado Split em Ivoti",
       },
       {
@@ -151,7 +151,7 @@ export const siteData = {
         title: "Higienização preventiva e corretiva",
         description: "Desmontagem técnica da evaporadora para lavagem pressurizada da serpentina e turbina com bactericida, eliminando mofo, odores e ácaros.",
         tag: "Saúde Respiratória • Sanitização Química",
-        image: "/images/am-climatizar/servico-higienizacao.webp",
+        image: "/assets/images/servico-higienizacao.webp",
         alt: "Higienização profunda com lavadora pressurizada e sanitizante executada pela AM Climatizar",
       },
       {
@@ -159,7 +159,7 @@ export const siteData = {
         title: "Manutenção corretiva & diagnóstico",
         description: "Identificação precisa de falhas elétricas, ruídos estranhos, vazamentos de água ou perda de rendimento, com reparo ágil e seguro.",
         tag: "Diagnóstico Rápido • Peças de Qualidade",
-        image: "/images/am-climatizar/servico-manutencao.webp",
+        image: "/assets/images/servico-manutencao.webp",
         alt: "Técnico da AM Climatizar realizando manutenção corretiva e diagnóstico técnico",
       },
       {
@@ -167,7 +167,7 @@ export const siteData = {
         title: "Carga de gás e Capacitor",
         description: "Aferição exata de pressão com manifold digital, correção de microvazamentos, reposição de fluido refrigerante e troca preventiva de capacitor de partida.",
         tag: "Manifold de Precisão • Teste de Partida",
-        image: "/images/am-climatizar/servico-carga-gas.webp",
+        image: "/assets/images/servico-carga-gas.webp",
         alt: "Medição de pressão e carga de fluido refrigerante pela AM Climatizar",
       },
       {
@@ -175,7 +175,7 @@ export const siteData = {
         title: "Elétrica residencial",
         description: "Instalação de circuitos exclusivos, disjuntores dedicados e tomadas dimensionadas de acordo com as normas de segurança para proteger seus equipamentos.",
         tag: "Circuitos Dedicados • Proteção NBR 5410",
-        image: "/images/am-climatizar/servico-eletrica.webp",
+        image: "/assets/images/servico-eletrica.webp",
         alt: "Serviço especializado de elétrica residencial para climatização em Ivoti",
       },
       {
@@ -183,7 +183,7 @@ export const siteData = {
         title: "Climatização residencial e comercial",
         description: "Planejamento térmico sob medida para quartos, salas, lojas, consultórios e escritórios em Ivoti e região, priorizando silêncio e eficiência.",
         tag: "Casas • Apartamentos • Comércios",
-        image: "/images/am-climatizar/servico-climatizacao.webp",
+        image: "/assets/images/servico-climatizacao.webp",
         alt: "Climatização residencial e comercial com suporte e acabamento de alta qualidade",
       },
     ] as const satisfies readonly ServiceItem[],
@@ -192,7 +192,7 @@ export const siteData = {
     headline: "Uma boa climatização começa por uma instalação bem executada.",
     text: "Na AM Climatizar, cada instalação é realizada seguindo padrões rígidos de qualidade: tubulação em cobre, conexões estanques, vácuo controlado e circuitos elétricos dimensionados para garantir vida longa e economia.",
     image: {
-      url: "/images/am-climatizar/instalacao-detalhe.webp",
+      url: "/assets/images/instalacao-detalhe.webp",
       alt: "Técnico da AM Climatizar executando instalação técnica com suporte e tubulação em cobre",
       width: 640,
       height: 800,
@@ -236,7 +236,7 @@ export const siteData = {
       badge: "RESIDENCIAL",
       headline: "Conforto para os ambientes que fazem parte da rotina da sua família.",
       text: "Climatização para casas, sobrados e apartamentos em Ivoti e região.",
-      image: "/images/am-climatizar/solucao-residencial.webp",
+      image: "/assets/images/solucao-residencial.webp",
       alt: "Ambiente residencial com climatização split instalada pela AM Climatizar",
       highlights: [
         "Aparelhos silenciosos ideais para quartos, garantindo noites de sono tranquilas",
@@ -248,7 +248,7 @@ export const siteData = {
       badge: "COMERCIAL",
       headline: "Climatização profissional para seu comércio ou escritório.",
       text: "Soluções para lojas, consultórios, escritórios e empresas em Ivoti e Vale dos Sinos.",
-      image: "/images/am-climatizar/solucao-empresarial.webp",
+      image: "/assets/images/solucao-empresarial.webp",
       alt: "Instalação comercial executada pela AM Climatizar em ambiente empresarial",
       highlights: [
         "Temperatura estável e agradável para seus clientes e colaboradores",
@@ -304,7 +304,7 @@ export const siteData = {
         title: "Instalação Residencial de Split Inverter com Suporte Reforçado",
         category: "Instalação",
         location: "Ivoti — RS",
-        image: "/images/am-climatizar/projeto-split.webp",
+        image: "/assets/images/projeto-split.webp",
         alt: "Unidade externa Samsung Inverter instalada com alinhamento e suporte técnico pela AM Climatizar em Ivoti",
       },
       {
@@ -312,7 +312,7 @@ export const siteData = {
         title: "Higienização Química Completa com Lavadora Pressurizada",
         category: "Higienização",
         location: "Ivoti — RS",
-        image: "/images/am-climatizar/projeto-higienizacao.webp",
+        image: "/assets/images/projeto-higienizacao.webp",
         alt: "Limpeza técnica profunda de serpentina e turbina de ar-condicionado realizada pela AM Climatizar",
       },
     ] as const satisfies readonly ProjectItem[],
@@ -322,20 +322,20 @@ export const siteData = {
     headline: "Mais de 4 anos de dedicação, técnica e confiança.",
     copy: "A AM Climatizar é especialista em soluções de ar-condicionado e elétrica residencial em Ivoti e no Vale dos Sinos. Com mais de 4 anos de história e nota 4,8 no Google, trabalhamos com transparência, materiais de alta qualidade e compromisso absoluto com a satisfação de cada cliente.",
     image: {
-      url: "/images/am-climatizar/sobre-fundador.webp",
+      url: "/assets/images/sobre-fundador.webp",
       alt: "Técnico especialista da AM Climatizar em atendimento com equipamento na região de Ivoti",
       width: 700,
       height: 525,
     },
     facilityImage: {
-      url: "/images/am-climatizar/sobre-uniforme.webp",
+      url: "/assets/images/sobre-uniforme.webp",
       alt: "Técnico uniformizado da AM Climatizar com identificação oficial",
       label: "Equipe Uniformizada",
       width: 320,
       height: 200,
     },
     vehicleImage: {
-      url: "/images/am-climatizar/sobre-ferramental.webp",
+      url: "/assets/images/sobre-ferramental.webp",
       alt: "Ferramentas profissionais e manifold para atendimento técnico de precisão",
       label: "Ferramental Técnico",
       width: 320,

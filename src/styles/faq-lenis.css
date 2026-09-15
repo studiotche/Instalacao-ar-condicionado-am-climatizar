@@ -75,6 +75,15 @@ html.lenis body {
    Header & Hero Polish (Ported from Pedro Zvir Reference Design System)
    ========================================================================== */
 
+/* Blue Header matching exact logo background #060D28 */
+.header-blue {
+  background-color: rgba(6, 13, 40, 0.96) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(6, 13, 40, 0.35) !important;
+}
+
 .header-desktop-nav {
   display: none;
 }
@@ -96,15 +105,46 @@ html.lenis body {
 .header-nav-link {
   font-size: 14.5px !important;
   font-weight: 600 !important;
-  color: #334155 !important;
-  transition: color 0.2s ease !important;
+  color: #E2E8F0 !important;
+  transition: all 0.2s ease !important;
   text-decoration: none !important;
   white-space: nowrap !important;
   position: relative !important;
+  padding: 6px 2px !important;
 }
 
 .header-nav-link:hover {
-  color: #0C3B78 !important;
+  color: #00B4FF !important;
+  text-shadow: 0 0 12px rgba(0, 180, 255, 0.35) !important;
+}
+
+.header-cta-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  height: 42px !important;
+  padding: 0 20px !important;
+  border-radius: 8px !important;
+  background: linear-gradient(135deg, #0090D0 0%, #064E94 100%) !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  font-size: 13.5px !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 2px 10px rgba(0, 144, 208, 0.35) !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
+}
+
+.header-cta-btn:hover {
+  background: linear-gradient(135deg, #00A6F4 0%, #007BB3 100%) !important;
+  box-shadow: 0 4px 18px rgba(0, 180, 255, 0.5) !important;
+  transform: translateY(-1px) !important;
+}
+
+.mobile-drawer-blue {
+  background-color: #060D28 !important;
+  color: #FFFFFF !important;
 }
 
 .hero-heading-display {
