@@ -1,195 +1,1011 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { aboutBenefits, faqs, processSteps, reviews, services, site } from "../data/site";
+import { siteData } from "../data/site";
 
 const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-const asset = (path: string) => `${base}${path.replace(/^\//, "")}`;
-const whatsapp = (subject: string) => `${site.phoneLink}%20Sobre%20${encodeURIComponent(subject)}`;
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: site.name,
-  description: site.seo.description,
-  url: site.seo.url,
-  image: `${site.seo.url}${site.seo.ogImage}`,
-  telephone: "+5551999199846",
-  sameAs: [site.googleProfile, site.instagram],
-  address: { "@type": "PostalAddress", streetAddress: "Av. Pres. Lucena, 2084", addressLocality: site.city, addressRegion: site.state, postalCode: site.postalCode, addressCountry: "BR" },
-  geo: { "@type": "GeoCoordinates", latitude: -29.6055194, longitude: -51.1627442 },
-  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.6", bestRating: "5" },
-};
+const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
 ---
 <BaseLayout>
-  <Fragment slot="head">
-    <link rel="preload" as="image" href={asset(site.assets.hero)} fetchpriority="high" />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-  </Fragment>
+  <!-- A11y Skip Link -->
+  <a href="#conteudo-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#0C3B78] focus:text-white focus:rounded-md focus:shadow-md">
+    Pular para o conteúdo principal
+  </a>
 
-  <a class="skip-link" href="#main-content">Ir para o conteúdo</a>
-  <header class="site-header" id="siteHeader">
-    <div class="container header-container">
-      <a href="#inicio" class="header-logo" aria-label="Lavanderia Ivoti - Página inicial">
-        <img src={asset(site.assets.logo)} alt="Lavanderia Ivoti" width="1024" height="1536" fetchpriority="high" />
-      </a>
-      <nav class="site-nav" aria-label="Navegação principal">
-        <ul class="nav-list"><li><a href="#inicio" class="nav-link active">Início</a></li><li><a href="#servicos" class="nav-link">Serviços</a></li><li><a href="#sobre" class="nav-link">Sobre</a></li><li><a href="#avaliacoes" class="nav-link">Avaliações</a></li><li><a href="#contato" class="nav-link">Contato</a></li></ul>
-      </nav>
-      <div class="header-actions"><a href={site.phoneLink} target="_blank" rel="noopener noreferrer" class="btn btn-header-whatsapp"><svg class="icon-whatsapp" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2C6.478 2 1.996 6.482 1.996 12.008c0 1.765.46 3.488 1.332 5.006L2 22l5.127-1.345c1.472.803 3.13 1.227 4.877 1.227 5.526 0 10.008-4.482 10.008-10.008C22.012 6.482 17.53 2 12.004 2z" fill="#25D366"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382c-.301-.15-1.78-.877-2.056-.977-.276-.1-.477-.15-.678.15-.201.3-.777.977-.953 1.177-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.895-.798-1.5-1.784-1.676-2.085-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.201-.301.301-.502.101-.201.05-.376-.025-.526-.075-.15-.678-1.635-.929-2.241-.244-.59-.492-.51-.678-.519l-.578-.01c-.201 0-.527.075-.803.376s-1.054 1.03-1.054 2.512 1.079 2.914 1.23 3.115c.15.201 2.122 3.24 5.141 4.544.718.31 1.278.495 1.716.634.721.23 1.378.197 1.9.12.58-.087 1.78-.727 2.03-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.352z" fill="#FFFFFF"/></svg><span>Falar no WhatsApp</span><span class="btn-arrow" aria-hidden="true">↗</span></a></div>
-      <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileDrawer"><span></span><span></span><span></span></button>
-    </div>
-    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true"><div class="mobile-drawer-panel"><button class="mobile-close" type="button" data-close-menu aria-label="Fechar menu">×</button><div class="mobile-drawer-brand"><img src={asset(site.assets.logo)} alt="Lavanderia Ivoti" width="1024" height="1536" loading="lazy" /><strong>lavanderia ivoti</strong></div><nav class="mobile-nav" aria-label="Navegação móvel"><ul class="mobile-nav-list"><li><a href="#inicio">Início</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#avaliacoes">Avaliações</a></li><li><a href="#contato">Contato</a></li></ul></nav><a href={site.phoneLink} target="_blank" rel="noopener noreferrer" class="btn btn-mobile-whatsapp"><svg class="icon-whatsapp" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2C6.478 2 1.996 6.482 1.996 12.008c0 1.765.46 3.488 1.332 5.006L2 22l5.127-1.345c1.472.803 3.13 1.227 4.877 1.227 5.526 0 10.008-4.482 10.008-10.008C22.012 6.482 17.53 2 12.004 2z" fill="#25D366"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382c-.301-.15-1.78-.877-2.056-.977-.276-.1-.477-.15-.678.15-.201.3-.777.977-.953 1.177-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.895-.798-1.5-1.784-1.676-2.085-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.201-.301.301-.502.101-.201.05-.376-.025-.526-.075-.15-.678-1.635-.929-2.241-.244-.59-.492-.51-.678-.519l-.578-.01c-.201 0-.527.075-.803.376s-1.054 1.03-1.054 2.512 1.079 2.914 1.23 3.115c.15.201 2.122 3.24 5.141 4.544.718.31 1.278.495 1.716.634.721.23 1.378.197 1.9.12.58-.087 1.78-.727 2.03-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.352z" fill="#FFFFFF"/></svg> <span>Falar no WhatsApp</span><span class="btn-arrow" aria-hidden="true">↗</span></a></div><div class="mobile-backdrop" data-close-menu></div></div>
-  </header>
-
-  <main id="main-content">
-    <section class="hero-section" id="inicio" aria-labelledby="hero-title">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <div class="hero-badge"><span class="hero-badge-icon" aria-hidden="true">🚚</span><span>Coleta e Entrega Grátis em Ivoti</span></div>
-          <h1 class="hero-title" id="hero-title">Cuidado profissional<br />para suas peças,<br /><span>em Ivoti.</span></h1>
-          <p class="hero-description">Lavagem de roupas, ternos a seco, sofás, impermeabilização, tapetes, cortinas, tênis, linha pet e couro. Coleta e entrega grátis para deixar sua rotina mais leve.</p>
-          <div class="hero-actions"><a href={site.phoneLink} target="_blank" rel="noopener noreferrer" class="btn btn-hero-primary"><svg class="icon-whatsapp" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2C6.478 2 1.996 6.482 1.996 12.008c0 1.765.46 3.488 1.332 5.006L2 22l5.127-1.345c1.472.803 3.13 1.227 4.877 1.227 5.526 0 10.008-4.482 10.008-10.008C22.012 6.482 17.53 2 12.004 2z" fill="#25D366"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382c-.301-.15-1.78-.877-2.056-.977-.276-.1-.477-.15-.678.15-.201.3-.777.977-.953 1.177-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.895-.798-1.5-1.784-1.676-2.085-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.201-.301.301-.502.101-.201.05-.376-.025-.526-.075-.15-.678-1.635-.929-2.241-.244-.59-.492-.51-.678-.519l-.578-.01c-.201 0-.527.075-.803.376s-1.054 1.03-1.054 2.512 1.079 2.914 1.23 3.115c.15.201 2.122 3.24 5.141 4.544.718.31 1.278.495 1.716.634.721.23 1.378.197 1.9.12.58-.087 1.78-.727 2.03-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.352z" fill="#FFFFFF"/></svg><span>Falar no WhatsApp</span><span class="btn-arrow" aria-hidden="true">↗</span></a><a href="#servicos" class="btn btn-hero-secondary"><span>Conhecer serviços</span><span class="btn-arrow" aria-hidden="true">↗</span></a></div>
+  <!-- Application Mount Target -->
+  <div id="app" class="flex flex-col min-h-screen">
+    
+    <!-- Top Notice / Status Bar -->
+    <aside class="bg-[#0C111A] text-slate-300 text-xs py-1.5 sm:py-2 px-4 border-b border-white/5" aria-label="Informações de atendimento">
+      <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#0090D0] animate-pulse shrink-0"></span>
+          <span class="tracking-wide sm:hidden font-medium text-slate-200">Ijuí e região</span>
+          <span class="tracking-wide hidden sm:inline">Atendimento especializado em <strong>{siteData.company.locationString}</strong> e região</span>
         </div>
-        <div class="hero-visual"><img src={asset(site.assets.hero)} alt="Toalhas dobradas com a marca Lavanderia Ivoti" width="1448" height="1086" fetchpriority="high" loading="eager" /></div>
+        <div class="flex items-center gap-4 sm:gap-6 text-slate-400">
+          <span class="hidden md:inline">{siteData.company.hours.weekdays}</span>
+          <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20falar%20com%20o%20atendimento%20da%20Ijuí%20Clima.`} target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors">
+            <svg class="w-3.5 h-3.5 text-[#25D366] shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            <span>Plantão WhatsApp</span>
+          </a>
+        </div>
       </div>
-      <div class="trust-bar" aria-label="Informações da lavanderia"><div class="trust-item"><span class="trust-symbol gold" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span><span><strong>Lavanderia Ivoti</strong><small>Cuidado local</small></span></div><div class="trust-item"><span class="trust-symbol" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#1b5699" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></span><span><strong>Coleta Grátis</strong><small>Buscamos em Ivoti</small></span></div><div class="trust-item"><span class="trust-symbol" aria-hidden="true"><svg class="icon-google" width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.51h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.34z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg></span><span><strong>{site.rating} no Google</strong><small>Opinião de clientes</small></span></div><div class="trust-item"><span class="trust-symbol" aria-hidden="true"><svg class="icon-whatsapp" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2C6.478 2 1.996 6.482 1.996 12.008c0 1.765.46 3.488 1.332 5.006L2 22l5.127-1.345c1.472.803 3.13 1.227 4.877 1.227 5.526 0 10.008-4.482 10.008-10.008C22.012 6.482 17.53 2 12.004 2z" fill="#25D366"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382c-.301-.15-1.78-.877-2.056-.977-.276-.1-.477-.15-.678.15-.201.3-.777.977-.953 1.177-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.895-.798-1.5-1.784-1.676-2.085-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.201-.301.301-.502.101-.201.05-.376-.025-.526-.075-.15-.678-1.635-.929-2.241-.244-.59-.492-.51-.678-.519l-.578-.01c-.201 0-.527.075-.803.376s-1.054 1.03-1.054 2.512 1.079 2.914 1.23 3.115c.15.201 2.122 3.24 5.141 4.544.718.31 1.278.495 1.716.634.721.23 1.378.197 1.9.12.58-.087 1.78-.727 2.03-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.352z" fill="#FFFFFF"/></svg></span><span><strong>WhatsApp</strong><small>{site.phoneDisplay}</small></span></div></div>
-    </section>
+    </aside>
 
-    <section class="services-section" id="servicos" aria-labelledby="services-title"><div class="container"><header class="section-header"><span class="section-eyebrow">NOSSOS SERVIÇOS</span><h2 class="section-title" id="services-title">Soluções completas para o seu dia a dia</h2><div class="section-divider" aria-hidden="true"><i></i><span>✦</span><i></i></div></header><div class="services-grid">{services.map((service) => <article class="service-card" id={`servico-${service.id}`}><div class="service-image-wrap"><img src={asset(service.image)} alt={service.title} width="596" height="400" loading="lazy" style={`object-position: ${service.imagePosition}`} /><span class="service-icon" aria-hidden="true"><img src={asset(service.icon)} alt="" width="72" height="72" loading="lazy" /></span></div><div class="service-content"><h3>{service.title}</h3><p>{service.text}</p><a href={whatsapp(service.query)} target="_blank" rel="noopener noreferrer" aria-label={`Saiba mais sobre ${service.title} no WhatsApp`}><span>Saiba mais</span><span class="btn-arrow" aria-hidden="true">↗</span></a></div></article>)}</div></div></section>
+    <!-- Main Header -->
+    <header id="main-header" class="sticky top-0 z-40 w-full transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] py-3.5 sm:py-5 lg:py-7 border-b border-transparent">
+      <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8 flex items-center justify-between">
+        
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group focus:outline-none rounded-md py-1" aria-label={`${siteData.company.name} - Início`}>
+          <div class="h-11 sm:h-14 lg:h-[4.25rem] flex items-center">
+            <img src={asset(siteData.seo.ogImage)} alt={siteData.company.name} class="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]" width="175" height="56" />
+          </div>
+        </a>
 
-    <section class="about-section" id="sobre" aria-labelledby="about-title"><div class="container about-grid"><div class="about-composite"><img src={asset(site.assets.about)} alt="Toalhas dobradas representando a qualidade da lavanderia" width="540" height="400" loading="lazy" /></div><div class="about-copy"><span class="about-eyebrow">SOBRE NÓS</span><h2 id="about-title">Tradição, cuidado e confiança que passam de geração em geração.</h2><p>A Lavanderia Ivoti nasceu com um propósito simples e poderoso: cuidar de cada peça como se fosse única.</p><p>Seguimos com o mesmo compromisso de qualidade, investindo em tecnologia, equipe especializada e nos melhores produtos para entregar sempre o melhor para você.</p></div><div class="about-benefits">{aboutBenefits.map((benefit) => <div><img src={asset(benefit.icon)} alt="" class="benefit-icon" width="54" height="54" loading="lazy" aria-hidden="true" /><strong set:html={benefit.title} /></div>)}</div></div></section>
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-8 xl:gap-10" aria-label="Navegação Principal">
+          {siteData.navigation.map((item) => (
+            <a href={item.href} class="nav-link">
+              {item.label}
+            </a>
+          ))}
+        </nav>
 
-    <section class="institutional-section" id="institucional" aria-labelledby="institutional-title"><div class="container institutional-container"><div class="institutional-content"><div class="institutional-eyebrow-wrap"><span class="institutional-eyebrow">ATENDIMENTO INSTITUCIONAL</span></div><h2 class="institutional-title" id="institutional-title">Rouparia profissional<br />para clínicas e<br /><span>instituições de saúde.</span></h2><p class="institutional-subtitle">Higienização profissional com processos adequados,<br class="hide-mobile" />controle de qualidade e acompanhamento em cada etapa.</p><div class="institutional-differentials"><div class="inst-diff-item"><div class="inst-diff-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></div><p><span class="inst-line">Processos adequados</span><span class="inst-line">e controle de qualidade</span></p></div><div class="inst-diff-divider" aria-hidden="true"></div><div class="inst-diff-item"><div class="inst-diff-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2" width="18" height="20" rx="3"/><circle cx="12" cy="13" r="5"/><path d="M12 10a3 3 0 0 1 3 3"/><circle cx="7" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="10" cy="6" r="1" fill="currentColor" stroke="none"/></svg></div><p><span class="inst-line">Higienização</span><span class="inst-line">profissional e segura</span></p></div><div class="inst-diff-divider" aria-hidden="true"></div><div class="inst-diff-item"><div class="inst-diff-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><p><span class="inst-line">Licença SMA Ivoti</span><span class="inst-line">e laudos comprobatórios</span></p></div></div><div class="institutional-action-row"><a href={site.phoneLink} target="_blank" rel="noopener noreferrer" class="btn btn-institutional-cta"><span>Solicitar proposta institucional</span><span class="btn-arrow" aria-hidden="true">↗</span></a><div class="institutional-support"><div class="inst-support-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="10" y1="10" x2="14" y2="10"/></svg></div><p>Atendimento para hospitais, clínicas,<br />laboratórios e centros de diagnóstico.<br /><span class="inst-sma-pill">Licença de Operação SMA Ivoti</span></p></div></div><div class="institutional-bottom-bar" aria-hidden="true"><span class="inst-bar-line"></span><span class="inst-bar-text">TRADIÇÃO QUE CUIDA DE MAIS PESSOAS</span><span class="inst-bar-line inst-bar-long"></span></div></div></div><div class="institutional-visual"><img src={asset(site.assets.institutional)} alt="Rouparia profissional Lavanderia Ivoti" width="1161" height="1354" loading="lazy" /></div></section>
+        <!-- CTA & Mobile Menu Toggle -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <button type="button" data-open-quote class="btn-primary !h-12 !px-6 !text-sm !hidden sm:!inline-flex">
+            <span>Solicitar orçamento</span>
+            <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
 
-    <section class="process-section" id="como-funciona" aria-labelledby="process-title"><div class="container"><header class="section-header compact"><span class="section-eyebrow">COMO FUNCIONA</span><h2 class="section-title" id="process-title">Prático, rápido e feito para você</h2><div class="section-divider" aria-hidden="true"><i></i><span>✦</span><i></i></div></header><div class="process-grid">{processSteps.map((step, index) => <article class="process-step"><span class="step-number">{index + 1}</span><img src={asset(step.icon)} alt="" class="process-icon" width="92" height="92" loading="lazy" aria-hidden="true" /><div><h3 set:html={step.title} /><p>{step.text}</p></div></article>)}</div></div></section>
+          <button id="mobile-menu-toggle" type="button" class="lg:hidden p-2 text-slate-700 hover:text-slate-950 focus:outline-none rounded-md" aria-label="Abrir menu de navegação" aria-expanded="false">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
 
-    <section class="reviews-section" id="avaliacoes" aria-labelledby="reviews-title"><div class="container"><div class="testimonial-heading"><div><span class="section-eyebrow">AVALIAÇÕES</span><h2 class="section-title" id="reviews-title">A confiança de quem já conhece</h2></div><div><p>Relatos de clientes sobre o cuidado com cada peça.</p><a class="google-rating" href={site.googleProfile} target="_blank" rel="noopener noreferrer"><svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"></path><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"></path><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"></path><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"></path></svg><strong>{site.rating}</strong><span class="google-stars" aria-hidden="true">{[0, 1, 2, 3, 4].map(() => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>)}</span><small>{reviews.length} avaliações</small></a></div></div><div class="testimonial-grid">{reviews.map((review) => <figure class="testimonial-card"><div class="testimonial-topline"><svg class="google-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"></path><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"></path><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"></path><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"></path></svg><span class="testimonial-stars" role="img" aria-label="5 estrelas">{[0, 1, 2, 3, 4].map(() => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>)}</span></div><blockquote>{review.text}</blockquote><figcaption><span class="testimonial-author"><strong>{review.name}</strong><span>{review.city}</span><span class="testimonial-source">Avaliação Google</span></span></figcaption></figure>)}</div></div></section>
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-backdrop" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+    <div id="mobile-drawer" class="fixed inset-y-0 right-0 max-w-sm w-full bg-white z-50 p-6 sm:p-8 shadow-2xl transform translate-x-full invisible transition-transform duration-300 ease-out flex flex-col justify-between lg:hidden">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+          <img src={asset(siteData.seo.ogImage)} alt={siteData.company.name} class="h-9 w-auto" />
+          <button id="mobile-menu-close" type="button" class="p-2 text-slate-400 hover:text-slate-800 focus:outline-none rounded-md" aria-label="Fechar menu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <nav class="mt-6 flex flex-col gap-2" aria-label="Navegação móvel">
+          {siteData.navigation.map((item) => (
+            <a href={item.href} class="mobile-nav-link text-lg font-medium text-slate-900 hover:text-[#0C3B78] py-2.5 border-b border-slate-100 transition-colors">
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
 
-    <section class="contact-info-section"><div class="container contact-info-grid"><div><span class="section-eyebrow">FALE COM A EQUIPE</span><h2>Pronto para<br /><span>cuidar melhor?</span></h2></div><div class="contact-info-copy"><p>Av. Pres. Lucena, 2084<br />Concórdia · Ivoti/RS<br />CEP {site.postalCode}</p><div class="contact-buttons"><a href={site.phoneLink} target="_blank" rel="noopener noreferrer" class="btn btn-contact-primary"><svg class="icon-whatsapp" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2C6.478 2 1.996 6.482 1.996 12.008c0 1.765.46 3.488 1.332 5.006L2 22l5.127-1.345c1.472.803 3.13 1.227 4.877 1.227 5.526 0 10.008-4.482 10.008-10.008C22.012 6.482 17.53 2 12.004 2z" fill="#25D366"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382c-.301-.15-1.78-.877-2.056-.977-.276-.1-.477-.15-.678.15-.201.3-.777.977-.953 1.177-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.895-.798-1.5-1.784-1.676-2.085-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.201-.301.301-.502.101-.201.05-.376-.025-.526-.075-.15-.678-1.635-.929-2.241-.244-.59-.492-.51-.678-.519l-.578-.01c-.201 0-.527.075-.803.376s-1.054 1.03-1.054 2.512 1.079 2.914 1.23 3.115c.15.201 2.122 3.24 5.141 4.544.718.31 1.278.495 1.716.634.721.23 1.378.197 1.9.12.58-.087 1.78-.727 2.03-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.352z" fill="#FFFFFF"/></svg> <span>WhatsApp {site.phoneDisplay}</span><span class="btn-arrow" aria-hidden="true">↗</span></a><a href={site.phoneLinkAlt} target="_blank" rel="noopener noreferrer" class="btn btn-contact-secondary"><svg class="icon-whatsapp" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2C6.478 2 1.996 6.482 1.996 12.008c0 1.765.46 3.488 1.332 5.006L2 22l5.127-1.345c1.472.803 3.13 1.227 4.877 1.227 5.526 0 10.008-4.482 10.008-10.008C22.012 6.482 17.53 2 12.004 2z" fill="#25D366"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382c-.301-.15-1.78-.877-2.056-.977-.276-.1-.477-.15-.678.15-.201.3-.777.977-.953 1.177-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.895-.798-1.5-1.784-1.676-2.085-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.201-.301.301-.502.101-.201.05-.376-.025-.526-.075-.15-.678-1.635-.929-2.241-.244-.59-.492-.51-.678-.519l-.578-.01c-.201 0-.527.075-.803.376s-1.054 1.03-1.054 2.512 1.079 2.914 1.23 3.115c.15.201 2.122 3.24 5.141 4.544.718.31 1.278.495 1.716.634.721.23 1.378.197 1.9.12.58-.087 1.78-.727 2.03-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.352z" fill="#FFFFFF"/></svg> <span>WhatsApp {site.phoneDisplayAlt}</span><span class="btn-arrow" aria-hidden="true">↗</span></a><a href={site.googlePhoneLink} class="btn btn-contact-secondary"><span>Fixo {site.googlePhoneDisplay}</span><span class="btn-arrow" aria-hidden="true">↗</span></a></div><p class="hours-note">Horários de referência: segunda a sexta, 08:30–18:30 · sábado, 08:30–12:00.</p></div></div></section>
+      <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
+        <button type="button" data-open-quote class="btn-primary w-full justify-center !h-12 !text-sm">
+          <span>Solicitar orçamento</span>
+          <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+        <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Vim%20pelo%20site%20da%20Ijuí%20Clima%20e%20gostaria%20de%20um%20atendimento.`} target="_blank" rel="noopener noreferrer" class="btn-secondary w-full justify-center !h-12 !text-sm">
+          <svg class="w-4 h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <span>WhatsApp Direto</span>
+        </a>
+        <p class="text-xs text-center text-slate-400 mt-1">{siteData.company.locationString}</p>
+      </div>
+    </div>
 
-    <section class="faq-section" aria-labelledby="faq-title"><div class="container faq-grid"><div><span class="section-eyebrow">DÚVIDAS COMUNS</span><h2 id="faq-title">Quer saber<br /><span>mais?</span></h2></div><div class="faq-list">{faqs.map(([question, answer]) => <details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
+    <!-- Conteúdo Principal -->
+    <main id="conteudo-principal">
+      
+      <!-- Hero Section -->
+      <section class="relative bg-white pt-6 pb-12 sm:pb-16 lg:py-0 overflow-hidden" aria-labelledby="hero-title">
+        <!-- Imagem de Fundo Integrada (Desktop) -->
+        <div class="hidden lg:block absolute inset-y-0 right-0 w-[58%] xl:w-[56%] pointer-events-none z-0 overflow-hidden">
+          <img 
+            src={asset(siteData.hero.image.url)} 
+            alt={siteData.hero.image.alt} 
+            class="w-full h-full object-cover object-[center_right] filter contrast-[1.01]"
+            loading="eager"
+            fetchpriority="high"
+            width={siteData.hero.image.width}
+            height={siteData.hero.image.height}
+          />
+          <div class="absolute inset-0" style="background: linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.95) 12%, rgba(255,255,255,0.55) 28%, rgba(255,255,255,0) 52%);"></div>
+        </div>
 
-    <section class="location-section" id="contato" aria-label="Localização da Lavanderia Ivoti no Google Maps">
-      <iframe src={site.mapsEmbedUrl} loading="lazy" title="Mapa da Lavanderia Ivoti no Google Maps" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </section>
-  </main>
+        <div class="max-w-[1280px] mx-auto px-5 max-[375px]:px-4 sm:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-[50%_50%] xl:grid-cols-[48%_52%] items-center lg:min-h-[540px] lg:max-h-[600px]">
+            
+            <div class="flex flex-col items-start justify-center py-4 sm:py-8 lg:py-14 z-10 w-full max-w-none lg:max-w-[560px]">
+              <span class="hero-animate-up text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.08em] text-[#0C3B78] block mb-3 sm:mb-4">
+                {siteData.hero.eyebrow}
+              </span>
 
-  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a href="#inicio" class="footer-logo" aria-label="Lavanderia Ivoti - Página inicial"><img src={asset(site.assets.logo)} alt="Lavanderia Ivoti" width="1024" height="1536" loading="lazy" /></a><p>Cuidado local para deixar sua rotina mais leve.</p><div class="social-links"><a href={site.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram da Lavanderia Ivoti" class="social-instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="igGradientIvoti" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFD521"/><stop offset="25%" stop-color="#F50000"/><stop offset="50%" stop-color="#B900B4"/><stop offset="100%" stop-color="#5500FF"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#igGradientIvoti)"/><rect x="5.5" y="5.5" width="13" height="13" rx="3.6" stroke="#FFFFFF" stroke-width="1.6" fill="none"/><circle cx="12" cy="12" r="3.2" stroke="#FFFFFF" stroke-width="1.6" fill="none"/><circle cx="15.8" cy="8.2" r="0.85" fill="#FFFFFF"/></svg></a><a href={site.googleProfile} target="_blank" rel="noopener noreferrer" aria-label="Perfil da Lavanderia Ivoti no Google Maps" class="social-google"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.51h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.34z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg></a><a href={site.phoneLink} target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp da Lavanderia Ivoti" class="social-whatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2C6.478 2 1.996 6.482 1.996 12.008c0 1.765.46 3.488 1.332 5.006L2 22l5.127-1.345c1.472.803 3.13 1.227 4.877 1.227 5.526 0 10.008-4.482 10.008-10.008C22.012 6.482 17.53 2 12.004 2z" fill="#25D366"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382c-.301-.15-1.78-.877-2.056-.977-.276-.1-.477-.15-.678.15-.201.3-.777.977-.953 1.177-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.895-.798-1.5-1.784-1.676-2.085-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.201-.301.301-.502.101-.201.05-.376-.025-.526-.075-.15-.678-1.635-.929-2.241-.244-.59-.492-.51-.678-.519l-.578-.01c-.201 0-.527.075-.803.376s-1.054 1.03-1.054 2.512 1.079 2.914 1.23 3.115c.15.201 2.122 3.24 5.141 4.544.718.31 1.278.495 1.716.634.721.23 1.378.197 1.9.12.58-.087 1.78-.727 2.03-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.352z" fill="#FFFFFF"/></svg></a></div></div><div class="footer-col"><h3>LINKS RÁPIDOS</h3><ul><li><a href="#inicio">Início</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#avaliacoes">Avaliações</a></li><li><a href="#contato">Contato</a></li></ul></div><div class="footer-col"><h3>SERVIÇOS</h3><ul>{services.map((service) => <li><a href={`#servico-${service.id}`}>{service.title}</a></li>)}</ul></div><div class="footer-col footer-contact"><h3>CONTATO</h3><p><span class="footer-icon-loc" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C7.58 2 4 5.58 4 10c0 5.75 6.8 11.47 7.42 11.97.35.28.81.28 1.16 0 .62-.5 7.42-6.22 7.42-11.97 0-4.42-3.58-8-8-8zm0 11.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" fill="#EA4335"/></svg></span>Av. Pres. Lucena, 2084<br />Concórdia · Ivoti/RS</p><p><span class="footer-icon-phone" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><a href={site.googlePhoneLink}>Fixo {site.googlePhoneDisplay}</a></p><p><span class="footer-icon-wa" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2C6.478 2 1.996 6.482 1.996 12.008c0 1.765.46 3.488 1.332 5.006L2 22l5.127-1.345c1.472.803 3.13 1.227 4.877 1.227 5.526 0 10.008-4.482 10.008-10.008C22.012 6.482 17.53 2 12.004 2z" fill="#25D366"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382c-.301-.15-1.78-.877-2.056-.977-.276-.1-.477-.15-.678.15-.201.3-.777.977-.953 1.177-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.895-.798-1.5-1.784-1.676-2.085-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.201-.301.301-.502.101-.201.05-.376-.025-.526-.075-.15-.678-1.635-.929-2.241-.244-.59-.492-.51-.678-.519l-.578-.01c-.201 0-.527.075-.803.376s-1.054 1.03-1.054 2.512 1.079 2.914 1.23 3.115c.15.201 2.122 3.24 5.141 4.544.718.31 1.278.495 1.716.634.721.23 1.378.197 1.9.12.58-.087 1.78-.727 2.03-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.352z" fill="#FFFFFF"/></svg></span><a href={site.phoneLink} target="_blank" rel="noreferrer">WhatsApp {site.phoneDisplay}</a></p><p><span class="footer-icon-wa" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2C6.478 2 1.996 6.482 1.996 12.008c0 1.765.46 3.488 1.332 5.006L2 22l5.127-1.345c1.472.803 3.13 1.227 4.877 1.227 5.526 0 10.008-4.482 10.008-10.008C22.012 6.482 17.53 2 12.004 2z" fill="#25D366"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382c-.301-.15-1.78-.877-2.056-.977-.276-.1-.477-.15-.678.15-.201.3-.777.977-.953 1.177-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.895-.798-1.5-1.784-1.676-2.085-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.201-.301.301-.502.101-.201.05-.376-.025-.526-.075-.15-.678-1.635-.929-2.241-.244-.59-.492-.51-.678-.519l-.578-.01c-.201 0-.527.075-.803.376s-1.054 1.03-1.054 2.512 1.079 2.914 1.23 3.115c.15.201 2.122 3.24 5.141 4.544.718.31 1.278.495 1.716.634.721.23 1.378.197 1.9.12.58-.087 1.78-.727 2.03-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.352z" fill="#FFFFFF"/></svg></span><a href={site.phoneLinkAlt} target="_blank" rel="noreferrer">WhatsApp {site.phoneDisplayAlt}</a></p><p><span class="footer-icon-ig" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5.5" fill="#B900B4"/><rect x="5.5" y="5.5" width="13" height="13" rx="3.6" stroke="#FFFFFF" stroke-width="1.6" fill="none"/><circle cx="12" cy="12" r="3.2" stroke="#FFFFFF" stroke-width="1.6" fill="none"/><circle cx="15.8" cy="8.2" r="0.85" fill="#FFFFFF"/></svg></span><a href={site.instagram} target="_blank" rel="noreferrer">@lavanderia_ivoti</a></p><p style="color:var(--gold-light);font-size:11px;font-weight:700;margin-top:6px;display:flex;align-items:center;gap:6px;"><span aria-hidden="true">🚚</span><span>Coleta e Entrega Grátis</span></p></div><div class="footer-col footer-hours"><h3>HORÁRIOS</h3><p>Segunda a sexta<br /><strong>08:30–18:30</strong></p><p>Sábado<br /><strong>08:30–12:00</strong></p></div></div><div class="container footer-bottom"><span>© {new Date().getFullYear()} Lavanderia Ivoti · Ivoti/RS</span><span class="footer-credit">Desenvolvido por <a href="https://jeankist.com" target="_blank" rel="noreferrer">Jean Kist</a> ©</span><span class="footer-legal"><a href="#inicio" aria-label="Política de Privacidade">Política de Privacidade</a><a href="#inicio" aria-label="Termos de Uso">Termos de Uso</a></span></div></footer>
-  <aside class="mobile-action-bar" aria-label="Contato rápido"><a href={site.phoneLink} target="_blank" rel="noopener noreferrer"><svg class="icon-whatsapp" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2C6.478 2 1.996 6.482 1.996 12.008c0 1.765.46 3.488 1.332 5.006L2 22l5.127-1.345c1.472.803 3.13 1.227 4.877 1.227 5.526 0 10.008-4.482 10.008-10.008C22.012 6.482 17.53 2 12.004 2z" fill="#25D366"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382c-.301-.15-1.78-.877-2.056-.977-.276-.1-.477-.15-.678.15-.201.3-.777.977-.953 1.177-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.895-.798-1.5-1.784-1.676-2.085-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.201-.301.301-.502.101-.201.05-.376-.025-.526-.075-.15-.678-1.635-.929-2.241-.244-.59-.492-.51-.678-.519l-.578-.01c-.201 0-.527.075-.803.376s-1.054 1.03-1.054 2.512 1.079 2.914 1.23 3.115c.15.201 2.122 3.24 5.141 4.544.718.31 1.278.495 1.716.634.721.23 1.378.197 1.9.12.58-.087 1.78-.727 2.03-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.352z" fill="#FFFFFF"/></svg><span>WhatsApp</span></a><a href={site.mapsUrl} target="_blank" rel="noopener noreferrer"><span aria-hidden="true">⌖</span><span>Localização</span></a></aside>
+              <h1 id="hero-title" class="hero-animate-up font-display text-[38px] min-[390px]:text-[44px] sm:text-[52px] lg:text-[58px] xl:text-[64px] font-extrabold text-[#0F141C] tracking-[-0.035em] leading-[1.0] mb-4 sm:mb-6" style="animation-delay: 80ms;">
+                {siteData.hero.headlinePart1}<br />{siteData.hero.headlinePart2}<br /><span class="text-[#0090D0]">{siteData.hero.headlineHighlight}</span>
+              </h1>
 
-  <script is:inline>
-    const drawer = document.querySelector('#mobileDrawer');
-    const toggle = document.querySelector('#mobileMenuToggle');
-    const closeItems = document.querySelectorAll('[data-close-menu], .mobile-nav a');
-    const setDrawer = (open) => { if (!drawer || !toggle) return; drawer.classList.toggle('open', open); drawer.setAttribute('aria-hidden', String(!open)); toggle.setAttribute('aria-expanded', String(open)); document.body.classList.toggle('menu-open', open); };
-    toggle?.addEventListener('click', (e) => {
-      e.preventDefault();
-      setDrawer(!drawer?.classList.contains('open'));
-    });
-    closeItems.forEach((item) => item.addEventListener('click', () => setDrawer(false)));
-    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setDrawer(false); });
+              <p class="hero-animate-up font-body text-[15px] sm:text-[16px] text-slate-600 leading-[1.6] w-full max-w-none lg:max-w-[490px] mb-6 sm:mb-8" style="animation-delay: 160ms;">
+                {siteData.hero.description}
+              </p>
 
-    // Hero Reveal Animation (Paridade com Pedro Zvir)
-    const startHeroReveal = () => {
-      const heroContainer = document.querySelector('.hero-content');
-      if (!heroContainer) return;
+              <div class="hero-animate-up flex flex-col min-[390px]:flex-row items-stretch min-[390px]:items-center gap-3.5 sm:gap-6 w-full sm:w-auto mb-6 sm:mb-7" style="animation-delay: 240ms;">
+                <button type="button" data-open-quote class="btn-primary !h-[52px] !px-7 sm:!px-8 !rounded-md !text-[15px] font-semibold shadow-sm hover:shadow-md hover:-translate-y-[1px] transition-all duration-200 justify-center">
+                  <span>{siteData.hero.primaryCta}</span>
+                  <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+                
+                <a href="#servicos" class="link-editorial group inline-flex items-center justify-center gap-2 py-2.5 px-2 text-[#0C3B78] hover:text-[#0090D0] font-semibold text-[15px] transition-colors duration-200">
+                  <span>{siteData.hero.secondaryCta}</span>
+                  <svg class="w-4 h-4 text-[#0090D0] transform transition-transform duration-200 group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+              </div>
 
-      const heroBadge = heroContainer.querySelector('.hero-badge');
-      const heroTitle = heroContainer.querySelector('h1');
-      const heroDescription = heroContainer.querySelector('.hero-description');
-      const heroActions = heroContainer.querySelector('.hero-actions');
-      const trustBar = document.querySelector('.trust-bar');
+              <div class="hero-animate-up inline-flex items-start sm:items-center gap-2.5 px-3.5 py-2.5 rounded-md bg-white border border-slate-200/90 text-xs sm:text-[13px] text-slate-700 font-medium shadow-2xs w-full sm:w-auto" style="animation-delay: 320ms;">
+                <svg class="w-3.5 h-3.5 text-[#0C3B78] shrink-0 mt-0.5 sm:mt-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <div class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-1.5 leading-snug">
+                  <span>Sede própria em <span class="text-[#0090D0] font-semibold">Ijuí/RS</span></span>
+                  <span class="hidden sm:inline text-slate-300">|</span>
+                  <span class="text-slate-500 sm:text-slate-700">Atendimento em toda a região</span>
+                </div>
+              </div>
+            </div>
 
-      const splitHeroWords = (element) => {
-        if (!element) return [];
-        const words = [];
-        const items = [];
+            <!-- Imagem no Mobile/Tablet -->
+            <div class="block lg:hidden relative w-full aspect-[4/3] rounded-xl overflow-hidden mt-5 sm:mt-6 shadow-sm border border-slate-100">
+              <img 
+                src={asset(siteData.hero.image.url)} 
+                alt={siteData.hero.image.alt} 
+                class="w-full h-full object-cover object-[center_15%]"
+                loading="eager"
+                fetchpriority="high"
+                width={siteData.hero.image.width}
+                height={siteData.hero.image.height}
+              />
+            </div>
 
-        const traverse = (node, isHighlight) => {
-          if (node.nodeType === Node.TEXT_NODE) {
-            const tokens = (node.textContent || '').trim().split(/\s+/).filter(Boolean);
-            tokens.forEach((t) => items.push({ type: 'word', text: t, isHighlight }));
-          } else if (node.nodeType === Node.ELEMENT_NODE) {
-            if (node.tagName.toLowerCase() === 'br') {
-              items.push({ type: 'break' });
-            } else {
-              const highlight = isHighlight || node.classList.contains('highlight') || node.tagName.toLowerCase() === 'span';
-              Array.from(node.childNodes).forEach((child) => traverse(child, highlight));
-            }
-          }
-        };
+          </div>
+        </div>
+      </section>
 
-        Array.from(element.childNodes).forEach((child) => traverse(child, false));
+      <!-- Trust Bar -->
+      <section class="bg-slate-50/80 border-y border-slate-200/75" aria-label="Diferenciais e Padrão de Atendimento">
+        <div class="reveal-fade max-w-[1280px] mx-auto px-5 max-[375px]:px-4 sm:px-8 py-5 sm:py-6 lg:py-7">
+          <div class="grid grid-cols-1 min-[370px]:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-0 lg:divide-x lg:divide-slate-200/80">
+            
+            {siteData.trustBar.map((item, index) => (
+              <div class={`flex items-center gap-3 sm:gap-3.5 group py-1.5 sm:py-2 ${index === 0 ? "lg:pr-4 xl:pr-6" : index === 3 ? "lg:pl-4 xl:pl-6" : "lg:px-4 xl:px-6"}`}>
+                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-50/90 border border-blue-100/70 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-blue-100/80 group-hover:border-blue-200/90 shadow-2xs">
+                  {item.icon === "tool" && (
+                    <svg class="w-5 h-5 text-[#0090D0]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                  )}
+                  {item.icon === "gear" && (
+                    <svg class="w-5 h-5 text-[#0090D0]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="3"/>
+                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                  )}
+                  {item.icon === "team" && (
+                    <svg class="w-5 h-5 text-[#0090D0]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                  )}
+                  {item.icon === "location" && (
+                    <svg class="w-5 h-5 text-[#0090D0]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                  )}
+                </div>
+                <div class="min-w-0">
+                  <h3 class="text-[13px] min-[390px]:text-[13.5px] sm:text-[14px] xl:text-[14.5px] font-bold text-slate-900 leading-tight tracking-tight lg:whitespace-nowrap">
+                    {item.title}
+                  </h3>
+                  <p class="text-[11.5px] sm:text-[12px] xl:text-[12.5px] text-slate-500 leading-snug mt-0.5 sm:mt-1">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
 
-        element.replaceChildren();
-        items.forEach((item) => {
-          if (item.type === 'break') {
-            element.appendChild(document.createElement('br'));
-          } else {
-            const span = document.createElement('span');
-            span.className = `hero-reveal-word${item.isHighlight ? ' highlight' : ''}`;
-            span.textContent = item.text;
-            element.append(span, ' ');
-            words.push(span);
-          }
-        });
+          </div>
+        </div>
+      </section>
 
-        return words;
-      };
+      <!-- Serviços -->
+      <section id="servicos" class="py-16 sm:py-20 lg:py-28" aria-labelledby="servicos-title">
+        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+            
+            <!-- Coluna Esquerda -->
+            <div class="lg:col-span-4 lg:sticky lg:top-32 flex flex-col">
+              <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.services.eyebrow}</span>
+              <h2 id="servicos-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
+                {siteData.services.title}
+              </h2>
+              <p class="reveal-up text-[15px] sm:text-base text-slate-600 leading-relaxed mb-6 lg:mb-10" style="transition-delay: 140ms;">
+                {siteData.services.description}
+              </p>
 
-      const scheduleHeroWords = (words, startDelay) => {
-        let line = 0;
-        let wordInLine = 0;
-        let previousTop = null;
+              <!-- Fotografia Técnica Integrada (Desktop) -->
+              <div class="reveal-scale hidden lg:block rounded-lg overflow-hidden border border-slate-200 bg-slate-100 aspect-[4/5] sm:aspect-[3/4] shadow-md relative" style="transition-delay: 180ms;">
+                <img 
+                  id="service-featured-img"
+                  src={asset(siteData.services.items[0].image)} 
+                  alt={siteData.services.items[0].alt} 
+                  class="w-full h-full object-cover transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] transform scale-100"
+                  loading="lazy"
+                  width="440"
+                  height="586"
+                />
+              </div>
+            </div>
 
-        words.forEach((word) => {
-          const currentTop = word.offsetTop;
-          if (previousTop !== null && Math.abs(currentTop - previousTop) > 2) {
-            line += 1;
-            wordInLine = 0;
-          }
-          word.style.setProperty('--hero-delay', `${startDelay + line * 0.06 + wordInLine * 0.015}s`);
-          wordInLine += 1;
-          previousTop = currentTop;
-        });
+            <!-- Lado Direito Desktop -->
+            <div class="hidden lg:block lg:col-span-8 border-t border-slate-300/80">
+              {siteData.services.items.map((svc, idx) => (
+                <article class="reveal-up service-item group py-7 sm:py-8 border-b border-slate-300/80 transition-colors duration-300 hover:bg-slate-50 px-2 sm:px-4 rounded-md" data-service-img={asset(svc.image)} style={`transition-delay: ${idx * 60}ms;`}>
+                  <div class="flex items-start justify-between gap-4 sm:gap-6 cursor-pointer" data-service-trigger>
+                    
+                    <div class="flex items-start gap-4 sm:gap-8">
+                      <span class="text-[13px] font-mono font-semibold text-[#0090D0] pt-1.5 shrink-0 opacity-80">{svc.number}</span>
+                      <div>
+                        <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-2 sm:mb-1">
+                          <h3 class="font-display text-xl sm:text-2xl font-bold text-slate-800 group-hover:text-[#0C3B78] transition-colors duration-300">
+                            {svc.title}
+                          </h3>
+                          <span class="text-[11px] font-semibold tracking-wide text-slate-400 font-mono uppercase">{svc.tag}</span>
+                        </div>
+                        <p class="text-[15px] sm:text-base text-slate-600 leading-relaxed max-w-xl">
+                          {svc.description}
+                        </p>
+                      </div>
+                    </div>
 
-        return line + 1;
-      };
+                    <div class="flex items-center shrink-0 self-center">
+                      <button type="button" data-open-quote data-service={svc.title} class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:border-[#0C3B78] group-hover:text-white group-hover:bg-[#0C3B78] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]" aria-label={`Orçar ${svc.title}`}>
+                        <svg class="w-4 h-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                      </button>
+                    </div>
 
-      const titleWords = splitHeroWords(heroTitle);
-      const descWords = splitHeroWords(heroDescription);
+                  </div>
+                </article>
+              ))}
+            </div>
 
-      heroContainer.classList.add('hero-reveal-ready');
-      trustBar?.classList.add('hero-reveal-ready');
+            <!-- Lado Mobile: Accordion Limpo -->
+            <div class="block lg:hidden border-t border-slate-200">
+              {siteData.services.items.map((svc, idx) => (
+                <details class="group/acc border-b border-slate-200 py-2.5" open={idx === 0}>
+                  <summary class="flex items-center justify-between gap-4 py-2 min-h-[48px] cursor-pointer select-none">
+                    <div class="flex items-center gap-3">
+                      <span class="text-xs font-mono font-bold text-[#0090D0]">{svc.number}</span>
+                      <h3 class="font-display text-[16px] min-[390px]:text-[17px] font-bold text-slate-800 group-open/acc:text-[#0C3B78] transition-colors leading-snug">
+                        {svc.title}
+                      </h3>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 group-open/acc:bg-[#0C3B78] group-open/acc:text-white transition-all shrink-0">
+                      <svg class="w-4 h-4 transform transition-transform duration-200 group-open/acc:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </div>
+                  </summary>
+                  
+                  <div class="pt-2 pb-3.5 pl-6 sm:pl-7 pr-1 space-y-3">
+                    <div>
+                      <span class="inline-block text-[11px] font-mono font-bold tracking-wider uppercase text-[#0C3B78] bg-blue-50/80 px-2.5 py-0.5 rounded">
+                        {svc.tag}
+                      </span>
+                    </div>
+                    
+                    <p class="text-[15px] text-slate-600 leading-relaxed">
+                      {svc.description}
+                    </p>
 
-      const badgeDelay = 0;
-      const titleDelay = 0.05;
-      const titleLines = scheduleHeroWords(titleWords, titleDelay);
+                    <div class="rounded-lg overflow-hidden aspect-[4/5] border border-slate-200 shadow-xs w-full max-w-[320px] sm:max-w-sm mt-2">
+                      <img 
+                        src={asset(svc.image)} 
+                        alt={svc.alt} 
+                        class="w-full h-full object-cover object-top"
+                        loading="lazy"
+                        width="400"
+                        height="500"
+                      />
+                    </div>
 
-      const descDelay = titleDelay + titleLines * 0.06 + 0.12;
-      const descLines = scheduleHeroWords(descWords, descDelay);
+                    <div class="pt-1.5">
+                      <button type="button" data-open-quote data-service={svc.title} class="btn-primary !h-11 !px-5 !text-xs w-full sm:w-auto justify-center">
+                        <span>Solicitar orçamento</span>
+                        <svg class="btn-icon-arrow w-3.5 h-3.5 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </details>
+              ))}
+            </div>
 
-      const actionsDelay = descDelay + descLines * 0.06 + 0.12;
-      const trustDelay = actionsDelay + 0.15;
+          </div>
 
-      heroBadge?.style.setProperty('--hero-delay', `${badgeDelay}s`);
-      heroActions?.querySelectorAll(':scope > *').forEach((item, index) => {
-        item.style.setProperty('--hero-delay', `${actionsDelay + index * 0.06}s`);
-      });
-      trustBar?.style.setProperty('--hero-delay', `${trustDelay}s`);
-    };
+        </div>
+      </section>
 
-    let heroRevealed = false;
-    const triggerHeroReveal = () => {
-      if (heroRevealed) return;
-      heroRevealed = true;
-      startHeroReveal();
-    };
+      <!-- Padrão de Instalação (Dark Section) -->
+      <section class="bg-[#0c111a] py-16 sm:py-20 lg:py-28" aria-labelledby="install-title">
+        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+            
+            <div class="reveal-scale order-1 lg:order-1 relative rounded-lg overflow-hidden border border-slate-800 shadow-xl aspect-[4/5] max-h-[520px] sm:max-h-[560px] mx-auto w-full max-w-md lg:max-w-none">
+              <img 
+                src={asset(siteData.installation.image.url)} 
+                alt={siteData.installation.image.alt} 
+                class="w-full h-full object-cover object-top"
+                loading="lazy"
+                width={siteData.installation.image.width}
+                height={siteData.installation.image.height}
+              />
+            </div>
 
-    if (document.fonts?.ready) {
-      document.fonts.ready.then(triggerHeroReveal);
-      setTimeout(triggerHeroReveal, 350);
-    } else {
-      triggerHeroReveal();
-    }
-  </script>
+            <div class="order-2 lg:order-2 flex flex-col">
+              <h2 id="install-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-white tracking-tight leading-[1.1] mb-4 sm:mb-5">
+                {siteData.installation.headline}
+              </h2>
+              <p class="reveal-up text-[15px] sm:text-base text-slate-300 leading-relaxed mb-8 sm:mb-10 max-w-xl" style="transition-delay: 80ms;">
+                {siteData.installation.text}
+              </p>
+              
+              <div class="grid grid-cols-1 min-[420px]:grid-cols-2 gap-x-6 gap-y-7 sm:gap-x-8 sm:gap-y-10">
+                {siteData.installation.pillars.map((pillar, idx) => (
+                  <div class="reveal-up border-l-[3px] border-[#0090D0] pl-5 py-1" style={`transition-delay: ${idx * 70}ms;`}>
+                    <h3 class="font-display text-[1.125rem] sm:text-xl font-bold text-white mb-2.5 tracking-wide">{pillar.title}</h3>
+                    <p class="text-slate-300 text-[15px] sm:text-base leading-relaxed">{pillar.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Processo ("Como trabalhamos") -->
+      <section id="processo" class="py-16 sm:py-20 lg:py-28 bg-white" aria-labelledby="processo-title">
+        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+          
+          <div class="max-w-2xl mb-10 sm:mb-14 lg:mb-20">
+            <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.process.eyebrow}</span>
+            <h2 id="processo-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
+              {siteData.process.headline}
+            </h2>
+            <p class="reveal-up text-[15px] sm:text-base text-slate-600 leading-relaxed" style="transition-delay: 140ms;">
+              {siteData.process.description}
+            </p>
+          </div>
+
+          <!-- Desktop Flow -->
+          <div class="hidden lg:flex flex-col relative">
+            <div class="absolute top-0 left-0 right-0 h-[1px] bg-slate-100">
+               <div class="reveal-line-x h-full bg-[#0090D0]" style="transition-duration: 1100ms; transition-delay: 150ms;"></div>
+            </div>
+
+            <div class="flex items-start justify-between gap-6 pt-6">
+              {siteData.process.steps.map((step, idx) => (
+                <article class="reveal-up process-step-item group relative flex-1 cursor-default" data-step-index={idx} style={`transition-delay: ${200 + idx * 120}ms;`}>
+                  <div class="absolute top-[-24px] left-0 h-[1px] bg-[#0C3B78] w-0 group-hover:w-full transition-all duration-350 ease-out z-10"></div>
+                  <span class="block font-display font-light text-slate-300 group-hover:text-[#0C3B78] transition-colors duration-300 leading-none mb-3" style="font-size: clamp(40px, 4vw, 64px);">
+                    {step.number}
+                  </span>
+                  <h3 class="font-display text-[15px] sm:text-base font-bold text-slate-500 group-hover:text-slate-900 transition-colors duration-300 mb-2">
+                    {step.title}
+                  </h3>
+                  <p class="text-[14.5px] text-slate-500 group-hover:text-slate-600 transition-colors duration-300 leading-relaxed pr-6">
+                    {step.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <!-- Mobile Flow -->
+          <div class="lg:hidden">
+            {siteData.process.steps.map((step, idx) => (
+              <article class="reveal-up relative flex items-start gap-5 sm:gap-6 pb-8 sm:pb-9 last:pb-0" style={`transition-delay: ${100 + idx * 120}ms;`}>
+                <div class="relative shrink-0 w-12 sm:w-16 flex flex-col items-center">
+                  <span class="font-display font-light text-[#0C3B78] leading-none z-10 bg-white pb-2" style="font-size: clamp(40px, 10vw, 48px);">
+                    {step.number}
+                  </span>
+                  {idx < siteData.process.steps.length - 1 && (
+                    <div class="absolute top-10 bottom-[-24px] w-[1px] bg-slate-100">
+                       <div class="reveal-line-y w-full h-full bg-[#0090D0]" style={`transition-duration: 900ms; transition-delay: ${200 + idx * 120}ms;`}></div>
+                    </div>
+                  )}
+                </div>
+
+                <div class="flex-1 pt-1.5">
+                  <h3 class="font-display text-base sm:text-lg font-bold text-slate-900 mb-1.5">
+                    {step.title}
+                  </h3>
+                  <p class="text-[15px] sm:text-base text-slate-600 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Soluções Sob Medida (Residencial e Empresarial) -->
+      <section id="solucoes" class="py-16 sm:py-20 lg:py-28 bg-[#FBFBFB] border-y border-slate-200" aria-labelledby="solucoes-title">
+        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+          
+          <div class="max-w-3xl mb-12 sm:mb-16 lg:mb-24">
+            <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.solutions.eyebrow}</span>
+            <h2 id="solucoes-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-3 sm:mb-4" style="transition-delay: 80ms;">
+              {siteData.solutions.title}
+            </h2>
+            <p class="reveal-up text-[15px] sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-2xl" style="transition-delay: 140ms;">
+              {siteData.solutions.description}
+            </p>
+          </div>
+
+          <div class="space-y-16 sm:space-y-20 lg:space-y-24">
+            
+            <!-- Bloco 1: Residencial -->
+            <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center" aria-labelledby="res-title">
+              <div class="reveal-scale order-1 lg:order-2">
+                <div class="relative rounded-lg overflow-hidden border border-slate-200 shadow-sm aspect-[4/3] sm:aspect-[5/4] max-h-[640px] w-full">
+                  <img 
+                    src={asset(siteData.solutions.residential.image)} 
+                    alt={siteData.solutions.residential.alt} 
+                    class="w-full h-full object-cover object-center"
+                    loading="lazy"
+                    width="640"
+                    height="480"
+                  />
+                </div>
+              </div>
+
+              <div class="reveal-up flex flex-col justify-center order-2 lg:order-1">
+                <span class="inline-block text-xs font-mono font-bold uppercase tracking-wider text-[#0C3B78] mb-2 sm:mb-3">
+                  {siteData.solutions.residential.badge}
+                </span>
+                <h3 id="res-title" class="font-display text-2xl sm:text-[clamp(28px,3vw,36px)] font-bold text-slate-900 mb-3 sm:mb-4 leading-tight">
+                  {siteData.solutions.residential.headline}
+                </h3>
+                <p class="text-[15px] sm:text-base text-slate-600 leading-relaxed mb-6 sm:mb-8 max-w-lg">
+                  {siteData.solutions.residential.text}
+                </p>
+
+                <ul class="mb-8 sm:mb-10 space-y-3">
+                  {siteData.solutions.residential.highlights.map((item) => (
+                    <li class="flex items-start gap-3 py-1.5 text-sm sm:text-base text-slate-700">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#0C3B78] mt-2 shrink-0"></span>
+                      <span class="leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div>
+                  <button type="button" data-open-quote data-service="Climatização Residencial" class="btn-primary w-full sm:w-auto !h-[52px] justify-center">
+                    <span>Orçar projeto residencial</span>
+                    <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+            
+            <div class="h-[1px] w-full bg-slate-200"></div>
+
+            <!-- Bloco 2: Empresarial -->
+            <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center" aria-labelledby="corp-title">
+              <div class="reveal-scale order-1 lg:order-1">
+                <div class="relative rounded-lg overflow-hidden border border-slate-200 shadow-sm aspect-[4/3] sm:aspect-[5/4] max-h-[640px] w-full">
+                  <img 
+                    src={asset(siteData.solutions.corporate.image)} 
+                    alt={siteData.solutions.corporate.alt} 
+                    class="w-full h-full object-cover object-center"
+                    loading="lazy"
+                    width="640"
+                    height="480"
+                  />
+                </div>
+              </div>
+
+              <div class="reveal-up flex flex-col justify-center order-2 lg:order-2 lg:pl-6">
+                <span class="inline-block text-xs font-mono font-bold uppercase tracking-wider text-[#0090D0] mb-2 sm:mb-3">
+                  {siteData.solutions.corporate.badge}
+                </span>
+                <h3 id="corp-title" class="font-display text-2xl sm:text-[clamp(28px,3vw,36px)] font-bold text-slate-900 mb-3 sm:mb-4 leading-tight">
+                  {siteData.solutions.corporate.headline}
+                </h3>
+                <p class="text-[15px] sm:text-base text-slate-600 leading-relaxed mb-6 sm:mb-8 max-w-lg">
+                  {siteData.solutions.corporate.text}
+                </p>
+
+                <ul class="mb-8 sm:mb-10 space-y-3">
+                  {siteData.solutions.corporate.highlights.map((item) => (
+                    <li class="flex items-start gap-3 py-1.5 text-sm sm:text-base text-slate-700">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#0090D0] mt-2 shrink-0"></span>
+                      <span class="leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div>
+                  <button type="button" data-open-quote data-service="Climatização Empresarial" class="btn-primary !bg-[#0090D0] hover:!bg-[#007bb3] w-full sm:w-auto !h-[52px] justify-center">
+                    <span>Orçar projeto empresarial</span>
+                    <svg class="btn-icon-arrow w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Diferenciais / Padrão de Trabalho -->
+      <section id="diferenciais" class="py-16 sm:py-20 lg:py-28 bg-white" aria-labelledby="diferenciais-title">
+        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+            
+            <div class="lg:col-span-4 lg:sticky lg:top-28">
+              <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.differentials.eyebrow}</span>
+              <h2 id="diferenciais-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
+                {siteData.differentials.headline}
+              </h2>
+              <p class="reveal-up text-[15px] sm:text-base lg:text-lg text-slate-600 leading-relaxed mb-6 lg:mb-0" style="transition-delay: 140ms;">
+                {siteData.differentials.description}
+              </p>
+            </div>
+
+            <!-- Composição Editorial 2x3 -->
+            <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 lg:gap-x-12 gap-y-8 sm:gap-y-10 lg:gap-y-14">
+              {siteData.differentials.items.map((diff, idx) => (
+                <article class="reveal-up group border-t border-slate-200/80 pt-8 pb-4 transition-colors" style={`transition-delay: ${Math.floor(idx / 2) * 120}ms;`}>
+                  <span class="block font-display text-[clamp(32px,3.5vw,48px)] font-light text-slate-200 group-hover:text-[#0090D0] transition-colors duration-400 leading-none mb-5">{diff.number}</span>
+                  <h3 class="font-display text-lg sm:text-[1.35rem] font-bold text-slate-700 group-hover:text-slate-900 transition-colors duration-400 leading-tight mb-3">{diff.title}</h3>
+                  <p class="text-[15px] sm:text-base text-slate-600 leading-relaxed">
+                    {diff.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Projetos Realizados -->
+      <section id="projetos" class="py-16 sm:py-20 lg:py-28 bg-[#0c111a] text-white" aria-labelledby="projetos-title">
+        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 sm:mb-16 pb-6 border-b border-white/10">
+            <div>
+              <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0090D0] block mb-2">{siteData.projects.eyebrow}</span>
+              <h2 id="projetos-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold tracking-tight text-white leading-[1.1]" style="transition-delay: 80ms;">
+                {siteData.projects.title}
+              </h2>
+              <p class="reveal-up text-[15px] sm:text-base text-slate-400 mt-2.5 sm:mt-3" style="transition-delay: 140ms;">
+                {siteData.projects.description}
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {siteData.projects.items.map((proj, idx) => (
+              <article class="reveal-up group relative rounded-xl overflow-hidden border border-white/10 bg-slate-900 aspect-[4/3] min-[390px]:aspect-[16/10] shadow-sm cursor-pointer" data-project-id={proj.id} style={`transition-delay: ${90 * (idx + 1)}ms;`}>
+                <img 
+                  src={asset(proj.image)} 
+                  alt={proj.alt} 
+                  class="w-full h-full object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] filter brightness-[0.92] contrast-[1.02]"
+                  loading="lazy"
+                  width="800"
+                  height="500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent flex flex-col justify-end p-5 sm:p-7 lg:p-8 transition-colors duration-[600ms] group-hover:bg-black/20">
+                  <div class="transform transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-2 sm:mb-2.5">
+                      <span class="text-xs font-mono font-semibold text-[#0090D0] uppercase tracking-wider">
+                        {proj.category}
+                      </span>
+                      <span class="text-xs text-slate-300 font-mono">
+                        {proj.location}
+                      </span>
+                    </div>
+                    <h3 class="font-display text-lg sm:text-xl lg:text-2xl font-bold text-white leading-snug">
+                      {proj.title}
+                    </h3>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Sobre Nós -->
+      <section id="sobre" class="py-16 sm:py-20 lg:py-28 bg-white" aria-labelledby="sobre-title">
+        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
+            
+            <div class="lg:col-span-6">
+              <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.about.eyebrow}</span>
+              <h2 id="sobre-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4.5vw,52px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
+                {siteData.about.headline}
+              </h2>
+              
+              <p class="reveal-up text-[15px] sm:text-base lg:text-[1.0625rem] text-slate-600 leading-relaxed mb-6 sm:mb-8" style="transition-delay: 140ms;">
+                {siteData.about.copy}
+              </p>
+
+              <div class="space-y-4 sm:space-y-5 mb-6 sm:mb-8">
+                {siteData.about.pillars.map((pillar, idx) => (
+                  <div class="reveal-up border-l-[3px] border-[#0C3B78] pl-4 py-0.5" style={`transition-delay: ${200 + idx * 70}ms;`}>
+                    <h3 class="font-display text-[15px] sm:text-base font-bold text-slate-900 mb-1">{pillar.label}</h3>
+                    <p class="text-[14.5px] text-slate-600 leading-relaxed">
+                      {pillar.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div class="reveal-up inline-flex items-center gap-2 text-xs font-mono text-slate-500 bg-slate-50 px-3 py-1.5 rounded border border-slate-200/80" style="transition-delay: 350ms;">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+                <span>Sede própria e atendimento técnico em Ijuí — Rio Grande do Sul</span>
+              </div>
+            </div>
+
+            <!-- Lado Visual -->
+            <div class="lg:col-span-6 mt-4 lg:mt-0">
+              <div class="relative">
+                
+                <div class="reveal-scale rounded-lg overflow-hidden border border-slate-200 bg-slate-50 aspect-[4/3] max-h-[460px] shadow-sm w-full" style="transition-delay: 100ms;">
+                  <img 
+                    src={asset(siteData.about.image.url)} 
+                    alt={siteData.about.image.alt} 
+                    class="w-full h-full object-cover filter contrast-[1.02]"
+                    loading="lazy"
+                    width={siteData.about.image.width}
+                    height={siteData.about.image.height}
+                  />
+                </div>
+
+                <div class="mt-4 grid grid-cols-1 min-[440px]:grid-cols-2 gap-3.5 sm:gap-4">
+                  <div class="reveal-scale rounded-lg overflow-hidden border border-slate-200 bg-slate-50 aspect-[16/10] relative shadow-2xs group" style="transition-delay: 180ms;">
+                    <img 
+                      src={asset(siteData.about.facilityImage.url)} 
+                      alt={siteData.about.facilityImage.alt} 
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      width={siteData.about.facilityImage.width}
+                      height={siteData.about.facilityImage.height}
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex items-end p-3.5">
+                      <span class="text-xs font-mono font-medium text-white tracking-wide">{siteData.about.facilityImage.label}</span>
+                    </div>
+                  </div>
+
+                  <div class="reveal-scale rounded-lg overflow-hidden border border-slate-200 bg-slate-50 aspect-[16/10] relative shadow-2xs group" style="transition-delay: 260ms;">
+                    <img 
+                      src={asset(siteData.about.vehicleImage.url)} 
+                      alt={siteData.about.vehicleImage.alt} 
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      width={siteData.about.vehicleImage.width}
+                      height={siteData.about.vehicleImage.height}
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex items-end p-3.5">
+                      <span class="text-xs font-mono font-medium text-white tracking-wide">{siteData.about.vehicleImage.label}</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="py-16 sm:py-20 lg:py-28 bg-white" aria-labelledby="faq-title">
+        <div class="max-w-[900px] mx-auto px-5 max-[375px]:px-4 sm:px-8">
+          
+          <div class="mb-10 sm:mb-16">
+            <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">Dúvidas Técnicas</span>
+            <h2 id="faq-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1]" style="transition-delay: 80ms;">
+              Perguntas Frequentes
+            </h2>
+          </div>
+
+          <div class="reveal-fade border-t border-slate-200/80" style="transition-delay: 140ms;">
+            {siteData.faq.map((item, idx) => (
+              <article class="faq-item group border-b border-slate-200/80" data-faq-index={idx}>
+                <button 
+                  type="button" 
+                  class="faq-trigger w-full flex items-center justify-between gap-4 py-4 sm:py-4.5 min-h-[52px] text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0C3B78] rounded-md transition-colors duration-200" 
+                  aria-expanded="false" 
+                  id={`faq-trigger-${idx}`} 
+                  aria-controls={`faq-content-${idx}`}
+                >
+                  <span class="font-display text-[15px] min-[390px]:text-[16px] sm:text-[17px] font-bold text-slate-800 group-hover:text-[#0C3B78] group-[.is-open]:text-[#0C3B78] transition-colors leading-snug">
+                    {item.question}
+                  </span>
+                  
+                  <span class="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 group-hover:bg-blue-50 group-[.is-open]:bg-[#0C3B78] group-[.is-open]:text-white text-slate-500 transition-all duration-300 shrink-0">
+                    <svg class="faq-icon w-4 h-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                  </span>
+                </button>
+                
+                <div 
+                  id={`faq-content-${idx}`} 
+                  class="faq-content grid grid-rows-[0fr] opacity-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" 
+                  role="region" 
+                  aria-labelledby={`faq-trigger-${idx}`}
+                >
+                  <div class="overflow-hidden">
+                    <p class="text-[15px] text-slate-600 leading-relaxed pb-5 sm:pb-6 pr-2 sm:pr-12">
+                      {item.answer}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Final CTA Section -->
+      <section id="contato" class="py-16 sm:py-24 lg:py-32 bg-slate-900 text-white relative overflow-hidden" aria-labelledby="cta-final-title">
+        <div class="reveal-scale max-w-4xl mx-auto px-5 max-[375px]:px-4 sm:px-8 text-center relative z-10" style="transition-duration: 700ms;">
+          
+          <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0090D0] block mb-3 sm:mb-4" style="transition-delay: 100ms;">
+            {siteData.finalCta.eyebrow}
+          </span>
+          
+          <h2 id="cta-final-title" class="reveal-up font-display text-[30px] min-[390px]:text-[34px] sm:text-[clamp(40px,5.5vw,60px)] font-bold tracking-tight text-white mb-4 sm:mb-6 leading-[1.08]" style="transition-delay: 180ms;">
+            {siteData.finalCta.headline}
+          </h2>
+
+          <p class="reveal-up text-slate-300 text-[15px] sm:text-lg max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed" style="transition-delay: 260ms;">
+            {siteData.finalCta.text}
+          </p>
+
+          <div class="reveal-up flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 max-w-md sm:max-w-none mx-auto" style="transition-delay: 340ms;">
+            <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20Ijuí%20Clima.`} target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto !h-[52px] !bg-[#0C3B78] hover:!bg-[#0090D0] shadow-md justify-center">
+              <svg class="w-4 h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <span>{siteData.finalCta.buttonText}</span>
+            </a>
+
+            <button type="button" data-open-quote class="btn-secondary w-full sm:w-auto !h-[52px] !bg-white/10 !border-white/20 !text-white hover:!bg-white/15 justify-center">
+              <span>{siteData.finalCta.secondaryButtonText}</span>
+            </button>
+          </div>
+
+          <div class="reveal-fade mt-8 sm:mt-10 text-xs font-mono text-slate-500 tracking-widest uppercase" style="transition-delay: 420ms;">
+            {siteData.finalCta.location}
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="reveal-fade bg-[#080C12] text-slate-400 py-12 sm:py-16 border-t border-white/5" aria-labelledby="footer-title">
+      <h2 id="footer-title" class="sr-only">Rodapé Institucional da {siteData.company.name}</h2>
+      <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-white/10">
+          
+          <!-- Coluna 1: Marca -->
+          <div class="lg:col-span-4">
+            <a href="#" class="inline-block mb-5 sm:mb-6" aria-label={`${siteData.company.name} - Início`}>
+              <img src={asset(siteData.seo.ogImage)} alt={siteData.company.name} class="h-11 sm:h-[3.25rem] w-auto object-contain brightness-110" />
+            </a>
+            <p class="text-[15px] sm:text-[15px] text-slate-400 leading-relaxed max-w-sm mb-5 sm:mb-6">
+              Especialistas em climatização residencial e empresarial em {siteData.company.locationString}. Instalação técnica, manutenção preventiva e higienização com rigor de engenharia.
+            </p>
+            <div class="text-[13px] text-slate-400 flex items-center gap-2 font-mono">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+              <span>{siteData.company.regionCovered}</span>
+            </div>
+          </div>
+
+          <!-- Coluna 2: Serviços -->
+          <div class="lg:col-span-3">
+            <h3 class="text-[13px] font-semibold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Serviços</h3>
+            <ul class="space-y-2 text-[15px] sm:text-[14.5px]">
+              <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Instalação de Ar-Condicionado</a></li>
+              <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Manutenção Preventiva</a></li>
+              <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Manutenção Corretiva</a></li>
+              <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Higienização e Limpeza</a></li>
+              <li><a href="#solucoes" class="hover:text-white transition-colors py-1 inline-block">Climatização Residencial</a></li>
+              <li><a href="#solucoes" class="hover:text-white transition-colors py-1 inline-block">Climatização Empresarial</a></li>
+            </ul>
+          </div>
+
+          <!-- Coluna 3: Navegação -->
+          <div class="lg:col-span-2">
+            <h3 class="text-[13px] font-semibold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Navegação</h3>
+            <ul class="space-y-2 text-[15px] sm:text-[14.5px]">
+              <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Serviços</a></li>
+              <li><a href="#processo" class="hover:text-white transition-colors py-1 inline-block">Como trabalhamos</a></li>
+              <li><a href="#instalacao" class="hover:text-white transition-colors py-1 inline-block">Padrão de Instalação</a></li>
+              <li><a href="#diferenciais" class="hover:text-white transition-colors py-1 inline-block">Diferenciais</a></li>
+              <li><a href="#projetos" class="hover:text-white transition-colors py-1 inline-block">Projetos</a></li>
+              <li><a href="#sobre" class="hover:text-white transition-colors py-1 inline-block">Sobre</a></li>
+              <li><a href="#faq" class="hover:text-white transition-colors py-1 inline-block">FAQ</a></li>
+            </ul>
+          </div>
+
+          <!-- Coluna 4: Contato -->
+          <div class="lg:col-span-3">
+            <h3 class="text-[13px] font-semibold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Contato</h3>
+            <ul class="space-y-3 text-[15px] sm:text-[14.5px]">
+              <li class="flex items-start gap-2">
+                <span class="text-white font-medium shrink-0">Local:</span>
+                <span>{siteData.company.address.street} - {siteData.company.address.neighborhood}<br />{siteData.company.address.city} / {siteData.company.address.state}</span>
+              </li>
+              <li>
+                <span class="text-white font-medium">WhatsApp:</span>
+                <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20um%20atendimento%20da%20Ijuí%20Clima.`} target="_blank" rel="noopener noreferrer" class="text-[#0090D0] hover:text-white block transition-colors font-medium py-0.5">
+                  {siteData.company.whatsapp}
+                </a>
+              </li>
+              <li>
+                <span class="text-white font-medium">E-mail:</span>
+                <a href={`mailto:${siteData.company.email}`} class="hover:text-white block transition-colors py-0.5">
+                  {siteData.company.email}
+                </a>
+              </li>
+              <li>
+                <span class="text-white font-medium">Instagram:</span>
+                <a href={siteData.company.instagramUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white block transition-colors py-0.5">
+                  {siteData.company.instagram}
+                </a>
+              </li>
+              <li class="pt-1 text-slate-400 text-xs sm:text-[13px]">
+                {siteData.company.hours.weekdays}<br />{siteData.company.hours.saturday}
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Rodapé Inferior -->
+        <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-[13px] text-slate-500 text-center sm:text-left">
+          <p>&copy; {new Date().getFullYear()} {siteData.company.name}. Todos os direitos reservados. {siteData.company.locationString}.</p>
+          <div class="flex items-center gap-6">
+            <a href="#" class="hover:text-slate-400 transition-colors py-1">Política de Privacidade</a>
+            <a href="#" class="hover:text-slate-400 transition-colors py-1">Termos de Uso</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- Floating WhatsApp CTA -->
+    <aside class="fixed z-40 right-4 sm:right-6" style="bottom: calc(16px + env(safe-area-inset-bottom, 0px));" aria-label="Acesso rápido ao WhatsApp da Ijuí Clima">
+      <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá,%20Ijuí%20Clima!%20Gostaria%20de%20solicitar%20um%20orçamento.`} target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-12 h-12 sm:w-auto sm:h-auto bg-[#0C111A]/95 sm:bg-[#0C111A] hover:bg-[#0C3B78] text-white rounded-full shadow-2xl border border-white/15 sm:p-2.5 sm:px-4 sm:py-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#0090D0]" aria-label="Falar com especialista pelo WhatsApp">
+        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex sm:bg-[#25D366]/20 text-[#25D366] items-center justify-center shrink-0">
+          <svg class="w-5 h-5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </div>
+        <div class="hidden sm:flex flex-col text-left">
+          <span class="text-xs font-semibold leading-tight">Orçamento Rápido</span>
+          <span class="text-[10px] text-slate-300">{siteData.company.city} e Região</span>
+        </div>
+      </a>
+    </aside>
+
+    <!-- Modal de Pré-Orçamento -->
+    <div id="quote-modal-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <div id="quote-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none scale-95 transition-all duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="bg-white rounded-lg max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
+        
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#0C3B78]">Pré-Orçamento {siteData.company.name}</span>
+            <h3 id="modal-title" class="font-display text-xl sm:text-2xl font-bold text-slate-900 mt-1">
+              Qual é a sua necessidade?
+            </h3>
+          </div>
+          <button id="close-quote-modal" type="button" class="p-1.5 text-slate-400 hover:text-slate-700 rounded-md focus:outline-none" aria-label="Fechar diálogo">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <form id="quote-form" class="space-y-4 text-left">
+          
+          <!-- Passo 1: Serviço -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">1. Selecione o Serviço</label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="service" value="Instalação de ar-condicionado" checked class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+                <span>Instalação</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="service" value="Manutenção preventiva" class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+                <span>Preventiva</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="service" value="Higienização e limpeza" class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+                <span>Higienização</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="service" value="Manutenção corretiva" class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+                <span>Reparo / Conserto</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Passo 2: Tipo de Imóvel -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">2. Tipo de Imóvel</label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="property" value="Residencial (Casa / Apartamento)" checked class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+                <span>Residencial</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="property" value="Empresarial / Comercial" class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+                <span>Empresarial</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Passo 3: Cidade / Bairro -->
+          <div>
+            <label for="quote-city" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1">3. Cidade / Bairro</label>
+            <input type="text" id="quote-city" name="city" value={siteData.company.locationString} required class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#0C3B78] focus:ring-1 focus:ring-[#0C3B78]" />
+          </div>
+
+          <!-- Observações adicionais -->
+          <div>
+            <label for="quote-details" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1">4. Detalhes ou observações (opcional)</label>
+            <input type="text" id="quote-details" name="details" placeholder="Ex: aparelho de 12.000 BTUs para sala" class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#0C3B78] focus:ring-1 focus:ring-[#0C3B78]" />
+          </div>
+
+          <!-- Submit -->
+          <div class="pt-2">
+            <button type="submit" class="btn-primary w-full justify-center !h-12 !text-sm">
+              <svg class="w-4 h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <span>Enviar solicitação para o WhatsApp</span>
+            </button>
+            <p class="text-[11px] text-center text-slate-400 mt-2">
+              Sua mensagem será pré-formatada para resposta ágil no canal oficial.
+            </p>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
 </BaseLayout>

@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
-const pagesBase = process.env.PAGES_BASE ?? "/lavanderia-ivoti/";
+const pagesBase = process.env.PAGES_BASE ?? "/Instalacao-ar-condicionado-am-climatizar/";
 
 export default defineConfig({
   site: "https://studiotche.github.io",

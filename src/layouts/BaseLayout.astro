@@ -1,28 +1,159 @@
 ---
 import "../styles/global.css";
-import { site } from "../data/site";
-interface Props { title?: string; description?: string; }
-const { title = site.seo.title, description = site.seo.description } = Astro.props;
+import { siteData } from "../data/site";
+
+interface Props {
+  readonly title?: string;
+  readonly description?: string;
+}
+
+const {
+  title = siteData.seo.title,
+  description = siteData.seo.description,
+} = Astro.props;
+
 const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-const asset = (path: string) => `${base}${path.replace(/^\//, "")}`;
-const preview = import.meta.env.PUBLIC_SITE_PREVIEW === "true";
-const canonical = new URL(Astro.url.pathname.replace(import.meta.env.BASE_URL, "").replace(/^\//, ""), site.seo.url);
-const ogImage = new URL(site.seo.ogImage.replace(/^\//, ""), site.seo.url);
+const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HVACBusiness",
+      "@id": "https://ijuiclima.com.br/#business",
+      "name": "Ijuí Clima",
+      "url": "https://ijuiclima.com.br/",
+      "logo": "https://ijuiclima.com.br/images/logo-ijui-clima.png",
+      "image": "https://ijuiclima.com.br/images/logo-ijui-clima.png",
+      "description": "Especialistas em instalação, higienização e manutenção preventiva de ar-condicionado e climatização residencial e empresarial em Ijuí - RS.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "R. Albino Brendler, 554",
+        "addressLocality": "Ijuí",
+        "addressRegion": "RS",
+        "addressCountry": "BR"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Ijuí"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Região Noroeste do Rio Grande do Sul"
+        }
+      ],
+      "priceRange": "$$",
+      "telephone": "+5555992368448",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "12:00"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços de Climatização em Ijuí",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Instalação de Ar-Condicionado em Ijuí",
+              "description": "Instalação com tubulação 100% cobre, vácuo com vacuômetro digital e acabamento profissional."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Manutenção Preventiva de Ar-Condicionado em Ijuí",
+              "description": "Revisão periódica de pressões e componentes para economia de energia e longevidade do compressor."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Higienização e Limpeza de Ar-Condicionado em Ijuí",
+              "description": "Sanitização química profunda contra ácaros, fungos e odores para ambientes residenciais e comerciais."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ijuiclima.com.br/#faq",
+      "mainEntity": siteData.faq.map((item) => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer
+        }
+      }))
+    }
+  ]
+};
 ---
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
   <head>
-    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} /><title>{title}</title>
-    <meta name="description" content={description} /><link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/webp" href={asset("/images/logo-lavanderia-ivoti.webp")} />
-    <link rel="icon" href={asset("/favicon.ico")} sizes="any" />
-    <link rel="apple-touch-icon" type="image/webp" href={asset("/images/logo-lavanderia-ivoti.webp")} />
-    <link rel="preload" href={asset("/fonts/dm-sans.woff2")} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={asset("/fonts/space-grotesk.woff2")} as="font" type="font/woff2" crossorigin />
-    <meta name="theme-color" content="#1b5699" /><meta name="robots" content={preview ? "noindex,nofollow" : "index,follow"} />
-    <meta property="og:type" content="website" /><meta property="og:locale" content="pt_BR" /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={ogImage} /><meta name="twitter:card" content="summary_large_image" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags Oficiais -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={siteData.seo.keywords} />
+    <meta name="author" content="Ijuí Clima" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href={siteData.seo.canonicalUrl} />
+    <meta name="geo.region" content="BR-RS" />
+    <meta name="geo.placename" content="Ijuí" />
+
+    <!-- OpenGraph / Social Meta -->
+    <meta property="og:site_name" content="Ijuí Clima" />
+    <meta property="og:type" content="business.business" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={siteData.seo.canonicalUrl} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image" content={asset(siteData.seo.ogImage)} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={asset(siteData.seo.ogImage)} />
+
+    <!-- Favicon Oficial -->
+    <link rel="icon" type="image/png" href={asset(siteData.seo.ogImage)} />
+
+    <!-- Preload da Imagem Principal do Hero (LCP Optimization) -->
+    <link rel="preload" as="image" href={asset(siteData.hero.image.url)} fetchpriority="high" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org JSON-LD Structured Data: LocalBusiness, Services & FAQPage -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
     <slot name="head" />
   </head>
-  <body><slot /><script src="../scripts/smooth-scroll.ts"></script><script src="../scripts/faq-accordion.ts"></script></body>
+  <body class="bg-[#FBFBFB] text-[#0F141C] antialiased selection:bg-[#0C3B78] selection:text-white flex flex-col min-h-screen">
+    <slot />
+    <script src="../scripts/site-interactions.ts"></script>
+  </body>
 </html>

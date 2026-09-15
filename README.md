@@ -1,13 +1,29 @@
-# Lavanderia Ivoti
+# Ijuí Clima
 
-Site institucional da Lavanderia Ivoti, desenvolvido em Astro.
+Site institucional oficial da **Ijuí Clima**, referência em instalação, manutenção preventiva/corretiva e higienização de ar-condicionado em Ijuí — Rio Grande do Sul e região noroeste gaúcha.
 
-O conteúdo público foi organizado a partir do perfil do Google Maps e do Instagram `@lavanderia_ivoti`. A coleta bruta, os dados normalizados e as imagens de referência ficam em [`imagens-google-maps`](./imagens-google-maps).
+Desenvolvido em **Astro 6**, **TypeScript**, **Tailwind CSS**, com foco em máxima performance (LCP otimizado), SEO técnico com schema `HVACBusiness` + `FAQPage`, acessibilidade (A11y) e design padrão AAA.
 
-## Dados confirmados na coleta
+## Estrutura do Projeto
 
-- Av. Pres. Lucena, 2084 — Concórdia, Ivoti/RS
-- Telefone exibido no Google Maps: (51) 3563-6908
-- Instagram: [@lavanderia_ivoti](https://www.instagram.com/lavanderia_ivoti/)
+- `src/data/site.ts`: Catálogo centralizado de serviços, dados da empresa, FAQ e configurações de SEO.
+- `src/layouts/BaseLayout.astro`: Layout base com metadados sociais, Google Fonts, JSON-LD schema e otimizações de fontes/imagens.
+- `src/pages/index.astro`: Página principal estruturada em 16 seções completas.
+- `src/scripts/site-interactions.ts`: Controladores de interações (header dinâmico, drawer mobile, modal de orçamento, preview de serviços e accordions).
+- `src/styles/global.css`: Design system e utilitários Tailwind/CSS.
 
-O perfil do Google Maps sinaliza que o cadastro pode estar fechado ou precisar de atualização. Por isso, o site informa que os horários devem ser confirmados antes da visita.
+## Execução Local
+
+```bash
+# Instalar dependências (caso necessário)
+npm install
+
+# Iniciar servidor de desenvolvimento
+npm run dev
+
+# Validar tipagem e integridade Astro
+npm run check
+
+# Gerar build estática de produção
+npm run build
+```

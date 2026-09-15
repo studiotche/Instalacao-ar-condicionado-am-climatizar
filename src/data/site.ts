@@ -1,86 +1,400 @@
-export const site = {
-  name: "Lavanderia Ivoti",
-  category: "Lavanderia",
-  city: "Ivoti",
-  state: "RS",
-  address: "Av. Pres. Lucena, 2084 - Concórdia, Ivoti - RS",
-  postalCode: "93900-000",
-  plusCode: "9RVP+QW Concórdia, Ivoti - RS",
-  phoneDisplay: "(51) 99919-9846",
-  phoneLink: "https://wa.me/5551999199846?text=Ol%C3%A1%2C%20Lavanderia%20Ivoti!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.",
-  phoneDisplayAlt: "(51) 99301-9846",
-  phoneLinkAlt: "https://wa.me/5551993019846?text=Ol%C3%A1%2C%20Lavanderia%20Ivoti!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.",
-  googlePhoneDisplay: "(51) 3563-6908",
-  googlePhoneLink: "tel:+555135636908",
-  instagram: "https://www.instagram.com/lavanderia_ivoti/",
-  googleProfile: "https://www.google.com/maps/place/Lavanderia+Ivoti/@-29.6055194,-51.1627442,945m/data=!3m2!1e3!4b1!4m6!3m5!1s0x95194540c4744a09:0x3cee5cae859095c0!8m2!3d-29.6055194!4d-51.1627442!16s%2Fg%2F1ptw__92w",
-  mapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3472.083758364233!2d-51.16531912446702!3d-29.60551937514781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95194540c4744a09%3A0x3cee5cae859095c0!2sLavanderia%20Ivoti!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr",
-  mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=-29.6055194,-51.1627442",
-  rating: "4,6",
-  socialStats: { followers: "2.333", posts: "40" },
-  environmentalLicense: "Licença de Operação SMA Ivoti (Secretaria de Meio Ambiente)",
-  freeDelivery: "Coleta e Entrega Grátis em Ivoti",
-  hours: [
-    { days: "Segunda a sexta", time: "08:30–18:30" },
-    { days: "Sábado", time: "08:30–12:00" },
-    { days: "Domingo", time: "Fechado" },
-  ],
-  seo: {
-    title: "Lavanderia Ivoti | Coleta e Entrega Grátis · Cuidado Profissional",
-    description: "Lavanderia Ivoti: lavagem a seco, impermeabilização de estofados, tapetes, cortinas, tênis, linha pet, couro e rouparia hospitalar. Coleta e entrega grátis em Ivoti/RS.",
-    url: "https://studiotche.github.io/lavanderia-ivoti/",
-    ogImage: "/images/lavanderia-ivoti.webp",
+export interface NavItem {
+  readonly label: string;
+  readonly href: string;
+}
+
+export interface TrustItem {
+  readonly title: string;
+  readonly description: string;
+  readonly icon: "tool" | "gear" | "team" | "location";
+}
+
+export interface ServiceItem {
+  readonly number: string;
+  readonly title: string;
+  readonly description: string;
+  readonly tag: string;
+  readonly image: string;
+  readonly alt: string;
+}
+
+export interface InstallationPillar {
+  readonly title: string;
+  readonly description: string;
+}
+
+export interface ProcessStep {
+  readonly number: string;
+  readonly title: string;
+  readonly description: string;
+}
+
+export interface SolutionData {
+  readonly badge: string;
+  readonly headline: string;
+  readonly text: string;
+  readonly image: string;
+  readonly alt: string;
+  readonly highlights: readonly string[];
+}
+
+export interface DifferentialItem {
+  readonly number: string;
+  readonly title: string;
+  readonly description: string;
+}
+
+export interface ProjectItem {
+  readonly id: string;
+  readonly title: string;
+  readonly category: string;
+  readonly location: string;
+  readonly image: string;
+  readonly alt: string;
+}
+
+export interface AboutPillar {
+  readonly label: string;
+  readonly text: string;
+}
+
+export interface FaqItem {
+  readonly question: string;
+  readonly answer: string;
+}
+
+export const siteData = {
+  company: {
+    name: "Ijuí Clima",
+    legalName: "Ijuí Clima — Climatização Residencial e Empresarial",
+    city: "Ijuí",
+    state: "RS",
+    locationString: "Ijuí — Rio Grande do Sul",
+    regionCovered: "Ijuí e região noroeste gaúcha",
+    phone: "(55) 99236-8448",
+    phoneRaw: "5555992368448",
+    whatsapp: "(55) 99236-8448",
+    whatsappRaw: "5555992368448",
+    email: "ijuiclima2010@hotmail.com",
+    instagram: "@ijui_clima",
+    instagramUrl: "https://www.instagram.com/ijui_clima/",
+    hours: {
+      weekdays: "Segunda a Sexta: 08:00 às 18:00",
+      saturday: "Sábado: 08:00 às 12:00",
+      sunday: "Fechado",
+    },
+    address: {
+      street: "R. Albino Brendler, 554",
+      neighborhood: "Centro",
+      city: "Ijuí",
+      state: "RS",
+      country: "Brasil",
+    },
   },
-  assets: {
-    hero: "/images/lavanderia-ivoti.webp",
-    about: "/images/about-heritage.webp?v=2",
-    institutional: "/images/lavanderia-ivoti-hero.webp",
-    logo: "/images/logo-lavanderia-ivoti.webp",
-    storefront: "/images/lavanderia-ivoti.webp",
-    instagram: "/images/lavanderia-ivoti-instagram.webp",
-    instagramFeed: "/images/service-roupas.webp",
+  seo: {
+    title: "Ijuí Clima | Instalação e Manutenção de Ar-Condicionado em Ijuí",
+    description: "Instalação, manutenção e higienização de ar-condicionado em Ijuí. Atendimento profissional para residências e empresas. Solicite seu orçamento.",
+    canonicalUrl: "https://ijuiclima.com.br/",
+    ogImage: "/images/logo-ijui-clima.png",
+    keywords: "ar-condicionado Ijuí, instalação de ar-condicionado em Ijuí, manutenção de ar-condicionado em Ijuí, higienização de ar-condicionado, limpeza de ar-condicionado, climatização residencial, climatização empresarial, instalação de split",
+  },
+  navigation: [
+    { label: "Início", href: "#" },
+    { label: "Serviços", href: "#servicos" },
+    { label: "Como trabalhamos", href: "#processo" },
+    { label: "Projetos", href: "#projetos" },
+    { label: "Sobre", href: "#sobre" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Contato", href: "#contato" },
+  ] as const satisfies readonly NavItem[],
+  hero: {
+    eyebrow: "CLIMATIZAÇÃO PROFISSIONAL • IJUÍ/RS",
+    headlinePart1: "Conforto começa",
+    headlinePart2: "com um serviço",
+    headlineHighlight: "bem executado.",
+    description: "Instalação, manutenção e higienização de ar-condicionado para residências e empresas, com atendimento técnico em Ijuí e região.",
+    primaryCta: "Solicitar orçamento",
+    secondaryCta: "Conhecer serviços",
+    image: {
+      url: "/images/ijui-clima/hero-oficial.webp",
+      alt: "Técnico da Ijuí Clima executando manutenção técnica e instalação de ar-condicionado split em ambiente residencial",
+      width: 1024,
+      height: 768,
+    },
+  },
+  trustBar: [
+    { title: "Instalação profissional", description: "Padrão técnico e segurança", icon: "tool" },
+    { title: "Manutenção especializada", description: "Mais desempenho e durabilidade", icon: "gear" },
+    { title: "Equipe própria", description: "Atendimento especializado", icon: "team" },
+    { title: "Ijuí e região", description: "Rapidez e proximidade", icon: "location" },
+  ] as const satisfies readonly TrustItem[],
+  services: {
+    eyebrow: "Engenharia e Serviços",
+    title: "Soluções completas em climatização.",
+    description: "Da instalação ao cuidado periódico do equipamento, serviços pensados para manter eficiência, conforto e segurança.",
+    items: [
+      {
+        number: "01",
+        title: "Instalação de ar-condicionado",
+        description: "Execução nos padrões dos fabricantes, com tubulação 100% cobre, processo de vácuo profundo e acabamento alinhado.",
+        tag: "Hi-Wall • Multi-Split • Cassete",
+        image: "/images/ijui-clima/instalacao-nova.webp",
+        alt: "Técnico uniformizado da Ijuí Clima realizando instalação e alinhamento de ar-condicionado Split",
+      },
+      {
+        number: "02",
+        title: "Manutenção preventiva",
+        description: "Revisão periódica de corrente elétrica, medição de pressões, desobstrução de drenos e limpeza técnica para economia de energia.",
+        tag: "Eficiência • Menor Consumo",
+        image: "/images/ijui-clima/manutencao-preventiva-nova.webp",
+        alt: "Técnico da Ijuí Clima realizando revisão e manutenção de evaporadora de ar-condicionado",
+      },
+      {
+        number: "03",
+        title: "Manutenção corretiva",
+        description: "Diagnóstico objetivo de vazamentos de fluido refrigerante, testes em placas Inverter e reparo seguro de componentes.",
+        tag: "Diagnóstico Objetivo • Reparo Seguro",
+        image: "/images/ijui-clima/manutencao-corretiva-nova.webp",
+        alt: "Diagnóstico técnico e medição de pressão em sistema de refrigeração pela Ijuí Clima",
+      },
+      {
+        number: "04",
+        title: "Higienização e limpeza",
+        description: "Desmontagem técnica da evaporadora para sanitização profunda de serpentina, turbina e bandeja, eliminando ácaros, mofo e odores.",
+        tag: "Saúde Respiratória • Sanitização",
+        image: "/images/ijui-clima/higienizacao-nova.webp",
+        alt: "Procedimento técnico de higienização e limpeza de serpentina e filtros de ar-condicionado",
+      },
+      {
+        number: "05",
+        title: "Climatização residencial",
+        description: "Planejamento térmico adequado para quartos, salas e residências em Ijuí, assegurando operação silenciosa e preservação estética.",
+        tag: "Casas • Apartamentos",
+        image: "/images/ijui-clima/climatizacao-residencial-nova.webp",
+        alt: "Instalação de ar-condicionado Split em ambiente residencial com acabamento ripado",
+      },
+      {
+        number: "06",
+        title: "Climatização empresarial",
+        description: "Atendimento voltado a escritórios, lojas, clínicas e comércios, com manutenção programada e flexibilidade de horários.",
+        tag: "Comércios • Escritórios • Clínicas",
+        image: "/images/ijui-clima/climatizacao-empresarial-nova.webp",
+        alt: "Climatização empresarial com unidade Cassete de 4 vias instalada em ambiente corporativo",
+      },
+    ] as const satisfies readonly ServiceItem[],
+  },
+  installation: {
+    headline: "Uma boa climatização começa por uma instalação bem executada.",
+    text: "Uma instalação profissional ajuda o equipamento a trabalhar corretamente, reduz riscos de problemas futuros e contribui para eficiência, segurança e acabamento do ambiente.",
+    image: {
+      url: "/images/ijui-clima/boa-climatizacao-nova.webp",
+      alt: "Técnico da Ijuí Clima executando instalação de ar-condicionado com alinhamento milimétrico",
+      width: 640,
+      height: 800,
+    },
+    pillars: [
+      {
+        title: "Eficiência",
+        description: "O equipamento alcança o ponto térmico programado com menor consumo de energia e sem sobrecarregar o compressor.",
+      },
+      {
+        title: "Segurança",
+        description: "Conexões elétricas protegidas e fixação estrutural rígida para evaporadoras e condensadoras externas.",
+      },
+      {
+        title: "Durabilidade",
+        description: "Processo rigoroso de desidratação (vácuo profundo) que impede acidez prejudicial ao óleo lubrificante do motor.",
+      },
+      {
+        title: "Acabamento",
+        description: "Passagem limpa e discreta das linhas frigoríficas, furações vedadas e respeito ao acabamento das paredes.",
+      },
+    ] as const satisfies readonly InstallationPillar[],
+  },
+  process: {
+    eyebrow: "Metodologia Clara",
+    headline: "Simples para você. Cuidadoso em cada etapa.",
+    description: "Do primeiro contato à entrega, cada etapa é conduzida de forma clara e organizada.",
+    steps: [
+      { number: "01", title: "Solicitação", description: "Você nos explica o que precisa." },
+      { number: "02", title: "Avaliação", description: "Entendemos o ambiente e a necessidade." },
+      { number: "03", title: "Orçamento", description: "Apresentamos a solução e o investimento." },
+      { number: "04", title: "Execução", description: "Realizamos o serviço com organização e cuidado." },
+      { number: "05", title: "Finalização", description: "Testamos o equipamento e orientamos o cliente." },
+    ] as const satisfies readonly ProcessStep[],
+  },
+  solutions: {
+    eyebrow: "Projetos Sob Medida",
+    title: "Residencial e Empresarial",
+    description: "Soluções estruturadas para atender às exigências de silêncio do ambiente doméstico e à estabilidade do espaço corporativo.",
+    residential: {
+      badge: "RESIDENCIAL",
+      headline: "Conforto para os ambientes que fazem parte da sua rotina.",
+      text: "Climatização de casas, apartamentos, quartos, salas e demais ambientes residenciais.",
+      image: "/images/ijui-clima/projeto-residencial-novo.webp",
+      alt: "Ambiente residencial com climatização silenciosa integrada de forma discreta",
+      highlights: [
+        "Aparelhos com baixo nível de ruído para noites de sono tranquilas",
+        "Estudo de fluxo de ar para não incidir diretamente sobre sofás e camas",
+        "Preservação do acabamento em gesso, pintura e móveis planejados",
+      ],
+    } satisfies SolutionData,
+    corporate: {
+      badge: "EMPRESARIAL",
+      headline: "Climatização profissional para o seu negócio.",
+      text: "Soluções para escritórios, lojas, consultórios, espaços comerciais e empresas.",
+      image: "/images/ijui-clima/projeto-empresarial-novo.webp",
+      alt: "Sala corporativa de reuniões com ar-condicionado Cassete embutido no teto",
+      highlights: [
+        "Estabilidade térmica contínua para equipes de trabalho e clientes",
+        "Contratos de revisão programada para prevenção de paradas inesperadas",
+        "Atendimento com agenda flexível para não interferir no fluxo de clientes",
+      ],
+    } satisfies SolutionData,
+  },
+  differentials: {
+    eyebrow: "Padrão de Trabalho",
+    headline: "O detalhe também faz parte do serviço.",
+    description: "Acreditamos que o bom serviço alia rigor de engenharia, pontualidade e respeito integral ao ambiente do cliente.",
+    items: [
+      {
+        number: "01",
+        title: "Atendimento profissional",
+        description: "Comunicação clara, pontualidade no agendamento e transparência em todas as orientações prestadas.",
+      },
+      {
+        number: "02",
+        title: "Organização durante o serviço",
+        description: "Utilização de proteções para pisos e móveis, mantendo a rotina do imóvel com o mínimo de interferência.",
+      },
+      {
+        number: "03",
+        title: "Cuidado com o ambiente",
+        description: "Ao término do trabalho, o local é entregue rigorosamente limpo e organizado para uso imediato.",
+      },
+      {
+        number: "04",
+        title: "Orientação técnica",
+        description: "Explicação prática sobre as funções do controle remoto, modos de economia e frequência de limpeza de telas.",
+      },
+      {
+        number: "05",
+        title: "Atenção ao acabamento",
+        description: "Alinhamento com nível das unidades, furações vedadas contra infiltração e cabos organizados.",
+      },
+      {
+        number: "06",
+        title: "Solução adequada a cada necessidade",
+        description: "Dimensionamento exato de carga térmica (BTUs) para que o investimento atenda à realidade do seu espaço.",
+      },
+    ] as const satisfies readonly DifferentialItem[],
+  },
+  projects: {
+    eyebrow: "Acervo de Execuções",
+    title: "Serviços realizados",
+    description: "Alguns trabalhos executados pela Ijuí Clima.",
+    items: [
+      {
+        id: "proj-1",
+        title: "Instalação Residencial de Split com Alinhamento Técnico",
+        category: "Residencial",
+        location: "Ijuí — RS",
+        image: "/images/ijui-clima/projeto-split-residencial-nova.webp",
+        alt: "Técnico da Ijuí Clima executando instalação de split residencial com alinhamento e precisão",
+      },
+      {
+        id: "proj-2",
+        title: "Revisão Técnica de Pressão e Diagnóstico de Fluido",
+        category: "Manutenção",
+        location: "Ijuí — RS",
+        image: "/images/ijui-clima/projeto-revisao-pressao-nova.webp",
+        alt: "Medição de pressão de fluido refrigerante com manifold executada por técnico da Ijuí Clima",
+      },
+    ] as const satisfies readonly ProjectItem[],
+  },
+  about: {
+    eyebrow: "Estrutura e Equipe",
+    headline: "Climatização feita com responsabilidade.",
+    copy: "A Ijuí Clima oferece soluções em climatização para clientes residenciais e empresariais em Ijuí e região, com foco em atendimento profissional, cuidado técnico e qualidade na execução.",
+    image: {
+      url: "/images/ijui-clima/atendimento-familia-nova.webp",
+      alt: "Técnico da Ijuí Clima prestando atendimento e orientando clientes sobre climatização",
+      width: 700,
+      height: 525,
+    },
+    facilityImage: {
+      url: "/images/ijui-clima/frota-veiculos-ijui-clima.webp",
+      alt: "Frota de veículos de atendimento da Ijuí Clima",
+      label: "Frota de Atendimento",
+      width: 320,
+      height: 200,
+    },
+    vehicleImage: {
+      url: "/images/ijui-clima/preparacao-tecnica-nova.webp",
+      alt: "Preparação de ferramental de precisão e materiais técnicos da Ijuí Clima",
+      label: "Estrutura Técnica",
+      width: 320,
+      height: 200,
+    },
+    pillars: [
+      {
+        label: "Compromisso Técnico",
+        text: "Trabalho realizado com ferramental de precisão e materiais em conformidade com as exigências dos fabricantes.",
+      },
+      {
+        label: "Atendimento Local",
+        text: "Sede em Ijuí — RS para garantir rapidez de resposta, pontualidade e facilidade de contato.",
+      },
+      {
+        label: "Transparência",
+        text: "Orçamentos claros com detalhamento dos serviços a serem executados, sem surpresas.",
+      },
+    ] as const satisfies readonly AboutPillar[],
+  },
+  faq: [
+    {
+      question: "Quanto custa instalar um ar-condicionado?",
+      answer: "O custo de instalação varia de acordo com a capacidade do aparelho em BTUs, a distância da tubulação de cobre entre a evaporadora interna e a condensadora externa (respeitando a metragem mínima recomendada pelo fabricante), a complexidade de fixação e a infraestrutura elétrica disponível. Realizamos uma avaliação prévia objetiva para apresentar uma proposta clara e sem custos ocultos.",
+    },
+    {
+      question: "Como saber qual capacidade de ar-condicionado preciso?",
+      answer: "O dimensionamento térmico considera a área em metros quadrados, a incidência de sol durante o dia (manhã ou tarde), o número de aberturas de vidro, a circulação média de pessoas e os equipamentos eletroeletrônicos no local. Avaliamos esses fatores para indicar a capacidade exata em BTUs, evitando aparelhos subdimensionados que gastam mais energia.",
+    },
+    {
+      question: "Vocês instalam aparelhos comprados em outras lojas?",
+      answer: "Sim! Fazemos a instalação de equipamentos novos adquiridos em qualquer loja física ou pela internet. O serviço é executado conforme os manuais técnicos de garantia (tubulação 100% cobre, vácuo com vacuômetro digital e teste de estanqueidade), preservando a garantia oficial do fabricante.",
+    },
+    {
+      question: "Qual a importância da manutenção preventiva?",
+      answer: "A manutenção preventiva periódica remove o acúmulo de poeira nas serpentinas e turbina, permitindo que o compressor funcione na temperatura e pressão corretas. Isso reduz o consumo de energia elétrica em até 30%, diminui o risco de quebras no auge do verão e evita pingadeiras em paredes e móveis.",
+    },
+    {
+      question: "Com que frequência devo limpar ou higienizar o aparelho?",
+      answer: "Em residências, os filtros laváveis devem ser limpos pelo usuário uma vez por mês, enquanto a higienização química profunda profissional das partes internas deve ser feita a cada 6 a 12 meses. Em clínicas, escritórios e comércios com fluxo diário constante, a higienização técnica deve ser feita semestralmente ou trimestralmente.",
+    },
+    {
+      question: "A Ijuí Clima atende empresas?",
+      answer: "Sim. Atendemos empresas, clínicas, escritórios, consultórios e lojas em Ijuí e região, oferecendo instalação, reparos pontuais e contratos de manutenção preventiva com horários programados.",
+    },
+    {
+      question: "Vocês atendem outras cidades além de Ijuí?",
+      answer: "O atendimento diário principal é concentrado no município de Ijuí — RS. Cidades vizinhas da região noroeste gaúcha são atendidas mediante consulta prévia de disponibilidade para serviços e instalações completas.",
+    },
+    {
+      question: "Como solicitar um orçamento?",
+      answer: "Você pode solicitar um orçamento diretamente pelo WhatsApp clicando nos botões disponíveis na página ou através do formulário rápido de pré-orçamento. Se puder indicar o tipo de serviço, o tamanho aproximado do cômodo ou enviar fotos do local, agilizamos o retorno com a proposta correspondente.",
+    },
+  ] as const satisfies readonly FaqItem[],
+  finalCta: {
+    eyebrow: "Atendimento Direto",
+    headline: "Conforto começa com uma climatização bem planejada.",
+    text: "Fale com a Ijuí Clima e solicite seu orçamento.",
+    buttonText: "Solicitar orçamento pelo WhatsApp",
+    secondaryButtonText: "Preencher pré-orçamento",
+    location: "Ijuí • Rio Grande do Sul",
   },
 } as const;
 
-export const services = [
-  { id: "lavagem-roupas", image: "/images/service-roupas.webp", icon: "/images/icon-roupas.webp", imagePosition: "center", title: "Lavagem de roupas & a seco", text: "Roupas do dia a dia, ternos, vestidos de festa e peças delicadas com lavagem a seco profissional.", query: "Lavagem de roupas e a seco" },
-  { id: "higienizacao-estofados", image: "/images/service-estofados.webp", icon: "/images/icon-estofados.webp", imagePosition: "center", title: "Sofás & impermeabilização", text: "Higienização profunda de estofados e impermeabilização que repele líquidos e evita manchas.", query: "Higienização e impermeabilização de sofás" },
-  { id: "tapetes-cortinas", image: "/images/service-tapetes.webp", icon: "/images/icon-tapetes.webp", imagePosition: "center", title: "Tapetes, persianas & cortinas", text: "Remoção completa de sujeiras, ácaros e odores preservando texturas, cores e tramas delicadas.", query: "Tapetes, persianas e cortinas" },
-  { id: "tenis-calcados", image: "/images/service-calcados.webp", icon: "/images/icon-calcados.webp?v=2", imagePosition: "center", title: "Tênis & calçados em geral", text: "Higienização detalhada interna e externa, desodorização e revitalização para calçados de qualquer modelo.", query: "Limpeza de tênis e calçados" },
-  { id: "linha-pet", image: "/images/service-pet.webp", icon: "/images/icon-pet.webp?v=2", imagePosition: "center", title: "Linha Pet especializada", text: "Caminhas, tapetes, roupinhas e mantas desinfetadas com produtos antialérgicos e seguros para pets.", query: "Higienização da Linha Pet" },
-  { id: "couro-motoqueiro", image: "/images/service-couro.webp", icon: "/images/icon-couro.webp?v=2", imagePosition: "center", title: "Jaquetas de motoqueiro & couro", text: "Limpeza técnica e hidratação profunda para couro e jaquetas de motociclista com proteção UV.", query: "Limpeza de jaqueta de motoqueiro e couro" },
-  { id: "passadoria", image: "/images/service-passadoria.webp", icon: "/images/icon-passadoria.webp", imagePosition: "center", title: "Passadoria profissional", text: "Acabamento impecável a vapor, dobradas ou no cabide. Praticidade total para a sua rotina.", query: "Passadoria profissional" },
-  { id: "cortinas-persianas", image: "/images/service-cortinas.webp", icon: "/images/icon-cortinas.webp?v=2", imagePosition: "center", title: "Cortinas finas & persianas", text: "Lavagem especializada de cortinas com pregas, blackout, tecidos leves e persianas verticais e horizontais.", query: "Lavagem de cortinas e persianas" },
-] as const;
-
-export const aboutBenefits = [
-  { icon: "/images/about-tradition.webp", alt: "Tradição", title: "Tradição e<br>cuidado local" },
-  { icon: "/images/about-eco.webp", alt: "Licença Ambiental", title: "Licenciado pela<br>SMA Ivoti" },
-  { icon: "/images/about-team.webp", alt: "Coleta e Entrega", title: "Coleta e entrega<br>grátis em Ivoti" },
-  { icon: "/images/about-quality.webp", alt: "Qualidade", title: "Compromisso com<br>qualidade e prazos" },
-] as const;
-
-export const processSteps = [
-  { title: "Coleta grátis no<br>seu endereço", text: "Buscamos suas peças na sua casa ou empresa sem custo de deslocamento, ou você entrega na loja.", icon: "/images/process-step1.webp", alt: "Sacola de Coleta" },
-  { title: "Processos ecológicos<br>e seguros", text: "Equipamentos modernos e produtos certificados pela SMA Ivoti que preservam as fibras e o meio ambiente.", icon: "/images/process-step2.webp", alt: "Máquina de Lavar" },
-  { title: "Higienização,<br>impermeabilização e ferro", text: "Cuidado artesanal, proteção contra líquidos e acabamento impecável para cada tipo de peça.", icon: "/images/process-step3.webp", alt: "Ferro a Vapor" },
-  { title: "Entrega grátis com<br>pontualidade", text: "No prazo combinado, tudo embalado, cheiroso e pronto para uso direto no seu armário ou casa.", icon: "/images/process-step4.webp", alt: "Camisa Polo no Cabide" },
-] as const;
-
-export const reviews = [
-  { text: "Atendimento excelente e serviço impecável! Minhas roupas e tapetes ficaram como novos. Super recomendo!", name: "Juliana M.", city: "Ivoti/RS" },
-  { text: "Tradição e qualidade que fazem a diferença. Confio na lavanderia há anos!", name: "Carlos A.", city: "Ivoti/RS" },
-  { text: "Equipe atenciosa, serviço rápido e com acabamento perfeito. A melhor de Ivoti!", name: "Mariana T.", city: "Ivoti/RS" },
-  { text: "Minhas camisas sociais voltaram impecáveis, bem passadas e cheirosas. Virei cliente fiel da passadoria.", name: "Rafael S.", city: "Ivoti/RS" },
-  { text: "Fizeram a higienização do meu sofá e ficou com cheirinho de novo. Trabalho caprichoso do início ao fim.", name: "Patrícia L.", city: "Ivoti/RS" },
-  { text: "Meu tapete da sala voltou com as cores vivas e sem nenhum odor. Preço justo e entrega no prazo.", name: "Marcos V.", city: "Ivoti/RS" },
-] as const;
-
-export const faqs = [
-  ["A coleta e entrega tem custo adicional?", "Não! A Lavanderia Ivoti oferece serviço de coleta e entrega grátis em Ivoti. Basta nos chamar no WhatsApp que agendamos a retirada e entrega no seu endereço sem qualquer cobrança extra."],
-  ["Quais serviços a lavanderia oferece?", "Realizamos lavagem de roupas (dia a dia e lavagem a seco), higienização e impermeabilização de sofás e estofados, limpeza de tapetes, cortinas e persianas, higienização de tênis e calçados, linha pet (caminhas e roupinhas), jaquetas de couro e motoqueiro, passadoria profissional e rouparia institucional."],
-  ["Como funciona a impermeabilização de estofados?", "Após a higienização profunda do sofá ou poltrona, aplicamos uma resina impermeabilizante atóxica que cria uma película invisível repelente de líquidos (água, sucos, café). Em caso de derramamento, o líquido não penetra nas fibras e é facilmente removido com um pano seco."],
-  ["A Lavanderia Ivoti possui licenciamento ambiental?", "Sim! A empresa é devidamente licenciada pela Secretaria de Meio Ambiente (SMA Ivoti), cumprindo rigorosamente as normas ambientais municipais com Licença de Operação ativa, produtos biodegradáveis e tratamento adequado."],
-  ["Vocês lavam caminhas pet e tênis?", "Sim! Temos processos específicos para calçados esportivos e casuais (com desodorização e secagem controlada) e para a linha pet (utilizando produtos antibacterianos hipoalergênicos e seguros para os animais)."],
-  ["Onde fica a lavanderia e quais os números de contato?", "Estamos localizados na Av. Pres. Lucena, 2084, bairro Concórdia, Ivoti/RS. Atendemos pelos WhatsApps (51) 99919-9846 e (51) 99301-9846, e pelo telefone fixo (51) 3563-6908."],
-] as const;
+export const buildWhatsAppUrl = (message: string): string => {
+  return `https://wa.me/${siteData.company.whatsappRaw}?text=${encodeURIComponent(message)}`;
+};

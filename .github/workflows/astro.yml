@@ -1,4 +1,4 @@
-name: Deploy Lavanderia Ivoti to GitHub Pages
+name: Deploy Ijuí Clima to GitHub Pages
 
 on:
   push:
