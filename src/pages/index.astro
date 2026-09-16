@@ -16,20 +16,15 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
         <!-- Main Header -->
     <header id="main-header" class="header-blue sticky top-0 z-40 w-full transition-all duration-300 ease-out py-2.5 sm:py-3">
       <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8 flex items-center justify-between">
-        
-        <!-- Logo -->
-        <a href="#" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none rounded-md" aria-label={`${siteData.company.name} - Início`}>
-          <div class="h-10 sm:h-11 aspect-square rounded-lg overflow-hidden flex items-center justify-center p-0.5 transition-transform duration-300 group-hover:scale-105 border border-white/15 bg-[#060D28] shadow-sm">
-            <img src={asset(siteData.seo.ogImage)} alt={siteData.company.name} class="w-full h-full object-cover rounded" width="44" height="44" />
-          </div>
-          <div class="flex flex-col">
-            <span class="font-heading font-extrabold text-base sm:text-lg tracking-tight text-white leading-none group-hover:text-[#00B4FF] transition-colors">
-              AM <span class="text-[#00B4FF]">CLIMATIZAR</span>
-            </span>
-            <span class="text-[9px] sm:text-[9.5px] font-semibold tracking-wider text-slate-300 uppercase mt-0.5">
-              Ar-Condicionado & Elétrica
-            </span>
-          </div>
+                <!-- Logo (Clean, Borderless, Enlarged, Without Written Text) -->
+        <a href="#" class="flex items-center focus:outline-none group py-0.5" aria-label={`${siteData.company.name} - Início`}>
+          <img 
+            src={asset("/assets/images/logo-navbar.png")} 
+            alt={siteData.company.name} 
+            class="header-brand-logo" 
+            width="176" 
+            height="58" 
+          />
         </a>
 
         <!-- Desktop Navigation -->
@@ -60,11 +55,14 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
     <div id="mobile-drawer" class="mobile-drawer-blue fixed inset-y-0 right-0 max-w-sm w-full text-white z-50 p-6 sm:p-8 shadow-2xl transform translate-x-full invisible transition-transform duration-300 ease-out flex flex-col justify-between lg:hidden border-l border-white/10">
       <div>
         <div class="flex items-center justify-between pb-6 border-b border-white/10">
-          <div class="flex items-center gap-2.5">
-            <img src={asset(siteData.seo.ogImage)} alt={siteData.company.name} class="h-9 w-9 rounded-md object-cover border border-white/15" />
-            <span class="font-heading font-extrabold text-base tracking-tight text-white">
-              AM <span class="text-[#00B4FF]">CLIMATIZAR</span>
-            </span>
+          <div class="flex items-center">
+            <img 
+              src={asset("/assets/images/logo-navbar.png")} 
+              alt={siteData.company.name} 
+              class="h-11 w-auto object-contain border-0" 
+              width="140" 
+              height="44" 
+            />
           </div>
           <button id="mobile-menu-close" type="button" class="p-2 text-slate-300 hover:text-white focus:outline-none rounded-md" aria-label="Fechar menu">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -95,24 +93,23 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
     <!-- Conteúdo Principal -->
     <main id="conteudo-principal">
       
-      <!-- Hero Section -->
-      <section class="relative bg-white pt-10 sm:pt-14 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 overflow-hidden" aria-labelledby="hero-title">
+      <!-- Hero Section (Pedro Zvir Height Parity & Design Principles) -->
+      <section class="hero-section" aria-labelledby="hero-title">
         <!-- Imagem de Fundo Integrada (Desktop) -->
-        <div class="hidden lg:block absolute inset-y-0 right-0 w-[52%] xl:w-[50%] pointer-events-none z-0 overflow-hidden">
+        <div class="hero-bg-desktop">
           <img 
             src={asset(siteData.hero.image.url)} 
             alt={siteData.hero.image.alt} 
-            class="w-full h-full object-cover object-[center_35%] filter contrast-[1.01]"
             loading="eager"
             fetchpriority="high"
             width={siteData.hero.image.width}
             height={siteData.hero.image.height}
           />
-          <div class="absolute inset-y-0 left-0 w-44 xl:w-56" style="background: linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.96) 28%, rgba(255,255,255,0.45) 65%, rgba(255,255,255,0) 100%);"></div>
+          <div class="hero-bg-overlay"></div>
         </div>
 
-        <div class="max-w-[1280px] mx-auto px-5 max-[375px]:px-4 sm:px-8 relative z-10">
-          <div class="grid grid-cols-1 lg:grid-cols-[54%_46%] xl:grid-cols-[52%_48%] items-center">
+        <div class="hero-container">
+          <div class="grid grid-cols-1 lg:grid-cols-[56%_44%] xl:grid-cols-[54%_46%] items-center">
             
             <div class="hero-copy-container flex flex-col items-start justify-center py-2 sm:py-4 lg:py-6 z-10">
               <span class="hero-animate-up text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.08em] text-[#0C3B78] block mb-3 sm:mb-4">
@@ -128,7 +125,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 {siteData.hero.description}
               </p>
 
-              <div class="hero-animate-up flex flex-col min-[390px]:flex-row items-stretch min-[390px]:items-center gap-3.5 sm:gap-5 w-full sm:w-auto mb-6 sm:mb-8" style="animation-delay: 240ms;">
+              <div class="hero-animate-up hero-actions flex flex-col min-[390px]:flex-row items-stretch min-[390px]:items-center gap-3.5 sm:gap-5 w-full sm:w-auto mb-6 sm:mb-8" style="animation-delay: 240ms;">
                 <button type="button" data-open-quote class="btn-primary !h-[50px] !px-7 sm:!px-8 !rounded-lg !text-[15px] font-semibold shadow-sm hover:shadow-md hover:-translate-y-[1px] transition-all duration-200 justify-center">
                   <span>{siteData.hero.primaryCta}</span>
                   <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -159,7 +156,6 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 alt={siteData.hero.image.alt} 
                 class="w-full h-full object-cover object-[center_20%]"
                 loading="eager"
-                fetchpriority="high"
                 width={siteData.hero.image.width}
                 height={siteData.hero.image.height}
               />
@@ -815,7 +811,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           <!-- Coluna 1: Marca -->
           <div class="lg:col-span-4">
             <a href="#" class="inline-block mb-5 sm:mb-6" aria-label={`${siteData.company.name} - Início`}>
-              <img src={asset(siteData.seo.ogImage)} alt={siteData.company.name} class="h-11 sm:h-[3.25rem] w-auto object-contain brightness-110" />
+              <img src={asset("/assets/images/logo-navbar.png")} alt={siteData.company.name} class="h-12 sm:h-14 w-auto object-contain brightness-110" width="160" height="52" />
             </a>
             <p class="text-[14.5px] text-slate-400 leading-relaxed max-w-sm mb-3">
               Mais de 4 anos no mercado trazendo conforto, qualidade e confiança em climatização e elétrica residencial em {siteData.company.locationString} e Vale dos Sinos.
