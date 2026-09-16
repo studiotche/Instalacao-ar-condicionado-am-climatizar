@@ -806,12 +806,18 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       <h2 id="footer-title" class="sr-only">Rodapé Institucional da {siteData.company.name}</h2>
       <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-white/10">
+        <div class="footer-main-grid">
           
           <!-- Coluna 1: Marca -->
-          <div class="lg:col-span-4">
+          <div>
             <a href="#" class="inline-block mb-5 sm:mb-6" aria-label={`${siteData.company.name} - Início`}>
-              <img src={asset("/assets/images/logo-navbar.png")} alt={siteData.company.name} class="h-12 sm:h-14 w-auto object-contain brightness-110" width="160" height="52" />
+              <img 
+                src={asset("/assets/images/logo-footer.webp")} 
+                alt={siteData.company.name} 
+                class="h-12 sm:h-14 w-auto object-contain" 
+                width="160" 
+                height="78" 
+              />
             </a>
             <p class="text-[14.5px] text-slate-400 leading-relaxed max-w-sm mb-3">
               Mais de 4 anos no mercado trazendo conforto, qualidade e confiança em climatização e elétrica residencial em {siteData.company.locationString} e Vale dos Sinos.
@@ -826,7 +832,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           </div>
 
           <!-- Coluna 2: Serviços -->
-          <div class="lg:col-span-3">
+          <div>
             <h3 class="text-[13px] font-semibold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Serviços</h3>
             <ul class="space-y-2 text-[15px] sm:text-[14.5px]">
               <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Instalação de Ar-Condicionado</a></li>
@@ -839,7 +845,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           </div>
 
           <!-- Coluna 3: Navegação -->
-          <div class="lg:col-span-2">
+          <div>
             <h3 class="text-[13px] font-semibold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Navegação</h3>
             <ul class="space-y-2 text-[15px] sm:text-[14.5px]">
               <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Serviços</a></li>
@@ -853,7 +859,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           </div>
 
           <!-- Coluna 4: Contato -->
-          <div class="lg:col-span-3">
+          <div>
             <h3 class="text-[13px] font-semibold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Contato</h3>
             <ul class="space-y-3 text-[15px] sm:text-[14.5px]">
               <li class="flex items-start gap-2">
@@ -882,6 +888,18 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 {siteData.company.hours.weekdays}<br />{siteData.company.hours.saturday}
               </li>
             </ul>
+          </div>
+
+          <!-- Mascote AM Climatizar no Canto Direito -->
+          <div class="footer-mascot-wrapper" aria-hidden="true">
+            <img 
+              src={asset("/assets/images/mascote-am-climatizar.webp")} 
+              alt="Mascote Técnico AM Climatizar" 
+              class="footer-mascot-img" 
+              loading="lazy"
+              width="285"
+              height="345"
+            />
           </div>
 
         </div>
