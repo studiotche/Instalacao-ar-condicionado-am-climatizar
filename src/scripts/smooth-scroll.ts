@@ -109,6 +109,7 @@ async function initSmoothScroll(): Promise<void> {
       touchMultiplier: 2,
       infinite: false,
     });
+    document.documentElement.classList.add("lenis", "lenis-smooth");
   } catch {
     // se o Lenis falhar, o CSS nativo (scroll-behavior) assume
     return;

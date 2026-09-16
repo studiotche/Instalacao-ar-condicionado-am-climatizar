@@ -122,9 +122,9 @@ export const siteData = {
     secondaryCta: "Conhecer nossos serviços",
     image: {
       url: "/assets/images/hero-am.webp",
-      alt: "Instalação de ar-condicionado split executada com excelência pela AM Climatizar em Ivoti",
-      width: 1024,
-      height: 768,
+      alt: "Técnico da AM Climatizar realizando instalação especializada de ar-condicionado split LG Inverter com ferramental profissional",
+      width: 1406,
+      height: 1258,
     },
   },
   trustBar: [
