@@ -1,21 +1,53 @@
 /**
- * Scroll suave (Lenis) — baseado na implementação de referência (Pedro Zvir)
- * para o site Astro da AM Climatizar.
+ * Smooth scroll (Lenis) — exact parity with WordPress plugin "Scroll Suave"
+ * (C:\Users\Roger\Plugins - Roger\scroll-suave\assets\js\bootstrap.js).
  *
- * - Mesma lib: @studio-freight/lenis
- * - Duração 1.2s com curva suave de amortecimento
- * - Ativa no desktop (viewport >= 1025px)
- * - Âncoras (#...) roladas via lenis.scrollTo + compensação do header fixo (-76px)
- * - Scroll do hash ao carregar a página
+ * Fixes Safari lockups:
+ * 1. Injects 'html { scroll-behavior: auto !important; }' and adds 'lenis lenis-smooth'
+ *    classes to <html>. Without this, Safari WebKit enters a conflict loop at every
+ *    RAF frame trying to smoothly interpolate on top of Lenis's RAF scroll.
+ * 2. Prevents duplicate initializations via global guard __SSLenisLiteBootstrapped.
+ * 3. Only runs on desktop (viewport >= 1025px), preserving pure native mobile touch scroll.
+ * 4. Compensates fixed compact header (-76px) on anchor scroll.
  */
 import type Lenis from "@studio-freight/lenis";
 
 const MIN_WIDTH = 1025;
-const HEADER_OFFSET = -76; // compensa o header fixo compacto
+const HEADER_OFFSET = -76; // compensates for fixed compact header
 const LENIS_DURATION = 1.2;
+
+interface WindowWithLenisGuard extends Window {
+  __SSLenisLiteBootstrapped?: boolean;
+}
 
 function getViewportWidth(): number {
   return window.innerWidth || document.documentElement.clientWidth || 0;
+}
+
+function injectLenisCSS(): void {
+  if (document.getElementById("sslenisl-css")) return;
+  const css = `
+html {
+    scroll-behavior: auto !important;
+}
+html.lenis {
+    height: auto !important;
+}
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain !important;
+}
+.lenis.lenis-stopped {
+    overflow: hidden !important;
+}`;
+  const styleEl = document.createElement("style");
+  styleEl.id = "sslenisl-css";
+  styleEl.appendChild(document.createTextNode(css));
+  document.head.appendChild(styleEl);
+
+  document.documentElement.classList.add("lenis", "lenis-smooth");
 }
 
 function resolveTarget(hash: string): HTMLElement | null {
@@ -23,10 +55,10 @@ function resolveTarget(hash: string): HTMLElement | null {
   try {
     target = document.querySelector<HTMLElement>(hash);
   } catch {
-    // hash inválido como seletor — tenta por id abaixo
+    // invalid selector syntax fallback
   }
   if (!target && hash.length > 1) {
-    target = document.getElementById(hash.slice(1));
+    target = document.getElementById(hash.replace(/^#/, ""));
   }
   return target;
 }
@@ -61,7 +93,12 @@ function wireAnchors(lenis: Lenis): void {
       if (!target) return;
 
       event.preventDefault();
-      lenis.scrollTo(target, { offset: HEADER_OFFSET });
+
+      if (lenis && typeof lenis.scrollTo === "function") {
+        lenis.scrollTo(target, { offset: HEADER_OFFSET });
+      } else {
+        fallbackSmoothTo(target);
+      }
 
       if (history.pushState) {
         history.pushState(null, "", hash);
@@ -69,7 +106,7 @@ function wireAnchors(lenis: Lenis): void {
         location.hash = hash;
       }
 
-      // acessibilidade: leva o foco junto no skip-link
+      // Accessibility: move focus with skip-link
       if (hash === "#conteudo-principal" && !target.hasAttribute("tabindex")) {
         target.setAttribute("tabindex", "-1");
         target.focus({ preventScroll: true });
@@ -93,11 +130,18 @@ function scrollToHashOnLoad(lenis: Lenis): void {
 }
 
 async function initSmoothScroll(): Promise<void> {
+  const win = typeof window !== "undefined" ? (window as WindowWithLenisGuard) : null;
+  if (!win || win.__SSLenisLiteBootstrapped) return;
+  win.__SSLenisLiteBootstrapped = true;
+
   if (getViewportWidth() < MIN_WIDTH) return;
 
   let lenis: Lenis;
   try {
     const { default: LenisCtor } = await import("@studio-freight/lenis");
+
+    injectLenisCSS();
+
     lenis = new LenisCtor({
       duration: LENIS_DURATION,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -109,9 +153,7 @@ async function initSmoothScroll(): Promise<void> {
       touchMultiplier: 2,
       infinite: false,
     });
-    document.documentElement.classList.add("lenis", "lenis-smooth");
   } catch {
-    // se o Lenis falhar, o CSS nativo (scroll-behavior) assume
     return;
   }
 
@@ -119,14 +161,19 @@ async function initSmoothScroll(): Promise<void> {
     try {
       lenis.raf(time);
     } catch {
-      // ignora erro isolado de frame
+      // ignore interrupted frame
     }
     requestAnimationFrame(raf);
   }
   requestAnimationFrame(raf);
 
   wireAnchors(lenis);
-  window.addEventListener("load", () => scrollToHashOnLoad(lenis));
+
+  if (document.readyState === "complete") {
+    scrollToHashOnLoad(lenis);
+  } else {
+    window.addEventListener("load", () => scrollToHashOnLoad(lenis), { once: true });
+  }
 }
 
 void initSmoothScroll();

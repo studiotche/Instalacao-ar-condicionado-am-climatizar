@@ -121,10 +121,16 @@ export const siteData = {
     primaryCta: "Solicitar orçamento no WhatsApp",
     secondaryCta: "Conhecer nossos serviços",
     image: {
-      url: "/assets/images/hero-am.webp",
-      alt: "Técnico da AM Climatizar realizando instalação especializada de ar-condicionado split LG Inverter com ferramental profissional",
-      width: 1406,
-      height: 1258,
+      url: "/assets/images/instalador-ar-condicionado-am-climatizar.webp",
+      alt: "Instalador profissional de ar-condicionado da AM Climatizar realizando serviço técnico especializado",
+      width: 1924,
+      height: 994,
+    },
+    imageMobile: {
+      url: "/assets/images/instalador-ar-condicionado-am-climatizar-m.webp",
+      alt: "Instalador profissional de ar-condicionado da AM Climatizar em atendimento técnico",
+      width: 779,
+      height: 813,
     },
   },
   trustBar: [

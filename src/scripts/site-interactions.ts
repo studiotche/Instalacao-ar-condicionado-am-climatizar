@@ -1,21 +1,8 @@
 const WHATSAPP_NUMBER = "5551997736690";
 
 const initHeaderScroll = (): void => {
-  const header = document.getElementById("main-header");
-  if (!header) return;
-
-  const handleScroll = (): void => {
-    if (window.scrollY > 20) {
-      header.classList.add("bg-white/95", "backdrop-blur-md", "shadow-xs", "py-2.5", "sm:py-3.5");
-      header.classList.remove("py-3.5", "sm:py-5", "lg:py-7", "bg-transparent");
-    } else {
-      header.classList.remove("bg-white/95", "backdrop-blur-md", "shadow-xs", "py-2.5", "sm:py-3.5");
-      header.classList.add("py-3.5", "sm:py-5", "lg:py-7", "bg-transparent");
-    }
-  };
-
-  window.addEventListener("scroll", handleScroll, { passive: true });
-  handleScroll();
+  // Header styling is statically handled with GPU acceleration in global.css
+  // Avoiding scroll-driven class toggles prevents layout thrashing in Safari and mobile.
 };
 
 const initMobileDrawer = (): void => {

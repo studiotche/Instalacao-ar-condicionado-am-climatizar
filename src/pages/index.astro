@@ -14,7 +14,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
   <!-- Application Mount Target -->
   <div id="app" class="flex flex-col min-h-screen">
         <!-- Main Header (Fixo com Alto Desempenho) -->
-    <header id="main-header" class="header-blue header-fixed py-2.5 sm:py-3">
+    <header id="main-header" class="site-header header-blue header-fixed py-2.5 sm:py-3">
       <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8 flex items-center justify-between">
         <!-- Logo (Clean, Borderless, Enlarged, Without Written Text) -->
         <a href="#" class="flex items-center focus:outline-none group py-0.5" aria-label={`${siteData.company.name} - Início`}>
@@ -116,16 +116,16 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 {siteData.hero.eyebrow}
               </span>
 
-              <h1 id="hero-title" class="hero-animate-up hero-heading-display mb-4 sm:mb-5" style="animation-delay: 80ms;">
+              <h1 id="hero-title" class="hero-animate-up hero-delay-80 hero-heading-display mb-4 sm:mb-5">
                 {siteData.hero.headlinePart1}<br class="hidden min-[390px]:inline" /> {siteData.hero.headlinePart2}<br />
                 <span class="text-[#0090D0]">{siteData.hero.headlineHighlight}</span>
               </h1>
 
-              <p class="hero-animate-up font-body text-[15px] sm:text-[16px] text-slate-600 leading-[1.65] max-w-[500px] mb-6 sm:mb-8" style="animation-delay: 160ms;">
+              <p class="hero-animate-up hero-delay-160 font-body text-[15px] sm:text-[16px] text-slate-600 leading-[1.65] max-w-[500px] mb-6 sm:mb-8">
                 {siteData.hero.description}
               </p>
 
-              <div class="hero-animate-up hero-actions flex flex-col min-[390px]:flex-row items-stretch min-[390px]:items-center gap-3.5 sm:gap-5 w-full sm:w-auto mb-6 sm:mb-8" style="animation-delay: 240ms;">
+              <div class="hero-animate-up hero-delay-240 hero-actions flex flex-col min-[390px]:flex-row items-stretch min-[390px]:items-center gap-3.5 sm:gap-5 w-full sm:w-auto mb-6 sm:mb-8">
                 <button type="button" data-open-quote class="btn-primary !h-[50px] !px-7 sm:!px-8 !rounded-lg !text-[15px] font-semibold shadow-sm hover:shadow-md hover:-translate-y-[1px] transition-all duration-200 justify-center">
                   <span>{siteData.hero.primaryCta}</span>
                   <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -137,7 +137,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 </a>
               </div>
 
-              <div class="hero-animate-up inline-flex items-start sm:items-center gap-2.5 px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200/90 text-xs sm:text-[13px] text-slate-700 font-medium shadow-2xs w-full sm:w-auto" style="animation-delay: 320ms;">
+              <div class="hero-animate-up hero-delay-320 inline-flex items-start sm:items-center gap-2.5 px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200/90 text-xs sm:text-[13px] text-slate-700 font-medium shadow-2xs w-full sm:w-auto">
                 <svg class="w-3.5 h-3.5 text-[#0C3B78] shrink-0 mt-0.5 sm:mt-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
@@ -152,12 +152,12 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
             <!-- Imagem no Mobile/Tablet -->
             <div class="block lg:hidden relative w-full aspect-[4/3] rounded-xl overflow-hidden mt-6 sm:mt-8 shadow-sm border border-slate-100">
               <img 
-                src={asset(siteData.hero.image.url)} 
-                alt={siteData.hero.image.alt} 
+                src={asset(siteData.hero.imageMobile.url)} 
+                alt={siteData.hero.imageMobile.alt} 
                 class="w-full h-full object-cover object-[center_20%]"
                 loading="eager"
-                width={siteData.hero.image.width}
-                height={siteData.hero.image.height}
+                width={siteData.hero.imageMobile.width}
+                height={siteData.hero.imageMobile.height}
               />
             </div>
 

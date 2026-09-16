@@ -154,8 +154,9 @@ const jsonLd = {
     <link rel="icon" type="image/webp" href={asset("/favicon.webp")} />
     <link rel="apple-touch-icon" sizes="180x180" href={asset("/apple-touch-icon.png")} />
 
-    <!-- Preload da Imagem Principal do Hero (LCP Optimization) -->
-    <link rel="preload" as="image" href={asset(siteData.hero.image.url)} fetchpriority="high" />
+    <!-- Preload das Imagens do Hero (LCP Optimization) -->
+    <link rel="preload" as="image" href={asset(siteData.hero.image.url)} media="(min-width: 761px)" fetchpriority="high" />
+    <link rel="preload" as="image" href={asset(siteData.hero.imageMobile.url)} media="(max-width: 760px)" fetchpriority="high" />
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
