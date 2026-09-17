@@ -63,6 +63,15 @@ export interface FaqItem {
   readonly answer: string;
 }
 
+export interface TestimonialItem {
+  readonly id: string;
+  readonly author: string;
+  readonly city: string;
+  readonly text: string;
+  readonly rating: number;
+  readonly source: string;
+}
+
 export const siteData = {
   company: {
     name: "AM Climatizar",
@@ -109,6 +118,7 @@ export const siteData = {
     { label: "Como trabalhamos", href: "#processo" },
     { label: "Projetos", href: "#projetos" },
     { label: "Sobre", href: "#sobre" },
+    { label: "Depoimentos", href: "#depoimentos" },
     { label: "FAQ", href: "#faq" },
     { label: "Contato", href: "#contato" },
   ] as const satisfies readonly NavItem[],
@@ -361,6 +371,63 @@ export const siteData = {
         text: "Orçamento prévio sem surpresas, com diagnóstico honesto sobre o que realmente precisa ser reparado.",
       },
     ] as const satisfies readonly AboutPillar[],
+  },
+  testimonials: {
+    eyebrow: "DEPOIMENTOS NO GOOGLE",
+    title: "Experiências de quem já climatizou",
+    description: "Relatos reais de clientes atendidos com serviços de instalação, higienização e manutenção em Ivoti e região.",
+    googleRating: "4,8",
+    reviewsCount: "22 avaliações no Google",
+    items: [
+      {
+        id: "test-1",
+        author: "Carlos Eduardo Weber",
+        city: "Ivoti / RS",
+        rating: 5,
+        source: "Avaliação Google",
+        text: "Estou extremamente satisfeito com a instalação do ar-condicionado. Desde o primeiro contato pelo WhatsApp até o acabamento da tubulação embutida, o serviço foi impecável. Técnico pontual, educado e deixou o ambiente limpo!",
+      },
+      {
+        id: "test-2",
+        author: "Mariana Schmitt",
+        city: "Dois Irmãos / RS",
+        rating: 5,
+        source: "Avaliação Google",
+        text: "Profissional excelente! Fez a higienização completa dos aparelhos na minha residência. O ar voltou a gelar como novo e aquele cheiro incômodo sumiu totalmente. Recomendo de olhos fechados!",
+      },
+      {
+        id: "test-3",
+        author: "Roberto Becker",
+        city: "Estância Velha / RS",
+        rating: 5,
+        source: "Avaliação Google",
+        text: "Nota 10! Além de instalar o split com padrão impecável, refez a fiação e o disjuntor dedicado no quadro de força com total segurança. Diagnóstico honesto, sem inventar problemas desnecessários.",
+      },
+      {
+        id: "test-4",
+        author: "Juliana Holler",
+        city: "Ivoti / RS",
+        rating: 5,
+        source: "Avaliação Google",
+        text: "Atendimento muito rápido quando precisei de socorro no calor. O técnico identificou de imediato o defeito no capacitor e a necessidade de carga de gás. Preço justo, serviço limpo e transparência absoluta.",
+      },
+      {
+        id: "test-5",
+        author: "Lucas Althaus",
+        city: "Novo Hamburgo / RS",
+        rating: 5,
+        source: "Avaliação Google",
+        text: "A AM Climatizar cuida de toda a climatização da nossa empresa e também da minha casa. O profissional é pontual, utiliza vacuômetro de precisão e tubulação 100% de cobre. Trabalho técnico diferenciado!",
+      },
+      {
+        id: "test-6",
+        author: "Clarice Kunz",
+        city: "Ivoti / RS",
+        rating: 5,
+        source: "Avaliação Google",
+        text: "Excelente atendimento do início ao fim. Muito cuidadoso na proteção dos móveis antes de furar a parede e deixou tudo limpo. O split ficou alinhado e funcionando no silêncio total. Com certeza indico!",
+      },
+    ] as const satisfies readonly TestimonialItem[],
   },
   faq: [
     {
