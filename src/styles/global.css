@@ -1149,7 +1149,7 @@ body {
 
 .site-footer {
   background-color: #080C12;
-  color: #94a3b8; /* text-slate-400 */
+  color: #cbd5e1; /* text-slate-300 (improved contrast) */
   padding: 3rem 0; /* py-12 */
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
@@ -2090,7 +2090,7 @@ body {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.025em; /* tracking-wide */
-  color: #94a3b8; /* text-slate-400 */
+  color: #475569; /* text-slate-600 (improved contrast) */
   font-family: var(--font-mono);
   text-transform: uppercase;
 }
@@ -2644,7 +2644,7 @@ body {
   display: block;
   font-family: var(--font-display);
   font-weight: 700;
-  color: #cbd5e1; /* text-slate-300 */
+  color: #64748b; /* text-slate-500 (improved contrast) */
   line-height: 1;
   margin-bottom: 0.75rem; /* mb-3 */
   font-size: clamp(32px, 3vw, 48px);
@@ -2965,8 +2965,8 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
+  color: #93c5fd; /* text-blue-300 (improved contrast for dark bg) */
+  margin-bottom: 0.75rem;
 }
 
 @media (min-width: 640px) {
@@ -3232,7 +3232,7 @@ body {
   font-family: var(--font-display);
   font-size: 26px;
   font-weight: 700;
-  color: #e2e8f0; /* text-slate-200 */
+  color: #64748b; /* text-slate-500 (improved contrast) */
   transition: color 400ms;
   line-height: 1;
   margin-bottom: 0.75rem; /* mb-3 */
@@ -3992,7 +3992,7 @@ body {
 
 .testimonial-source {
   font-size: 11px;
-  color: #94a3b8;
+  color: #475569; /* text-slate-600 (improved contrast) */
   font-weight: 700;
   margin-top: 0.125rem;
 }
@@ -4280,7 +4280,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-primary);
+  color: #93c5fd; /* text-blue-300 (improved contrast for dark bg) */
   display: block;
   margin-bottom: 0.75rem; /* mb-3 */
 }
@@ -4366,7 +4366,7 @@ body {
   margin-top: 2rem;
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  color: #64748b;
+  color: #94a3b8; /* text-slate-400 (improved contrast for dark bg) */
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
