@@ -31,29 +31,10 @@
 @font-face {
   font-family: 'Plus Jakarta Sans';
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   font-display: swap;
-  src: url('/assets/fonts/PlusJakartaSans-SemiBold.eot');
-  src: url('/assets/fonts/PlusJakartaSans-SemiBold.eot?#iefix') format('embedded-opentype'),
-       url('/assets/fonts/PlusJakartaSans-SemiBold.woff2') format('woff2'),
-       url('/assets/fonts/PlusJakartaSans-SemiBold.woff') format('woff'),
-       url('/assets/fonts/PlusJakartaSans-SemiBold.ttf') format('truetype'),
-       url('/assets/fonts/PlusJakartaSans-SemiBold.otf') format('opentype'),
-       url('/assets/fonts/PlusJakartaSans-SemiBold.svg#PlusJakartaSans') format('svg');
-}
-
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url('/assets/fonts/PlusJakartaSans-ExtraBold.eot');
-  src: url('/assets/fonts/PlusJakartaSans-ExtraBold.eot?#iefix') format('embedded-opentype'),
-       url('/assets/fonts/PlusJakartaSans-ExtraBold.woff2') format('woff2'),
-       url('/assets/fonts/PlusJakartaSans-ExtraBold.woff') format('woff'),
-       url('/assets/fonts/PlusJakartaSans-ExtraBold.ttf') format('truetype'),
-       url('/assets/fonts/PlusJakartaSans-ExtraBold.otf') format('opentype'),
-       url('/assets/fonts/PlusJakartaSans-ExtraBold.svg#PlusJakartaSans') format('svg');
+  src: url('/assets/fonts/PlusJakartaSans-Bold.woff2') format('woff2'),
+       url('/assets/fonts/PlusJakartaSans-Bold.woff') format('woff');
 }
 
 /*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
