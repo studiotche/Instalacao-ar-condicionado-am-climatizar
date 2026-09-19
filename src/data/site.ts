@@ -342,9 +342,9 @@ export const siteData = {
       height: 525,
     },
     facilityImage: {
-      url: "/assets/images/sobre-uniforme.webp",
-      alt: "Técnico uniformizado da AM Climatizar com identificação oficial",
-      label: "Equipe Uniformizada",
+      url: "/assets/images/equipe.webp",
+      alt: "Equipe técnica especializada da AM Climatizar",
+      label: "Equipe AM Climatizar",
       width: 320,
       height: 200,
     },
