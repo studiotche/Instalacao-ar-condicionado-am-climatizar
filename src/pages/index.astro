@@ -6,11 +6,6 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
 const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
 ---
 <BaseLayout>
-  <!-- A11y Skip Link -->
-  <a href="#conteudo-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#0C3B78] focus:text-white focus:rounded-md focus:shadow-md">
-    Pular para o conteúdo principal
-  </a>
-
   <!-- Application Mount Target -->
   <div id="app" class="flex flex-col min-h-screen">
         <!-- Main Header (Fixo com Alto Desempenho) -->
@@ -899,7 +894,6 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
 
     <!-- Footer -->
     <footer class="reveal-fade site-footer" aria-labelledby="footer-title">
-      <h2 id="footer-title" class="sr-only">Rodapé Institucional da {siteData.company.name}</h2>
       <div class="footer-container">
         
         <div class="footer-main-grid">
