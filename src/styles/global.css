@@ -273,7 +273,7 @@ body {
 
 .header-nav-link {
   font-size: 14.5px !important;
-  font-weight: 700 !important;
+  font-weight: 400 !important;
   color: #E2E8F0 !important;
   transition: all 0.2s ease !important;
   text-decoration: none !important;
@@ -1151,7 +1151,7 @@ body {
   text-align: center;
   font-size: 1rem;
   /* text-base */
-  font-weight: 700;
+  font-weight: 400;
   color: #f1f5f9;
   /* text-slate-100 */
   padding: 0.625rem 0;
@@ -1323,7 +1323,7 @@ body {
 
 .footer-nav-title {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   /* tracking-wider */
@@ -1363,6 +1363,7 @@ body {
   padding: 0.25rem 0;
   /* py-1 */
   color: inherit;
+  font-weight: 400;
   transition: color 0.2s ease;
   text-decoration: none;
 }
@@ -1398,7 +1399,7 @@ body {
 
 .footer-contact-label {
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 400;
   flex-shrink: 0;
 }
 
@@ -1419,7 +1420,7 @@ body {
   display: block;
   color: var(--color-secondary);
   /* #0090D0 */
-  font-weight: 700;
+  font-weight: 400;
   padding: 0.125rem 0;
   /* py-0.5 */
   transition: color 0.2s ease;
