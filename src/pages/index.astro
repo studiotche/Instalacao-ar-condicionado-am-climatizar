@@ -70,7 +70,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
         </div>
         <nav class="mt-8 flex flex-col gap-2" aria-label="Navegação móvel">
           {siteData.navigation.map((item) => (
-            <a href={item.href} class="mobile-nav-link block w-full text-center text-base font-semibold text-slate-100 hover:text-[#00B4FF] py-2.5 transition-colors">
+            <a href={item.href} class="mobile-nav-link block w-full text-center text-base font-bold text-slate-100 hover:text-[#00B4FF] py-2.5 transition-colors">
               {item.label}
             </a>
           ))}
@@ -125,23 +125,23 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
               </p>
 
               <div class="hero-animate-up hero-delay-240 hero-actions flex flex-col min-[390px]:flex-row items-stretch min-[390px]:items-center gap-3.5 sm:gap-5 w-full sm:w-auto mb-6 sm:mb-8">
-                <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="btn-primary !h-[50px] !px-7 sm:!px-8 !rounded-lg !text-[15px] font-semibold shadow-sm hover:shadow-md hover:-translate-y-[1px] transition-all duration-200 justify-center">
+                <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="btn-primary !h-[50px] !px-7 sm:!px-8 !rounded-lg !text-[15px] font-bold shadow-sm hover:shadow-md hover:-translate-y-[1px] transition-all duration-200 justify-center">
                   <span>{siteData.hero.primaryCta}</span>
                   <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
                 
-                <a href="#servicos" class="link-editorial whitespace-nowrap group inline-flex items-center justify-center gap-2 py-2.5 px-3 text-[#0C3B78] hover:text-[#0090D0] font-semibold text-[15px] transition-colors duration-200">
+                <a href="#servicos" class="link-editorial whitespace-nowrap group inline-flex items-center justify-center gap-2 py-2.5 px-3 text-[#0C3B78] hover:text-[#0090D0] font-bold text-[15px] transition-colors duration-200">
                   <span>{siteData.hero.secondaryCta}</span>
                   <svg class="w-4 h-4 text-[#0090D0] transform transition-transform duration-200 group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
               </div>
 
-              <div class="hero-animate-up hero-delay-320 inline-flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200/90 text-xs sm:text-[13px] text-slate-700 font-medium shadow-2xs w-full sm:w-auto">
+              <div class="hero-animate-up hero-delay-320 inline-flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200/90 text-xs sm:text-[13px] text-slate-700 font-bold shadow-2xs w-full sm:w-auto">
                 <svg class="w-3.5 h-3.5 text-[#0C3B78] shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
                 <div class="flex items-center gap-1.5 leading-snug">
-                  <span>Atendimento em <span class="text-[#0C3B78] font-semibold">{siteData.company.city}/{siteData.company.state} e região</span></span>
+                  <span>Atendimento em <span class="text-[#0C3B78] font-bold">{siteData.company.city}/{siteData.company.state} e região</span></span>
                 </div>
               </div>
             </div>
@@ -207,7 +207,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
             
             <!-- Coluna Esquerda -->
             <div class="lg:col-span-4 lg:sticky lg:top-32 flex flex-col">
-              <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.services.eyebrow}</span>
+              <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.services.eyebrow}</span>
               <h2 id="servicos-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
                 {siteData.services.title}
               </h2>
@@ -236,13 +236,13 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                   <div class="flex items-start justify-between gap-4 sm:gap-6 cursor-pointer" data-service-trigger>
                     
                     <div class="flex items-start gap-4 sm:gap-8">
-                      <span class="text-[13px] font-mono font-semibold text-[#0C3B78] pt-1.5 shrink-0 opacity-80">{svc.number}</span>
+                      <span class="text-[13px] font-mono font-bold text-[#0C3B78] pt-1.5 shrink-0 opacity-80">{svc.number}</span>
                       <div>
                         <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-2 sm:mb-1">
                           <h3 class="font-display text-base sm:text-lg font-bold text-slate-800 group-hover:text-[#0C3B78] transition-colors duration-300">
                             {svc.title}
                           </h3>
-                          <span class="text-[11px] font-semibold tracking-wide text-slate-400 font-mono uppercase">{svc.tag}</span>
+                          <span class="text-[11px] font-bold tracking-wide text-slate-400 font-mono uppercase">{svc.tag}</span>
                         </div>
                         <p class="text-[15px] sm:text-base text-slate-600 leading-relaxed max-w-xl">
                           {svc.description}
@@ -360,7 +360,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
         <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
           
           <div class="max-w-2xl mb-10 sm:mb-14 lg:mb-20">
-            <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.process.eyebrow}</span>
+            <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.process.eyebrow}</span>
             <h2 id="processo-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
               {siteData.process.headline}
             </h2>
@@ -379,7 +379,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
               {siteData.process.steps.map((step, idx) => (
                 <article class="reveal-up process-step-item group relative flex-1 cursor-default" data-step-index={idx} style={`transition-delay: ${200 + idx * 120}ms;`}>
                   <div class="absolute top-[-24px] left-0 h-[1px] bg-[#0C3B78] w-0 group-hover:w-full transition-all duration-350 ease-out z-10"></div>
-                  <span class="block font-display font-light text-slate-300 group-hover:text-[#0C3B78] transition-colors duration-300 leading-none mb-3" style="font-size: clamp(40px, 4vw, 64px);">
+                  <span class="block font-display font-bold text-slate-300 group-hover:text-[#0C3B78] transition-colors duration-300 leading-none mb-3" style="font-size: clamp(40px, 4vw, 64px);">
                     {step.number}
                   </span>
                   <h3 class="font-display text-[15px] sm:text-base font-bold text-slate-500 group-hover:text-slate-900 transition-colors duration-300 mb-2">
@@ -398,7 +398,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
             {siteData.process.steps.map((step, idx) => (
               <article class="reveal-up relative flex items-start gap-5 sm:gap-6 pb-8 sm:pb-9 last:pb-0" style={`transition-delay: ${100 + idx * 120}ms;`}>
                 <div class="relative shrink-0 w-12 sm:w-16 flex flex-col items-center">
-                  <span class="font-display font-light text-[#0C3B78] leading-none z-10 bg-white pb-2" style="font-size: clamp(40px, 10vw, 48px);">
+                  <span class="font-display font-bold text-[#0C3B78] leading-none z-10 bg-white pb-2" style="font-size: clamp(40px, 10vw, 48px);">
                     {step.number}
                   </span>
                   {idx < siteData.process.steps.length - 1 && (
@@ -428,7 +428,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
         <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
           
           <div class="max-w-3xl mb-12 sm:mb-16 lg:mb-24">
-            <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.solutions.eyebrow}</span>
+            <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.solutions.eyebrow}</span>
             <h2 id="solucoes-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-3 sm:mb-4" style="transition-delay: 80ms;">
               {siteData.solutions.title}
             </h2>
@@ -541,7 +541,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
             
             <div class="lg:col-span-4 lg:sticky lg:top-28">
-              <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.differentials.eyebrow}</span>
+              <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.differentials.eyebrow}</span>
               <h2 id="diferenciais-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
                 {siteData.differentials.headline}
               </h2>
@@ -554,7 +554,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
             <div class="lg:col-span-8 grid grid-cols-2 gap-x-4 sm:gap-x-10 lg:gap-x-12 gap-y-0 sm:gap-y-10 lg:gap-y-14">
               {siteData.differentials.items.map((diff, idx) => (
                 <article class="reveal-up group border-t border-slate-200/80 pt-6 sm:pt-8 pb-4 transition-colors min-w-0 pr-1 sm:pr-4" style={`transition-delay: ${Math.floor(idx / 2) * 120}ms;`}>
-                  <span class="block font-display text-[26px] sm:text-[clamp(32px,3.5vw,48px)] font-light text-slate-200 group-hover:text-[#0090D0] transition-colors duration-400 leading-none mb-3 sm:mb-5">{diff.number}</span>
+                  <span class="block font-display text-[26px] sm:text-[clamp(32px,3.5vw,48px)] font-bold text-slate-200 group-hover:text-[#0090D0] transition-colors duration-400 leading-none mb-3 sm:mb-5">{diff.number}</span>
                   <h3 class="font-display text-[14px] sm:text-[1.35rem] font-bold text-slate-700 group-hover:text-slate-900 transition-colors duration-400 leading-tight mb-2 sm:mb-3 break-words hyphens-auto">{diff.title}</h3>
                   <p class="text-[12px] sm:text-base text-slate-600 leading-relaxed break-words hyphens-auto">
                     {diff.description}
@@ -574,7 +574,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 sm:mb-16 pb-6 border-b border-white/10">
             <div>
-              <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2">{siteData.projects.eyebrow}</span>
+              <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2">{siteData.projects.eyebrow}</span>
               <h2 id="projetos-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold tracking-tight text-white leading-[1.1]" style="transition-delay: 80ms;">
                 {siteData.projects.title}
               </h2>
@@ -598,7 +598,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent flex flex-col justify-end p-5 sm:p-7 lg:p-8 transition-colors duration-[600ms] group-hover:bg-black/20">
                   <div class="transform transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
                     <div class="flex items-center justify-between mb-2 sm:mb-2.5">
-                      <span class="text-xs font-mono font-semibold text-[#0C3B78] uppercase tracking-wider">
+                      <span class="text-xs font-mono font-bold text-[#0C3B78] uppercase tracking-wider">
                         {proj.category}
                       </span>
                       <span class="text-xs text-slate-300 font-mono">
@@ -624,7 +624,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
             
             <div class="lg:col-span-6">
-              <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.about.eyebrow}</span>
+              <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.about.eyebrow}</span>
               <h2 id="sobre-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4.5vw,52px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
                 {siteData.about.headline}
               </h2>
@@ -676,7 +676,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                       height={siteData.about.facilityImage.height}
                     />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex items-end p-3.5">
-                      <span class="text-xs font-mono font-medium text-white tracking-wide">{siteData.about.facilityImage.label}</span>
+                      <span class="text-xs font-mono font-bold text-white tracking-wide">{siteData.about.facilityImage.label}</span>
                     </div>
                   </div>
 
@@ -690,7 +690,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                       height={siteData.about.vehicleImage.height}
                     />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex items-end p-3.5">
-                      <span class="text-xs font-mono font-medium text-white tracking-wide">{siteData.about.vehicleImage.label}</span>
+                      <span class="text-xs font-mono font-bold text-white tracking-wide">{siteData.about.vehicleImage.label}</span>
                     </div>
                   </div>
                 </div>
@@ -710,7 +710,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           <!-- Cabeçalho da Seção -->
           <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16">
             <div class="max-w-xl">
-              <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">
+              <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">
                 {siteData.testimonials.eyebrow}
               </span>
               <h2 id="depoimentos-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1]" style="transition-delay: 80ms;">
@@ -749,7 +749,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                   ))}
                 </div>
 
-                <span class="text-xs text-slate-500 font-medium">{siteData.testimonials.reviewsCount}</span>
+                <span class="text-xs text-slate-500 font-bold">{siteData.testimonials.reviewsCount}</span>
               </a>
             </div>
           </div>
@@ -789,7 +789,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 <div class="border-t border-slate-100 pt-4 mt-6">
                   <div class="font-bold text-slate-900 text-sm">{item.author}</div>
                   <div class="text-xs text-slate-500 mt-0.5">{item.city}</div>
-                  <div class="text-[11px] text-slate-400 font-medium mt-0.5">{item.source}</div>
+                  <div class="text-[11px] text-slate-400 font-bold mt-0.5">{item.source}</div>
                 </div>
               </article>
             ))}
@@ -871,7 +871,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       <section id="contato" class="py-16 sm:py-24 lg:py-32 bg-slate-900 text-white relative overflow-hidden" aria-labelledby="cta-final-title">
         <div class="reveal-scale max-w-4xl mx-auto px-5 max-[375px]:px-4 sm:px-8 text-center relative z-10" style="transition-duration: 700ms;">
           
-          <span class="reveal-up text-xs font-semibold uppercase tracking-wider text-[#0C3B78] block mb-3 sm:mb-4" style="transition-delay: 100ms;">
+          <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-3 sm:mb-4" style="transition-delay: 100ms;">
             {siteData.finalCta.eyebrow}
           </span>
           
@@ -928,7 +928,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
 
           <!-- Coluna 2: Serviços -->
           <div>
-            <h3 class="text-[13px] font-semibold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Serviços</h3>
+            <h3 class="text-[13px] font-bold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Serviços</h3>
             <ul class="space-y-2 text-[15px] sm:text-[14.5px]">
               <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Instalação de Ar-Condicionado</a></li>
               <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Higienização Preventiva e Corretiva</a></li>
@@ -941,7 +941,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
 
           <!-- Coluna 3: Navegação -->
           <div>
-            <h3 class="text-[13px] font-semibold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Navegação</h3>
+            <h3 class="text-[13px] font-bold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Navegação</h3>
             <ul class="space-y-2 text-[15px] sm:text-[14.5px]">
               <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Serviços</a></li>
               <li><a href="#processo" class="hover:text-white transition-colors py-1 inline-block">Como trabalhamos</a></li>
@@ -956,26 +956,26 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
 
           <!-- Coluna 4: Contato -->
           <div>
-            <h3 class="text-[13px] font-semibold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Contato</h3>
+            <h3 class="text-[13px] font-bold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Contato</h3>
             <ul class="space-y-3 text-[15px] sm:text-[14.5px]">
               <li class="flex items-start gap-2">
-                <span class="text-white font-medium shrink-0">Local:</span>
+                <span class="text-white font-bold shrink-0">Local:</span>
                 <span>{siteData.company.address.street} - {siteData.company.address.neighborhood}<br />{siteData.company.address.city} / {siteData.company.address.state}</span>
               </li>
               <li>
-                <span class="text-white font-medium">WhatsApp:</span>
-                <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20um%20atendimento%20da%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="text-[#0090D0] hover:text-white block transition-colors font-medium py-0.5">
+                <span class="text-white font-bold">WhatsApp:</span>
+                <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20um%20atendimento%20da%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="text-[#0090D0] hover:text-white block transition-colors font-bold py-0.5">
                   {siteData.company.whatsapp}
                 </a>
               </li>
               <li>
-                <span class="text-white font-medium">E-mail:</span>
+                <span class="text-white font-bold">E-mail:</span>
                 <a href={`mailto:${siteData.company.email}`} class="hover:text-white block transition-colors py-0.5">
                   {siteData.company.email}
                 </a>
               </li>
               <li>
-                <span class="text-white font-medium">Instagram:</span>
+                <span class="text-white font-bold">Instagram:</span>
                 <a href={siteData.company.instagramUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white block transition-colors py-0.5">
                   {siteData.company.instagram}
                 </a>
@@ -1045,7 +1045,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           
           <!-- Passo 1: Serviço -->
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">1. Selecione o Serviço</label>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">1. Selecione o Serviço</label>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
               <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
                 <input type="radio" name="service" value="Instalação de ar-condicionado" checked class="text-[#0C3B78] focus:ring-[#0C3B78]" />
@@ -1076,7 +1076,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
 
           <!-- Passo 2: Tipo de Imóvel -->
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">2. Tipo de Imóvel</label>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">2. Tipo de Imóvel</label>
             <div class="grid grid-cols-2 gap-2 text-xs">
               <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
                 <input type="radio" name="property" value="Residencial (Casa / Apartamento)" checked class="text-[#0C3B78] focus:ring-[#0C3B78]" />
@@ -1091,13 +1091,13 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
 
           <!-- Passo 3: Cidade / Bairro -->
           <div>
-            <label for="quote-city" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1">3. Cidade / Bairro</label>
+            <label for="quote-city" class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1">3. Cidade / Bairro</label>
             <input type="text" id="quote-city" name="city" value={siteData.company.locationString} required class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#0C3B78] focus:ring-1 focus:ring-[#0C3B78]" />
           </div>
 
           <!-- Observações adicionais -->
           <div>
-            <label for="quote-details" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1">4. Detalhes ou observações (opcional)</label>
+            <label for="quote-details" class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1">4. Detalhes ou observações (opcional)</label>
             <input type="text" id="quote-details" name="details" placeholder="Ex: aparelho de 12.000 BTUs para sala" class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#0C3B78] focus:ring-1 focus:ring-[#0C3B78]" />
           </div>
 
