@@ -38,10 +38,10 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
 
         <!-- CTA & Mobile Menu Toggle -->
         <div class="flex items-center gap-3 sm:gap-4">
-          <button type="button" data-open-quote class="header-cta-btn !hidden sm:!inline-flex shadow-xs">
+          <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="header-cta-btn !hidden sm:!inline-flex shadow-xs">
             <span>Solicitar orçamento</span>
             <svg class="btn-icon-arrow w-3.5 h-3.5 text-[#0C3B78]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </button>
+          </a>
 
           <button id="mobile-menu-toggle" type="button" class="lg:hidden p-2 text-slate-200 hover:text-white hover:bg-white/10 focus:outline-none rounded-md transition-colors" aria-label="Abrir menu de navegação" aria-expanded="false">
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -78,10 +78,10 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </div>
 
       <div class="pt-6 border-t border-white/10 flex flex-col gap-3">
-        <button type="button" data-open-quote class="header-cta-btn w-full justify-center !h-12 !text-sm">
+        <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="header-cta-btn w-full justify-center !h-12 !text-sm">
           <span>Solicitar orçamento</span>
           <svg class="btn-icon-arrow w-4 h-4 text-[#0C3B78]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-        </button>
+        </a>
 
         <p class="text-xs text-center text-slate-400 mt-1">{siteData.company.locationString}</p>
       </div>
@@ -125,10 +125,10 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
               </p>
 
               <div class="hero-animate-up hero-delay-240 hero-actions flex flex-col min-[390px]:flex-row items-stretch min-[390px]:items-center gap-3.5 sm:gap-5 w-full sm:w-auto mb-6 sm:mb-8">
-                <button type="button" data-open-quote class="btn-primary !h-[50px] !px-7 sm:!px-8 !rounded-lg !text-[15px] font-semibold shadow-sm hover:shadow-md hover:-translate-y-[1px] transition-all duration-200 justify-center">
+                <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="btn-primary !h-[50px] !px-7 sm:!px-8 !rounded-lg !text-[15px] font-semibold shadow-sm hover:shadow-md hover:-translate-y-[1px] transition-all duration-200 justify-center">
                   <span>{siteData.hero.primaryCta}</span>
                   <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </button>
+                </a>
                 
                 <a href="#servicos" class="link-editorial whitespace-nowrap group inline-flex items-center justify-center gap-2 py-2.5 px-3 text-[#0C3B78] hover:text-[#0090D0] font-semibold text-[15px] transition-colors duration-200">
                   <span>{siteData.hero.secondaryCta}</span>
@@ -253,9 +253,9 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                     </div>
 
                     <div class="flex items-center shrink-0 self-center">
-                      <button type="button" data-open-quote data-service={svc.title} class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:border-[#0C3B78] group-hover:text-white group-hover:bg-[#0C3B78] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]" aria-label={`Orçar ${svc.title}`}>
+                      <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20${encodeURIComponent(svc.title)}.`} target="_blank" rel="noopener noreferrer" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:border-[#0C3B78] group-hover:text-white group-hover:bg-[#0C3B78] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]" aria-label={`Orçar ${svc.title}`}>
                         <svg class="w-4 h-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                      </button>
+                      </a>
                     </div>
 
                   </div>
@@ -304,10 +304,10 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                     </div>
 
                     <div class="pt-1.5">
-                      <button type="button" data-open-quote data-service={svc.title} class="btn-primary !h-11 !px-5 !text-xs w-full sm:w-auto justify-center">
+                      <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20${encodeURIComponent(svc.title)}.`} target="_blank" rel="noopener noreferrer" class="btn-primary !h-11 !px-5 !text-xs w-full sm:w-auto justify-center">
                         <span>Solicitar orçamento</span>
                         <svg class="btn-icon-arrow w-3.5 h-3.5 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </details>
@@ -477,10 +477,10 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 </ul>
 
                 <div>
-                  <button type="button" data-open-quote data-service="Climatização Residencial" class="btn-primary w-full sm:w-auto !h-[52px] justify-center">
+                  <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Climatização%20Residencial.`} target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto !h-[52px] justify-center">
                     <span>Orçar projeto residencial</span>
                     <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                  </button>
+                  </a>
                 </div>
               </div>
             </article>
@@ -523,10 +523,10 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 </ul>
 
                 <div>
-                  <button type="button" data-open-quote data-service="Climatização Empresarial" class="btn-primary w-full sm:w-auto !h-[52px] justify-center">
+                  <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Climatização%20Empresarial.`} target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto !h-[52px] justify-center">
                     <span>Orçar projeto empresarial</span>
                     <svg class="btn-icon-arrow w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                  </button>
+                  </a>
                 </div>
               </div>
             </article>
