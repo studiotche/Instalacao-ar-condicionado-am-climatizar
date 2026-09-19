@@ -60,11 +60,30 @@
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   --color-primary: #0076E7;
+  --color-primary-hover: #005bb5;
   --color-secondary: #0C3B78;
+  --color-secondary-hover: #082d5c;
+  --color-accent: #25D366;
   --color-dark: #0C111A;
   --color-white: #FFFFFF;
+
+  --color-bg-light: #FBFBFB;
+  --color-bg-dark: #0C111A;
+
+  --color-text-main: #0F141C;
+  --color-text-muted: #47505e;
+  --color-text-light: #ffffff;
+
+  --color-border: rgba(15, 20, 28, 0.08);
+
+  --container-max-width: 1280px;
+  --transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 html,
@@ -827,30 +846,7 @@ body {
    CSS PURO - AM CLIMATIZAR (MIGRAÇÃO DO TAILWIND)
    ========================================================================== */
 
-:root {
-  --color-primary: #0076E7;
-  --color-primary-hover: #005bb5;
-  --color-secondary: #0C3B78;
-  --color-secondary-hover: #082d5c;
-  --color-accent: #25D366;
 
-  --color-bg-light: #FBFBFB;
-  --color-bg-dark: #0C111A;
-
-  --color-text-main: #0F141C;
-  --color-text-muted: #47505e;
-  --color-text-light: #ffffff;
-
-  --color-border: rgba(15, 20, 28, 0.08);
-
-  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
-  --container-max-width: 1280px;
-  --transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
 
 /* Base / Reset Complementar */
 .site-body {
