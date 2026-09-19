@@ -100,8 +100,7 @@ body {
 }
 
 .header-brand-logo:hover {
-  transform: scale(1.035);
-  filter: brightness(1.08) drop-shadow(0 0 16px rgba(0, 180, 255, 0.35));
+  filter: brightness(1.05);
 }
 
 /* 4. Navegação do Header */
