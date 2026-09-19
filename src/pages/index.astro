@@ -850,7 +850,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- Location Map Section -->
-      <section id="mapa" aria-label={`Localização da ${siteData.company.name}`} class="w-full h-[500px] sm:h-[600px] lg:h-[700px] bg-slate-100 relative">
+      <section id="mapa" aria-label={`Localização da ${siteData.company.name}`} class="w-full bg-slate-100 relative" style="height: 60vh; min-height: 450px; max-height: 700px;">
         <iframe 
           width="100%" 
           height="100%" 
@@ -861,6 +861,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           src={`https://maps.google.com/maps?width=100%25&height=800&hl=pt-BR&q=${encodeURIComponent("AM Climatizar, Ivoti - RS")}&t=&z=15&ie=UTF8&iwloc=B&output=embed`}
           title={`Mapa mostrando a localização da ${siteData.company.name}`}
           class="w-full h-full border-0 grayscale-[15%] hover:grayscale-0 transition-all duration-500"
+          style="min-height: 450px;"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
