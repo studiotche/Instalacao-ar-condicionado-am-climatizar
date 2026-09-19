@@ -109,7 +109,7 @@ export const siteData = {
     title: "AM Climatizar | Ar-Condicionado e Elétrica Residencial em Ivoti/RS",
     description: "AM Climatizar: Mais de 4 anos de experiência em instalação, higienização, manutenção, carga de gás, troca de capacitor e elétrica residencial em Ivoti e região.",
     canonicalUrl: "https://studiotche.github.io/Instalacao-ar-condicionado-am-climatizar/",
-    ogImage: "/assets/images/logo-am-climatizar.png",
+    ogImage: "/assets/images/logo-am-climatizar.webp",
     keywords: "ar-condicionado Ivoti, instalação de ar-condicionado em Ivoti, manutenção de ar-condicionado Ivoti, higienização de ar-condicionado, elétrica residencial Ivoti, carga de gás ar-condicionado, capacitor ar-condicionado, AM Climatizar",
   },
   navigation: [
