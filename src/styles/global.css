@@ -256,6 +256,7 @@ body {
   color: #0C3B78 !important;
   font-weight: 700 !important;
   font-size: 13.5px !important;
+  white-space: nowrap !important;
   border: 1px solid rgba(255, 255, 255, 0.9) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -459,7 +460,7 @@ body {
 
 .hero-heading-display {
   font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif) !important;
-  font-size: clamp(32px, 3.7vw, 50px) !important;
+  font-size: clamp(28px, 3vw, 42px) !important;
   font-weight: 700 !important;
   line-height: 1.12 !important;
   letter-spacing: -0.03em !important;
@@ -468,7 +469,7 @@ body {
 
 @media (min-width: 1024px) and (max-width: 1536px) {
   .hero-heading-display {
-    font-size: clamp(34px, 2.9vw, 44px) !important;
+    font-size: clamp(30px, 2.5vw, 38px) !important;
     line-height: 1.14 !important;
   }
 }
@@ -476,25 +477,25 @@ body {
 /* Otimização de títulos H2 das seções para notebooks e telas médias */
 @media (min-width: 1024px) and (max-width: 1536px) {
   h2.font-display {
-    font-size: clamp(26px, 2.2vw, 34px) !important;
+    font-size: clamp(22px, 2vw, 28px) !important;
     line-height: 1.18 !important;
     letter-spacing: -0.025em !important;
   }
 
   #cta-final-title {
-    font-size: clamp(30px, 2.6vw, 38px) !important;
+    font-size: clamp(26px, 2.2vw, 32px) !important;
     line-height: 1.14 !important;
   }
 }
 
 @media (min-width: 1537px) {
   h2.font-display {
-    font-size: clamp(30px, 2.3vw, 40px) !important;
+    font-size: clamp(26px, 2vw, 32px) !important;
     line-height: 1.16 !important;
   }
 
   #cta-final-title {
-    font-size: clamp(34px, 2.8vw, 44px) !important;
+    font-size: clamp(30px, 2.4vw, 36px) !important;
   }
 }
 
@@ -1492,9 +1493,9 @@ body {
 .hero-title {
   margin-bottom: 1rem; /* mb-4 */
   font-family: var(--font-display);
-  font-size: 2.25rem; /* fallback */
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
-  font-weight: 800;
+  font-size: 2rem; /* fallback */
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
   color: #0f172a; /* text-slate-900 */
   line-height: 1.1;
   letter-spacing: -0.02em;

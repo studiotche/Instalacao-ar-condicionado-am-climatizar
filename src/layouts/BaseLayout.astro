@@ -152,7 +152,8 @@ const jsonLd = {
     <link rel="icon" type="image/webp" href={asset("/assets/images/favicon.webp")} />
     <link rel="apple-touch-icon" sizes="180x180" href={asset("/apple-touch-icon.png")} />
 
-    <!-- Preload das Imagens do Hero (LCP Optimization) -->
+    <!-- Preload das Imagens e Fontes do Hero (LCP Optimization) -->
+    <link rel="preload" href={asset("/assets/fonts/PlusJakartaSans-Bold.woff2")} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" as="image" href={asset(siteData.hero.image.url)} media="(min-width: 761px)" fetchpriority="high" />
     <link rel="preload" as="image" href={asset(siteData.hero.imageMobile.url)} media="(max-width: 760px)" fetchpriority="high" />
 
