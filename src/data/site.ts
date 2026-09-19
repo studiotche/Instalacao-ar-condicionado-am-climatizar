@@ -126,7 +126,7 @@ export const siteData = {
     headlinePart2: "e segurança com quem",
     headlineHighlight: "entende do assunto.",
     description: "Mais de 4 anos no mercado trazendo qualidade, segurança e eficiência. Instalação, manutenção preventiva e corretiva, higienização profunda, carga de gás e elétrica residencial em Ivoti e região.",
-    primaryCta: "Solicitar orçamento no WhatsApp",
+    primaryCta: "Solicitar orçamento",
     secondaryCta: "Conheça nossos serviços",
     image: {
       url: "/assets/images/instalador-ar-condicionado-am-climatizar.webp",
