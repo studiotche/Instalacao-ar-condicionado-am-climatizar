@@ -38,6 +38,7 @@
        url('/assets/fonts/PlusJakartaSans-Bold.woff2') format('woff2'),
        url('/assets/fonts/PlusJakartaSans-Bold.woff') format('woff'),
        url('/assets/fonts/PlusJakartaSans-Bold.ttf') format('truetype'),
+       url('/assets/fonts/PlusJakartaSans-Bold.otf') format('opentype'),
        url('/assets/fonts/PlusJakartaSans-Bold.svg#PlusJakartaSans') format('svg');
 }
 
