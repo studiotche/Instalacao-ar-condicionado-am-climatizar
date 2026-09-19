@@ -14,10 +14,10 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
   <!-- Application Mount Target -->
   <div id="app" class="flex flex-col min-h-screen">
         <!-- Main Header (Fixo com Alto Desempenho) -->
-    <header id="main-header" class="site-header header-blue header-fixed py-2.5 sm:py-3">
-      <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8 flex items-center justify-between">
-        <!-- Logo (Clean, Borderless, Enlarged, Without Written Text) -->
-        <a href="#" class="flex items-center focus:outline-none group py-0.5" aria-label={`${siteData.company.name} - Início`}>
+    <header id="main-header" class="site-header">
+      <div class="header-container">
+        <!-- Logo -->
+        <a href="#" class="header-logo-link" aria-label={`${siteData.company.name} - Início`}>
           <img 
             src={asset("/assets/images/logo-am-climatizar.webp")} 
             alt={siteData.company.name} 
@@ -37,25 +37,25 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
         </nav>
 
         <!-- CTA & Mobile Menu Toggle -->
-        <div class="flex items-center gap-3 sm:gap-4">
-          <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="header-cta-btn !hidden sm:!inline-flex shadow-xs">
+        <div class="header-actions">
+          <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="header-cta-btn header-cta-desktop">
             <span>Solicitar orçamento</span>
-            <svg class="btn-icon-arrow w-3.5 h-3.5 text-[#0C3B78]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <svg class="btn-icon-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
 
-          <button id="mobile-menu-toggle" type="button" class="lg:hidden p-2 text-slate-200 hover:text-white hover:bg-white/10 focus:outline-none rounded-md transition-colors" aria-label="Abrir menu de navegação" aria-expanded="false">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <button id="mobile-menu-toggle" type="button" class="mobile-menu-btn" aria-label="Abrir menu de navegação" aria-expanded="false">
+            <svg class="icon-menu" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
         </div>
       </div>
     </header>
 
     <!-- Mobile Drawer Menu -->
-    <div id="mobile-backdrop" class="fixed inset-0 z-50 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" style="background-color: rgba(2, 6, 23, 0.85); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);"></div>
-    <div id="mobile-drawer" class="mobile-drawer-blue fixed inset-y-0 right-0 max-w-sm w-full text-white z-50 px-5 pb-6 max-[375px]:px-4 shadow-2xl transform translate-x-full invisible transition-transform duration-300 ease-out flex flex-col justify-between lg:hidden border-l border-white/10">
+    <div id="mobile-backdrop" class="mobile-backdrop" style="background-color: rgba(2, 6, 23, 0.85); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);"></div>
+    <div id="mobile-drawer" class="mobile-drawer">
       <div>
-        <div class="flex items-center justify-between py-2.5 sm:py-3 border-b border-white/10 -mx-5 px-5 max-[375px]:-mx-4 max-[375px]:px-4">
-          <a href="#" class="flex items-center focus:outline-none group py-0.5" aria-label={`${siteData.company.name} - Início`}>
+        <div class="mobile-drawer-header">
+          <a href="#" class="header-logo-link" aria-label={`${siteData.company.name} - Início`}>
             <img 
               src={asset("/assets/images/logo-am-climatizar.webp")} 
               alt={siteData.company.name} 
@@ -64,37 +64,36 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
               height="58" 
             />
           </a>
-          <button id="mobile-menu-close" type="button" class="p-2 text-slate-200 hover:text-white hover:bg-white/10 transition-colors focus:outline-none rounded-md" aria-label="Fechar menu">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          <button id="mobile-menu-close" type="button" class="mobile-menu-close-btn" aria-label="Fechar menu">
+            <svg class="icon-menu" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
-        <nav class="mt-8 flex flex-col gap-2" aria-label="Navegação móvel">
+        <nav class="mobile-drawer-nav" aria-label="Navegação móvel">
           {siteData.navigation.map((item) => (
-            <a href={item.href} class="mobile-nav-link block w-full text-center text-base font-bold text-slate-100 hover:text-[#00B4FF] py-2.5 transition-colors">
+            <a href={item.href} class="mobile-nav-link-custom">
               {item.label}
             </a>
           ))}
         </nav>
       </div>
 
-      <div class="pt-6 border-t border-white/10 flex flex-col gap-3">
-        <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="header-cta-btn w-full justify-center !h-12 !text-sm">
+      <div class="mobile-drawer-footer">
+        <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="header-cta-btn mobile-cta-btn">
           <span>Solicitar orçamento</span>
-          <svg class="btn-icon-arrow w-4 h-4 text-[#0C3B78]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          <svg class="btn-icon-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
-
-        <p class="text-xs text-center text-slate-400 mt-1">{siteData.company.locationString}</p>
+        <p class="mobile-drawer-location">{siteData.company.locationString}</p>
       </div>
     </div>
 
     <!-- Conteúdo Principal -->
     <main id="conteudo-principal">
       
-      <!-- Hero Section (Pedro Zvir Height Parity & Design Principles) -->
+      <!-- Hero Section -->
       <section class="hero-section" aria-labelledby="hero-title">
         <!-- Imagem de Fundo Integrada (Largura Total) -->
         <div class="hero-bg-desktop">
-          <picture class="w-full h-full block">
+          <picture class="hero-picture">
             <source media="(max-width: 1023px)" srcset={asset(siteData.hero.imageMobile.url)} />
             <img 
               src={asset(siteData.hero.image.url)} 
@@ -103,74 +102,73 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
               fetchpriority="high"
               width={siteData.hero.image.width}
               height={siteData.hero.image.height}
+              class="hero-img-full"
             />
           </picture>
         </div>
 
         <div class="hero-container">
-          <div class="grid grid-cols-1 lg:grid-cols-2 items-center">
-
-            <div class="hero-copy-container flex flex-col items-start justify-center py-2 sm:py-4 lg:py-6 z-10">
-              <span class="hero-animate-up text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.08em] text-[#0C3B78] block mb-3 sm:mb-4">
+          <div class="hero-grid">
+            <div class="hero-copy-container">
+              <span class="hero-eyebrow hero-animate-up">
                 {siteData.hero.eyebrow}
               </span>
 
-              <h1 id="hero-title" class="hero-animate-up hero-delay-80 hero-heading-display mb-4 sm:mb-5">
-                {siteData.hero.headlinePart1}<br class="hidden min-[390px]:inline" /> {siteData.hero.headlinePart2}<br />
-                <span class="text-[#0C3B78]">{siteData.hero.headlineHighlight}</span>
+              <h1 id="hero-title" class="hero-title hero-animate-up hero-delay-80">
+                {siteData.hero.headlinePart1}<br class="hero-br-mobile" /> {siteData.hero.headlinePart2}<br />
+                <span class="hero-title-highlight">{siteData.hero.headlineHighlight}</span>
               </h1>
 
-              <p class="hero-animate-up hero-delay-160 font-body text-[15px] sm:text-[16px] text-slate-600 leading-[1.65] max-w-[500px] mb-6 sm:mb-8">
+              <p class="hero-description hero-animate-up hero-delay-160">
                 {siteData.hero.description}
               </p>
 
-              <div class="hero-animate-up hero-delay-240 hero-actions flex flex-col min-[390px]:flex-row items-stretch min-[390px]:items-center gap-3.5 sm:gap-5 w-full sm:w-auto mb-6 sm:mb-8">
-                <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="btn-primary !h-[50px] !px-7 sm:!px-8 !rounded-lg !text-[15px] font-bold shadow-sm hover:shadow-md hover:-translate-y-[1px] transition-all duration-200 justify-center">
+              <div class="hero-actions hero-animate-up hero-delay-240">
+                <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="btn-primary hero-btn-primary">
                   <span>{siteData.hero.primaryCta}</span>
-                  <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  <svg class="btn-icon-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
                 
-                <a href="#servicos" class="link-editorial whitespace-nowrap group inline-flex items-center justify-center gap-2 py-2.5 px-3 text-[#0C3B78] hover:text-[#0090D0] font-bold text-[15px] transition-colors duration-200">
+                <a href="#servicos" class="link-editorial hero-btn-secondary group">
                   <span>{siteData.hero.secondaryCta}</span>
-                  <svg class="w-4 h-4 text-[#0090D0] transform transition-transform duration-200 group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  <svg class="hero-btn-icon-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
               </div>
 
-              <div class="hero-animate-up hero-delay-320 inline-flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200/90 text-xs sm:text-[13px] text-slate-700 font-bold shadow-2xs w-full sm:w-auto">
-                <svg class="w-3.5 h-3.5 text-[#0C3B78] shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <div class="hero-badge hero-animate-up hero-delay-320">
+                <svg class="hero-badge-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
-                <div class="flex items-center gap-1.5 leading-snug">
-                  <span>Atendimento em <span class="text-[#0C3B78] font-bold">{siteData.company.city}/{siteData.company.state} e região</span></span>
+                <div class="hero-badge-text">
+                  <span>Atendimento em <span class="hero-badge-highlight">{siteData.company.city}/{siteData.company.state} e região</span></span>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
       <!-- Trust Bar -->
-      <section class="bg-slate-50/80 border-y border-slate-200/75" aria-label="Diferenciais e Padrão de Atendimento">
-        <div class="reveal-fade max-w-[1280px] mx-auto px-5 max-[375px]:px-4 sm:px-8 py-5 sm:py-6 lg:py-7">
-          <div class="grid grid-cols-1 min-[370px]:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-0 lg:divide-x lg:divide-slate-200/80">
+      <section class="trust-bar-section" aria-label="Diferenciais e Padrão de Atendimento">
+        <div class="reveal-fade trust-bar-container">
+          <div class="trust-bar-grid">
             
             {siteData.trustBar.map((item, index) => (
-              <div class={`flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-3.5 group py-1.5 sm:py-2 ${index === 0 ? "lg:pr-4 xl:pr-6" : index === 3 ? "lg:pl-4 xl:pl-6" : "lg:px-4 xl:px-6"}`}>
-                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-50/90 border border-blue-100/70 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-blue-100/80 group-hover:border-blue-200/90 shadow-2xs">
+              <div class={`trust-bar-item group ${index === 0 ? "trust-bar-item-first" : index === 3 ? "trust-bar-item-last" : "trust-bar-item-middle"}`}>
+                <div class="trust-bar-icon-wrapper">
                   {item.icon === "tool" && (
-                    <svg class="w-5 h-5 text-[#0090D0]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg class="trust-bar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
                     </svg>
                   )}
                   {item.icon === "gear" && (
-                    <svg class="w-5 h-5 text-[#0090D0]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg class="trust-bar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <circle cx="12" cy="12" r="3"/>
                       <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                     </svg>
                   )}
                   {item.icon === "team" && (
-                    <svg class="w-5 h-5 text-[#0090D0]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg class="trust-bar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                       <circle cx="9" cy="7" r="4"/>
                       <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -178,17 +176,17 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                     </svg>
                   )}
                   {item.icon === "location" && (
-                    <svg class="w-5 h-5 text-[#0090D0]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg class="trust-bar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                       <circle cx="12" cy="10" r="3"/>
                     </svg>
                   )}
                 </div>
-                <div class="min-w-0">
-                  <div class="text-[13px] min-[390px]:text-[13.5px] sm:text-[14px] xl:text-[14.5px] font-bold text-slate-900 leading-tight tracking-tight lg:whitespace-nowrap">
+                <div class="trust-bar-content">
+                  <div class="trust-bar-title">
                     {item.title}
                   </div>
-                  <p class="text-[11.5px] sm:text-[12px] xl:text-[12.5px] text-slate-500 leading-snug mt-0.5 sm:mt-1">
+                  <p class="trust-bar-desc">
                     {item.description}
                   </p>
                 </div>
@@ -200,28 +198,28 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- Serviços -->
-      <section id="servicos" class="py-16 sm:py-20 lg:py-28" aria-labelledby="servicos-title">
-        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+      <section id="servicos" class="services-section" aria-labelledby="servicos-title">
+        <div class="services-container">
           
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <div class="services-grid">
             
             <!-- Coluna Esquerda -->
-            <div class="lg:col-span-4 lg:sticky lg:top-32 flex flex-col">
-              <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.services.eyebrow}</span>
-              <h2 id="servicos-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
+            <div class="services-left-col">
+              <span class="services-eyebrow reveal-up">{siteData.services.eyebrow}</span>
+              <h2 id="servicos-title" class="services-title reveal-up" style="transition-delay: 80ms;">
                 {siteData.services.title}
               </h2>
-              <p class="reveal-up text-[15px] sm:text-base text-slate-600 leading-relaxed mb-6 lg:mb-10" style="transition-delay: 140ms;">
+              <p class="services-desc reveal-up" style="transition-delay: 140ms;">
                 {siteData.services.description}
               </p>
 
               <!-- Fotografia Técnica Integrada (Desktop) -->
-              <div class="reveal-scale hidden lg:block rounded-lg overflow-hidden border border-slate-200 bg-slate-100 aspect-[4/5] sm:aspect-[3/4] shadow-md relative" style="transition-delay: 180ms;">
+              <div class="services-featured-img-wrapper reveal-scale" style="transition-delay: 180ms;">
                 <img 
                   id="service-featured-img"
                   src={asset(siteData.services.items[0].image)} 
                   alt={siteData.services.items[0].alt} 
-                  class="w-full h-full object-cover transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] transform scale-100"
+                  class="services-featured-img"
                   loading="lazy"
                   width="440"
                   height="586"
@@ -230,29 +228,29 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
             </div>
 
             <!-- Lado Direito Desktop -->
-            <div class="hidden lg:block lg:col-span-8 border-t border-slate-300/80">
+            <div class="services-right-col-desktop">
               {siteData.services.items.map((svc, idx) => (
-                <article class="reveal-up service-item group py-7 sm:py-8 border-b border-slate-300/80 transition-colors duration-300 hover:bg-slate-50 px-2 sm:px-4 rounded-md" data-service-img={asset(svc.image)} style={`transition-delay: ${idx * 60}ms;`}>
-                  <div class="flex items-start justify-between gap-4 sm:gap-6 cursor-pointer" data-service-trigger>
+                <article class="service-item reveal-up" data-service-img={asset(svc.image)} style={`transition-delay: ${idx * 60}ms;`}>
+                  <div class="service-item-header" data-service-trigger>
                     
-                    <div class="flex items-start gap-4 sm:gap-8">
-                      <span class="text-[13px] font-mono font-bold text-[#0C3B78] pt-1.5 shrink-0 opacity-80">{svc.number}</span>
+                    <div class="service-item-content-wrapper">
+                      <span class="service-item-number">{svc.number}</span>
                       <div>
-                        <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-2 sm:mb-1">
-                          <h3 class="font-display text-base sm:text-lg font-bold text-slate-800 group-hover:text-[#0C3B78] transition-colors duration-300">
+                        <div class="service-item-title-wrapper">
+                          <h3 class="service-item-title">
                             {svc.title}
                           </h3>
-                          <span class="text-[11px] font-bold tracking-wide text-slate-400 font-mono uppercase">{svc.tag}</span>
+                          <span class="service-item-tag">{svc.tag}</span>
                         </div>
-                        <p class="text-[15px] sm:text-base text-slate-600 leading-relaxed max-w-xl">
+                        <p class="service-item-desc">
                           {svc.description}
                         </p>
                       </div>
                     </div>
 
-                    <div class="flex items-center shrink-0 self-center">
-                      <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20${encodeURIComponent(svc.title)}.`} target="_blank" rel="noopener noreferrer" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:border-[#0C3B78] group-hover:text-white group-hover:bg-[#0C3B78] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]" aria-label={`Orçar ${svc.title}`}>
-                        <svg class="w-4 h-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <div class="service-item-action-wrapper">
+                      <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20${encodeURIComponent(svc.title)}.`} target="_blank" rel="noopener noreferrer" class="service-item-action-btn" aria-label={`Orçar ${svc.title}`}>
+                        <svg class="service-item-action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                       </a>
                     </div>
 
@@ -262,49 +260,49 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
             </div>
 
             <!-- Lado Mobile: Accordion Limpo -->
-            <div class="block lg:hidden border-t border-slate-200">
+            <div class="services-right-col-mobile">
               {siteData.services.items.map((svc, idx) => (
-                <details class="group/acc border-b border-slate-200 py-2.5" open={idx === 0}>
-                  <summary class="flex items-center justify-between gap-4 py-2 min-h-[48px] cursor-pointer select-none">
-                    <div class="flex items-center gap-3">
-                      <span class="text-xs font-mono font-bold text-[#0C3B78]">{svc.number}</span>
-                      <h3 class="font-display text-[14px] min-[390px]:text-[15px] font-bold text-slate-800 group-open/acc:text-[#0C3B78] transition-colors leading-snug">
+                <details class="service-accordion" open={idx === 0}>
+                  <summary class="service-accordion-summary">
+                    <div class="service-accordion-header">
+                      <span class="service-accordion-number">{svc.number}</span>
+                      <h3 class="service-accordion-title">
                         {svc.title}
                       </h3>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 group-open/acc:bg-[#0C3B78] group-open/acc:text-white transition-all shrink-0">
-                      <svg class="w-4 h-4 transform transition-transform duration-200 group-open/acc:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="service-accordion-icon-wrapper">
+                      <svg class="service-accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                       </svg>
                     </div>
                   </summary>
                   
-                  <div class="pt-2 pb-3.5 pl-6 sm:pl-7 pr-1 space-y-3">
+                  <div class="service-accordion-content">
                     <div>
-                      <span class="inline-block text-[11px] font-mono font-bold tracking-wider uppercase text-[#0C3B78] bg-blue-50/80 px-2.5 py-0.5 rounded">
+                      <span class="service-accordion-tag">
                         {svc.tag}
                       </span>
                     </div>
                     
-                    <p class="text-[15px] text-slate-600 leading-relaxed">
+                    <p class="service-accordion-desc">
                       {svc.description}
                     </p>
 
-                    <div class="rounded-lg overflow-hidden aspect-[4/5] border border-slate-200 shadow-xs w-full max-w-[320px] sm:max-w-sm mt-2">
+                    <div class="service-accordion-img-wrapper">
                       <img 
                         src={asset(svc.image)} 
                         alt={svc.alt} 
-                        class="w-full h-full object-cover object-top"
+                        class="service-accordion-img"
                         loading="lazy"
                         width="400"
                         height="500"
                       />
                     </div>
 
-                    <div class="pt-1.5">
-                      <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20${encodeURIComponent(svc.title)}.`} target="_blank" rel="noopener noreferrer" class="btn-primary !h-11 !px-5 !text-xs w-full sm:w-auto justify-center">
+                    <div class="service-accordion-action">
+                      <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20${encodeURIComponent(svc.title)}.`} target="_blank" rel="noopener noreferrer" class="btn-primary service-accordion-btn">
                         <span>Solicitar orçamento</span>
-                        <svg class="btn-icon-arrow w-3.5 h-3.5 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        <svg class="btn-icon-arrow service-accordion-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                       </a>
                     </div>
                   </div>
@@ -318,34 +316,34 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- Padrão de Instalação (Dark Editorial) -->
-      <section id="instalacao" class="bg-[#0c111a] py-16 sm:py-20 lg:py-28" aria-labelledby="install-title">
-        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+      <section id="instalacao" class="install-section" aria-labelledby="install-title">
+        <div class="install-container">
+          <div class="install-grid">
             
-            <div class="reveal-scale order-1 lg:order-1 relative rounded-lg overflow-hidden border border-slate-800 shadow-xl aspect-[4/5] mx-auto w-full max-w-md lg:max-w-none">
+            <div class="install-img-wrapper reveal-scale">
               <img 
                 src={asset(siteData.installation.image.url)} 
                 alt={siteData.installation.image.alt} 
-                class="w-full h-full object-cover object-top"
+                class="install-img"
                 loading="lazy"
                 width={siteData.installation.image.width}
                 height={siteData.installation.image.height}
               />
             </div>
 
-            <div class="order-2 lg:order-2 flex flex-col">
-              <h2 id="install-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-white tracking-tight leading-[1.1] mb-4 sm:mb-5">
+            <div class="install-content-wrapper">
+              <h2 id="install-title" class="install-title reveal-up">
                 {siteData.installation.headline}
               </h2>
-              <p class="reveal-up text-[15px] sm:text-base text-slate-300 leading-relaxed mb-8 sm:mb-10 max-w-xl" style="transition-delay: 80ms;">
+              <p class="install-desc reveal-up" style="transition-delay: 80ms;">
                 {siteData.installation.text}
               </p>
               
-              <div class="grid grid-cols-1 min-[420px]:grid-cols-2 gap-x-6 gap-y-7 sm:gap-x-8 sm:gap-y-10">
+              <div class="install-pillars-grid">
                 {siteData.installation.pillars.map((pillar, idx) => (
-                  <div class="reveal-up border-l-[3px] border-[#0090D0] pl-5 py-1" style={`transition-delay: ${idx * 70}ms;`}>
-                    <h3 class="font-display text-[1.125rem] sm:text-xl font-bold text-white mb-2.5 tracking-wide">{pillar.title}</h3>
-                    <p class="text-slate-300 text-[15px] sm:text-base leading-relaxed">{pillar.description}</p>
+                  <div class="install-pillar reveal-up" style={`transition-delay: ${idx * 70}ms;`}>
+                    <h3 class="install-pillar-title">{pillar.title}</h3>
+                    <p class="install-pillar-desc">{pillar.description}</p>
                   </div>
                 ))}
               </div>
@@ -356,36 +354,36 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- Processo ("Como trabalhamos") -->
-      <section id="processo" class="py-16 sm:py-20 lg:py-28 bg-white" aria-labelledby="processo-title">
-        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+      <section id="processo" class="process-section" aria-labelledby="processo-title">
+        <div class="process-container">
           
-          <div class="max-w-2xl mb-10 sm:mb-14 lg:mb-20">
-            <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.process.eyebrow}</span>
-            <h2 id="processo-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
+          <div class="process-header">
+            <span class="process-eyebrow reveal-up">{siteData.process.eyebrow}</span>
+            <h2 id="processo-title" class="process-title reveal-up" style="transition-delay: 80ms;">
               {siteData.process.headline}
             </h2>
-            <p class="reveal-up text-[15px] sm:text-base text-slate-600 leading-relaxed" style="transition-delay: 140ms;">
+            <p class="process-desc reveal-up" style="transition-delay: 140ms;">
               {siteData.process.description}
             </p>
           </div>
 
           <!-- Desktop Flow -->
-          <div class="hidden lg:flex flex-col relative">
-            <div class="absolute top-0 left-0 right-0 h-[1px] bg-slate-100">
-               <div class="reveal-line-x h-full bg-[#0090D0]" style="transition-duration: 1100ms; transition-delay: 150ms;"></div>
+          <div class="process-desktop-flow">
+            <div class="process-line-track">
+               <div class="process-line-fill reveal-line-x"></div>
             </div>
 
-            <div class="flex items-start justify-between gap-6 pt-6">
+            <div class="process-steps-row">
               {siteData.process.steps.map((step, idx) => (
-                <article class="reveal-up process-step-item group relative flex-1 cursor-default" data-step-index={idx} style={`transition-delay: ${200 + idx * 120}ms;`}>
-                  <div class="absolute top-[-24px] left-0 h-[1px] bg-[#0C3B78] w-0 group-hover:w-full transition-all duration-350 ease-out z-10"></div>
-                  <span class="block font-display font-bold text-slate-300 group-hover:text-[#0C3B78] transition-colors duration-300 leading-none mb-3" style="font-size: clamp(40px, 4vw, 64px);">
+                <article class="process-step-item reveal-up group" data-step-index={idx} style={`transition-delay: ${200 + idx * 120}ms;`}>
+                  <div class="process-step-hover-line"></div>
+                  <span class="process-step-number">
                     {step.number}
                   </span>
-                  <h3 class="font-display text-[15px] sm:text-base font-bold text-slate-500 group-hover:text-slate-900 transition-colors duration-300 mb-2">
+                  <h3 class="process-step-title">
                     {step.title}
                   </h3>
-                  <p class="text-[14.5px] text-slate-500 group-hover:text-slate-600 transition-colors duration-300 leading-relaxed pr-6">
+                  <p class="process-step-desc">
                     {step.description}
                   </p>
                 </article>
@@ -394,25 +392,25 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           </div>
 
           <!-- Mobile Flow -->
-          <div class="lg:hidden">
+          <div class="process-mobile-flow">
             {siteData.process.steps.map((step, idx) => (
-              <article class="reveal-up relative flex items-start gap-5 sm:gap-6 pb-8 sm:pb-9 last:pb-0" style={`transition-delay: ${100 + idx * 120}ms;`}>
-                <div class="relative shrink-0 w-12 sm:w-16 flex flex-col items-center">
-                  <span class="font-display font-bold text-[#0C3B78] leading-none z-10 bg-white pb-2" style="font-size: clamp(40px, 10vw, 48px);">
+              <article class="process-mobile-item reveal-up" style={`transition-delay: ${100 + idx * 120}ms;`}>
+                <div class="process-mobile-icon-wrapper">
+                  <span class="process-mobile-number">
                     {step.number}
                   </span>
                   {idx < siteData.process.steps.length - 1 && (
-                    <div class="absolute top-10 bottom-[-24px] w-[1px] bg-slate-100">
-                       <div class="reveal-line-y w-full h-full bg-[#0090D0]" style={`transition-duration: 900ms; transition-delay: ${200 + idx * 120}ms;`}></div>
+                    <div class="process-mobile-line-track">
+                       <div class="process-mobile-line-fill reveal-line-y" style={`transition-delay: ${200 + idx * 120}ms;`}></div>
                     </div>
                   )}
                 </div>
 
-                <div class="flex-1 pt-1.5">
-                  <h3 class="font-display text-base sm:text-lg font-bold text-slate-900 mb-1.5">
+                <div class="process-mobile-content">
+                  <h3 class="process-mobile-title">
                     {step.title}
                   </h3>
-                  <p class="text-[15px] sm:text-base text-slate-600 leading-relaxed">
+                  <p class="process-mobile-desc">
                     {step.description}
                   </p>
                 </div>
@@ -424,29 +422,29 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- Soluções Sob Medida (Residencial e Empresarial) -->
-      <section id="solucoes" class="py-16 sm:py-20 lg:py-28 bg-[#FBFBFB] border-y border-slate-200" aria-labelledby="solucoes-title">
-        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+      <section id="solucoes" class="solutions-section" aria-labelledby="solucoes-title">
+        <div class="solutions-container">
           
-          <div class="max-w-3xl mb-12 sm:mb-16 lg:mb-24">
-            <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.solutions.eyebrow}</span>
-            <h2 id="solucoes-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-3 sm:mb-4" style="transition-delay: 80ms;">
+          <div class="solutions-header">
+            <span class="solutions-eyebrow reveal-up">{siteData.solutions.eyebrow}</span>
+            <h2 id="solucoes-title" class="solutions-title reveal-up" style="transition-delay: 80ms;">
               {siteData.solutions.title}
             </h2>
-            <p class="reveal-up text-[15px] sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-2xl" style="transition-delay: 140ms;">
+            <p class="solutions-desc reveal-up" style="transition-delay: 140ms;">
               {siteData.solutions.description}
             </p>
           </div>
 
-          <div class="space-y-16 sm:space-y-20 lg:space-y-24">
+          <div class="solutions-list">
             
             <!-- Bloco 1: Residencial -->
-            <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center" aria-labelledby="res-title">
-              <div class="reveal-scale order-1 lg:order-2">
-                <div class="relative rounded-lg overflow-hidden border border-slate-200 shadow-sm aspect-[4/3] sm:aspect-[5/4] max-h-[640px] w-full">
+            <article class="solutions-article" aria-labelledby="res-title">
+              <div class="solutions-img-col reveal-scale solutions-img-res">
+                <div class="solutions-img-wrapper">
                   <img 
                     src={asset(siteData.solutions.residential.image)} 
                     alt={siteData.solutions.residential.alt} 
-                    class="w-full h-full object-cover object-center"
+                    class="solutions-img"
                     loading="lazy"
                     width="640"
                     height="480"
@@ -454,45 +452,45 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 </div>
               </div>
 
-              <div class="reveal-up flex flex-col justify-center order-2 lg:order-1">
-                <span class="inline-block text-xs font-mono font-bold uppercase tracking-wider text-[#0C3B78] mb-2 sm:mb-3">
+              <div class="solutions-content-col reveal-up solutions-content-res">
+                <span class="solutions-badge">
                   {siteData.solutions.residential.badge}
                 </span>
-                <h3 id="res-title" class="font-display text-xl sm:text-[clamp(24px,2.5vw,32px)] font-bold text-slate-900 mb-3 sm:mb-4 leading-tight">
+                <h3 id="res-title" class="solutions-article-title">
                   {siteData.solutions.residential.headline}
                 </h3>
-                <p class="text-[15px] sm:text-base text-slate-600 leading-relaxed mb-6 sm:mb-8 max-w-lg">
+                <p class="solutions-article-desc">
                   {siteData.solutions.residential.text}
                 </p>
 
-                <ul class="mb-8 sm:mb-10 space-y-3">
+                <ul class="solutions-highlights">
                   {siteData.solutions.residential.highlights.map((item) => (
-                    <li class="flex items-start gap-3 py-1.5 text-sm sm:text-base text-slate-700">
-                      <span class="w-1.5 h-1.5 rounded-full bg-[#0C3B78] mt-2 shrink-0"></span>
-                      <span class="leading-relaxed">{item}</span>
+                    <li class="solutions-highlight-item">
+                      <span class="solutions-highlight-dot"></span>
+                      <span class="solutions-highlight-text">{item}</span>
                     </li>
                   ))}
                 </ul>
 
                 <div>
-                  <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Climatização%20Residencial.`} target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto !h-[52px] justify-center">
+                  <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Climatização%20Residencial.`} target="_blank" rel="noopener noreferrer" class="btn-primary solutions-btn">
                     <span>Orçar projeto residencial</span>
-                    <svg class="btn-icon-arrow w-4 h-4 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <svg class="btn-icon-arrow solutions-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                   </a>
                 </div>
               </div>
             </article>
             
-            <div class="h-[1px] w-full bg-slate-200"></div>
+            <div class="solutions-divider"></div>
 
             <!-- Bloco 2: Empresarial -->
-            <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center" aria-labelledby="corp-title">
-              <div class="reveal-scale order-1 lg:order-1">
-                <div class="relative rounded-lg overflow-hidden border border-slate-200 shadow-sm aspect-[4/3] sm:aspect-[5/4] max-h-[640px] w-full">
+            <article class="solutions-article" aria-labelledby="corp-title">
+              <div class="solutions-img-col reveal-scale solutions-img-corp">
+                <div class="solutions-img-wrapper">
                   <img 
                     src={asset(siteData.solutions.corporate.image)} 
                     alt={siteData.solutions.corporate.alt} 
-                    class="w-full h-full object-cover object-center"
+                    class="solutions-img"
                     loading="lazy"
                     width="640"
                     height="480"
@@ -500,30 +498,30 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 </div>
               </div>
 
-              <div class="reveal-up flex flex-col justify-center order-2 lg:order-2 lg:pl-6">
-                <span class="inline-block text-xs font-mono font-bold uppercase tracking-wider text-[#0C3B78] mb-2 sm:mb-3">
+              <div class="solutions-content-col reveal-up solutions-content-corp">
+                <span class="solutions-badge">
                   {siteData.solutions.corporate.badge}
                 </span>
-                <h3 id="corp-title" class="font-display text-xl sm:text-[clamp(24px,2.5vw,32px)] font-bold text-slate-900 mb-3 sm:mb-4 leading-tight">
+                <h3 id="corp-title" class="solutions-article-title">
                   {siteData.solutions.corporate.headline}
                 </h3>
-                <p class="text-[15px] sm:text-base text-slate-600 leading-relaxed mb-6 sm:mb-8 max-w-lg">
+                <p class="solutions-article-desc">
                   {siteData.solutions.corporate.text}
                 </p>
 
-                <ul class="mb-8 sm:mb-10 space-y-3">
+                <ul class="solutions-highlights">
                   {siteData.solutions.corporate.highlights.map((item) => (
-                    <li class="flex items-start gap-3 py-1.5 text-sm sm:text-base text-slate-700">
-                      <span class="w-1.5 h-1.5 rounded-full bg-[#0090D0] mt-2 shrink-0"></span>
-                      <span class="leading-relaxed">{item}</span>
+                    <li class="solutions-highlight-item">
+                      <span class="solutions-highlight-dot solutions-highlight-dot-alt"></span>
+                      <span class="solutions-highlight-text">{item}</span>
                     </li>
                   ))}
                 </ul>
 
                 <div>
-                  <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Climatização%20Empresarial.`} target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto !h-[52px] justify-center">
+                  <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Climatização%20Empresarial.`} target="_blank" rel="noopener noreferrer" class="btn-primary solutions-btn">
                     <span>Orçar projeto empresarial</span>
-                    <svg class="btn-icon-arrow w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <svg class="btn-icon-arrow solutions-btn-icon-alt" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                   </a>
                 </div>
               </div>
@@ -535,28 +533,28 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- Diferenciais / Padrão de Trabalho -->
-      <section id="diferenciais" class="py-16 sm:py-20 lg:py-28 bg-white" aria-labelledby="diferenciais-title">
-        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+      <section id="diferenciais" class="diff-section" aria-labelledby="diferenciais-title">
+        <div class="diff-container">
           
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <div class="diff-grid">
             
-            <div class="lg:col-span-4 lg:sticky lg:top-28">
-              <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.differentials.eyebrow}</span>
-              <h2 id="diferenciais-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
+            <div class="diff-left-col">
+              <span class="diff-eyebrow reveal-up">{siteData.differentials.eyebrow}</span>
+              <h2 id="diferenciais-title" class="diff-title reveal-up" style="transition-delay: 80ms;">
                 {siteData.differentials.headline}
               </h2>
-              <p class="reveal-up text-[15px] sm:text-base lg:text-lg text-slate-600 leading-relaxed mb-6 lg:mb-0" style="transition-delay: 140ms;">
+              <p class="diff-desc reveal-up" style="transition-delay: 140ms;">
                 {siteData.differentials.description}
               </p>
             </div>
 
             <!-- Composição Editorial 2x3 -->
-            <div class="lg:col-span-8 grid grid-cols-2 gap-x-4 sm:gap-x-10 lg:gap-x-12 gap-y-0 sm:gap-y-10 lg:gap-y-14">
+            <div class="diff-right-col">
               {siteData.differentials.items.map((diff, idx) => (
-                <article class="reveal-up group border-t border-slate-200/80 pt-6 sm:pt-8 pb-4 transition-colors min-w-0 pr-1 sm:pr-4" style={`transition-delay: ${Math.floor(idx / 2) * 120}ms;`}>
-                  <span class="block font-display text-[26px] sm:text-[clamp(32px,3.5vw,48px)] font-bold text-slate-200 group-hover:text-[#0090D0] transition-colors duration-400 leading-none mb-3 sm:mb-5">{diff.number}</span>
-                  <h3 class="font-display text-[14px] sm:text-[1.35rem] font-bold text-slate-700 group-hover:text-slate-900 transition-colors duration-400 leading-tight mb-2 sm:mb-3 break-words hyphens-auto">{diff.title}</h3>
-                  <p class="text-[12px] sm:text-base text-slate-600 leading-relaxed break-words hyphens-auto">
+                <article class="diff-item reveal-up group" style={`transition-delay: ${Math.floor(idx / 2) * 120}ms;`}>
+                  <span class="diff-item-number">{diff.number}</span>
+                  <h3 class="diff-item-title">{diff.title}</h3>
+                  <p class="diff-item-desc">
                     {diff.description}
                   </p>
                 </article>
@@ -569,43 +567,44 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- Projetos Realizados -->
-      <section id="projetos" class="py-16 sm:py-20 lg:py-28 bg-[#0c111a] text-white" aria-labelledby="projetos-title">
-        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+      <!-- Projetos Realizados -->
+      <section id="projetos" class="projects-section" aria-labelledby="projetos-title">
+        <div class="projects-container">
           
-          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 sm:mb-16 pb-6 border-b border-white/10">
+          <div class="projects-header">
             <div>
-              <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2">{siteData.projects.eyebrow}</span>
-              <h2 id="projetos-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold tracking-tight text-white leading-[1.1]" style="transition-delay: 80ms;">
+              <span class="projects-eyebrow reveal-up">{siteData.projects.eyebrow}</span>
+              <h2 id="projetos-title" class="projects-title reveal-up" style="transition-delay: 80ms;">
                 {siteData.projects.title}
               </h2>
-              <p class="reveal-up text-[15px] sm:text-base text-slate-400 mt-2.5 sm:mt-3" style="transition-delay: 140ms;">
+              <p class="projects-desc reveal-up" style="transition-delay: 140ms;">
                 {siteData.projects.description}
               </p>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <div class="projects-grid">
             {siteData.projects.items.map((proj, idx) => (
-              <article class="reveal-up group relative rounded-xl overflow-hidden border border-white/10 bg-slate-900 aspect-[4/3] min-[390px]:aspect-[16/10] shadow-sm cursor-pointer" data-project-id={proj.id} style={`transition-delay: ${90 * (idx + 1)}ms;`}>
+              <article class="projects-card reveal-up group" data-project-id={proj.id} style={`transition-delay: ${90 * (idx + 1)}ms;`}>
                 <img 
                   src={asset(proj.image)} 
                   alt={proj.alt} 
-                  class="w-full h-full object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] filter brightness-[0.92] contrast-[1.02]"
+                  class="projects-card-img"
                   loading="lazy"
                   width="800"
                   height="500"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent flex flex-col justify-end p-5 sm:p-7 lg:p-8 transition-colors duration-[600ms] group-hover:bg-black/20">
-                  <div class="transform transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
-                    <div class="flex items-center justify-between mb-2 sm:mb-2.5">
-                      <span class="text-xs font-mono font-bold text-[#0C3B78] uppercase tracking-wider">
+                <div class="projects-card-overlay">
+                  <div class="projects-card-content">
+                    <div class="projects-card-meta">
+                      <span class="projects-card-category">
                         {proj.category}
                       </span>
-                      <span class="text-xs text-slate-300 font-mono">
+                      <span class="projects-card-location">
                         {proj.location}
                       </span>
                     </div>
-                    <h3 class="font-display text-lg sm:text-xl lg:text-2xl font-bold text-white leading-snug">
+                    <h3 class="projects-card-title">
                       {proj.title}
                     </h3>
                   </div>
@@ -618,79 +617,79 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- Sobre Nós -->
-      <section id="sobre" class="py-16 sm:py-20 lg:py-28 bg-white" aria-labelledby="sobre-title">
-        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+      <section id="sobre" class="about-section" aria-labelledby="sobre-title">
+        <div class="about-container">
           
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
+          <div class="about-grid">
             
-            <div class="lg:col-span-6">
-              <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">{siteData.about.eyebrow}</span>
-              <h2 id="sobre-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4.5vw,52px)] font-bold text-[#0F141C] tracking-tight leading-[1.1] mb-4 sm:mb-5" style="transition-delay: 80ms;">
+            <div class="about-content-col">
+              <span class="about-eyebrow reveal-up">{siteData.about.eyebrow}</span>
+              <h2 id="sobre-title" class="about-title reveal-up" style="transition-delay: 80ms;">
                 {siteData.about.headline}
               </h2>
               
-              <p class="reveal-up text-[15px] sm:text-base lg:text-[1.0625rem] text-slate-600 leading-relaxed mb-6 sm:mb-8" style="transition-delay: 140ms;">
+              <p class="about-copy reveal-up" style="transition-delay: 140ms;">
                 {siteData.about.copy}
               </p>
 
-              <div class="space-y-4 sm:space-y-5 mb-6 sm:mb-8">
+              <div class="about-pillars">
                 {siteData.about.pillars.map((pillar, idx) => (
-                  <div class="reveal-up border-l-[3px] border-[#0C3B78] pl-4 py-0.5" style={`transition-delay: ${200 + idx * 70}ms;`}>
-                    <h3 class="font-display text-[15px] sm:text-base font-bold text-slate-900 mb-1">{pillar.label}</h3>
-                    <p class="text-[14.5px] text-slate-600 leading-relaxed">
+                  <div class="about-pillar reveal-up" style={`transition-delay: ${200 + idx * 70}ms;`}>
+                    <h3 class="about-pillar-label">{pillar.label}</h3>
+                    <p class="about-pillar-text">
                       {pillar.text}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div class="reveal-up inline-flex items-center gap-2 text-xs font-mono text-slate-500 bg-slate-50 px-3 py-1.5 rounded border border-slate-200/80" style="transition-delay: 350ms;">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+              <div class="about-badge reveal-up" style="transition-delay: 350ms;">
+                <span class="about-badge-dot"></span>
                 <span>Atendimento técnico especializado em {siteData.company.locationString} e região</span>
               </div>
             </div>
 
             <!-- Lado Visual -->
-            <div class="lg:col-span-6 mt-4 lg:mt-0">
-              <div class="relative">
+            <div class="about-visual-col">
+              <div class="about-visual-wrapper">
                 
-                <div class="reveal-scale rounded-lg overflow-hidden border border-slate-200 bg-slate-50 aspect-[4/3] max-h-[460px] shadow-sm w-full" style="transition-delay: 100ms;">
+                <div class="about-img-main reveal-scale" style="transition-delay: 100ms;">
                   <img 
                     src={asset(siteData.about.image.url)} 
                     alt={siteData.about.image.alt} 
-                    class="w-full h-full object-cover filter contrast-[1.02]"
+                    class="about-img"
                     loading="lazy"
                     width={siteData.about.image.width}
                     height={siteData.about.image.height}
                   />
                 </div>
 
-                <div class="mt-4 grid grid-cols-1 min-[440px]:grid-cols-2 gap-3.5 sm:gap-4">
-                  <div class="reveal-scale rounded-lg overflow-hidden border border-slate-200 bg-slate-50 aspect-[16/10] relative shadow-2xs group" style="transition-delay: 180ms;">
+                <div class="about-img-grid">
+                  <div class="about-img-sub reveal-scale group" style="transition-delay: 180ms;">
                     <img 
                       src={asset(siteData.about.facilityImage.url)} 
                       alt={siteData.about.facilityImage.alt} 
-                      class="w-full h-full object-cover"
+                      class="about-img"
                       loading="lazy"
                       width={siteData.about.facilityImage.width}
                       height={siteData.about.facilityImage.height}
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex items-end p-3.5">
-                      <span class="text-xs font-mono font-bold text-white tracking-wide">{siteData.about.facilityImage.label}</span>
+                    <div class="about-img-overlay">
+                      <span class="about-img-label">{siteData.about.facilityImage.label}</span>
                     </div>
                   </div>
 
-                  <div class="reveal-scale rounded-lg overflow-hidden border border-slate-200 bg-slate-50 aspect-[16/10] relative shadow-2xs group" style="transition-delay: 260ms;">
+                  <div class="about-img-sub reveal-scale group" style="transition-delay: 260ms;">
                     <img 
                       src={asset(siteData.about.vehicleImage.url)} 
                       alt={siteData.about.vehicleImage.alt} 
-                      class="w-full h-full object-cover"
+                      class="about-img"
                       loading="lazy"
                       width={siteData.about.vehicleImage.width}
                       height={siteData.about.vehicleImage.height}
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex items-end p-3.5">
-                      <span class="text-xs font-mono font-bold text-white tracking-wide">{siteData.about.vehicleImage.label}</span>
+                    <div class="about-img-overlay">
+                      <span class="about-img-label">{siteData.about.vehicleImage.label}</span>
                     </div>
                   </div>
                 </div>
@@ -704,22 +703,22 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- Depoimentos do Google (Estilo Nadia Richter) -->
-      <section id="depoimentos" class="testimonials-section py-16 sm:py-20 lg:py-28" aria-labelledby="depoimentos-title">
-        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+      <section id="depoimentos" class="testimonials-section" aria-labelledby="depoimentos-title">
+        <div class="testimonials-container">
           
           <!-- Cabeçalho da Seção -->
-          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16">
-            <div class="max-w-xl">
-              <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-2 sm:mb-3">
+          <div class="testimonials-header">
+            <div class="testimonials-header-left">
+              <span class="testimonials-eyebrow reveal-up">
                 {siteData.testimonials.eyebrow}
               </span>
-              <h2 id="depoimentos-title" class="reveal-up font-display text-[30px] min-[390px]:text-[32px] sm:text-[clamp(36px,4vw,48px)] font-bold text-[#0F141C] tracking-tight leading-[1.1]" style="transition-delay: 80ms;">
+              <h2 id="depoimentos-title" class="testimonials-title reveal-up" style="transition-delay: 80ms;">
                 {siteData.testimonials.title}
               </h2>
             </div>
 
-            <div class="reveal-up flex flex-col sm:flex-row sm:items-center lg:flex-col lg:items-end gap-3 sm:gap-4" style="transition-delay: 140ms;">
-              <p class="text-sm sm:text-[15px] text-slate-500 lg:text-right max-w-md">
+            <div class="testimonials-header-right reveal-up" style="transition-delay: 140ms;">
+              <p class="testimonials-desc">
                 {siteData.testimonials.description}
               </p>
               
@@ -727,29 +726,29 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 href={siteData.company.mapsUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="google-rating-badge hover:border-blue-300 hover:shadow-xs transition-all"
+                class="google-rating-badge"
                 title="Ver avaliações no perfil oficial do Google Meu Negócio"
               >
                 <!-- Logotipo Oficial Google 'G' 4 Cores -->
-                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="google-icon" viewBox="0 0 24 24" aria-hidden="true">
                   <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
                   <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.27 21.39 7.35 24 12 24z"/>
                   <path fill="#FBBC05" d="M5.28 14.27a7.2 7.2 0 0 1 0-4.54V6.58H1.25a11.97 11.97 0 0 0 0 10.84l4.03-3.15z"/>
                   <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.61 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                 </svg>
 
-                <span class="text-sm font-bold text-slate-800">{siteData.testimonials.googleRating}</span>
+                <span class="google-rating-score">{siteData.testimonials.googleRating}</span>
 
                 <!-- 5 estrelas amarelas -->
-                <div class="flex items-center gap-0.5 text-[#FBBC05]" aria-hidden="true">
+                <div class="google-rating-stars" aria-hidden="true">
                   {Array.from({ length: 5 }).map(() => (
-                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                    <svg class="google-star-icon" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                     </svg>
                   ))}
                 </div>
 
-                <span class="text-xs text-slate-500 font-bold">{siteData.testimonials.reviewsCount}</span>
+                <span class="google-rating-count">{siteData.testimonials.reviewsCount}</span>
               </a>
             </div>
           </div>
@@ -758,21 +757,21 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           <div class="testimonials-grid">
             {siteData.testimonials.items.map((item, idx) => (
               <article 
-                class="reveal-up testimonial-card p-6 sm:p-7 flex flex-col justify-between"
+                class="testimonial-card reveal-up"
                 style={`transition-delay: ${(idx % 3) * 100}ms;`}
               >
                 <div>
                   <!-- Topo do Card: Google G + Estrelas -->
-                  <div class="flex items-center gap-2 mb-4">
-                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                  <div class="testimonial-card-header">
+                    <svg class="google-icon" viewBox="0 0 24 24" aria-hidden="true">
                       <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
                       <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.27 21.39 7.35 24 12 24z"/>
                       <path fill="#FBBC05" d="M5.28 14.27a7.2 7.2 0 0 1 0-4.54V6.58H1.25a11.97 11.97 0 0 0 0 10.84l4.03-3.15z"/>
                       <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.61 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                     </svg>
-                    <div class="flex items-center gap-0.5 text-[#FBBC05]" aria-hidden="true">
+                    <div class="google-rating-stars" aria-hidden="true">
                       {Array.from({ length: item.rating }).map(() => (
-                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                        <svg class="google-star-icon" viewBox="0 0 20 20">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                         </svg>
                       ))}
@@ -780,16 +779,16 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                   </div>
 
                   <!-- Conteúdo do Depoimento -->
-                  <blockquote class="text-[14.5px] text-slate-600 leading-[1.65]">
+                  <blockquote class="testimonial-blockquote">
                     "{item.text}"
                   </blockquote>
                 </div>
 
                 <!-- Autor e Localização -->
-                <div class="border-t border-slate-100 pt-4 mt-6">
-                  <div class="font-bold text-slate-900 text-sm">{item.author}</div>
-                  <div class="text-xs text-slate-500 mt-0.5">{item.city}</div>
-                  <div class="text-[11px] text-slate-400 font-bold mt-0.5">{item.source}</div>
+                <div class="testimonial-author-info">
+                  <div class="testimonial-author">{item.author}</div>
+                  <div class="testimonial-city">{item.city}</div>
+                  <div class="testimonial-source">{item.source}</div>
                 </div>
               </article>
             ))}
@@ -799,34 +798,34 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- FAQ Section -->
-      <section id="faq" class="py-16 sm:py-20 lg:py-28 bg-[#F9F8F4]" aria-labelledby="faq-title">
-        <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <section id="faq" class="faq-section" aria-labelledby="faq-title">
+        <div class="faq-container">
+          <div class="faq-grid">
             
-            <div class="lg:col-span-4 lg:sticky lg:top-32">
-              <span class="reveal-up text-[11px] font-bold uppercase tracking-[0.15em] text-[#0C3B78] block mb-4">DÚVIDAS FREQUENTES</span>
-              <h2 id="faq-title" class="reveal-up font-display text-[32px] sm:text-[40px] lg:text-[46px] font-bold text-[#0F141C] tracking-tight leading-[1.05] mb-4 sm:mb-5" style="transition-delay: 80ms;">
-                Antes de<br class="hidden lg:block"/> começar
+            <div class="faq-left-col">
+              <span class="faq-eyebrow reveal-up">DÚVIDAS FREQUENTES</span>
+              <h2 id="faq-title" class="faq-title reveal-up" style="transition-delay: 80ms;">
+                Antes de<br class="faq-title-br"/> começar
               </h2>
-              <p class="reveal-up text-[15px] sm:text-[16px] text-slate-600 leading-relaxed max-w-sm" style="transition-delay: 120ms;">
+              <p class="faq-desc reveal-up" style="transition-delay: 120ms;">
                 Algumas respostas para deixar sua decisão mais tranquila.
               </p>
             </div>
 
-            <div class="lg:col-span-8 faq-list reveal-fade border-t border-slate-200/80" style="transition-delay: 140ms;">
+            <div class="faq-right-col faq-list reveal-fade" style="transition-delay: 140ms;">
             {siteData.faq.map((item, idx) => (
-              <details class="faq-details group border-b border-slate-200/80" open={idx === 0}>
+              <details class="faq-details group" open={idx === 0}>
                 <summary 
-                  class="faq-summary w-full flex items-center justify-between gap-4 py-4.5 sm:py-5 min-h-[52px] text-left cursor-pointer list-none select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0C3B78] rounded-md transition-colors duration-200" 
+                  class="faq-summary" 
                   id={`faq-trigger-${idx}`} 
                   aria-controls={`faq-content-${idx}`}
                 >
-                  <span class="font-display text-[15px] min-[390px]:text-[16px] sm:text-[17px] font-bold text-slate-800 group-hover:text-[#0C3B78] transition-colors leading-snug">
+                  <span class="faq-summary-title">
                     {item.question}
                   </span>
                   
-                  <span class="faq-icon-box flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 group-hover:bg-blue-50 text-slate-500 transition-all duration-300 shrink-0">
-                    <svg class="faq-arrow w-4 h-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span class="faq-icon-box">
+                    <svg class="faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </span>
@@ -834,11 +833,11 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
                 
                 <div 
                   id={`faq-content-${idx}`} 
-                  class="faq-answer overflow-hidden" 
+                  class="faq-answer" 
                   role="region" 
                   aria-labelledby={`faq-trigger-${idx}`}
                 >
-                  <p class="text-[15px] text-slate-600 leading-relaxed pb-5 sm:pb-6 pr-2 sm:pr-12">
+                  <p class="faq-answer-text">
                     {item.answer}
                   </p>
                 </div>
@@ -850,29 +849,29 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- Final CTA Section -->
-      <section id="contato" class="py-16 sm:py-24 lg:py-32 bg-slate-900 text-white relative overflow-hidden" aria-labelledby="cta-final-title">
-        <div class="reveal-scale max-w-4xl mx-auto px-5 max-[375px]:px-4 sm:px-8 text-center relative z-10" style="transition-duration: 700ms;">
+      <section id="contato" class="cta-final-section" aria-labelledby="cta-final-title">
+        <div class="cta-final-container reveal-scale" style="transition-duration: 700ms;">
           
-          <span class="reveal-up text-xs font-bold uppercase tracking-wider text-[#0C3B78] block mb-3 sm:mb-4" style="transition-delay: 100ms;">
+          <span class="cta-final-eyebrow reveal-up" style="transition-delay: 100ms;">
             {siteData.finalCta.eyebrow}
           </span>
           
-          <h2 id="cta-final-title" class="reveal-up text-balance font-display text-[30px] min-[390px]:text-[34px] sm:text-[clamp(40px,5.5vw,60px)] font-bold tracking-tight text-white mb-4 sm:mb-6 leading-[1.08]" style="transition-delay: 180ms;">
+          <h2 id="cta-final-title" class="cta-final-title reveal-up" style="transition-delay: 180ms;">
             {siteData.finalCta.headline}
           </h2>
 
-          <p class="reveal-up text-balance text-slate-300 text-[15px] sm:text-lg max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed" style="transition-delay: 260ms;">
+          <p class="cta-final-desc reveal-up" style="transition-delay: 260ms;">
             {siteData.finalCta.text}
           </p>
 
-          <div class="reveal-up flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 max-w-md sm:max-w-none mx-auto" style="transition-delay: 340ms;">
-            <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto !h-[52px] shadow-md justify-center">
-              <svg class="w-4 h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <div class="cta-final-btn-wrapper reveal-up" style="transition-delay: 340ms;">
+            <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="btn-primary cta-final-btn">
+              <svg class="cta-whatsapp-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
               <span>{siteData.finalCta.buttonText}</span>
             </a>
           </div>
 
-          <div class="reveal-fade mt-8 sm:mt-10 text-xs font-mono text-slate-500 tracking-widest uppercase" style="transition-delay: 420ms;">
+          <div class="cta-final-location reveal-fade" style="transition-delay: 420ms;">
             {siteData.finalCta.location}
           </div>
 
@@ -880,7 +879,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
       </section>
 
       <!-- Location Map Section -->
-      <section id="mapa" aria-label={`Localização da ${siteData.company.name}`} class="w-full bg-slate-100 relative" style="height: 60vh; min-height: 450px; max-height: 700px;">
+      <section id="mapa" aria-label={`Localização da ${siteData.company.name}`} class="map-section">
         <iframe 
           width="100%" 
           height="100%" 
@@ -890,8 +889,7 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
           marginwidth="0" 
           src={`https://maps.google.com/maps?width=100%25&height=800&hl=pt-BR&q=${encodeURIComponent("AM Climatizar, Ivoti - RS")}&t=&z=15&ie=UTF8&iwloc=B&output=embed`}
           title={`Mapa mostrando a localização da ${siteData.company.name}`}
-          class="w-full h-full border-0 grayscale-[15%] hover:grayscale-0 transition-all duration-500"
-          style="min-height: 450px;"
+          class="map-iframe"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
@@ -900,87 +898,87 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
     </main>
 
     <!-- Footer -->
-    <footer class="reveal-fade bg-[#080C12] text-slate-400 py-12 sm:py-16 border-t border-white/5 relative overflow-hidden" aria-labelledby="footer-title">
+    <footer class="reveal-fade site-footer" aria-labelledby="footer-title">
       <h2 id="footer-title" class="sr-only">Rodapé Institucional da {siteData.company.name}</h2>
-      <div class="max-w-7xl mx-auto px-5 max-[375px]:px-4 sm:px-8">
+      <div class="footer-container">
         
         <div class="footer-main-grid">
           
           <!-- Coluna 1: Marca -->
-          <div>
-            <a href="#" class="inline-block mb-5 sm:mb-6" aria-label={`${siteData.company.name} - Início`}>
+          <div class="footer-col-brand">
+            <a href="#" class="footer-logo-link" aria-label={`${siteData.company.name} - Início`}>
               <img 
                 src={asset("/assets/images/logo-am-climatizar.webp")} 
                 alt={siteData.company.name} 
-                class="h-12 sm:h-14 w-auto object-contain" 
+                class="footer-logo-img" 
                 width="160" 
                 height="78" 
               />
             </a>
-            <p class="text-[14.5px] text-slate-400 leading-relaxed max-w-sm mb-3">
+            <p class="footer-brand-desc">
               Mais de 4 anos no mercado trazendo conforto, qualidade e confiança em climatização e elétrica residencial em {siteData.company.locationString} e Vale dos Sinos.
             </p>
-            <div class="text-[13px] text-slate-400 flex items-center gap-2 font-mono">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+            <div class="footer-region">
+              <span class="footer-region-dot"></span>
               <span>{siteData.company.regionCovered}</span>
             </div>
           </div>
 
           <!-- Coluna 2: Serviços -->
-          <div>
-            <h3 class="text-[13px] font-bold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Serviços</h3>
-            <ul class="space-y-2 text-[15px] sm:text-[14.5px]">
-              <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Instalação de Ar-Condicionado</a></li>
-              <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Higienização Preventiva e Corretiva</a></li>
-              <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Manutenção Corretiva & Diagnóstico</a></li>
-              <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Carga de Gás e Capacitor</a></li>
-              <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Elétrica Residencial Especializada</a></li>
-              <li><a href="#solucoes" class="hover:text-white transition-colors py-1 inline-block">Climatização Residencial e Comercial</a></li>
+          <div class="footer-col-nav">
+            <h3 class="footer-nav-title">Serviços</h3>
+            <ul class="footer-nav-list">
+              <li><a href="#servicos" class="footer-nav-link">Instalação de Ar-Condicionado</a></li>
+              <li><a href="#servicos" class="footer-nav-link">Higienização Preventiva e Corretiva</a></li>
+              <li><a href="#servicos" class="footer-nav-link">Manutenção Corretiva & Diagnóstico</a></li>
+              <li><a href="#servicos" class="footer-nav-link">Carga de Gás e Capacitor</a></li>
+              <li><a href="#servicos" class="footer-nav-link">Elétrica Residencial Especializada</a></li>
+              <li><a href="#solucoes" class="footer-nav-link">Climatização Residencial e Comercial</a></li>
             </ul>
           </div>
 
           <!-- Coluna 3: Navegação -->
-          <div>
-            <h3 class="text-[13px] font-bold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Navegação</h3>
-            <ul class="space-y-2 text-[15px] sm:text-[14.5px]">
-              <li><a href="#servicos" class="hover:text-white transition-colors py-1 inline-block">Serviços</a></li>
-              <li><a href="#processo" class="hover:text-white transition-colors py-1 inline-block">Como trabalhamos</a></li>
-              <li><a href="#instalacao" class="hover:text-white transition-colors py-1 inline-block">Padrão de Instalação</a></li>
-              <li><a href="#diferenciais" class="hover:text-white transition-colors py-1 inline-block">Diferenciais</a></li>
-              <li><a href="#projetos" class="hover:text-white transition-colors py-1 inline-block">Projetos</a></li>
-              <li><a href="#sobre" class="hover:text-white transition-colors py-1 inline-block">Sobre</a></li>
-              <li><a href="#depoimentos" class="hover:text-white transition-colors py-1 inline-block">Depoimentos</a></li>
-              <li><a href="#faq" class="hover:text-white transition-colors py-1 inline-block">FAQ</a></li>
+          <div class="footer-col-nav">
+            <h3 class="footer-nav-title">Navegação</h3>
+            <ul class="footer-nav-list">
+              <li><a href="#servicos" class="footer-nav-link">Serviços</a></li>
+              <li><a href="#processo" class="footer-nav-link">Como trabalhamos</a></li>
+              <li><a href="#instalacao" class="footer-nav-link">Padrão de Instalação</a></li>
+              <li><a href="#diferenciais" class="footer-nav-link">Diferenciais</a></li>
+              <li><a href="#projetos" class="footer-nav-link">Projetos</a></li>
+              <li><a href="#sobre" class="footer-nav-link">Sobre</a></li>
+              <li><a href="#depoimentos" class="footer-nav-link">Depoimentos</a></li>
+              <li><a href="#faq" class="footer-nav-link">FAQ</a></li>
             </ul>
           </div>
 
           <!-- Coluna 4: Contato -->
-          <div>
-            <h3 class="text-[13px] font-bold uppercase tracking-wider text-slate-200 mb-3.5 sm:mb-4">Contato</h3>
-            <ul class="space-y-3 text-[15px] sm:text-[14.5px]">
-              <li class="flex items-start gap-2">
-                <span class="text-white font-bold shrink-0">Local:</span>
+          <div class="footer-col-nav">
+            <h3 class="footer-nav-title">Contato</h3>
+            <ul class="footer-contact-list">
+              <li class="footer-contact-item">
+                <span class="footer-contact-label">Local:</span>
                 <span>{siteData.company.address.street} - {siteData.company.address.neighborhood}<br />{siteData.company.address.city} / {siteData.company.address.state}</span>
               </li>
-              <li>
-                <span class="text-white font-bold">WhatsApp:</span>
-                <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20um%20atendimento%20da%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="text-[#0090D0] hover:text-white block transition-colors font-bold py-0.5">
+              <li class="footer-contact-item">
+                <span class="footer-contact-label">WhatsApp:</span>
+                <a href={`https://wa.me/${siteData.company.whatsappRaw}?text=Olá!%20Gostaria%20de%20um%20atendimento%20da%20AM%20Climatizar.`} target="_blank" rel="noopener noreferrer" class="footer-contact-link-highlight">
                   {siteData.company.whatsapp}
                 </a>
               </li>
-              <li>
-                <span class="text-white font-bold">E-mail:</span>
-                <a href={`mailto:${siteData.company.email}`} class="hover:text-white block transition-colors py-0.5">
+              <li class="footer-contact-item">
+                <span class="footer-contact-label">E-mail:</span>
+                <a href={`mailto:${siteData.company.email}`} class="footer-contact-link">
                   {siteData.company.email}
                 </a>
               </li>
-              <li>
-                <span class="text-white font-bold">Instagram:</span>
-                <a href={siteData.company.instagramUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white block transition-colors py-0.5">
+              <li class="footer-contact-item">
+                <span class="footer-contact-label">Instagram:</span>
+                <a href={siteData.company.instagramUrl} target="_blank" rel="noopener noreferrer" class="footer-contact-link">
                   {siteData.company.instagram}
                 </a>
               </li>
-              <li class="pt-1 text-slate-400 text-xs sm:text-[13px]">
+              <li class="footer-contact-hours">
                 {siteData.company.hours.weekdays}<br />{siteData.company.hours.saturday}
               </li>
             </ul>
@@ -989,11 +987,11 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
         </div>
 
         <!-- Rodapé Inferior -->
-        <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-[13px] text-slate-500 text-center sm:text-left relative z-10">
+        <div class="footer-bottom">
           <p>&copy; {new Date().getFullYear()} {siteData.company.name}. Todos os direitos reservados. {siteData.company.locationString}.</p>
-          <div class="flex items-center gap-6">
-            <a href="#" class="hover:text-slate-400 transition-colors py-1">Política de Privacidade</a>
-            <a href="#" class="hover:text-slate-400 transition-colors py-1">Termos de Uso</a>
+          <div class="footer-legal">
+            <a href="#" class="footer-legal-link">Política de Privacidade</a>
+            <a href="#" class="footer-legal-link">Termos de Uso</a>
           </div>
         </div>
 
@@ -1024,90 +1022,90 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
     </a>
 
     <!-- Modal de Pré-Orçamento -->
-    <div id="quote-modal-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="quote-modal-backdrop" class="modal-backdrop"></div>
     
-    <div id="quote-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none scale-95 transition-all duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <div class="bg-white rounded-lg max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
+    <div id="quote-modal" class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-content">
         
-        <div class="flex items-start justify-between mb-6">
+        <div class="modal-header">
           <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-[#0C3B78]">Pré-Orçamento {siteData.company.name}</span>
-            <h3 id="modal-title" class="font-display text-xl sm:text-2xl font-bold text-slate-900 mt-1">
+            <span class="modal-eyebrow">Pré-Orçamento {siteData.company.name}</span>
+            <h3 id="modal-title" class="modal-title">
               Qual é a sua necessidade?
             </h3>
           </div>
-          <button id="close-quote-modal" type="button" class="p-1.5 text-slate-400 hover:text-slate-700 rounded-md focus:outline-none" aria-label="Fechar diálogo">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          <button id="close-quote-modal" type="button" class="modal-close-btn" aria-label="Fechar diálogo">
+            <svg class="modal-close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
 
-        <form id="quote-form" class="space-y-4 text-left">
+        <form id="quote-form" class="modal-form">
           
           <!-- Passo 1: Serviço -->
-          <div>
-            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">1. Selecione o Serviço</label>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
-              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
-                <input type="radio" name="service" value="Instalação de ar-condicionado" checked class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+          <div class="modal-form-group">
+            <label class="modal-label">1. Selecione o Serviço</label>
+            <div class="modal-radio-grid-3">
+              <label class="modal-radio-label">
+                <input type="radio" name="service" value="Instalação de ar-condicionado" checked class="modal-radio-input" />
                 <span>Instalação</span>
               </label>
-              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
-                <input type="radio" name="service" value="Higienização preventiva e corretiva" class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+              <label class="modal-radio-label">
+                <input type="radio" name="service" value="Higienização preventiva e corretiva" class="modal-radio-input" />
                 <span>Higienização</span>
               </label>
-              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
-                <input type="radio" name="service" value="Manutenção corretiva" class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+              <label class="modal-radio-label">
+                <input type="radio" name="service" value="Manutenção corretiva" class="modal-radio-input" />
                 <span>Manutenção</span>
               </label>
-              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
-                <input type="radio" name="service" value="Carga de gás e Capacitor" class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+              <label class="modal-radio-label">
+                <input type="radio" name="service" value="Carga de gás e Capacitor" class="modal-radio-input" />
                 <span>Carga de Gás / Capacitor</span>
               </label>
-              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
-                <input type="radio" name="service" value="Elétrica residencial" class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+              <label class="modal-radio-label">
+                <input type="radio" name="service" value="Elétrica residencial" class="modal-radio-input" />
                 <span>Elétrica Residencial</span>
               </label>
-              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
-                <input type="radio" name="service" value="Climatização residencial e comercial" class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+              <label class="modal-radio-label">
+                <input type="radio" name="service" value="Climatização residencial e comercial" class="modal-radio-input" />
                 <span>Climatização Completa</span>
               </label>
             </div>
           </div>
 
           <!-- Passo 2: Tipo de Imóvel -->
-          <div>
-            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">2. Tipo de Imóvel</label>
-            <div class="grid grid-cols-2 gap-2 text-xs">
-              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
-                <input type="radio" name="property" value="Residencial (Casa / Apartamento)" checked class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+          <div class="modal-form-group">
+            <label class="modal-label">2. Tipo de Imóvel</label>
+            <div class="modal-radio-grid-2">
+              <label class="modal-radio-label">
+                <input type="radio" name="property" value="Residencial (Casa / Apartamento)" checked class="modal-radio-input" />
                 <span>Residencial</span>
               </label>
-              <label class="flex items-center gap-2 p-2.5 rounded border border-slate-200 hover:bg-slate-50 cursor-pointer">
-                <input type="radio" name="property" value="Empresarial / Comercial" class="text-[#0C3B78] focus:ring-[#0C3B78]" />
+              <label class="modal-radio-label">
+                <input type="radio" name="property" value="Empresarial / Comercial" class="modal-radio-input" />
                 <span>Empresarial</span>
               </label>
             </div>
           </div>
 
           <!-- Passo 3: Cidade / Bairro -->
-          <div>
-            <label for="quote-city" class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1">3. Cidade / Bairro</label>
-            <input type="text" id="quote-city" name="city" value={siteData.company.locationString} required class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#0C3B78] focus:ring-1 focus:ring-[#0C3B78]" />
+          <div class="modal-form-group">
+            <label for="quote-city" class="modal-label">3. Cidade / Bairro</label>
+            <input type="text" id="quote-city" name="city" value={siteData.company.locationString} required class="modal-input" />
           </div>
 
           <!-- Observações adicionais -->
-          <div>
-            <label for="quote-details" class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1">4. Detalhes ou observações (opcional)</label>
-            <input type="text" id="quote-details" name="details" placeholder="Ex: aparelho de 12.000 BTUs para sala" class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#0C3B78] focus:ring-1 focus:ring-[#0C3B78]" />
+          <div class="modal-form-group">
+            <label for="quote-details" class="modal-label">4. Detalhes ou observações (opcional)</label>
+            <input type="text" id="quote-details" name="details" placeholder="Ex: aparelho de 12.000 BTUs para sala" class="modal-input" />
           </div>
 
           <!-- Submit -->
-          <div class="pt-2">
-            <button type="submit" class="btn-primary w-full justify-center !h-12 !text-sm">
-              <svg class="w-4 h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <div class="modal-submit-group">
+            <button type="submit" class="btn-primary modal-submit-btn">
+              <svg class="modal-whatsapp-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
               <span>Enviar solicitação para o WhatsApp</span>
             </button>
-            <p class="text-[11px] text-center text-slate-400 mt-2">
+            <p class="modal-submit-help">
               Sua mensagem será pré-formatada para resposta ágil no canal oficial.
             </p>
           </div>

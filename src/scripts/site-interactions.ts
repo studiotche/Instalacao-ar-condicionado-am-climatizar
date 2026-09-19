@@ -15,15 +15,15 @@ const initMobileDrawer = (): void => {
   if (!toggleBtn || !drawer || !backdrop) return;
 
   const openDrawer = (): void => {
-    drawer.classList.remove("translate-x-full", "invisible");
-    backdrop.classList.remove("opacity-0", "pointer-events-none");
+    drawer.classList.add("is-open");
+    backdrop.classList.add("is-open");
     document.body.classList.add("overflow-hidden");
     toggleBtn.setAttribute("aria-expanded", "true");
   };
 
   const closeDrawer = (): void => {
-    drawer.classList.add("translate-x-full", "invisible");
-    backdrop.classList.add("opacity-0", "pointer-events-none");
+    drawer.classList.remove("is-open");
+    backdrop.classList.remove("is-open");
     document.body.classList.remove("overflow-hidden");
     toggleBtn.setAttribute("aria-expanded", "false");
   };
@@ -37,7 +37,7 @@ const initMobileDrawer = (): void => {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !drawer.classList.contains("translate-x-full")) {
+    if (event.key === "Escape" && drawer.classList.contains("is-open")) {
       closeDrawer();
     }
   });
@@ -132,25 +132,23 @@ const initFaqAccordion = (): void => {
 
 const initQuoteModal = (): void => {
   const modal = document.getElementById("quote-modal");
-  const backdrop = document.getElementById("quote-backdrop");
+  const backdrop = document.getElementById("quote-modal-backdrop");
   const openButtons = document.querySelectorAll("[data-open-quote]");
-  const closeButton = document.getElementById("quote-close");
+  const closeButton = document.getElementById("close-quote-modal");
   const form = document.getElementById("quote-form") as HTMLFormElement | null;
 
   if (!modal || !backdrop) return;
 
   const openModal = (): void => {
-    modal.classList.remove("opacity-0", "pointer-events-none", "scale-95");
-    modal.classList.add("opacity-100", "scale-100");
-    backdrop.classList.remove("opacity-0", "pointer-events-none");
-    document.body.classList.add("overflow-hidden");
+    modal.classList.add("is-open");
+    backdrop.classList.add("is-open");
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = (): void => {
-    modal.classList.add("opacity-0", "pointer-events-none", "scale-95");
-    modal.classList.remove("opacity-100", "scale-100");
-    backdrop.classList.add("opacity-0", "pointer-events-none");
-    document.body.classList.remove("overflow-hidden");
+    modal.classList.remove("is-open");
+    backdrop.classList.remove("is-open");
+    document.body.style.overflow = "";
   };
 
   openButtons.forEach((btn) => {
@@ -161,7 +159,7 @@ const initQuoteModal = (): void => {
   backdrop.addEventListener("click", closeModal);
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !modal.classList.contains("pointer-events-none")) {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
       closeModal();
     }
   });
