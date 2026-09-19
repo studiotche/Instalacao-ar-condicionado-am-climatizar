@@ -47,6 +47,9 @@ html.lenis {
   width: 100% !important;
   z-index: 50 !important;
 }
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
 
 .site-header,
 .header-fixed,
