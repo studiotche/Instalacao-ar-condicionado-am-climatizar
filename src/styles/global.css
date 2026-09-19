@@ -466,7 +466,7 @@ body {
   }
 
   .hero-container {
-    margin-top: -240px;
+    margin-top: -240px !important;
     padding-top: 0;
     padding-bottom: 4rem;
   }
