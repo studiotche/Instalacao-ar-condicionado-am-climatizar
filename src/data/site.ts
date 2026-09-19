@@ -122,9 +122,9 @@ export const siteData = {
   ] as const satisfies readonly NavItem[],
   hero: {
     eyebrow: "CLIMATIZAÇÃO PROFISSIONAL & ELÉTRICA • IVOTI/RS",
-    headlinePart1: "Conforto térmico",
-    headlinePart2: "e segurança com quem",
-    headlineHighlight: "entende do assunto.",
+    headlinePart1: "Instalação de ar-condicionado",
+    headlinePart2: "em Ivoti com a",
+    headlineHighlight: "AM Climatizar.",
     description: "Mais de 4 anos no mercado trazendo qualidade, segurança e eficiência. Instalação, manutenção preventiva e corretiva, higienização profunda, carga de gás e elétrica residencial em Ivoti e região.",
     primaryCta: "Solicitar orçamento",
     secondaryCta: "Conheça nossos serviços",
