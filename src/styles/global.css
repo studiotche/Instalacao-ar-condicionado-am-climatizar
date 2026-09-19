@@ -344,7 +344,7 @@ body {
 
 .hero-heading-display {
   font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif) !important;
-  font-size: clamp(28px, 3.2vw, 44px) !important;
+  font-size: clamp(32px, 3.7vw, 50px) !important;
   font-weight: 800 !important;
   line-height: 1.12 !important;
   letter-spacing: -0.03em !important;
@@ -353,7 +353,7 @@ body {
 
 @media (min-width: 1024px) and (max-width: 1536px) {
   .hero-heading-display {
-    font-size: clamp(30px, 2.5vw, 38px) !important;
+    font-size: clamp(34px, 2.9vw, 44px) !important;
     line-height: 1.14 !important;
   }
 }
@@ -561,7 +561,6 @@ body {
   gap: 2rem;
   padding-bottom: 2.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
 }
 
 @media (min-width: 640px) {
