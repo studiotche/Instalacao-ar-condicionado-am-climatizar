@@ -336,20 +336,20 @@ export const siteData = {
     headline: "Mais de 4 anos de dedicação, técnica e confiança.",
     copy: "A AM Climatizar é especialista em soluções de ar-condicionado e elétrica residencial em Ivoti e no Vale dos Sinos. Com mais de 4 anos de história e nota 4,8 no Google, trabalhamos com transparência, materiais de alta qualidade e compromisso absoluto com a satisfação de cada cliente.",
     image: {
-      url: "/assets/images/sobre-fundador.webp",
+      url: "/assets/images/sobre-fundador.jpg",
       alt: "Técnico especialista da AM Climatizar em atendimento com equipamento na região de Ivoti",
       width: 700,
       height: 525,
     },
     facilityImage: {
-      url: "/assets/images/sobre-uniforme.webp",
+      url: "/assets/images/sobre-uniforme.jpg",
       alt: "Técnico uniformizado da AM Climatizar com identificação oficial",
       label: "Equipe Uniformizada",
       width: 320,
       height: 200,
     },
     vehicleImage: {
-      url: "/assets/images/sobre-ferramental.webp",
+      url: "/assets/images/sobre-ferramental.jpg",
       alt: "Ferramentas profissionais e manifold para atendimento técnico de precisão",
       label: "Ferramental Técnico",
       width: 320,
