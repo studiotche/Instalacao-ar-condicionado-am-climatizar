@@ -466,7 +466,7 @@ body {
   }
 
   .hero-container {
-    margin-top: -120px !important;
+    margin-top: -100px !important;
     padding-top: 0;
     padding-bottom: 4rem;
   }
@@ -1065,7 +1065,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: var(--color-secondary) !important;
+  background-color: #0C3B78 !important;
   /* mobile-drawer-blue */
 }
 
