@@ -1,11 +1,17 @@
-/* Tipografia Local (2 Famílias, 2 Pesos cada) */
+/* Tipografia Local (2 Famílias, 2 Pesos cada, 6 Formatos) */
 
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/assets/fonts/Inter-Regular.woff2') format('woff2');
+  src: url('/assets/fonts/Inter-Regular.eot');
+  src: url('/assets/fonts/Inter-Regular.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/Inter-Regular.woff2') format('woff2'),
+       url('/assets/fonts/Inter-Regular.woff') format('woff'),
+       url('/assets/fonts/Inter-Regular.ttf') format('truetype'),
+       url('/assets/fonts/Inter-Regular.otf') format('opentype'),
+       url('/assets/fonts/Inter-Regular.svg#Inter') format('svg');
 }
 
 @font-face {
@@ -13,7 +19,13 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('/assets/fonts/Inter-SemiBold.woff2') format('woff2');
+  src: url('/assets/fonts/Inter-SemiBold.eot');
+  src: url('/assets/fonts/Inter-SemiBold.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/Inter-SemiBold.woff2') format('woff2'),
+       url('/assets/fonts/Inter-SemiBold.woff') format('woff'),
+       url('/assets/fonts/Inter-SemiBold.ttf') format('truetype'),
+       url('/assets/fonts/Inter-SemiBold.otf') format('opentype'),
+       url('/assets/fonts/Inter-SemiBold.svg#Inter') format('svg');
 }
 
 @font-face {
@@ -21,7 +33,13 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('/assets/fonts/PlusJakartaSans-SemiBold.woff2') format('woff2');
+  src: url('/assets/fonts/PlusJakartaSans-SemiBold.eot');
+  src: url('/assets/fonts/PlusJakartaSans-SemiBold.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/PlusJakartaSans-SemiBold.woff2') format('woff2'),
+       url('/assets/fonts/PlusJakartaSans-SemiBold.woff') format('woff'),
+       url('/assets/fonts/PlusJakartaSans-SemiBold.ttf') format('truetype'),
+       url('/assets/fonts/PlusJakartaSans-SemiBold.otf') format('opentype'),
+       url('/assets/fonts/PlusJakartaSans-SemiBold.svg#PlusJakartaSans') format('svg');
 }
 
 @font-face {
@@ -29,7 +47,13 @@
   font-style: normal;
   font-weight: 800;
   font-display: swap;
-  src: url('/assets/fonts/PlusJakartaSans-ExtraBold.woff2') format('woff2');
+  src: url('/assets/fonts/PlusJakartaSans-ExtraBold.eot');
+  src: url('/assets/fonts/PlusJakartaSans-ExtraBold.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/PlusJakartaSans-ExtraBold.woff2') format('woff2'),
+       url('/assets/fonts/PlusJakartaSans-ExtraBold.woff') format('woff'),
+       url('/assets/fonts/PlusJakartaSans-ExtraBold.ttf') format('truetype'),
+       url('/assets/fonts/PlusJakartaSans-ExtraBold.otf') format('opentype'),
+       url('/assets/fonts/PlusJakartaSans-ExtraBold.svg#PlusJakartaSans') format('svg');
 }
 
 /*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
