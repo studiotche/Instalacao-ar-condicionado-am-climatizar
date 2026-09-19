@@ -320,6 +320,11 @@ body {
   }
 }
 
+.hero-copy-container {
+  max-width: 578px !important;
+  width: 100% !important;
+}
+
 .hero-bg-desktop {
   display: block;
   position: absolute;
