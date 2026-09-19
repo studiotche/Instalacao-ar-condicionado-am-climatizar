@@ -1941,12 +1941,12 @@ body {
 }
 
 @media (min-width: 390px) {
-  .services-title { font-size: 2rem; /* min-[390px]:text-[32px] */ }
+  .services-title { font-size: 1.75rem; /* min-[390px]:text-[28px] */ }
 }
 
 @media (min-width: 640px) {
   .services-title {
-    font-size: clamp(2.25rem, 4vw, 3rem); /* sm:text-[clamp(36px,4vw,48px)] */
+    font-size: clamp(1.75rem, 3vw, 2.35rem); /* sm:text-[clamp(36px,4vw,48px)] */
     margin-bottom: 1.25rem; /* sm:mb-5 */
   }
 }
@@ -2419,7 +2419,7 @@ body {
 
 @media (min-width: 640px) {
   .install-title {
-    font-size: clamp(2.25rem, 4vw, 3rem);
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
     margin-bottom: 1.25rem;
   }
 }
@@ -2568,7 +2568,7 @@ body {
 
 @media (min-width: 640px) {
   .process-title {
-    font-size: clamp(2.25rem, 4vw, 3rem);
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
     margin-bottom: 1.25rem;
   }
 }
@@ -2646,7 +2646,7 @@ body {
   color: #cbd5e1; /* text-slate-300 */
   line-height: 1;
   margin-bottom: 0.75rem; /* mb-3 */
-  font-size: clamp(40px, 4vw, 64px);
+  font-size: clamp(32px, 3vw, 48px);
   transition: color 300ms;
 }
 
@@ -2860,7 +2860,7 @@ body {
 
 @media (min-width: 640px) {
   .solutions-title {
-    font-size: clamp(2.25rem, 4vw, 3rem);
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
     margin-bottom: 1rem;
   }
 }
@@ -3165,7 +3165,7 @@ body {
 
 @media (min-width: 640px) {
   .diff-title {
-    font-size: clamp(2.25rem, 4vw, 3rem);
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
     margin-bottom: 1.25rem;
   }
 }
@@ -3239,7 +3239,7 @@ body {
 
 @media (min-width: 640px) {
   .diff-item-number {
-    font-size: clamp(32px, 3.5vw, 48px);
+    font-size: clamp(26px, 3vw, 38px);
     margin-bottom: 1.25rem;
   }
 }
@@ -3367,7 +3367,7 @@ body {
 }
 
 @media (min-width: 640px) {
-  .projects-title { font-size: clamp(36px, 4vw, 48px); }
+  .projects-title { font-size: clamp(28px, 3vw, 38px); }
 }
 
 .projects-desc {
@@ -3590,7 +3590,7 @@ body {
 
 @media (min-width: 640px) {
   .about-title {
-    font-size: clamp(36px, 4.5vw, 52px);
+    font-size: clamp(28px, 3vw, 40px);
     margin-bottom: 1.25rem;
   }
 }
@@ -3842,7 +3842,7 @@ body {
 }
 
 @media (min-width: 640px) {
-  .testimonials-title { font-size: clamp(36px, 4vw, 48px); }
+  .testimonials-title { font-size: clamp(28px, 3vw, 38px); }
 }
 
 .testimonials-header-right {
