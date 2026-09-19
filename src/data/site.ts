@@ -157,7 +157,7 @@ export const siteData = {
         title: "Instalação de ar-condicionado",
         description: "Execução no padrão oficial dos fabricantes, com tubulação 100% em cobre, processo de vácuo profundo e alinhamento milimétrico.",
         tag: "Hi-Wall • Inverter • Multi-Split",
-        image: "/assets/images/intalacao-bem-executada.webp",
+        image: "/assets/images/instalcao-ar-condicionado.webp",
         alt: "Técnico uniformizado da AM Climatizar realizando instalação de ar-condicionado Split em Ivoti",
       },
       {
@@ -206,7 +206,7 @@ export const siteData = {
     headline: "Uma boa climatização começa por uma instalação bem executada.",
     text: "Na AM Climatizar, cada instalação é realizada seguindo padrões rígidos de qualidade: tubulação em cobre, conexões estanques, vácuo controlado e circuitos elétricos dimensionados para garantir vida longa e economia.",
     image: {
-      url: "/assets/images/instalacao-detalhe.webp",
+      url: "/assets/images/intalacao-bem-executada.webp",
       alt: "Técnico da AM Climatizar executando instalação técnica com suporte e tubulação em cobre",
       width: 640,
       height: 800,
