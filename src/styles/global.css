@@ -241,7 +241,6 @@ body {
 
 .header-nav-link:hover {
   color: #00B4FF !important;
-  text-shadow: 0 0 12px rgba(0, 180, 255, 0.35) !important;
 }
 
 /* 5. Padronização de Botões (Azul #0C3B78 & Fundo Branco no Menu) */
@@ -1186,14 +1185,11 @@ body {
 
 @media (min-width: 1024px) {
   .footer-main-grid {
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    grid-template-columns: 1fr 1.5fr 1fr 1.5fr;
   }
 }
 
 /* Coluna 1: Marca */
-.footer-col-brand {
-  /* Just a semantic wrapper class */
-}
 
 .footer-logo-link {
   display: inline-block;
@@ -1244,12 +1240,9 @@ body {
 }
 
 /* Colunas 2-4: Títulos e Listas */
-.footer-col-nav {
-  /* wrapper */
-}
 
 .footer-nav-title {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em; /* tracking-wider */
@@ -2911,9 +2904,7 @@ body {
   }
 }
 
-.solutions-img-col {
-  /* Default order */
-}
+
 
 .solutions-img-res { order: 1; }
 .solutions-img-corp { order: 1; }
@@ -3130,9 +3121,7 @@ body {
   }
 }
 
-.diff-left-col {
-  /* col-span-4 */
-}
+
 
 @media (min-width: 1024px) {
   .diff-left-col {
@@ -3561,9 +3550,7 @@ body {
   }
 }
 
-.about-content-col {
-  /* col-span-6 */
-}
+
 
 @media (min-width: 1024px) {
   .about-content-col { grid-column: span 6 / span 6; }
@@ -4057,9 +4044,7 @@ body {
   }
 }
 
-.faq-left-col {
-  /* col-span-4 */
-}
+
 
 @media (min-width: 1024px) {
   .faq-left-col {
