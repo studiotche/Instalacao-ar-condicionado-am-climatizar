@@ -189,7 +189,7 @@ export const siteData = {
         title: "Elétrica residencial",
         description: "Instalação de circuitos exclusivos, disjuntores dedicados e tomadas dimensionadas de acordo com as normas de segurança para proteger seus equipamentos.",
         tag: "Circuitos Dedicados • Proteção NBR 5410",
-        image: "/assets/images/servico-eletrica.webp",
+        image: "/assets/images/instalacao-detalhe.webp",
         alt: "Serviço especializado de elétrica residencial para climatização em Ivoti",
       },
       {
