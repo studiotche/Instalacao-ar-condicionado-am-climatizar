@@ -113,13 +113,11 @@ export const siteData = {
     keywords: "ar-condicionado Ivoti, instalação de ar-condicionado em Ivoti, manutenção de ar-condicionado Ivoti, higienização de ar-condicionado, elétrica residencial Ivoti, carga de gás ar-condicionado, capacitor ar-condicionado, AM Climatizar",
   },
   navigation: [
-    { label: "Início", href: "#" },
     { label: "Serviços", href: "#servicos" },
     { label: "Como trabalhamos", href: "#processo" },
     { label: "Projetos", href: "#projetos" },
     { label: "Sobre", href: "#sobre" },
     { label: "Depoimentos", href: "#depoimentos" },
-    { label: "FAQ", href: "#faq" },
     { label: "Contato", href: "#contato" },
   ] as const satisfies readonly NavItem[],
   hero: {

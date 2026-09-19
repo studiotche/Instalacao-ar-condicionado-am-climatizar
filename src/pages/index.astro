@@ -68,9 +68,9 @@ const asset = (path: string): string => `${base}${path.replace(/^\//, "")}`;
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
-        <nav class="mt-6 flex flex-col gap-1" aria-label="Navegação móvel">
+        <nav class="mt-8 flex flex-col gap-4" aria-label="Navegação móvel">
           {siteData.navigation.map((item) => (
-            <a href={item.href} class="mobile-nav-link text-base font-semibold text-slate-100 hover:text-[#00B4FF] py-3 transition-colors">
+            <a href={item.href} class="mobile-nav-link text-base font-semibold text-slate-100 hover:text-[#00B4FF] py-3.5 transition-colors">
               {item.label}
             </a>
           ))}
