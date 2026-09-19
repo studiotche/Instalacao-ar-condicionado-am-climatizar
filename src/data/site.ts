@@ -157,7 +157,7 @@ export const siteData = {
         title: "Instalação de ar-condicionado",
         description: "Execução no padrão oficial dos fabricantes, com tubulação 100% em cobre, processo de vácuo profundo e alinhamento milimétrico.",
         tag: "Hi-Wall • Inverter • Multi-Split",
-        image: "/assets/images/servico-instalacao.webp",
+        image: "/assets/images/intalacao-bem-executada.webp",
         alt: "Técnico uniformizado da AM Climatizar realizando instalação de ar-condicionado Split em Ivoti",
       },
       {
@@ -173,7 +173,7 @@ export const siteData = {
         title: "Manutenção corretiva & diagnóstico",
         description: "Identificação precisa de falhas elétricas, ruídos estranhos, vazamentos de água ou perda de rendimento, com reparo ágil e seguro.",
         tag: "Diagnóstico Rápido • Peças de Qualidade",
-        image: "/assets/images/servico-manutencao.webp",
+        image: "/assets/images/manutencao-preventiva.webp",
         alt: "Técnico da AM Climatizar realizando manutenção corretiva e diagnóstico técnico",
       },
       {
@@ -250,7 +250,7 @@ export const siteData = {
       badge: "RESIDENCIAL",
       headline: "Conforto para os ambientes que fazem parte da rotina da sua família.",
       text: "Climatização para casas, sobrados e apartamentos em Ivoti e região.",
-      image: "/assets/images/solucao-residencial.webp",
+      image: "/assets/images/residencial-comercial.webp",
       alt: "Ambiente residencial com climatização split instalada pela AM Climatizar",
       highlights: [
         "Aparelhos silenciosos ideais para quartos, garantindo noites de sono tranquilas",
@@ -262,7 +262,7 @@ export const siteData = {
       badge: "COMERCIAL",
       headline: "Climatização profissional para seu comércio ou escritório.",
       text: "Soluções para lojas, consultórios, escritórios e empresas em Ivoti e Vale dos Sinos.",
-      image: "/assets/images/solucao-empresarial.webp",
+      image: "/assets/images/climatizacao-profissional-para-seu-comercio-ou-escritorio.webp",
       alt: "Instalação comercial executada pela AM Climatizar em ambiente empresarial",
       highlights: [
         "Temperatura estável e agradável para seus clientes e colaboradores",
@@ -336,20 +336,20 @@ export const siteData = {
     headline: "Mais de 4 anos de dedicação, técnica e confiança.",
     copy: "A AM Climatizar é especialista em soluções de ar-condicionado e elétrica residencial em Ivoti e no Vale dos Sinos. Com mais de 4 anos de história e nota 4,8 no Google, trabalhamos com transparência, materiais de alta qualidade e compromisso absoluto com a satisfação de cada cliente.",
     image: {
-      url: "/assets/images/sobre-fundador.jpg",
+      url: "/assets/images/sobre-fundador.webp",
       alt: "Técnico especialista da AM Climatizar em atendimento com equipamento na região de Ivoti",
       width: 700,
       height: 525,
     },
     facilityImage: {
-      url: "/assets/images/sobre-uniforme.jpg",
+      url: "/assets/images/sobre-uniforme.webp",
       alt: "Técnico uniformizado da AM Climatizar com identificação oficial",
       label: "Equipe Uniformizada",
       width: 320,
       height: 200,
     },
     vehicleImage: {
-      url: "/assets/images/sobre-ferramental.jpg",
+      url: "/assets/images/sobre-ferramental.webp",
       alt: "Ferramentas profissionais e manifold para atendimento técnico de precisão",
       label: "Ferramental Técnico",
       width: 320,
