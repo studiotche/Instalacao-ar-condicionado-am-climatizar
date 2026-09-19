@@ -418,7 +418,8 @@ body {
     min-height: auto;
     display: block;
     padding: 0;
-    background: #060D28;
+    margin-bottom: 3rem;
+    background: #FFFFFF;
   }
 
   .hero-bg-desktop {
@@ -435,7 +436,7 @@ body {
     left: 0;
     right: 0;
     height: 240px;
-    background: linear-gradient(to bottom, transparent 0%, rgba(6,13,40,0.85) 55%, #060D28 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(251,251,251,0.85) 55%, #FBFBFB 100%);
     z-index: 5;
     pointer-events: none;
   }
@@ -444,14 +445,6 @@ body {
     margin-top: 20px;
     padding-top: 0;
     padding-bottom: 4rem;
-  }
-
-  .hero-title, .hero-heading-display {
-    color: #FFFFFF !important;
-  }
-  
-  .hero-eyebrow {
-    color: #93c5fd !important; /* light blue */
   }
 }
 
