@@ -318,7 +318,7 @@ export const siteData = {
         title: "Instalação Residencial de Split Inverter com Suporte Reforçado",
         category: "Instalação",
         location: "Ivoti — RS",
-        image: "/assets/images/projeto-split.webp",
+        image: "/assets/images/instalacao-detalhe.webp",
         alt: "Unidade externa Samsung Inverter instalada com alinhamento e suporte técnico pela AM Climatizar em Ivoti",
       },
       {
