@@ -1323,7 +1323,7 @@ body {
 
 .footer-nav-title {
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   /* tracking-wider */
@@ -1336,6 +1336,7 @@ body {
 @media (min-width: 640px) {
   .footer-nav-title {
     margin-bottom: 1rem;
+    font-size: 14px;
     /* sm:mb-4 */
   }
 }
