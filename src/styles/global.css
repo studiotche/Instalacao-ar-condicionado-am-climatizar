@@ -112,7 +112,6 @@ svg {
 
 /* 1. Textos e formulários usam Inter peso 400 */
 p,
-span,
 li,
 ul,
 ol,
@@ -211,8 +210,16 @@ h3,
 h4,
 h5,
 h6,
+h1 *,
+h2 *,
+h3 *,
+h4 *,
+h5 *,
+h6 *,
 .hero-title,
+.hero-title *,
 .hero-heading-display,
+.hero-title-highlight,
 .services-title,
 .service-item-title,
 .service-accordion-title,
@@ -1754,6 +1761,8 @@ body {
 }
 
 .hero-title-highlight {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
   color: var(--color-primary-text);
 }
 
