@@ -873,7 +873,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .site-body ::selection {
@@ -1219,7 +1219,6 @@ body {
   /* py-12 */
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
-  overflow: hidden;
 }
 
 @media (min-width: 640px) {
