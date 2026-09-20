@@ -60,7 +60,8 @@
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-main: var(--font-sans);
+  --font-body: var(--font-sans);
 
   --color-primary: #0076E7;
   --color-primary-hover: #005bb5;
@@ -92,6 +93,7 @@ body {
   tab-size: 4;
   line-height: 1.5;
   font-family: var(--font-sans);
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fbfbfb;
@@ -107,32 +109,118 @@ svg {
   max-width: 100%;
 }
 
+/* 1. Textos e formulários usam Inter peso 400 */
+p,
+span,
+li,
+ul,
+ol,
+label,
 input,
-button,
 textarea,
 select {
-  font: inherit;
+  font-family: var(--font-sans);
+  font-weight: 400;
 }
 
-p,
+p {
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+/* 2. Links usam Inter peso 400 */
+a {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* 3. Textos de botões usam Inter peso 400 */
+button,
+input[type="button"],
+input[type="submit"],
+.btn-primary,
+.btn-secondary,
+.header-cta-btn,
+.hero-btn-primary,
+.hero-btn-secondary,
+.cta-final-btn,
+.service-accordion-btn,
+.solutions-btn,
+.modal-submit-btn {
+  font-family: var(--font-sans) !important;
+  font-weight: 400 !important;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 4. Destaques dos textos usam Inter SemiBold peso 600 */
+strong,
+b,
+em,
+mark,
+.font-semibold,
+.text-highlight,
+.hero-badge-highlight,
+.hero-eyebrow,
+.services-eyebrow,
+.process-eyebrow,
+.solutions-eyebrow,
+.diff-eyebrow,
+.projects-eyebrow,
+.about-eyebrow,
+.testimonials-eyebrow,
+.faq-eyebrow,
+.cta-final-eyebrow,
+.modal-eyebrow,
+.service-item-tag,
+.service-accordion-tag,
+.solutions-badge,
+.projects-card-category,
+.about-img-label,
+.testimonial-author {
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+}
+
+/* 5. Títulos H1, H2, H3, H4, H5, H6 usam Plus Jakarta Sans peso 700 */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.hero-title,
+.hero-heading-display,
+.services-title,
+.service-item-title,
+.service-accordion-title,
+.install-title,
+.install-pillar-title,
+.process-title,
+.process-step-title,
+.process-mobile-title,
+.solutions-title,
+.solutions-article-title,
+.diff-title,
+.diff-item-title,
+.projects-title,
+.projects-card-title,
+.about-title,
+.about-pillar-label,
+.testimonials-title,
+.faq-title,
+.faq-summary-title,
+.cta-final-title,
+.modal-title,
+.footer-nav-title,
+.trust-bar-title {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
   overflow-wrap: break-word;
-}
-
-a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
+  text-wrap: balance;
 }
 
 ul,
@@ -287,7 +375,7 @@ body {
   color: #00B4FF !important;
 }
 
-/* 5. Padronização de Botões (Azul #0C3B78 & Fundo Branco no Menu) */
+/* 5. Padronização de Botões (Azul #0C3B78 & Fundo Branco no Menu - Inter 400) */
 .header-cta-btn {
   display: inline-flex !important;
   align-items: center !important;
@@ -298,7 +386,8 @@ body {
   border-radius: 8px !important;
   background: #FFFFFF !important;
   color: #0C3B78 !important;
-  font-weight: 700 !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 400 !important;
   font-size: 13.5px !important;
   white-space: nowrap !important;
   border: 1px solid rgba(255, 255, 255, 0.9) !important;
@@ -336,8 +425,9 @@ body {
   padding: 0 1.625rem !important;
   background-color: #0C3B78 !important;
   color: #FFFFFF !important;
+  font-family: var(--font-sans) !important;
   font-size: 0.9375rem !important;
-  font-weight: 700 !important;
+  font-weight: 400 !important;
   white-space: nowrap !important;
   border-radius: 9px !important;
   border: 1px solid #0C3B78 !important;
@@ -379,8 +469,9 @@ body {
   padding: 0 1.5rem !important;
   background-color: #FFFFFF !important;
   color: #0C3B78 !important;
+  font-family: var(--font-sans) !important;
   font-size: 0.9375rem !important;
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   white-space: nowrap !important;
   border-radius: 9px !important;
   border: 1px solid #CBD5E1 !important;
@@ -507,7 +598,7 @@ body {
 }
 
 .hero-heading-display {
-  font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif) !important;
+  font-family: var(--font-display) !important;
   font-size: clamp(28px, 3vw, 42px) !important;
   font-weight: 700 !important;
   line-height: 1.12 !important;
@@ -866,7 +957,8 @@ body {
 .site-body {
   background-color: var(--color-bg-light);
   color: var(--color-text-main);
-  font-family: var(--font-main);
+  font-family: var(--font-sans);
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -1335,6 +1427,7 @@ body {
 /* Colunas 2-4: Títulos e Listas */
 
 .footer-nav-title {
+  font-family: var(--font-display);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -1592,7 +1685,7 @@ body {
 
 .hero-eyebrow {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-primary);
@@ -1698,8 +1791,9 @@ body {
   padding-right: 1.75rem !important;
   border-radius: 0.5rem !important;
   /* rounded-lg */
+  font-family: var(--font-sans) !important;
   font-size: 15px !important;
-  font-weight: 700;
+  font-weight: 400 !important;
   box-shadow: var(--shadow-sm);
   transition: all 0.2s ease;
   justify-content: center;
@@ -1728,7 +1822,8 @@ body {
   /* py-2.5 px-3 */
   color: var(--color-primary);
   /* text-[#0C3B78] */
-  font-weight: 700;
+  font-family: var(--font-sans) !important;
+  font-weight: 400 !important;
   font-size: 15px;
   transition: color 0.2s ease;
   white-space: nowrap;
@@ -1767,7 +1862,7 @@ body {
   font-size: 12px;
   color: #334155;
   /* text-slate-700 */
-  font-weight: 700;
+  font-weight: 400;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   /* custom small shadow */
   width: 100%;
@@ -1801,7 +1896,8 @@ body {
 
 .hero-badge-highlight {
   color: var(--color-primary);
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-weight: 600;
 }
 
 /* Hero Animations (delay classes) */
@@ -1998,6 +2094,7 @@ body {
 }
 
 .trust-bar-title {
+  font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
   color: #0f172a;
@@ -2136,7 +2233,7 @@ body {
 .services-eyebrow {
   font-size: 0.75rem;
   /* text-xs */
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   /* tracking-wider */
@@ -2348,7 +2445,7 @@ body {
 
 .service-item-tag {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.025em;
   /* tracking-wide */
   color: #475569;
@@ -2535,7 +2632,7 @@ body {
   display: inline-block;
   font-size: 11px;
   font-family: var(--font-mono);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-primary);
@@ -2890,7 +2987,7 @@ body {
 
 .process-eyebrow {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-primary);
@@ -3234,7 +3331,7 @@ body {
 
 .solutions-eyebrow {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-primary);
@@ -3403,7 +3500,7 @@ body {
   display: inline-block;
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-primary);
@@ -3605,7 +3702,7 @@ body {
 
 .diff-eyebrow {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-primary);
@@ -3844,7 +3941,7 @@ body {
 
 .projects-eyebrow {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #93c5fd;
@@ -3996,7 +4093,7 @@ body {
 .projects-card-category {
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -4108,7 +4205,7 @@ body {
 
 .about-eyebrow {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-primary);
@@ -4317,7 +4414,7 @@ body {
 .about-img-label {
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  font-weight: 700;
+  font-weight: 600;
   color: #fff;
   letter-spacing: 0.025em;
   /* tracking-wide */
@@ -4393,7 +4490,7 @@ body {
 
 .testimonials-eyebrow {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-primary);
@@ -4576,7 +4673,8 @@ body {
 }
 
 .testimonial-author {
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-weight: 600;
   color: #0f172a;
   font-size: 0.875rem;
 }
@@ -4588,10 +4686,11 @@ body {
 }
 
 .testimonial-source {
+  font-family: var(--font-sans);
   font-size: 11px;
   color: #475569;
   /* text-slate-600 (improved contrast) */
-  font-weight: 700;
+  font-weight: 400;
   margin-top: 0.125rem;
 }
 
@@ -4663,7 +4762,7 @@ body {
 
 .faq-eyebrow {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--color-primary);
@@ -4903,7 +5002,7 @@ body {
 
 .cta-final-eyebrow {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #93c5fd;
@@ -5147,7 +5246,7 @@ body {
 .modal-eyebrow {
   font-size: 0.75rem;
   /* text-xs */
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   /* tracking-wider */
@@ -5214,9 +5313,10 @@ body {
 
 .modal-label {
   display: block;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   /* text-xs */
-  font-weight: 700;
+  font-weight: 400;
   color: #334155;
   /* text-slate-700 */
   text-transform: uppercase;
