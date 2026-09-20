@@ -188,6 +188,7 @@ html.lenis {
   z-index: 50 !important;
 }
 
+p,
 h1,
 h2,
 h3,
@@ -555,7 +556,7 @@ body {
     font-size: clamp(22px, 2.2vw, 28px) !important;
   }
   h3, .service-item-title, .service-accordion-title, .install-pillar-title, .process-step-title, .process-mobile-title, .solutions-article-title, .diff-item-title, .projects-card-title, .about-pillar-label, .footer-nav-title {
-    font-size: clamp(18px, 1.8vw, 22px) !important;
+    font-size: clamp(15px, 1.4vw, 18px) !important;
   }
 }
 
