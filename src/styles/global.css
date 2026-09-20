@@ -1331,8 +1331,7 @@ body {
 
 .site-footer {
   background-color: #080C12;
-  color: #cbd5e1;
-  /* text-slate-300 (improved contrast) */
+  color: #F1F5F9;
   padding: 3rem 0;
   /* py-12 */
   border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -1421,8 +1420,7 @@ body {
 .footer-brand-desc {
   font-size: 14.5px;
   line-height: 1.625;
-  color: #cbd5e1;
-  /* text-slate-300 (improved contrast) */
+  color: #F1F5F9;
   max-width: 24rem;
   /* max-w-sm */
   margin-bottom: 0.75rem;
@@ -1431,7 +1429,7 @@ body {
 
 .footer-region {
   font-size: 13px;
-  color: #94a3b8;
+  color: #CBD5E1;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -1551,9 +1549,9 @@ body {
 
 .footer-contact-link-highlight {
   display: block;
-  color: var(--color-secondary);
-  /* #0090D0 */
-  font-weight: 400;
+  color: #38BDF8;
+  font-family: var(--font-sans);
+  font-weight: 600;
   padding: 0.125rem 0;
   /* py-0.5 */
   transition: color 0.2s ease;
