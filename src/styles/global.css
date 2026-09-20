@@ -546,6 +546,19 @@ body {
   }
 }
 
+/* Redução geral do tamanho de fontes (H1, H2, H3) em notebooks, a pedido do usuário */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  h1, .hero-title, .hero-heading-display {
+    font-size: clamp(26px, 2.8vw, 34px) !important;
+  }
+  h2, .services-title, .install-title, .process-title, .solutions-title, .diff-title, .projects-title, .about-title, .testimonials-title, .faq-title, .cta-final-title {
+    font-size: clamp(22px, 2.2vw, 28px) !important;
+  }
+  h3, .service-item-title, .service-accordion-title, .install-pillar-title, .process-step-title, .process-mobile-title, .solutions-article-title, .diff-item-title, .projects-card-title, .about-pillar-label, .footer-nav-title {
+    font-size: clamp(18px, 1.8vw, 22px) !important;
+  }
+}
+
 .hero-copy-container {
   max-width: 640px !important;
   width: 100% !important;
@@ -4760,10 +4773,9 @@ body {
   font-size: 15px;
   font-weight: 700;
   color: #1e293b;
-  /* text-slate-800 */
-  transition: color 200ms;
+  transition: all 300ms ease;
+  transform: translateX(0);
   line-height: 1.375;
-  /* leading-snug */
 }
 
 @media (min-width: 390px) {
@@ -4780,6 +4792,7 @@ body {
 
 .faq-details.group:hover .faq-summary-title {
   color: var(--color-primary);
+  transform: translateX(6px);
 }
 
 .faq-icon-box {
@@ -4826,17 +4839,15 @@ body {
   color: #475569;
   line-height: 1.625;
   padding-bottom: 1.25rem;
-  /* pb-5 */
-  padding-right: 0.5rem;
-  /* pr-2 */
+  padding-right: 1.5rem;
+  padding-left: 1rem;
 }
 
 @media (min-width: 640px) {
   .faq-answer-text {
     padding-bottom: 1.5rem;
-    /* pb-6 */
-    padding-right: 3rem;
-    /* pr-12 */
+    padding-right: 2rem;
+    padding-left: 2rem;
   }
 }
 
