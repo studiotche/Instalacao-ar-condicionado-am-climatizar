@@ -82,31 +82,37 @@ const initHeroReveal = (): void => {
     return line + 1;
   };
 
+  // Calcula e aplica todos os delays (idempotente: pode rodar de novo após fonts.ready).
+  const scheduleAllHeroDelays = (): void => {
+    const eyebrowDelay = 0.05;
+    const titleDelay = 0.12;
+    const titleLines = scheduleHeroWords(heroTitle, titleDelay);
+    const descDelay = titleDelay + titleLines * 0.07 + 0.24;
+    const descLines = scheduleHeroWords(heroDescription, descDelay);
+    const actionsDelay = descDelay + descLines * 0.07 + 0.24;
+    const badgeDelay = actionsDelay + 0.3;
+
+    heroEyebrow?.style.setProperty("--hero-delay", `${eyebrowDelay}s`);
+    heroActions?.querySelectorAll<HTMLElement>(":scope > *").forEach((item, index) => {
+      item.style.setProperty(
+        "--hero-delay",
+        `${actionsDelay + index * 0.06}s`,
+      );
+    });
+    heroBadge?.style.setProperty("--hero-delay", `${badgeDelay}s`);
+  };
+
   const startHeroReveal = (): void => {
     if (heroCopy.classList.contains("hero-reveal-ready")) return;
     try {
       splitHeroWords(heroTitle);
       splitHeroWords(heroDescription);
       heroCopy.classList.add("hero-reveal-ready");
-
-      const eyebrowDelay = 0.05;
-      const titleDelay = 0.12;
-      const titleLines = scheduleHeroWords(heroTitle, titleDelay);
-      const descDelay = titleDelay + titleLines * 0.07 + 0.24;
-      const descLines = scheduleHeroWords(heroDescription, descDelay);
-      const actionsDelay = descDelay + descLines * 0.07 + 0.24;
-      const badgeDelay = actionsDelay + 0.3;
-
-      heroEyebrow?.style.setProperty("--hero-delay", `${eyebrowDelay}s`);
-      heroActions?.querySelectorAll<HTMLElement>(":scope > *").forEach((item, index) => {
-        item.style.setProperty(
-          "--hero-delay",
-          `${actionsDelay + index * 0.06}s`,
-        );
-      });
-      heroBadge?.style.setProperty("--hero-delay", `${badgeDelay}s`);
+      document.documentElement.classList.remove("hero-pending");
+      scheduleAllHeroDelays();
     } catch {
       heroCopy.classList.add("hero-reveal-ready");
+      document.documentElement.classList.remove("hero-pending");
     }
   };
 
@@ -118,8 +124,15 @@ const initHeroReveal = (): void => {
       if (!heroCopy.classList.contains("hero-reveal-ready")) startHeroReveal();
     }, 2500);
 
+    // Espera as fontes (limite 700ms) para medir as quebras de linha corretamente.
+    // O pré-hide síncrono do <head> cobre a espera: sem flash, sem espera longa.
     if (document.fonts?.ready) {
-      document.fonts.ready.then(startHeroReveal);
+      const fontsTimeout = new Promise<void>((resolve) => {
+        window.setTimeout(resolve, 700);
+      });
+      Promise.race([document.fonts.ready.then(() => undefined), fontsTimeout]).then(
+        startHeroReveal,
+      );
     } else {
       startHeroReveal();
     }
@@ -150,7 +163,6 @@ const initMobileDrawer = (): void => {
   const closeBtn = document.getElementById("mobile-menu-close");
   const drawer = document.getElementById("mobile-drawer");
   const backdrop = document.getElementById("mobile-backdrop");
-  const navLinks = document.querySelectorAll(".mobile-nav-link");
 
   if (!toggleBtn || !drawer || !backdrop) return;
 
@@ -172,8 +184,11 @@ const initMobileDrawer = (): void => {
   closeBtn?.addEventListener("click", closeDrawer);
   backdrop.addEventListener("click", closeDrawer);
 
-  navLinks.forEach((link) => {
-    link.addEventListener("click", closeDrawer);
+  // Fecha ao clicar em qualquer link do drawer (navegação, CTA ou logo).
+  // Delegação em vez de classe fixa: o markup usa .mobile-nav-link-custom.
+  drawer.addEventListener("click", (event) => {
+    const anchor = (event.target as HTMLElement | null)?.closest?.("a[href]");
+    if (anchor) closeDrawer();
   });
 
   document.addEventListener("keydown", (event) => {

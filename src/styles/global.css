@@ -685,6 +685,16 @@ body {
 /* 6.1 Hero Entrance Animation (Desktop Only >= 761px) — word-by-word reveal (espelho Luísa: anima sempre) */
 @media (min-width: 761px) {
 
+  /* Pré-hide aplicado antes do primeiro paint via classe síncrona no <html> (anti-flash).
+     Auto-removida em 3s pelo próprio inline: sem JS a hero nasce visível. */
+  html.hero-pending .hero-copy-container:not(.hero-reveal-ready) > .hero-eyebrow,
+  html.hero-pending .hero-copy-container:not(.hero-reveal-ready) > .hero-badge,
+  html.hero-pending .hero-copy-container:not(.hero-reveal-ready) .hero-actions > *,
+  html.hero-pending .hero-copy-container:not(.hero-reveal-ready) > .hero-title,
+  html.hero-pending .hero-copy-container:not(.hero-reveal-ready) > .hero-description {
+    opacity: 0;
+  }
+
   .hero-copy-container.hero-reveal-ready > .hero-eyebrow,
   .hero-copy-container.hero-reveal-ready > .hero-badge,
   .hero-copy-container.hero-reveal-ready .hero-actions > * {

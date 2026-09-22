@@ -158,6 +158,17 @@ const jsonLd = {
     <link rel="preload" as="image" href={asset(siteData.hero.imageMobile.url)} media="(max-width: 760px)" fetchpriority="high" />
 
     <!-- Google Fonts removido em favor do auto-hospedado no global.css -->
+    <!-- Pré-hide síncrono da hero (anti-flash): só desktop; auto-remove em 3s contra falha do bundle -->
+    <script is:inline>
+      try {
+        if (window.matchMedia("(min-width: 761px)").matches) {
+          document.documentElement.classList.add("hero-pending");
+          window.setTimeout(function () {
+            document.documentElement.classList.remove("hero-pending");
+          }, 3000);
+        }
+      } catch (e) {}
+    </script>
     <!-- Schema.org JSON-LD Structured Data: LocalBusiness, Services & FAQPage -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
