@@ -1,5 +1,93 @@
 const WHATSAPP_NUMBER = "5551997736690";
 
+const initHeroReveal = (): void => {
+  const heroCopy = document.querySelector<HTMLElement>(".hero-copy-container");
+  const isDesktop = window.matchMedia("(min-width: 761px)").matches;
+  if (!heroCopy || !isDesktop) return;
+
+  const heroEyebrow = heroCopy.querySelector<HTMLElement>(".hero-eyebrow");
+  const heroTitle = heroCopy.querySelector<HTMLElement>("h1");
+  const heroDescription = heroCopy.querySelector<HTMLElement>(".hero-description");
+  const heroActions = heroCopy.querySelector<HTMLElement>(".hero-actions");
+  const heroBadge = heroCopy.querySelector<HTMLElement>(".hero-badge");
+
+  const splitHeroWords = (element: HTMLElement | null): HTMLElement[] => {
+    if (!element) return [];
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    const textNodes: Text[] = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+
+    const words = textNodes.flatMap((node) => {
+      const isHighlight = node.parentElement?.closest(".hero-title-highlight") !== null;
+      return (node.textContent || "")
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((text) => ({ text, isHighlight }));
+    });
+
+    element.replaceChildren();
+    return words.map(({ text, isHighlight }) => {
+      const word = document.createElement("span");
+      word.className = `hero-reveal-word${isHighlight ? " hero-title-highlight" : ""}`;
+      word.textContent = text;
+      element.append(word, " ");
+      return word;
+    });
+  };
+
+  const scheduleHeroWords = (words: HTMLElement[], startDelay: number): number => {
+    let line = 0;
+    let wordInLine = 0;
+    let previousTop: number | null = null;
+
+    words.forEach((word) => {
+      const currentTop = word.offsetTop;
+      if (previousTop !== null && Math.abs(currentTop - previousTop) > 2) {
+        line += 1;
+        wordInLine = 0;
+      }
+      word.style.setProperty(
+        "--hero-delay",
+        `${startDelay + line * 0.07 + wordInLine * 0.018}s`,
+      );
+      wordInLine += 1;
+      previousTop = currentTop;
+    });
+
+    return line + 1;
+  };
+
+  const startHeroReveal = (): void => {
+    const titleWords = splitHeroWords(heroTitle);
+    const descriptionWords = splitHeroWords(heroDescription);
+    heroCopy.classList.add("hero-reveal-ready");
+
+    const eyebrowDelay = 0.05;
+    const titleDelay = 0.12;
+    const titleLines = scheduleHeroWords(titleWords, titleDelay);
+    const descDelay = titleDelay + titleLines * 0.07 + 0.24;
+    const descLines = scheduleHeroWords(descriptionWords, descDelay);
+    const actionsDelay = descDelay + descLines * 0.07 + 0.24;
+    const badgeDelay = actionsDelay + 0.3;
+
+    heroEyebrow?.style.setProperty("--hero-delay", `${eyebrowDelay}s`);
+    heroActions?.querySelectorAll<HTMLElement>(":scope > *").forEach((item, index) => {
+      item.style.setProperty(
+        "--hero-delay",
+        `${actionsDelay + index * 0.06}s`,
+      );
+    });
+    heroBadge?.style.setProperty("--hero-delay", `${badgeDelay}s`);
+  };
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(startHeroReveal);
+  } else {
+    startHeroReveal();
+  }
+};
+
 const initHeaderScroll = (): void => {
   // Header styling is statically handled with GPU acceleration in global.css
   // Avoiding scroll-driven class toggles prevents layout thrashing in Safari and mobile.
@@ -266,6 +354,7 @@ const initScrollSpy = (): void => {
 };
 
 const initApp = (): void => {
+  initHeroReveal();
   initHeaderScroll();
   initMobileDrawer();
   initFaqAccordion();

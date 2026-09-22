@@ -682,10 +682,31 @@ body {
   width: 100% !important;
 }
 
-/* 6.1 Hero Entrance Animation (Desktop Only >= 761px) */
+/* 6.1 Hero Entrance Animation (Desktop Only >= 761px) — word-by-word reveal */
 @media (min-width: 761px) {
-  @keyframes heroFadeUp {
-    0% {
+
+  .hero-copy-container > .hero-eyebrow,
+  .hero-copy-container > .hero-badge,
+  .hero-copy-container .hero-actions > * {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  .hero-copy-container.hero-reveal-ready > .hero-eyebrow,
+  .hero-copy-container.hero-reveal-ready > .hero-badge,
+  .hero-copy-container.hero-reveal-ready .hero-actions > * {
+    animation: heroLineRise .45s cubic-bezier(.22, .61, .36, 1) backwards;
+    animation-delay: var(--hero-delay, 0s);
+  }
+
+  .hero-copy-container.hero-reveal-ready .hero-reveal-word {
+    display: inline-block;
+    animation: heroLineRise .42s cubic-bezier(.22, .61, .36, 1) backwards;
+    animation-delay: var(--hero-delay, 0s);
+  }
+
+  @keyframes heroLineRise {
+    from {
       opacity: 0;
       transform: translateY(16px);
     }
@@ -695,55 +716,21 @@ body {
       transform: translateY(0);
     }
   }
-
-  @keyframes heroScaleIn {
-    0% {
-      opacity: 0;
-      transform: scale(1.025);
-    }
-
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  .hero-animate-up {
-    opacity: 0;
-    animation: 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards heroFadeUp;
-  }
-
-  .hero-animate-scale {
-    opacity: 0;
-    animation: 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards heroScaleIn;
-  }
-
-  .hero-delay-80 {
-    animation-delay: 80ms;
-  }
-
-  .hero-delay-160 {
-    animation-delay: 160ms;
-  }
-
-  .hero-delay-240 {
-    animation-delay: 240ms;
-  }
-
-  .hero-delay-320 {
-    animation-delay: 320ms;
-  }
 }
 
 /* Reset explícito para Mobile (<= 760px): carregamento estático e instantâneo sem layout shift */
 @media (max-width: 760px) {
 
-  .hero-animate-up,
-  .hero-animate-scale,
-  .hero-delay-80,
-  .hero-delay-160,
-  .hero-delay-240,
-  .hero-delay-320,
+  .hero-copy-container > .hero-eyebrow,
+  .hero-copy-container > .hero-badge,
+  .hero-copy-container .hero-actions > *,
+  .hero-copy-container .hero-reveal-word,
+  .hero-copy-container.hero-reveal-ready > .hero-eyebrow,
+  .hero-copy-container.hero-reveal-ready > .hero-badge,
+  .hero-copy-container.hero-reveal-ready .hero-actions > *,
+  .hero-copy-container.hero-reveal-ready .hero-reveal-word,
+  .hero-title,
+  .hero-description,
   .hero-section *,
   .hero-copy-container * {
     animation: none !important;
@@ -1926,22 +1913,7 @@ body {
   font-weight: 600;
 }
 
-/* Hero Animations (delay classes) */
-.hero-delay-80 {
-  transition-delay: 80ms;
-}
 
-.hero-delay-160 {
-  transition-delay: 160ms;
-}
-
-.hero-delay-240 {
-  transition-delay: 240ms;
-}
-
-.hero-delay-320 {
-  transition-delay: 320ms;
-}
 
 /* ==========================================================================
    TRUST BAR
