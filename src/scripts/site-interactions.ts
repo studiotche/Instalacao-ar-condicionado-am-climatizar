@@ -1,12 +1,8 @@
 const WHATSAPP_NUMBER = "5551997736690";
 
 const initHeroReveal = (): void => {
-  document.documentElement.classList.add("js");
   const heroCopy = document.querySelector<HTMLElement>(".hero-copy-container");
-  if (!heroCopy || heroCopy.dataset.heroRevealInit === "true") return;
-  heroCopy.dataset.heroRevealInit = "true";
-  const isDesktop = window.matchMedia("(min-width: 761px)").matches;
-  if (!heroCopy || !isDesktop) return;
+  if (!heroCopy) return;
 
   const heroEyebrow = heroCopy.querySelector<HTMLElement>(".hero-eyebrow");
   const heroTitle = heroCopy.querySelector<HTMLElement>("h1");
@@ -16,47 +12,68 @@ const initHeroReveal = (): void => {
 
   const splitHeroWords = (element: HTMLElement | null): HTMLElement[] => {
     if (!element) return [];
-    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
-    const textNodes: Text[] = [];
-    while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
-
-    const words = textNodes.flatMap((node) => {
-      const isHighlight = node.parentElement?.closest(".hero-title-highlight") !== null;
-      return (node.textContent || "")
-        .trim()
-        .split(/\s+/)
-        .filter(Boolean)
-        .map((text) => ({ text, isHighlight }));
-    });
+    // Preserva <br> como marcador de quebra de linha (antes era descartado).
+    const segments: ({ text: string; isHighlight: boolean } | { br: true })[] = [];
+    const walk = (node: Node): void => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const isHighlight = node.parentElement?.closest(".hero-title-highlight") !== null;
+        (node.textContent || "")
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean)
+          .forEach((text) => segments.push({ text, isHighlight }));
+      } else if (node.nodeName === "BR") {
+        segments.push({ br: true });
+      } else {
+        node.childNodes.forEach(walk);
+      }
+    };
+    element.childNodes.forEach(walk);
 
     element.replaceChildren();
-    return words.map(({ text, isHighlight }) => {
+    const words: HTMLElement[] = [];
+    segments.forEach((segment) => {
+      if ("br" in segment) {
+        const marker = document.createElement("span");
+        marker.className = "hero-reveal-br";
+        marker.setAttribute("aria-hidden", "true");
+        element.append(marker);
+        return;
+      }
       const word = document.createElement("span");
-      word.className = `hero-reveal-word${isHighlight ? " hero-title-highlight" : ""}`;
-      word.textContent = text;
+      word.className = `hero-reveal-word${segment.isHighlight ? " hero-title-highlight" : ""}`;
+      word.textContent = segment.text;
       element.append(word, " ");
-      return word;
+      words.push(word);
     });
+    return words;
   };
 
-  const MAX_HERO_DELAY = 0.9;
-  const clampDelay = (value: number): number =>
-    Math.min(Math.max(value, 0), MAX_HERO_DELAY);
-
-  const scheduleHeroWords = (words: HTMLElement[], startDelay: number): number => {
+  const scheduleHeroWords = (
+    container: HTMLElement | null,
+    startDelay: number,
+  ): number => {
+    if (!container) return 1;
     let line = 0;
     let wordInLine = 0;
     let previousTop: number | null = null;
 
-    words.forEach((word) => {
-      const currentTop = word.offsetTop;
+    Array.from(container.children).forEach((child) => {
+      const element = child as HTMLElement;
+      if (element.classList.contains("hero-reveal-br")) {
+        line += 1;
+        wordInLine = 0;
+        previousTop = null;
+        return;
+      }
+      const currentTop = element.offsetTop;
       if (previousTop !== null && Math.abs(currentTop - previousTop) > 2) {
         line += 1;
         wordInLine = 0;
       }
-      word.style.setProperty(
+      element.style.setProperty(
         "--hero-delay",
-        `${clampDelay(startDelay + line * 0.05 + wordInLine * 0.012)}s`,
+        `${startDelay + line * 0.07 + wordInLine * 0.018}s`,
       );
       wordInLine += 1;
       previousTop = currentTop;
@@ -65,58 +82,61 @@ const initHeroReveal = (): void => {
     return line + 1;
   };
 
-  const forceRevealVisible = (): void => {
-    heroCopy.classList.add("hero-reveal-ready");
-  };
-
   const startHeroReveal = (): void => {
     if (heroCopy.classList.contains("hero-reveal-ready")) return;
     try {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        forceRevealVisible();
-        return;
-      }
-      const titleWords = splitHeroWords(heroTitle);
-      const descriptionWords = splitHeroWords(heroDescription);
-      // Adiciona a classe antes de medir offsetTop para que o layout já reflita o estado animado.
-      forceRevealVisible();
+      splitHeroWords(heroTitle);
+      splitHeroWords(heroDescription);
+      heroCopy.classList.add("hero-reveal-ready");
 
-      const eyebrowDelay = 0.03;
-      const titleDelay = 0.08;
-      const titleLines = scheduleHeroWords(titleWords, titleDelay);
-      const descDelay = clampDelay(titleDelay + titleLines * 0.05 + 0.16);
-      const descLines = scheduleHeroWords(descriptionWords, descDelay);
-      const actionsDelay = clampDelay(descDelay + descLines * 0.05 + 0.16);
-      const badgeDelay = clampDelay(actionsDelay + 0.18);
+      const eyebrowDelay = 0.05;
+      const titleDelay = 0.12;
+      const titleLines = scheduleHeroWords(heroTitle, titleDelay);
+      const descDelay = titleDelay + titleLines * 0.07 + 0.24;
+      const descLines = scheduleHeroWords(heroDescription, descDelay);
+      const actionsDelay = descDelay + descLines * 0.07 + 0.24;
+      const badgeDelay = actionsDelay + 0.3;
 
-      heroEyebrow?.style.setProperty("--hero-delay", `${clampDelay(eyebrowDelay)}s`);
+      heroEyebrow?.style.setProperty("--hero-delay", `${eyebrowDelay}s`);
       heroActions?.querySelectorAll<HTMLElement>(":scope > *").forEach((item, index) => {
         item.style.setProperty(
           "--hero-delay",
-          `${clampDelay(actionsDelay + index * 0.05)}s`,
+          `${actionsDelay + index * 0.06}s`,
         );
       });
       heroBadge?.style.setProperty("--hero-delay", `${badgeDelay}s`);
     } catch {
-      // Falha no split/medida nunca pode deixar botões/badge escondidos.
-      forceRevealVisible();
+      heroCopy.classList.add("hero-reveal-ready");
     }
   };
 
-  // Failsafe: se fonts.ready pendurar, revela de qualquer forma.
-  window.setTimeout(() => {
-    if (!heroCopy.classList.contains("hero-reveal-ready")) startHeroReveal();
-  }, 2500);
+  const begin = (): void => {
+    if (heroCopy.dataset.heroRevealInit === "true") return;
+    heroCopy.dataset.heroRevealInit = "true";
+    // Failsafe: se fonts.ready pendurar, revela de qualquer forma.
+    window.setTimeout(() => {
+      if (!heroCopy.classList.contains("hero-reveal-ready")) startHeroReveal();
+    }, 2500);
 
-  if (document.fonts?.ready) {
-    const fontsTimeout = new Promise<void>((resolve) => {
-      window.setTimeout(resolve, 700);
-    });
-    Promise.race([document.fonts.ready.then(() => undefined), fontsTimeout]).then(
-      startHeroReveal,
-    );
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(startHeroReveal);
+    } else {
+      startHeroReveal();
+    }
+  };
+
+  const desktopQuery = window.matchMedia("(min-width: 761px)");
+  if (desktopQuery.matches) {
+    begin();
   } else {
-    startHeroReveal();
+    // Carregou no mobile e expandiu para desktop: dispara o reveal ao cruzar (uma vez).
+    desktopQuery.addEventListener(
+      "change",
+      (event) => {
+        if (event.matches) begin();
+      },
+      { once: true },
+    );
   }
 };
 
