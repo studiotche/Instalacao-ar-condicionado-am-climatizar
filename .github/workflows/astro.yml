@@ -1,4 +1,4 @@
-name: Deploy Ijuí Clima to GitHub Pages
+name: Deploy AM Climatizar to GitHub Pages
 
 on:
   push:

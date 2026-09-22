@@ -1,6 +1,6 @@
-# Ijuí Clima
+# AM Climatizar
 
-Site institucional oficial da **Ijuí Clima**, referência em instalação, manutenção preventiva/corretiva e higienização de ar-condicionado em Ijuí — Rio Grande do Sul e região noroeste gaúcha.
+Site institucional oficial da **AM Climatizar**, referência em instalação, manutenção preventiva/corretiva e higienização de ar-condicionado em Ivoti — Rio Grande do Sul, Vale dos Sinos e Encosta da Serra.
 
 Desenvolvido em **Astro 6**, **TypeScript**, **Tailwind CSS**, com foco em máxima performance (LCP otimizado), SEO técnico com schema `HVACBusiness` + `FAQPage`, acessibilidade (A11y) e design padrão AAA.
 
