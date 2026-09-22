@@ -158,6 +158,8 @@ const jsonLd = {
     <link rel="preload" as="image" href={asset(siteData.hero.imageMobile.url)} media="(max-width: 760px)" fetchpriority="high" />
 
     <!-- Google Fonts removido em favor do auto-hospedado no global.css -->
+    <!-- Flag JS cedo: permite pré-esconder a hero só quando há JS (anti-sumiço sem JS) -->
+    <script is:inline>document.documentElement.classList.add("js");</script>
     <!-- Schema.org JSON-LD Structured Data: LocalBusiness, Services & FAQPage -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 

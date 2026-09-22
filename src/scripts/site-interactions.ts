@@ -1,7 +1,10 @@
 const WHATSAPP_NUMBER = "5551997736690";
 
 const initHeroReveal = (): void => {
+  document.documentElement.classList.add("js");
   const heroCopy = document.querySelector<HTMLElement>(".hero-copy-container");
+  if (!heroCopy || heroCopy.dataset.heroRevealInit === "true") return;
+  heroCopy.dataset.heroRevealInit = "true";
   const isDesktop = window.matchMedia("(min-width: 761px)").matches;
   if (!heroCopy || !isDesktop) return;
 
@@ -36,6 +39,10 @@ const initHeroReveal = (): void => {
     });
   };
 
+  const MAX_HERO_DELAY = 0.9;
+  const clampDelay = (value: number): number =>
+    Math.min(Math.max(value, 0), MAX_HERO_DELAY);
+
   const scheduleHeroWords = (words: HTMLElement[], startDelay: number): number => {
     let line = 0;
     let wordInLine = 0;
@@ -49,7 +56,7 @@ const initHeroReveal = (): void => {
       }
       word.style.setProperty(
         "--hero-delay",
-        `${startDelay + line * 0.07 + wordInLine * 0.018}s`,
+        `${clampDelay(startDelay + line * 0.05 + wordInLine * 0.012)}s`,
       );
       wordInLine += 1;
       previousTop = currentTop;
@@ -58,31 +65,56 @@ const initHeroReveal = (): void => {
     return line + 1;
   };
 
-  const startHeroReveal = (): void => {
-    const titleWords = splitHeroWords(heroTitle);
-    const descriptionWords = splitHeroWords(heroDescription);
+  const forceRevealVisible = (): void => {
     heroCopy.classList.add("hero-reveal-ready");
-
-    const eyebrowDelay = 0.05;
-    const titleDelay = 0.12;
-    const titleLines = scheduleHeroWords(titleWords, titleDelay);
-    const descDelay = titleDelay + titleLines * 0.07 + 0.24;
-    const descLines = scheduleHeroWords(descriptionWords, descDelay);
-    const actionsDelay = descDelay + descLines * 0.07 + 0.24;
-    const badgeDelay = actionsDelay + 0.3;
-
-    heroEyebrow?.style.setProperty("--hero-delay", `${eyebrowDelay}s`);
-    heroActions?.querySelectorAll<HTMLElement>(":scope > *").forEach((item, index) => {
-      item.style.setProperty(
-        "--hero-delay",
-        `${actionsDelay + index * 0.06}s`,
-      );
-    });
-    heroBadge?.style.setProperty("--hero-delay", `${badgeDelay}s`);
   };
 
+  const startHeroReveal = (): void => {
+    if (heroCopy.classList.contains("hero-reveal-ready")) return;
+    try {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        forceRevealVisible();
+        return;
+      }
+      const titleWords = splitHeroWords(heroTitle);
+      const descriptionWords = splitHeroWords(heroDescription);
+      // Adiciona a classe antes de medir offsetTop para que o layout já reflita o estado animado.
+      forceRevealVisible();
+
+      const eyebrowDelay = 0.03;
+      const titleDelay = 0.08;
+      const titleLines = scheduleHeroWords(titleWords, titleDelay);
+      const descDelay = clampDelay(titleDelay + titleLines * 0.05 + 0.16);
+      const descLines = scheduleHeroWords(descriptionWords, descDelay);
+      const actionsDelay = clampDelay(descDelay + descLines * 0.05 + 0.16);
+      const badgeDelay = clampDelay(actionsDelay + 0.18);
+
+      heroEyebrow?.style.setProperty("--hero-delay", `${clampDelay(eyebrowDelay)}s`);
+      heroActions?.querySelectorAll<HTMLElement>(":scope > *").forEach((item, index) => {
+        item.style.setProperty(
+          "--hero-delay",
+          `${clampDelay(actionsDelay + index * 0.05)}s`,
+        );
+      });
+      heroBadge?.style.setProperty("--hero-delay", `${badgeDelay}s`);
+    } catch {
+      // Falha no split/medida nunca pode deixar botões/badge escondidos.
+      forceRevealVisible();
+    }
+  };
+
+  // Failsafe: se fonts.ready pendurar, revela de qualquer forma.
+  window.setTimeout(() => {
+    if (!heroCopy.classList.contains("hero-reveal-ready")) startHeroReveal();
+  }, 2500);
+
   if (document.fonts?.ready) {
-    document.fonts.ready.then(startHeroReveal);
+    const fontsTimeout = new Promise<void>((resolve) => {
+      window.setTimeout(resolve, 700);
+    });
+    Promise.race([document.fonts.ready.then(() => undefined), fontsTimeout]).then(
+      startHeroReveal,
+    );
   } else {
     startHeroReveal();
   }
